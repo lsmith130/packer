@@ -4,8 +4,8 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/hashicorp/hcl/v2/hcldec"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
 )
 
 type Communicator struct {
@@ -45,12 +45,12 @@ func (p *Parser) decodeCommunicatorConfig(block *hcl.Block) (*Communicator, hcl.
 			Subject: &block.DefRange,
 		})
 		return output, diags
-	} else {
-		v, moreDiags := hcldec.Decode(block.Body, spec, nil)
-		diags = append(diags, moreDiags...)
-		_ = v
-		// output.Value = v
 	}
+
+	v, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec.HCL2Spec()), nil)
+	diags = append(diags, moreDiags...)
+	_ = v
+	// output.Value = v
 
 	if !hclsyntax.ValidIdentifier(output.Name) {
 		diags = append(diags, &hcl.Diagnostic{

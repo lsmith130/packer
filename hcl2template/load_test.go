@@ -11,7 +11,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/hcl/v2/hclparse"
 	"github.com/hashicorp/packer/helper/communicator"
 	"github.com/zclconf/go-cty/cty"
@@ -20,16 +19,16 @@ import (
 func getBasicParser() *Parser {
 	return &Parser{
 		Parser: hclparse.NewParser(),
-		ProvisionersSchemas: map[string]hcldec.Spec{
-			"shell": hcldec.ObjectSpec((&shell.Config{}).HCL2Spec()),
-			"file":  hcldec.ObjectSpec((&file.Config{}).HCL2Spec()),
+		ProvisionersSchemas: map[string]Decodable{
+			"shell": &shell.Config{},
+			"file":  &file.Config{},
 		},
-		PostProvisionersSchemas: map[string]hcldec.Spec{
-			"amazon-import": hcldec.ObjectSpec((&amazon_import.Config{}).HCL2Spec()),
+		PostProvisionersSchemas: map[string]Decodable{
+			"amazon-import": &amazon_import.Config{},
 		},
-		CommunicatorSchemas: map[string]hcldec.Spec{
-			"ssh":   hcldec.ObjectSpec((&communicator.SSH{}).HCL2Spec()),
-			"winrm": hcldec.ObjectSpec((&communicator.WinRM{}).HCL2Spec()),
+		CommunicatorSchemas: map[string]Decodable{
+			"ssh":   &communicator.SSH{},
+			"winrm": &communicator.WinRM{},
 		},
 	}
 }

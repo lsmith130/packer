@@ -1,10 +1,11 @@
 package hcl2template
 
 import (
-	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
+	"github.com/zclconf/go-cty/cty/gocty"
 )
 
 type ProvisionerGroup struct {
@@ -18,7 +19,7 @@ type ProvisionerGroup struct {
 // provisioners
 type ProvisionerGroups []*ProvisionerGroup
 
-func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[string]hcldec.Spec) (*ProvisionerGroup, hcl.Diagnostics) {
+func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[string]Decodable) (*ProvisionerGroup, hcl.Diagnostics) {
 	var b struct {
 		Communicator string   `hcl:"communicator,optional"`
 		Remain       hcl.Body `hcl:",remain"`
@@ -42,13 +43,21 @@ func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[s
 	content, moreDiags := b.Remain.Content(buildSchema)
 	diags = append(diags, moreDiags...)
 	for _, block := range content.Blocks {
-		provisionerSpec, found := provisionerSpecs[block.Type]
+		provisioner, found := provisionerSpecs[block.Type]
 		if !found {
 			continue
 		}
-		p, moreDiags := hcldec.Decode(block.Body, provisionerSpec, nil)
+		spec := provisioner.HCL2Spec()
+		cv, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
 		diags = append(diags, moreDiags...)
-		pg.Provisioners = append(pg.Provisioners, p)
+		err := gocty.FromCtyValue(cv, provisioner)
+		if err != nil {
+			diags = append(diags, &hcl.Diagnostic{
+				Summary: err.Error(),
+				Subject: &block.DefRange,
+			})
+		}
+		pg.Provisioners = append(pg.Provisioners, cv)
 	}
 
 	return pg, diags

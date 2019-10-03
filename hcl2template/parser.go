@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/hcl/v2/hclparse"
 )
 
@@ -30,11 +29,11 @@ var configSchema = &hcl.BodySchema{
 type Parser struct {
 	*hclparse.Parser
 
-	ProvisionersSchemas map[string]hcldec.Spec
+	ProvisionersSchemas map[string]Decodable
 
-	PostProvisionersSchemas map[string]hcldec.Spec
+	PostProvisionersSchemas map[string]Decodable
 
-	CommunicatorSchemas map[string]hcldec.Spec
+	CommunicatorSchemas map[string]Decodable
 }
 
 const hcl2FileExt = ".pkr.hcl"
