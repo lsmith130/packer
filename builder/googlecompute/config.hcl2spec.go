@@ -54,8 +54,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 
 func (*CustomerEncryptionKey) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"KmsKeyName": &hcldec.AttrSpec{Name: "kmskeyname", Type: cty.String, Required: false},
-		"RawKey":     &hcldec.AttrSpec{Name: "rawkey", Type: cty.String, Required: false},
+		"KmsKeyName": &hcldec.AttrSpec{Name: "kms_key_name", Type: cty.String, Required: false},
+		"RawKey":     &hcldec.AttrSpec{Name: "raw_key", Type: cty.String, Required: false},
 	}
 	return s
 }

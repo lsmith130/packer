@@ -11,7 +11,7 @@ func (*ShutdownConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"ShutdownCommand":    &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout": &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"ShutdownTimeout":    &hcldec.AttrSpec{Name: "shutdowntimeout", Type: cty.String, Required: false},
+		"ShutdownTimeout":    &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 	}
 	return s
 }

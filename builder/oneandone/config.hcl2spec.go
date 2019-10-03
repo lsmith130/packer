@@ -13,7 +13,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Url":            &hcldec.AttrSpec{Name: "url", Type: cty.String, Required: false},
 		"SnapshotName":   &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
 		"DataCenterName": &hcldec.AttrSpec{Name: "data_center_name", Type: cty.String, Required: false},
-		"DataCenterId":   &hcldec.AttrSpec{Name: "datacenterid", Type: cty.String, Required: false},
+		"DataCenterId":   &hcldec.AttrSpec{Name: "data_center_id", Type: cty.String, Required: false},
 		"Image":          &hcldec.AttrSpec{Name: "source_image_name", Type: cty.String, Required: false},
 		"DiskSize":       &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
 		"Retries":        &hcldec.AttrSpec{Name: "retries", Type: cty.Number, Required: false},

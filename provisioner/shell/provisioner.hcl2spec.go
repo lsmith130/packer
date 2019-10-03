@@ -11,7 +11,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"InlineShebang":        &hcldec.AttrSpec{Name: "inline_shebang", Type: cty.String, Required: false},
 		"RawPauseAfter":        &hcldec.AttrSpec{Name: "pause_after", Type: cty.String, Required: false},
-		"PauseAfter":           &hcldec.AttrSpec{Name: "pauseafter", Type: cty.String, Required: false},
+		"PauseAfter":           &hcldec.AttrSpec{Name: "pause_after", Type: cty.String, Required: false},
 		"UseEnvVarFile":        &hcldec.AttrSpec{Name: "use_env_var_file", Type: cty.Bool, Required: false},
 		"RemoteFolder":         &hcldec.AttrSpec{Name: "remote_folder", Type: cty.String, Required: false},
 		"RemoteFile":           &hcldec.AttrSpec{Name: "remote_file", Type: cty.String, Required: false},

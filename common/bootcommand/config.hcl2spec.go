@@ -12,8 +12,8 @@ func (*BootConfig) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootGroupInterval": &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
 		"RawBootWait":          &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":          &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
-		"BootGroupInterval":    &hcldec.AttrSpec{Name: "bootgroupinterval", Type: cty.String, Required: false},
-		"BootWait":             &hcldec.AttrSpec{Name: "bootwait", Type: cty.String, Required: false},
+		"BootGroupInterval":    &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
+		"BootWait":             &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 	}
 	return s
 }
@@ -22,7 +22,7 @@ func (*VNCConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"DisableVNC":         &hcldec.AttrSpec{Name: "disable_vnc", Type: cty.Bool, Required: false},
 		"RawBootKeyInterval": &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
-		"BootKeyInterval":    &hcldec.AttrSpec{Name: "bootkeyinterval", Type: cty.String, Required: false},
+		"BootKeyInterval":    &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
 	}
 	for k, v := range (&VNCConfig{}).BootConfig.HCL2Spec() {
 		s[k] = v

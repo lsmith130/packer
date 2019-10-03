@@ -20,7 +20,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Bootscript":     &hcldec.AttrSpec{Name: "bootscript", Type: cty.String, Required: false},
 		"BootType":       &hcldec.AttrSpec{Name: "boottype", Type: cty.String, Required: false},
 		"RemoveVolume":   &hcldec.AttrSpec{Name: "remove_volume", Type: cty.Bool, Required: false},
-		"UserAgent":      &hcldec.AttrSpec{Name: "useragent", Type: cty.String, Required: false},
+		"UserAgent":      &hcldec.AttrSpec{Name: "user_agent", Type: cty.String, Required: false},
 	}
 	return s
 }

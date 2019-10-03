@@ -24,7 +24,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"LogLevel":          &hcldec.AttrSpec{Name: "log_level", Type: cty.String, Required: false},
 		"SaltCallArgs":      &hcldec.AttrSpec{Name: "salt_call_args", Type: cty.String, Required: false},
 		"SaltBinDir":        &hcldec.AttrSpec{Name: "salt_bin_dir", Type: cty.String, Required: false},
-		"CmdArgs":           &hcldec.AttrSpec{Name: "cmdargs", Type: cty.String, Required: false},
+		"CmdArgs":           &hcldec.AttrSpec{Name: "cmd_args", Type: cty.String, Required: false},
 		"GuestOSType":       &hcldec.AttrSpec{Name: "guest_os_type", Type: cty.String, Required: false},
 	}
 	return s

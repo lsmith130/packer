@@ -10,7 +10,7 @@ import (
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Command":              &hcldec.AttrSpec{Name: "command", Type: cty.String, Required: false},
-		"SubCommand":           &hcldec.AttrSpec{Name: "subcommand", Type: cty.String, Required: false},
+		"SubCommand":           &hcldec.AttrSpec{Name: "sub_command", Type: cty.String, Required: false},
 		"ExtraArguments":       &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
 		"InspecEnvVars":        &hcldec.AttrSpec{Name: "inspec_env_vars", Type: cty.List(cty.String), Required: false},
 		"Profile":              &hcldec.AttrSpec{Name: "profile", Type: cty.String, Required: false},

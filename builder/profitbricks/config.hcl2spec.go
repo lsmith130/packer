@@ -14,7 +14,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"PBUrl":        &hcldec.AttrSpec{Name: "url", Type: cty.String, Required: false},
 		"Region":       &hcldec.AttrSpec{Name: "location", Type: cty.String, Required: false},
 		"Image":        &hcldec.AttrSpec{Name: "image", Type: cty.String, Required: false},
-		"SSHKey":       &hcldec.AttrSpec{Name: "sshkey", Type: cty.String, Required: false},
+		"SSHKey":       &hcldec.AttrSpec{Name: "ssh_key", Type: cty.String, Required: false},
 		"SnapshotName": &hcldec.AttrSpec{Name: "snapshot_name", Type: cty.String, Required: false},
 		"DiskSize":     &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
 		"DiskType":     &hcldec.AttrSpec{Name: "disk_type", Type: cty.String, Required: false},

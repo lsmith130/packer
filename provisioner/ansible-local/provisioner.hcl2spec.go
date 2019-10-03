@@ -23,7 +23,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"InventoryFile":   &hcldec.AttrSpec{Name: "inventory_file", Type: cty.String, Required: false},
 		"InventoryGroups": &hcldec.AttrSpec{Name: "inventory_groups", Type: cty.List(cty.String), Required: false},
 		"GalaxyFile":      &hcldec.AttrSpec{Name: "galaxy_file", Type: cty.String, Required: false},
-		"GalaxyCommand":   &hcldec.AttrSpec{Name: "galaxycommand", Type: cty.String, Required: false},
+		"GalaxyCommand":   &hcldec.AttrSpec{Name: "galaxy_command", Type: cty.String, Required: false},
 	}
 	return s
 }

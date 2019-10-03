@@ -37,8 +37,8 @@ func (*SSH) HCL2Spec() map[string]hcldec.Spec {
 		"SSHReadWriteTimeout":       &hcldec.AttrSpec{Name: "ssh_read_write_timeout", Type: cty.String, Required: false},
 		"SSHRemoteTunnels":          &hcldec.AttrSpec{Name: "ssh_remote_tunnels", Type: cty.List(cty.String), Required: false},
 		"SSHLocalTunnels":           &hcldec.AttrSpec{Name: "ssh_local_tunnels", Type: cty.List(cty.String), Required: false},
-		"SSHPublicKey":              &hcldec.AttrSpec{Name: "sshpublickey", Type: cty.String, Required: false},
-		"SSHPrivateKey":             &hcldec.AttrSpec{Name: "sshprivatekey", Type: cty.String, Required: false},
+		"SSHPublicKey":              &hcldec.AttrSpec{Name: "ssh_public_key", Type: cty.String, Required: false},
+		"SSHPrivateKey":             &hcldec.AttrSpec{Name: "ssh_private_key", Type: cty.String, Required: false},
 	}
 	return s
 }

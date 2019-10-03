@@ -10,9 +10,9 @@ import (
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"RawBootKeyInterval":  &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
-		"BootKeyInterval":     &hcldec.AttrSpec{Name: "bootkeyinterval", Type: cty.String, Required: false},
+		"BootKeyInterval":     &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
 		"ProxmoxURLRaw":       &hcldec.AttrSpec{Name: "proxmox_url", Type: cty.String, Required: false},
-		"ProxmoxURL":          &hcldec.AttrSpec{Name: "proxmoxurl", Type: cty.String, Required: false},
+		"ProxmoxURL":          &hcldec.AttrSpec{Name: "proxmox_url", Type: cty.String, Required: false},
 		"SkipCertValidation":  &hcldec.AttrSpec{Name: "insecure_skip_tls_verify", Type: cty.Bool, Required: false},
 		"Username":            &hcldec.AttrSpec{Name: "username", Type: cty.String, Required: false},
 		"Password":            &hcldec.AttrSpec{Name: "password", Type: cty.String, Required: false},

@@ -42,7 +42,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"OSDiskSizeGB":                        &hcldec.AttrSpec{Name: "os_disk_size_gb", Type: cty.Number, Required: false},
 		"AdditionalDiskSize":                  &hcldec.AttrSpec{Name: "disk_additional_size", Type: cty.List(cty.Number), Required: false},
 		"DiskCachingType":                     &hcldec.AttrSpec{Name: "disk_caching_type", Type: cty.String, Required: false},
-		"UserName":                            &hcldec.AttrSpec{Name: "username", Type: cty.String, Required: false},
+		"UserName":                            &hcldec.AttrSpec{Name: "user_name", Type: cty.String, Required: false},
 		"Password":                            &hcldec.AttrSpec{Name: "password", Type: cty.String, Required: false},
 		"AsyncResourceGroupDelete":            &hcldec.AttrSpec{Name: "async_resourcegroup_delete", Type: cty.Bool, Required: false},
 		"shared_image_gallery":                &hcldec.BlockObjectSpec{TypeName: "SharedImageGallery", LabelNames: []string(nil), Nested: hcldec.ObjectSpec((&Config{}).SharedGallery.HCL2Spec())},

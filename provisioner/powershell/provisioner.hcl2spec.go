@@ -12,7 +12,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RemoteEnvVarPath":       &hcldec.AttrSpec{Name: "remote_env_var_path", Type: cty.String, Required: false},
 		"ElevatedExecuteCommand": &hcldec.AttrSpec{Name: "elevated_execute_command", Type: cty.String, Required: false},
 		"StartRetryTimeout":      &hcldec.AttrSpec{Name: "start_retry_timeout", Type: cty.String, Required: false},
-		"EnvVarFormat":           &hcldec.AttrSpec{Name: "envvarformat", Type: cty.String, Required: false},
+		"EnvVarFormat":           &hcldec.AttrSpec{Name: "env_var_format", Type: cty.String, Required: false},
 		"ElevatedEnvVarFormat":   &hcldec.AttrSpec{Name: "elevated_env_var_format", Type: cty.String, Required: false},
 		"ElevatedUser":           &hcldec.AttrSpec{Name: "elevated_user", Type: cty.String, Required: false},
 		"ElevatedPassword":       &hcldec.AttrSpec{Name: "elevated_password", Type: cty.String, Required: false},
