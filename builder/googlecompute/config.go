@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type Config
+//go:generate hcl2-schema -type Config,CustomerEncryptionKey
 
 package googlecompute
 
@@ -10,14 +10,12 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/packer/common"
 	"github.com/hashicorp/packer/common/uuid"
 	"github.com/hashicorp/packer/helper/communicator"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/hashicorp/packer/packer"
 	"github.com/hashicorp/packer/template/interpolate"
-	"github.com/zclconf/go-cty/cty"
 	"golang.org/x/oauth2/jwt"
 	compute "google.golang.org/api/compute/v1"
 )
@@ -413,11 +411,4 @@ func (k *CustomerEncryptionKey) ComputeType() *compute.CustomerEncryptionKey {
 		KmsKeyName: k.KmsKeyName,
 		RawKey:     k.RawKey,
 	}
-}
-func (*CustomerEncryptionKey) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"KmsKeyName": &hcldec.AttrSpec{Name: "kmsKeyName", Type: cty.String, Required: false},
-		"RawKey":     &hcldec.AttrSpec{Name: "rawKey", Type: cty.String, Required: false},
-	}
-	return s
 }
