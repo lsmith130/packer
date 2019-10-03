@@ -3,7 +3,7 @@
 package cvm
 
 import (
-	"github.com/hashicorp/hcl2/hcldec"
+	"github.com/hashicorp/hcl/v2/hcldec"
 )
 
 func (*Config) HCL2Spec() map[string]hcldec.Spec {

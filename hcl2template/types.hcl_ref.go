@@ -1,7 +1,7 @@
 package hcl2template
 
 import (
-	"github.com/hashicorp/hcl2/hcl"
+	"github.com/hashicorp/hcl/v2"
 )
 
 // reference to the source definition in configuration text file

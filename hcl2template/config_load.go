@@ -3,9 +3,9 @@ package hcl2template
 import (
 	"fmt"
 
-	"github.com/hashicorp/hcl2/hcl"
+	"github.com/hashicorp/hcl/v2"
 	"github.com/zclconf/go-cty/cty"
-)
+) 
 
 type Artifacts map[ArtifactRef]*Artifact
 

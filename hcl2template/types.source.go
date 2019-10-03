@@ -3,8 +3,8 @@ package hcl2template
 import (
 	"fmt"
 
-	"github.com/hashicorp/hcl2/hcl"
-	"github.com/hashicorp/hcl2/hcl/hclsyntax"
+	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
 )
 
 // A source field in an HCL file will load into the Source type.
