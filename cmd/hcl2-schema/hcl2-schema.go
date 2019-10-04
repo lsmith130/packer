@@ -15,7 +15,6 @@ import (
 	"regexp"
 	"strings"
 	"text/template"
-	"unicode"
 
 	"github.com/fatih/structtag"
 	"github.com/hashicorp/hcl/v2/hcldec"
@@ -30,9 +29,9 @@ var (
 
 // Usage is a replacement usage function for the flags package.
 func Usage() {
-	fmt.Fprintf(os.Stderr, "Usage of stringer:\n")
-	fmt.Fprintf(os.Stderr, "\tstringer [flags] -type T [directory]\n")
-	fmt.Fprintf(os.Stderr, "\tstringer [flags] -type T files... # Must be a single package\n")
+	fmt.Fprintf(os.Stderr, "Usage of hcl2-schema:\n")
+	fmt.Fprintf(os.Stderr, "\thcl2-schema [flags] -type T [directory]\n")
+	fmt.Fprintf(os.Stderr, "\thcl2-schema [flags] -type T files... # Must be a single package\n")
 	fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
 }
@@ -103,7 +102,7 @@ func main() {
 					fieldName = field.Names[0].Name
 				}
 
-				if !unicode.IsUpper([]rune(fieldName)[0]) {
+				if ast.IsExported(fieldName) {
 					continue
 				}
 				if strings.Contains(fieldType, "func") {
