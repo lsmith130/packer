@@ -6,6 +6,7 @@ import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
+	"github.com/zclconf/go-cty/cty/json"
 )
 
 type ProvisionerGroup struct {
@@ -49,8 +50,14 @@ func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[s
 		}
 		spec := provisioner.HCL2Spec()
 		cv, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
+		bytes, err := json.SimpleJSONValue{cv}.MarshalJSON()
+		if err != nil {
+			panic("TODO(azr): error properly")
+		}
+		str := string(bytes)
+		_ = str
 		diags = append(diags, moreDiags...)
-		err := gocty.FromCtyValue(cv, provisioner)
+		err = gocty.FromCtyValue(cv, provisioner)
 		if err != nil {
 			diags = append(diags, &hcl.Diagnostic{
 				Summary: err.Error(),

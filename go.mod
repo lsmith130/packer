@@ -47,6 +47,7 @@ require (
 	github.com/gocolly/colly v1.2.0
 	github.com/gofrs/flock v0.7.1
 	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3
+	github.com/golang/example v0.0.0-20170904185048-46695d81d1fa // indirect
 	github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db // indirect
 	github.com/google/go-cmp v0.3.0
 	github.com/google/go-querystring v1.0.0 // indirect
@@ -144,6 +145,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/sync v0.0.0-20190423024810-112230192c58
 	golang.org/x/sys v0.0.0-20190804053845-51ab0e2deafa
+	golang.org/x/tools v0.0.0-20190628153133-6cdbf07be9d0
 	google.golang.org/api v0.9.0
 	google.golang.org/grpc v1.21.1
 	gopkg.in/h2non/gock.v1 v1.0.12 // indirect
