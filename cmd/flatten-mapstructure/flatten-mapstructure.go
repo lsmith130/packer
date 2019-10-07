@@ -149,6 +149,9 @@ type NamePath struct {
 }
 
 func outputImports(w io.Writer, imports map[NamePath]*types.Package) {
+	if len(imports) == 0 {
+		return
+	}
 	// naive implementation
 	pkgs := []NamePath{}
 	for k := range imports {
