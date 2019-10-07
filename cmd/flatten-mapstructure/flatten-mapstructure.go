@@ -65,7 +65,7 @@ func main() {
 	sort.Strings(typeNames)
 
 	var structs []StructDef
-	var usedImports []*types.Package
+	usedImports := map[NamePath]*types.Package{}
 
 	for id, obj := range topPkg.TypesInfo.Defs {
 		if obj == nil {
@@ -88,7 +88,7 @@ func main() {
 		}
 		// log.Printf("%s: %q defines %v\n",
 		// 	topPkg.Fset.Position(id.Pos()), id.Name, obj)
-		flatenedStruct := getMapstructureSquashedStruct(utStruct)
+		flatenedStruct := getMapstructureSquashedStruct(obj.Pkg(), utStruct)
 		flatenedStruct = addCtyTagToStruct(flatenedStruct)
 		newStructName := "Flat" + id.Name
 		structs = append(structs, StructDef{
@@ -96,10 +96,17 @@ func main() {
 			Struct:     flatenedStruct,
 		})
 
-		usedImports = append(usedImports, getUsedImports(flatenedStruct)...)
+		for k, v := range getUsedImports(flatenedStruct) {
+			if _, found := usedImports[k]; !found {
+				usedImports[k] = v
+			}
+		}
 	}
 
 	fmt.Fprintf(log.Writer(), "package %s\n", topPkg.Name)
+
+	delete(usedImports, NamePath{topPkg.Name, topPkg.PkgPath})
+	outputImports(log.Writer(), usedImports)
 
 	for _, flatenedStruct := range structs {
 		fmt.Fprintf(log.Writer(), "\ntype %s struct {\n", flatenedStruct.StructName)
@@ -121,12 +128,42 @@ func outputStruct(w io.Writer, s *types.Struct) {
 	}
 }
 
-func getUsedImports(s *types.Struct) []*types.Package {
-	for i := 0; i < s.NumFields(); i++ {
-		field := s.Field(i)
-		_ = field
+type NamePath struct {
+	Name, Path string
+}
+
+func outputImports(w io.Writer, imports map[NamePath]*types.Package) {
+	// naive implementation
+	pkgs := []NamePath{}
+	for k := range imports {
+		pkgs = append(pkgs, k)
 	}
-	return nil
+	sort.Slice(pkgs, func(i int, j int) bool {
+		return pkgs[i].Path < pkgs[j].Path
+	})
+
+	fmt.Fprint(w, "import (\n")
+	for _, pkg := range pkgs {
+		if pkg.Name == pkg.Path {
+			fmt.Fprintf(w, "	\"%s\"\n", pkg.Path)
+		} else {
+			fmt.Fprintf(w, "	%s \"%s\"\n", pkg.Name, pkg.Path)
+		}
+	}
+	fmt.Fprint(w, ")\n")
+}
+
+func getUsedImports(s *types.Struct) map[NamePath]*types.Package {
+	res := map[NamePath]*types.Package{}
+	for i := 0; i < s.NumFields(); i++ {
+		fieldType, ok := s.Field(i).Type().(*types.Named)
+		if !ok {
+			continue
+		}
+		pkg := fieldType.Obj().Pkg()
+		res[NamePath{pkg.Name(), pkg.Path()}] = pkg
+	}
+	return res
 }
 
 func addCtyTagToStruct(s *types.Struct) *types.Struct {
@@ -148,7 +185,7 @@ func addCtyTagToStruct(s *types.Struct) *types.Struct {
 
 // getMapstructureSquashedStruct will return the same struct but embedded
 // fields with a `mapstructure:",squash"` tag will be un-nested.
-func getMapstructureSquashedStruct(utStruct *types.Struct) *types.Struct {
+func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct) *types.Struct {
 	res := &types.Struct{}
 	for i := 0; i < utStruct.NumFields(); i++ {
 		field, tag := utStruct.Field(i), utStruct.Tag(i)
@@ -169,10 +206,13 @@ func getMapstructureSquashedStruct(utStruct *types.Struct) *types.Struct {
 			if !utOk {
 				continue
 			}
-			res = squashStructs(res, getMapstructureSquashedStruct(utStruct))
+
+			res = squashStructs(res, getMapstructureSquashedStruct(topPkg, utStruct))
 			continue
 		}
-		// field.
+		if field.Pkg() != topPkg {
+			field = types.NewField(field.Pos(), topPkg, field.Name(), field.Type(), field.Embedded())
+		}
 		res = addFieldToStruct(res, field, tag)
 	}
 	return res
