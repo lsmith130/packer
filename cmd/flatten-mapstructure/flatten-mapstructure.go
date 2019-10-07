@@ -127,9 +127,12 @@ func main() {
 		}
 	}
 
-	b := goFmt(out.Bytes())
+	// avoid needing to import current pkg; there's probably a better way.
+	out = bytes.NewBuffer(bytes.ReplaceAll(out.Bytes(),
+		[]byte(topPkg.PkgPath+"."),
+		nil))
 
-	log.Writer().Write(b)
+	log.Writer().Write(goFmt(out.Bytes()))
 }
 
 type StructDef struct {
