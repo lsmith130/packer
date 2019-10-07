@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
+	"go/format"
 	"go/types"
 	"io"
 	"log"
@@ -103,17 +105,31 @@ func main() {
 		}
 	}
 
-	fmt.Fprintf(log.Writer(), "package %s\n", topPkg.Name)
+	out := bytes.NewBuffer(nil)
+
+	fmt.Fprintf(out, "package %s\n", topPkg.Name)
 
 	delete(usedImports, NamePath{topPkg.Name, topPkg.PkgPath})
-	outputImports(log.Writer(), usedImports)
+	outputImports(out, usedImports)
 
 	for _, flatenedStruct := range structs {
-		fmt.Fprintf(log.Writer(), "\ntype %s struct {\n", flatenedStruct.StructName)
-		outputStruct(log.Writer(), flatenedStruct.Struct)
-		fmt.Fprint(log.Writer(), "}\n")
+		fmt.Fprintf(out, "\ntype %s struct {\n", flatenedStruct.StructName)
+		outputStruct(out, flatenedStruct.Struct)
+		fmt.Fprint(out, "}\n")
 	}
 
+	for impt := range usedImports {
+		if strings.ContainsAny(impt.Path, "/") {
+
+			out = bytes.NewBuffer(bytes.ReplaceAll(out.Bytes(),
+				[]byte(impt.Path+"."),
+				[]byte(impt.Name+".")))
+		}
+	}
+
+	b := goFmt(out.Bytes())
+
+	log.Writer().Write(b)
 }
 
 type StructDef struct {
@@ -144,7 +160,7 @@ func outputImports(w io.Writer, imports map[NamePath]*types.Package) {
 
 	fmt.Fprint(w, "import (\n")
 	for _, pkg := range pkgs {
-		if pkg.Name == pkg.Path {
+		if pkg.Name == pkg.Path || strings.HasSuffix(pkg.Path, "/"+pkg.Name) {
 			fmt.Fprintf(w, "	\"%s\"\n", pkg.Path)
 		} else {
 			fmt.Fprintf(w, "	%s \"%s\"\n", pkg.Name, pkg.Path)
@@ -189,17 +205,13 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 	res := &types.Struct{}
 	for i := 0; i < utStruct.NumFields(); i++ {
 		field, tag := utStruct.Field(i), utStruct.Tag(i)
+		structtag, _ := structtag.Parse(tag)
 		if !field.Exported() {
 			continue
 		}
-		squashed := false
-		structtag, _ := structtag.Parse(tag)
-		if ms, err := structtag.Get("mapstructure"); err == nil &&
-			ms.HasOption("squash") {
-			squashed = true
-		}
-		if squashed {
-			squashed = true
+		if ms, err := structtag.Get("mapstructure"); err != nil {
+			continue //no mapstructure tag
+		} else if ms.HasOption("squash") {
 			ot := field.Type()
 			uot := ot.Underlying()
 			utStruct, utOk := uot.(*types.Struct)
@@ -245,4 +257,13 @@ func ToSnakeCase(str string) string {
 	snake := matchFirstCap.ReplaceAllString(str, "${1}_${2}")
 	snake = matchAllCap.ReplaceAllString(snake, "${1}_${2}")
 	return strings.ToLower(snake)
+}
+
+func goFmt(b []byte) []byte {
+	fb, err := format.Source(b)
+	if err != nil {
+		log.Printf("formatting err: %v", err)
+		return b
+	}
+	return fb
 }
