@@ -14,6 +14,8 @@ import (
 	"strings"
 
 	"github.com/fatih/structtag"
+	"github.com/hashicorp/hcl2/hcldec"
+	"github.com/zclconf/go-cty/cty"
 
 	"golang.org/x/tools/go/packages"
 )
@@ -144,11 +146,10 @@ func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
 
 	for i := 0; i < s.NumFields(); i++ {
 		field, tag := s.Field(i), s.Tag(i)
-		_ = field
 		st, _ := structtag.Parse(tag)
 		ctyTag, _ := st.Get("cty")
-		fmt.Fprintf(w, "	\"%s\": ", ctyTag.Name)
-		outputHCL2SpecField(w, field)
+		fmt.Fprintf(w, "	\"%s\": ", field.Name())
+		outputHCL2SpecField(w, ctyTag.Name, field.Type())
 		fmt.Fprintln(w, `,`)
 	}
 
@@ -156,8 +157,65 @@ func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
 	fmt.Fprintln(w, `return s`)
 }
 
-func outputHCL2SpecField(w io.Writer, s *types.Var) {
-	fmt.Fprint(w, `nil`)
+func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
+	switch f := fieldType.(type) {
+	case *types.Basic:
+		fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+			Name:     accessor,
+			Type:     basicKindToCtyType(f.Kind()),
+			Required: false,
+		})
+	case *types.Map:
+		fmt.Fprintf(w, `%#v`, &hcldec.BlockAttrsSpec{
+			TypeName:    accessor,
+			ElementType: cty.String, // for now everything can be simplified to a map[string]string
+			Required:    false,
+		})
+	case *types.Slice:
+		if basicElem, ok := f.Elem().(*types.Basic); ok {
+			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+				Name:     accessor,
+				Type:     cty.List(basicKindToCtyType(basicElem.Kind())),
+				Required: false,
+			})
+		} else {
+			fmt.Fprintf(w, `nil /* slice (%s) */`, f.String())
+		}
+	case *types.Named:
+		if f.String() == "time.Duration" {
+			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+				Name:     accessor,
+				Type:     basicKindToCtyType(types.String),
+				Required: false,
+			})
+			return
+		}
+		underlyingType := f.Underlying()
+		switch underlyingType.(type) {
+		case *types.Struct:
+			fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
+				` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, f.String())
+		default:
+			outputHCL2SpecField(w, accessor, underlyingType)
+		}
+	default:
+		_ = f
+		fmt.Fprint(w, `nil /* not basic */`)
+	}
+}
+
+func basicKindToCtyType(kind types.BasicKind) cty.Type {
+	switch kind {
+	case types.Bool:
+		return cty.Bool
+	case types.String:
+		return cty.String
+	case types.Int, types.Int8, types.Int16, types.Int32, types.Int64,
+		types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64:
+		return cty.Number
+	default:
+		panic("blip")
+	}
 }
 
 func outputStructFields(w io.Writer, s *types.Struct) {
