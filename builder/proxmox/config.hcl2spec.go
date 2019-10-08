@@ -2,10 +2,9 @@
 package proxmox
 
 import (
-	"time"
-
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
+	"time"
 )
 
 type FlatConfig struct {
@@ -147,7 +146,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMInsecure":             &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
 		"WinRMUseNTLM":              &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"ProxmoxURLRaw":             &hcldec.AttrSpec{Name: "proxmox_url", Type: cty.String, Required: false},
-		"ProxmoxURL":                nil, /* not basic */
 		"SkipCertValidation":        &hcldec.AttrSpec{Name: "insecure_skip_tls_verify", Type: cty.Bool, Required: false},
 		"Username":                  &hcldec.AttrSpec{Name: "username", Type: cty.String, Required: false},
 		"Password":                  &hcldec.AttrSpec{Name: "password", Type: cty.String, Required: false},
