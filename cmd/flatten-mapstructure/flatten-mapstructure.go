@@ -47,7 +47,7 @@ func main() {
 	args := flag.Args()
 	if len(args) == 0 {
 		// Default: process whole package in current directory.
-		args = []string{os.Getenv("GOFILE")}
+		args = []string{os.Getenv("GOPACKAGE")}
 	}
 
 	// log.Printf("Loading %v from %v", typeNames, args)
