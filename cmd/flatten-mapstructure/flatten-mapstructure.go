@@ -111,6 +111,10 @@ func main() {
 		fmt.Fprintf(out, "\ntype %s struct {\n", flatenedStruct.StructName)
 		outputStructFields(out, flatenedStruct.Struct)
 		fmt.Fprint(out, "}\n")
+
+		fmt.Fprintf(out, "\nfunc (*%s) HCL2Spec() map[string]hcldec.Spec {\n", flatenedStruct.OriginalStructName)
+		outputStructHCL2SpecBody(out, flatenedStruct.Struct)
+		fmt.Fprint(out, "}\n")
 	}
 
 	for impt := range usedImports {
@@ -134,6 +138,22 @@ type StructDef struct {
 	OriginalStructName string
 	StructName         string
 	Struct             *types.Struct
+}
+
+func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
+	fmt.Fprintf(w, "s := map[string]hcldec.Spec{\n")
+
+	for i := 0; i < s.NumFields(); i++ {
+		field, tag := s.Field(i), s.Tag(i)
+		_ = field
+		st, _ := structtag.Parse(tag)
+		ctyTag, _ := st.Get("cty")
+
+		fmt.Fprintf(w, "	\"%s\": nil,\n", ctyTag.Name)
+	}
+
+	fmt.Fprintln(w, `}`)
+	fmt.Fprintln(w, `return s`)
 }
 
 func outputStructFields(w io.Writer, s *types.Struct) {
