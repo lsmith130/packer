@@ -50,8 +50,6 @@ func main() {
 		args = []string{os.Getenv("GOPACKAGE")}
 	}
 
-	// log.Printf("Loading %v from %v", typeNames, args)
-
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,
 	}
@@ -63,7 +61,6 @@ func main() {
 		log.Fatalf("error: %d packages found", len(pkgs))
 	}
 	topPkg := pkgs[0]
-	// log.Printf("Package  %#v\n", topPkg)
 	sort.Strings(typeNames)
 
 	var structs []StructDef
@@ -85,10 +82,8 @@ func main() {
 		}
 		pos := sort.SearchStrings(typeNames, id.Name)
 		if pos >= len(typeNames) || typeNames[pos] != id.Name {
-			continue
+			continue // not a struct we care about
 		}
-		// log.Printf("%s: %q defines %v\n",
-		// 	topPkg.Fset.Position(id.Pos()), id.Name, obj)
 		flatenedStruct := getMapstructureSquashedStruct(obj.Pkg(), utStruct)
 		flatenedStruct = addCtyTagToStruct(flatenedStruct)
 		newStructName := "Flat" + id.Name
