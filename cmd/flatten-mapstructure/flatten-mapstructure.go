@@ -289,12 +289,15 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 	res := &types.Struct{}
 	for i := 0; i < utStruct.NumFields(); i++ {
 		field, tag := utStruct.Field(i), utStruct.Tag(i)
-		structtag, _ := structtag.Parse(tag)
 		if !field.Exported() {
 			continue
 		}
+		if _, ok := field.Type().(*types.Signature); ok {
+			continue // ignore funcs
+		}
+		structtag, _ := structtag.Parse(tag)
 		if ms, err := structtag.Get("mapstructure"); err != nil {
-			continue //no mapstructure tag
+			//no mapstructure tag
 		} else if ms.HasOption("squash") {
 			ot := field.Type()
 			uot := ot.Underlying()
