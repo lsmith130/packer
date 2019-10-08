@@ -119,7 +119,6 @@ func main() {
 
 	for impt := range usedImports {
 		if strings.ContainsAny(impt.Path, "/") {
-
 			out = bytes.NewBuffer(bytes.ReplaceAll(out.Bytes(),
 				[]byte(impt.Path+"."),
 				[]byte(impt.Name+".")))
