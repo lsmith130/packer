@@ -26,7 +26,7 @@ var (
 
 // Usage is a replacement usage function for the flags package.
 func Usage() {
-	fmt.Fprintf(os.Stderr, "Usage of stringer:\n")
+	fmt.Fprintf(os.Stderr, "Usage of flatten-mapstructure:\n")
 	fmt.Fprintf(os.Stderr, "\tflatten-mapstructure [flags] -type T[,T...] pkg\n")
 	fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
