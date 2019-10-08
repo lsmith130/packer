@@ -52,7 +52,12 @@ func main() {
 		// Default: process whole package in current directory.
 		args = []string{"."}
 	}
-	log.Printf("running on %s on types %v. env :%v", args, typeNames, os.Environ())
+	outputPath := strings.ToLower(typeNames[0]) + ".hcl2spec.go"
+	if goFile := os.Getenv("GOFILE"); goFile != "" {
+		outputPath = goFile[:len(goFile)-2] + "hcl2spec.go"
+	}
+	log.SetPrefix(fmt.Sprintf("flatten-mapstructure (%s): ", outputPath))
+	outputFile, err := os.Create(outputPath)
 
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,
@@ -134,7 +139,10 @@ func main() {
 		[]byte(topPkg.PkgPath+"."),
 		nil))
 
-	log.Writer().Write(goFmt(out.Bytes()))
+	_, err = outputFile.Write(goFmt(out.Bytes()))
+	if err != nil {
+		log.Fatalf("failed to write file: %v", err)
+	}
 }
 
 type StructDef struct {
@@ -218,7 +226,8 @@ func basicKindToCtyType(kind types.BasicKind) cty.Type {
 		types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64:
 		return cty.Number
 	default:
-		panic("blip")
+		log.Fatal("Un handled basic kind: %v", kind)
+		panic("")
 	}
 }
 
