@@ -7,19 +7,6 @@ import (
 	"time"
 )
 
-type FlatimageFilter struct {
-	WithSelector []string `mapstructure:"with_selector" cty:"with_selector"`
-	MostRecent   bool     `mapstructure:"most_recent" cty:"most_recent"`
-}
-
-func (*imageFilter) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"WithSelector": &hcldec.AttrSpec{Name: "with_selector", Type: cty.List(cty.String), Required: false},
-		"MostRecent":   &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
-	}
-	return s
-}
-
 type FlatConfig struct {
 	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -147,6 +134,19 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"UserDataFile":              &hcldec.AttrSpec{Name: "user_data_file", Type: cty.String, Required: false},
 		"SSHKeys":                   &hcldec.AttrSpec{Name: "ssh_keys", Type: cty.List(cty.String), Required: false},
 		"RescueMode":                &hcldec.AttrSpec{Name: "rescue", Type: cty.String, Required: false},
+	}
+	return s
+}
+
+type FlatimageFilter struct {
+	WithSelector []string `mapstructure:"with_selector" cty:"with_selector"`
+	MostRecent   bool     `mapstructure:"most_recent" cty:"most_recent"`
+}
+
+func (*imageFilter) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"WithSelector": &hcldec.AttrSpec{Name: "with_selector", Type: cty.List(cty.String), Required: false},
+		"MostRecent":   &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s
 }

@@ -7,6 +7,44 @@ import (
 	"time"
 )
 
+type FlatBootConfig struct {
+	RawBootGroupInterval string        `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
+	RawBootWait          string        `mapstructure:"boot_wait" cty:"boot_wait"`
+	BootCommand          []string      `mapstructure:"boot_command" cty:"boot_command"`
+	BootGroupInterval    time.Duration `cty:"boot_group_interval"`
+	BootWait             time.Duration `cty:"boot_wait"`
+}
+
+func (*BootConfig) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"RawBootGroupInterval": &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
+		"RawBootWait":          &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+		"BootCommand":          &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
+		"BootGroupInterval":    &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
+		"BootWait":             &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+	}
+	return s
+}
+
+type FlatBootConfig struct {
+	RawBootGroupInterval string        `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
+	RawBootWait          string        `mapstructure:"boot_wait" cty:"boot_wait"`
+	BootCommand          []string      `mapstructure:"boot_command" cty:"boot_command"`
+	BootGroupInterval    time.Duration `cty:"boot_group_interval"`
+	BootWait             time.Duration `cty:"boot_wait"`
+}
+
+func (*BootConfig) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"RawBootGroupInterval": &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
+		"RawBootWait":          &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+		"BootCommand":          &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
+		"BootGroupInterval":    &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
+		"BootWait":             &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+	}
+	return s
+}
+
 type FlatVNCConfig struct {
 	RawBootGroupInterval string        `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
 	RawBootWait          string        `mapstructure:"boot_wait" cty:"boot_wait"`
@@ -28,44 +66,6 @@ func (*VNCConfig) HCL2Spec() map[string]hcldec.Spec {
 		"DisableVNC":           &hcldec.AttrSpec{Name: "disable_vnc", Type: cty.Bool, Required: false},
 		"RawBootKeyInterval":   &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
 		"BootKeyInterval":      &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatBootConfig struct {
-	RawBootGroupInterval string        `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
-	RawBootWait          string        `mapstructure:"boot_wait" cty:"boot_wait"`
-	BootCommand          []string      `mapstructure:"boot_command" cty:"boot_command"`
-	BootGroupInterval    time.Duration `cty:"boot_group_interval"`
-	BootWait             time.Duration `cty:"boot_wait"`
-}
-
-func (*BootConfig) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"RawBootGroupInterval": &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
-		"RawBootWait":          &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
-		"BootCommand":          &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
-		"BootGroupInterval":    &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":             &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatBootConfig struct {
-	RawBootGroupInterval string        `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
-	RawBootWait          string        `mapstructure:"boot_wait" cty:"boot_wait"`
-	BootCommand          []string      `mapstructure:"boot_command" cty:"boot_command"`
-	BootGroupInterval    time.Duration `cty:"boot_group_interval"`
-	BootWait             time.Duration `cty:"boot_wait"`
-}
-
-func (*BootConfig) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"RawBootGroupInterval": &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
-		"RawBootWait":          &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
-		"BootCommand":          &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
-		"BootGroupInterval":    &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":             &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 	}
 	return s
 }

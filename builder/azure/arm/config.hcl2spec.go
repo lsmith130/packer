@@ -7,61 +7,6 @@ import (
 	"time"
 )
 
-type FlatSharedImageGallery struct {
-	Subscription  string `mapstructure:"subscription" cty:"subscription"`
-	ResourceGroup string `mapstructure:"resource_group" cty:"resource_group"`
-	GalleryName   string `mapstructure:"gallery_name" cty:"gallery_name"`
-	ImageName     string `mapstructure:"image_name" cty:"image_name"`
-	ImageVersion  string `mapstructure:"image_version" required:"false" cty:"image_version"`
-}
-
-func (*SharedImageGallery) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Subscription":  &hcldec.AttrSpec{Name: "subscription", Type: cty.String, Required: false},
-		"ResourceGroup": &hcldec.AttrSpec{Name: "resource_group", Type: cty.String, Required: false},
-		"GalleryName":   &hcldec.AttrSpec{Name: "gallery_name", Type: cty.String, Required: false},
-		"ImageName":     &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
-		"ImageVersion":  &hcldec.AttrSpec{Name: "image_version", Type: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatSharedImageGalleryDestination struct {
-	SigDestinationResourceGroup      string   `mapstructure:"resource_group" cty:"resource_group"`
-	SigDestinationGalleryName        string   `mapstructure:"gallery_name" cty:"gallery_name"`
-	SigDestinationImageName          string   `mapstructure:"image_name" cty:"image_name"`
-	SigDestinationImageVersion       string   `mapstructure:"image_version" cty:"image_version"`
-	SigDestinationReplicationRegions []string `mapstructure:"replication_regions" cty:"replication_regions"`
-}
-
-func (*SharedImageGalleryDestination) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"SigDestinationResourceGroup":      &hcldec.AttrSpec{Name: "resource_group", Type: cty.String, Required: false},
-		"SigDestinationGalleryName":        &hcldec.AttrSpec{Name: "gallery_name", Type: cty.String, Required: false},
-		"SigDestinationImageName":          &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
-		"SigDestinationImageVersion":       &hcldec.AttrSpec{Name: "image_version", Type: cty.String, Required: false},
-		"SigDestinationReplicationRegions": &hcldec.AttrSpec{Name: "replication_regions", Type: cty.List(cty.String), Required: false},
-	}
-	return s
-}
-
-type FlatPlanInformation struct {
-	PlanName          string `mapstructure:"plan_name" cty:"plan_name"`
-	PlanProduct       string `mapstructure:"plan_product" cty:"plan_product"`
-	PlanPublisher     string `mapstructure:"plan_publisher" cty:"plan_publisher"`
-	PlanPromotionCode string `mapstructure:"plan_promotion_code" cty:"plan_promotion_code"`
-}
-
-func (*PlanInformation) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"PlanName":          &hcldec.AttrSpec{Name: "plan_name", Type: cty.String, Required: false},
-		"PlanProduct":       &hcldec.AttrSpec{Name: "plan_product", Type: cty.String, Required: false},
-		"PlanPublisher":     &hcldec.AttrSpec{Name: "plan_publisher", Type: cty.String, Required: false},
-		"PlanPromotionCode": &hcldec.AttrSpec{Name: "plan_promotion_code", Type: cty.String, Required: false},
-	}
-	return s
-}
-
 type FlatConfig struct {
 	PackerBuildName                     string                        `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType                   string                        `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -255,6 +200,61 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMInsecure":                       &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
 		"WinRMUseNTLM":                        &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"AsyncResourceGroupDelete":            &hcldec.AttrSpec{Name: "async_resourcegroup_delete", Type: cty.Bool, Required: false},
+	}
+	return s
+}
+
+type FlatPlanInformation struct {
+	PlanName          string `mapstructure:"plan_name" cty:"plan_name"`
+	PlanProduct       string `mapstructure:"plan_product" cty:"plan_product"`
+	PlanPublisher     string `mapstructure:"plan_publisher" cty:"plan_publisher"`
+	PlanPromotionCode string `mapstructure:"plan_promotion_code" cty:"plan_promotion_code"`
+}
+
+func (*PlanInformation) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"PlanName":          &hcldec.AttrSpec{Name: "plan_name", Type: cty.String, Required: false},
+		"PlanProduct":       &hcldec.AttrSpec{Name: "plan_product", Type: cty.String, Required: false},
+		"PlanPublisher":     &hcldec.AttrSpec{Name: "plan_publisher", Type: cty.String, Required: false},
+		"PlanPromotionCode": &hcldec.AttrSpec{Name: "plan_promotion_code", Type: cty.String, Required: false},
+	}
+	return s
+}
+
+type FlatSharedImageGallery struct {
+	Subscription  string `mapstructure:"subscription" cty:"subscription"`
+	ResourceGroup string `mapstructure:"resource_group" cty:"resource_group"`
+	GalleryName   string `mapstructure:"gallery_name" cty:"gallery_name"`
+	ImageName     string `mapstructure:"image_name" cty:"image_name"`
+	ImageVersion  string `mapstructure:"image_version" required:"false" cty:"image_version"`
+}
+
+func (*SharedImageGallery) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Subscription":  &hcldec.AttrSpec{Name: "subscription", Type: cty.String, Required: false},
+		"ResourceGroup": &hcldec.AttrSpec{Name: "resource_group", Type: cty.String, Required: false},
+		"GalleryName":   &hcldec.AttrSpec{Name: "gallery_name", Type: cty.String, Required: false},
+		"ImageName":     &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
+		"ImageVersion":  &hcldec.AttrSpec{Name: "image_version", Type: cty.String, Required: false},
+	}
+	return s
+}
+
+type FlatSharedImageGalleryDestination struct {
+	SigDestinationResourceGroup      string   `mapstructure:"resource_group" cty:"resource_group"`
+	SigDestinationGalleryName        string   `mapstructure:"gallery_name" cty:"gallery_name"`
+	SigDestinationImageName          string   `mapstructure:"image_name" cty:"image_name"`
+	SigDestinationImageVersion       string   `mapstructure:"image_version" cty:"image_version"`
+	SigDestinationReplicationRegions []string `mapstructure:"replication_regions" cty:"replication_regions"`
+}
+
+func (*SharedImageGalleryDestination) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"SigDestinationResourceGroup":      &hcldec.AttrSpec{Name: "resource_group", Type: cty.String, Required: false},
+		"SigDestinationGalleryName":        &hcldec.AttrSpec{Name: "gallery_name", Type: cty.String, Required: false},
+		"SigDestinationImageName":          &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
+		"SigDestinationImageVersion":       &hcldec.AttrSpec{Name: "image_version", Type: cty.String, Required: false},
+		"SigDestinationReplicationRegions": &hcldec.AttrSpec{Name: "replication_regions", Type: cty.List(cty.String), Required: false},
 	}
 	return s
 }

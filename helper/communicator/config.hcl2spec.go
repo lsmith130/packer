@@ -76,31 +76,6 @@ func (*SSH) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
-type FlatWinRM struct {
-	WinRMUser     string        `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword string        `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost     string        `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort     int           `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout  time.Duration `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL   bool          `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure bool          `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM  bool          `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-}
-
-func (*WinRM) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"WinRMUser":     &hcldec.AttrSpec{Name: "winrm_username", Type: cty.String, Required: false},
-		"WinRMPassword": &hcldec.AttrSpec{Name: "winrm_password", Type: cty.String, Required: false},
-		"WinRMHost":     &hcldec.AttrSpec{Name: "winrm_host", Type: cty.String, Required: false},
-		"WinRMPort":     &hcldec.AttrSpec{Name: "winrm_port", Type: cty.Number, Required: false},
-		"WinRMTimeout":  &hcldec.AttrSpec{Name: "winrm_timeout", Type: cty.String, Required: false},
-		"WinRMUseSSL":   &hcldec.AttrSpec{Name: "winrm_use_ssl", Type: cty.Bool, Required: false},
-		"WinRMInsecure": &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
-		"WinRMUseNTLM":  &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
-	}
-	return s
-}
-
 type FlatSSH struct {
 	SSHHost                   string        `mapstructure:"ssh_host" cty:"ssh_host"`
 	SSHPort                   int           `mapstructure:"ssh_port" cty:"ssh_port"`
@@ -166,6 +141,31 @@ func (*SSH) HCL2Spec() map[string]hcldec.Spec {
 		"SSHLocalTunnels":           &hcldec.AttrSpec{Name: "ssh_local_tunnels", Type: cty.List(cty.String), Required: false},
 		"SSHPublicKey":              &hcldec.AttrSpec{Name: "ssh_public_key", Type: cty.List(cty.Number), Required: false},
 		"SSHPrivateKey":             &hcldec.AttrSpec{Name: "ssh_private_key", Type: cty.List(cty.Number), Required: false},
+	}
+	return s
+}
+
+type FlatWinRM struct {
+	WinRMUser     string        `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword string        `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost     string        `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort     int           `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMTimeout  time.Duration `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMUseSSL   bool          `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure bool          `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM  bool          `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+}
+
+func (*WinRM) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"WinRMUser":     &hcldec.AttrSpec{Name: "winrm_username", Type: cty.String, Required: false},
+		"WinRMPassword": &hcldec.AttrSpec{Name: "winrm_password", Type: cty.String, Required: false},
+		"WinRMHost":     &hcldec.AttrSpec{Name: "winrm_host", Type: cty.String, Required: false},
+		"WinRMPort":     &hcldec.AttrSpec{Name: "winrm_port", Type: cty.Number, Required: false},
+		"WinRMTimeout":  &hcldec.AttrSpec{Name: "winrm_timeout", Type: cty.String, Required: false},
+		"WinRMUseSSL":   &hcldec.AttrSpec{Name: "winrm_use_ssl", Type: cty.Bool, Required: false},
+		"WinRMInsecure": &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
+		"WinRMUseNTLM":  &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 	}
 	return s
 }

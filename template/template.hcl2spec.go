@@ -33,6 +33,19 @@ func (*OnlyExcept) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+type FlatOnlyExcept struct {
+	Only   []string `json:"only,omitempty" cty:"only"`
+	Except []string `json:"except,omitempty" cty:"except"`
+}
+
+func (*OnlyExcept) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Only":   &hcldec.AttrSpec{Name: "only", Type: cty.List(cty.String), Required: false},
+		"Except": &hcldec.AttrSpec{Name: "except", Type: cty.List(cty.String), Required: false},
+	}
+	return s
+}
+
 type FlatProvisioner struct {
 	Only        []string               `json:"only,omitempty" cty:"only"`
 	Except      []string               `json:"except,omitempty" cty:"except"`
@@ -52,19 +65,6 @@ func (*Provisioner) HCL2Spec() map[string]hcldec.Spec {
 		"Override":    &hcldec.BlockAttrsSpec{TypeName: "override", ElementType: cty.String, Required: false},
 		"PauseBefore": &hcldec.AttrSpec{Name: "pause_before", Type: cty.String, Required: false},
 		"Timeout":     &hcldec.AttrSpec{Name: "timeout", Type: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatOnlyExcept struct {
-	Only   []string `json:"only,omitempty" cty:"only"`
-	Except []string `json:"except,omitempty" cty:"except"`
-}
-
-func (*OnlyExcept) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Only":   &hcldec.AttrSpec{Name: "only", Type: cty.List(cty.String), Required: false},
-		"Except": &hcldec.AttrSpec{Name: "except", Type: cty.List(cty.String), Required: false},
 	}
 	return s
 }

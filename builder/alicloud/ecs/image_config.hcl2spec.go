@@ -7,32 +7,6 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
-type FlatAlicloudDiskDevices struct {
-	ECSSystemDiskMapping  AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
-	ECSImagesDiskMappings []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
-}
-
-func (*AlicloudDiskDevices) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"ECSSystemDiskMapping":  &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
-		"ECSImagesDiskMappings": hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
-	}
-	return s
-}
-
-type FlatAlicloudDiskDevices struct {
-	ECSSystemDiskMapping  AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
-	ECSImagesDiskMappings []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
-}
-
-func (*AlicloudDiskDevices) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"ECSSystemDiskMapping":  &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
-		"ECSImagesDiskMappings": hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
-	}
-	return s
-}
-
 type FlatAlicloudDiskDevice struct {
 	DiskName           string         `mapstructure:"disk_name" required:"false" cty:"disk_name"`
 	DiskCategory       string         `mapstructure:"disk_category" required:"false" cty:"disk_category"`
@@ -54,6 +28,32 @@ func (*AlicloudDiskDevice) HCL2Spec() map[string]hcldec.Spec {
 		"DeleteWithInstance": &hcldec.AttrSpec{Name: "disk_delete_with_instance", Type: cty.Bool, Required: false},
 		"Device":             &hcldec.AttrSpec{Name: "disk_device", Type: cty.String, Required: false},
 		"Encrypted":          &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
+	}
+	return s
+}
+
+type FlatAlicloudDiskDevices struct {
+	ECSSystemDiskMapping  AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
+	ECSImagesDiskMappings []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
+}
+
+func (*AlicloudDiskDevices) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"ECSSystemDiskMapping":  &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
+		"ECSImagesDiskMappings": hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
+	}
+	return s
+}
+
+type FlatAlicloudDiskDevices struct {
+	ECSSystemDiskMapping  AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
+	ECSImagesDiskMappings []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
+}
+
+func (*AlicloudDiskDevices) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"ECSSystemDiskMapping":  &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
+		"ECSImagesDiskMappings": hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
 	}
 	return s
 }

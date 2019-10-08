@@ -31,17 +31,6 @@ func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
-type FlatOMIBlockDevices struct {
-	OMIMappings []BlockDevice `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
-}
-
-func (*OMIBlockDevices) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"OMIMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
-	}
-	return s
-}
-
 type FlatBlockDevices struct {
 	OMIMappings    []BlockDevice `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
 	LaunchMappings []BlockDevice `mapstructure:"launch_block_device_mappings" cty:"launch_block_device_mappings"`
@@ -64,17 +53,6 @@ func (*BlockDevices) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"OMIMappings":    hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
 		"LaunchMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
-	}
-	return s
-}
-
-type FlatOMIBlockDevices struct {
-	OMIMappings []BlockDevice `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
-}
-
-func (*OMIBlockDevices) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"OMIMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
 	}
 	return s
 }
@@ -110,6 +88,28 @@ type FlatLaunchBlockDevices struct {
 func (*LaunchBlockDevices) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"LaunchMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
+	}
+	return s
+}
+
+type FlatOMIBlockDevices struct {
+	OMIMappings []BlockDevice `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
+}
+
+func (*OMIBlockDevices) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"OMIMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
+	}
+	return s
+}
+
+type FlatOMIBlockDevices struct {
+	OMIMappings []BlockDevice `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
+}
+
+func (*OMIBlockDevices) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"OMIMappings": hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
 	}
 	return s
 }

@@ -2,11 +2,10 @@
 package ecs
 
 import (
-	"time"
-
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/zclconf/go-cty/cty"
+	"time"
 )
 
 type FlatRunConfig struct {

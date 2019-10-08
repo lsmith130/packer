@@ -6,27 +6,6 @@ import (
 	"time"
 )
 
-type FlatdiskConfig struct {
-	Type string `mapstructure:"type" cty:"type"`
-	StoragePool string `mapstructure:"storage_pool" cty:"storage_pool"`
-	StoragePoolType string `mapstructure:"storage_pool_type" cty:"storage_pool_type"`
-	Size string `mapstructure:"disk_size" cty:"disk_size"`
-	CacheMode string `mapstructure:"cache_mode" cty:"cache_mode"`
-	DiskFormat string `mapstructure:"format" cty:"format"`
-}
-
-func (*diskConfig) HCL2Spec() map[string]hcldec.Spec {
-s := map[string]hcldec.Spec{
-	"Type": &hcldec.AttrSpec{Name:"type", Type:cty.String, Required:false},
-	"StoragePool": &hcldec.AttrSpec{Name:"storage_pool", Type:cty.String, Required:false},
-	"StoragePoolType": &hcldec.AttrSpec{Name:"storage_pool_type", Type:cty.String, Required:false},
-	"Size": &hcldec.AttrSpec{Name:"disk_size", Type:cty.String, Required:false},
-	"CacheMode": &hcldec.AttrSpec{Name:"cache_mode", Type:cty.String, Required:false},
-	"DiskFormat": &hcldec.AttrSpec{Name:"format", Type:cty.String, Required:false},
-}
-return s
-}
-
 type FlatConfig struct {
 	PackerBuildName string `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType string `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -186,6 +165,27 @@ s := map[string]hcldec.Spec{
 	"TemplateName": &hcldec.AttrSpec{Name:"template_name", Type:cty.String, Required:false},
 	"TemplateDescription": &hcldec.AttrSpec{Name:"template_description", Type:cty.String, Required:false},
 	"UnmountISO": &hcldec.AttrSpec{Name:"unmount_iso", Type:cty.Bool, Required:false},
+}
+return s
+}
+
+type FlatdiskConfig struct {
+	Type string `mapstructure:"type" cty:"type"`
+	StoragePool string `mapstructure:"storage_pool" cty:"storage_pool"`
+	StoragePoolType string `mapstructure:"storage_pool_type" cty:"storage_pool_type"`
+	Size string `mapstructure:"disk_size" cty:"disk_size"`
+	CacheMode string `mapstructure:"cache_mode" cty:"cache_mode"`
+	DiskFormat string `mapstructure:"format" cty:"format"`
+}
+
+func (*diskConfig) HCL2Spec() map[string]hcldec.Spec {
+s := map[string]hcldec.Spec{
+	"Type": &hcldec.AttrSpec{Name:"type", Type:cty.String, Required:false},
+	"StoragePool": &hcldec.AttrSpec{Name:"storage_pool", Type:cty.String, Required:false},
+	"StoragePoolType": &hcldec.AttrSpec{Name:"storage_pool_type", Type:cty.String, Required:false},
+	"Size": &hcldec.AttrSpec{Name:"disk_size", Type:cty.String, Required:false},
+	"CacheMode": &hcldec.AttrSpec{Name:"cache_mode", Type:cty.String, Required:false},
+	"DiskFormat": &hcldec.AttrSpec{Name:"format", Type:cty.String, Required:false},
 }
 return s
 }

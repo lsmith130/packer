@@ -6,6 +6,36 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+type FlatImageConfig struct {
+	ImageName         string             `mapstructure:"image_name" cty:"image_name"`
+	ImageDescription  string             `mapstructure:"image_description" cty:"image_description"`
+	ImageDestinations []ImageDestination `mapstructure:"image_copy_to_mappings" cty:"image_copy_to_mappings"`
+}
+
+func (*ImageConfig) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"ImageName":         &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
+		"ImageDescription":  &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
+		"ImageDestinations": hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
+	}
+	return s
+}
+
+type FlatImageConfig struct {
+	ImageName         string             `mapstructure:"image_name" cty:"image_name"`
+	ImageDescription  string             `mapstructure:"image_description" cty:"image_description"`
+	ImageDestinations []ImageDestination `mapstructure:"image_copy_to_mappings" cty:"image_copy_to_mappings"`
+}
+
+func (*ImageConfig) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"ImageName":         &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
+		"ImageDescription":  &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
+		"ImageDestinations": hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
+	}
+	return s
+}
+
 type FlatImageDestination struct {
 	ProjectId   string `mapstructure:"project_id" cty:"project_id"`
 	Region      string `mapstructure:"region" cty:"region"`
@@ -19,36 +49,6 @@ func (*ImageDestination) HCL2Spec() map[string]hcldec.Spec {
 		"Region":      &hcldec.AttrSpec{Name: "region", Type: cty.String, Required: false},
 		"Name":        &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
 		"Description": &hcldec.AttrSpec{Name: "description", Type: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatImageConfig struct {
-	ImageName         string             `mapstructure:"image_name" cty:"image_name"`
-	ImageDescription  string             `mapstructure:"image_description" cty:"image_description"`
-	ImageDestinations []ImageDestination `mapstructure:"image_copy_to_mappings" cty:"image_copy_to_mappings"`
-}
-
-func (*ImageConfig) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"ImageName":         &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
-		"ImageDescription":  &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
-		"ImageDestinations": hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
-	}
-	return s
-}
-
-type FlatImageConfig struct {
-	ImageName         string             `mapstructure:"image_name" cty:"image_name"`
-	ImageDescription  string             `mapstructure:"image_description" cty:"image_description"`
-	ImageDestinations []ImageDestination `mapstructure:"image_copy_to_mappings" cty:"image_copy_to_mappings"`
-}
-
-func (*ImageConfig) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"ImageName":         &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
-		"ImageDescription":  &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
-		"ImageDestinations": hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
 	}
 	return s
 }

@@ -123,6 +123,9 @@ func main() {
 	usedImports[NamePath{"cty", "github.com/zclconf/go-cty/cty"}] = types.NewPackage("cty", "github.com/zclconf/go-cty/cty")
 	outputImports(out, usedImports)
 
+	sort.Slice(structs, func(i int, j int) bool {
+		return structs[i].OriginalStructName < structs[j].OriginalStructName
+	})
 	for _, flatenedStruct := range structs {
 		fmt.Fprintf(out, "\ntype %s struct {\n", flatenedStruct.StructName)
 		outputStructFields(out, flatenedStruct.Struct)
@@ -343,14 +346,16 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 
 func addFieldToStruct(s *types.Struct, field *types.Var, tag string) *types.Struct {
 	sf, st := structFields(s)
-	return types.NewStruct(append(sf, field), append(st, tag))
+	return types.NewStruct(uniqueFields(append(sf, field)), append(st, tag))
 }
 
 func squashStructs(a, b *types.Struct) *types.Struct {
 	va, ta := structFields(a)
 	vb, tb := structFields(b)
-	fields := append(va, vb...)
-	tags := append(ta, tb...)
+	return types.NewStruct(uniqueFields(append(va, vb...)), append(ta, tb...))
+}
+
+func uniqueFields(fields []*types.Var) []*types.Var {
 	un := map[string]bool{}
 	for _, field := range fields {
 		if un[field.Name()] {
@@ -358,7 +363,7 @@ func squashStructs(a, b *types.Struct) *types.Struct {
 		}
 		un[field.Name()] = true
 	}
-	return types.NewStruct(fields, tags)
+	return fields
 }
 
 func structFields(s *types.Struct) (vars []*types.Var, tags []string) {

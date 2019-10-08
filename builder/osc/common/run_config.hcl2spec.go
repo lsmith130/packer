@@ -7,13 +7,28 @@ import (
 	"time"
 )
 
-type FlatSecurityGroupFilterOptions struct {
+type FlatNetFilterOptions struct {
 	Filters map[string]string `cty:"filters"`
 }
 
-func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
+func (*NetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+	}
+	return s
+}
+
+type FlatOmiFilterOptions struct {
+	Filters    map[string]string `cty:"filters"`
+	Owners     []string          `cty:"owners"`
+	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent"`
+}
+
+func (*OmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Filters":    &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+		"Owners":     &hcldec.AttrSpec{Name: "owners", Type: cty.List(cty.String), Required: false},
+		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s
 }
@@ -163,28 +178,13 @@ func (*RunConfig) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
-type FlatNetFilterOptions struct {
+type FlatSecurityGroupFilterOptions struct {
 	Filters map[string]string `cty:"filters"`
 }
 
-func (*NetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
+func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-	}
-	return s
-}
-
-type FlatOmiFilterOptions struct {
-	Filters    map[string]string `cty:"filters"`
-	Owners     []string          `cty:"owners"`
-	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent"`
-}
-
-func (*OmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Filters":    &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-		"Owners":     &hcldec.AttrSpec{Name: "owners", Type: cty.List(cty.String), Required: false},
-		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s
 }

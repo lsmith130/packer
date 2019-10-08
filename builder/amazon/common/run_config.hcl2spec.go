@@ -7,17 +7,6 @@ import (
 	"time"
 )
 
-type FlatSecurityGroupFilterOptions struct {
-	Filters map[*string]*string `cty:"filters"`
-}
-
-func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-	}
-	return s
-}
-
 type FlatAmiFilterOptions struct {
 	Filters    map[*string]*string `cty:"filters"`
 	Owners     []*string           `cty:"owners"`
@@ -29,17 +18,6 @@ func (*AmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 		"Filters":    &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 		"Owners":     nil, // slice ([]*string),
 		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
-	}
-	return s
-}
-
-type FlatVpcFilterOptions struct {
-	Filters map[*string]*string `cty:"filters"`
-}
-
-func (*VpcFilterOptions) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 	}
 	return s
 }
@@ -191,6 +169,17 @@ func (*RunConfig) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+type FlatSecurityGroupFilterOptions struct {
+	Filters map[*string]*string `cty:"filters"`
+}
+
+func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+	}
+	return s
+}
+
 type FlatSubnetFilterOptions struct {
 	Filters  map[*string]*string `cty:"filters"`
 	MostFree bool                `mapstructure:"most_free" cty:"most_free"`
@@ -202,6 +191,17 @@ func (*SubnetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 		"Filters":  &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 		"MostFree": &hcldec.AttrSpec{Name: "most_free", Type: cty.Bool, Required: false},
 		"Random":   &hcldec.AttrSpec{Name: "random", Type: cty.Bool, Required: false},
+	}
+	return s
+}
+
+type FlatVpcFilterOptions struct {
+	Filters map[*string]*string `cty:"filters"`
+}
+
+func (*VpcFilterOptions) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 	}
 	return s
 }

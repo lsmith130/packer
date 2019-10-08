@@ -7,6 +7,19 @@ import (
 	"time"
 )
 
+type FlatImageFilter struct {
+	Filters    ImageFilterOptions `mapstructure:"filters" required:"false" cty:"filters"`
+	MostRecent bool               `mapstructure:"most_recent" required:"false" cty:"most_recent"`
+}
+
+func (*ImageFilter) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Filters":    &hcldec.BlockObjectSpec{TypeName: "ImageFilterOptions", Nested: hcldec.ObjectSpec((*ImageFilterOptions)(nil).HCL2Spec())},
+		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
+	}
+	return s
+}
+
 type FlatImageFilterOptions struct {
 	Name       string            `mapstructure:"name" cty:"name"`
 	Owner      string            `mapstructure:"owner" cty:"owner"`
@@ -169,19 +182,6 @@ func (*RunConfig) HCL2Spec() map[string]hcldec.Spec {
 		"VolumeAvailabilityZone":    &hcldec.AttrSpec{Name: "volume_availability_zone", Type: cty.String, Required: false},
 		"OpenstackProvider":         &hcldec.AttrSpec{Name: "openstack_provider", Type: cty.String, Required: false},
 		"UseFloatingIp":             &hcldec.AttrSpec{Name: "use_floating_ip", Type: cty.Bool, Required: false},
-	}
-	return s
-}
-
-type FlatImageFilter struct {
-	Filters    ImageFilterOptions `mapstructure:"filters" required:"false" cty:"filters"`
-	MostRecent bool               `mapstructure:"most_recent" required:"false" cty:"most_recent"`
-}
-
-func (*ImageFilter) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Filters":    &hcldec.BlockObjectSpec{TypeName: "ImageFilterOptions", Nested: hcldec.ObjectSpec((*ImageFilterOptions)(nil).HCL2Spec())},
-		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s
 }

@@ -6,21 +6,6 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
-type FlatModuleDir struct {
-	Source      string   `mapstructure:"source" cty:"source"`
-	Destination string   `mapstructure:"destination" cty:"destination"`
-	Exclude     []string `mapstructure:"exclude" cty:"exclude"`
-}
-
-func (*ModuleDir) HCL2Spec() map[string]hcldec.Spec {
-	s := map[string]hcldec.Spec{
-		"Source":      &hcldec.AttrSpec{Name: "source", Type: cty.String, Required: false},
-		"Destination": &hcldec.AttrSpec{Name: "destination", Type: cty.String, Required: false},
-		"Exclude":     &hcldec.AttrSpec{Name: "exclude", Type: cty.List(cty.String), Required: false},
-	}
-	return s
-}
-
 type FlatConfig struct {
 	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -60,6 +45,21 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Params":               &hcldec.BlockAttrsSpec{TypeName: "params", ElementType: cty.String, Required: false},
 		"ExecuteCommand":       &hcldec.AttrSpec{Name: "execute_command", Type: cty.String, Required: false},
 		"PreventSudo":          &hcldec.AttrSpec{Name: "prevent_sudo", Type: cty.Bool, Required: false},
+	}
+	return s
+}
+
+type FlatModuleDir struct {
+	Source      string   `mapstructure:"source" cty:"source"`
+	Destination string   `mapstructure:"destination" cty:"destination"`
+	Exclude     []string `mapstructure:"exclude" cty:"exclude"`
+}
+
+func (*ModuleDir) HCL2Spec() map[string]hcldec.Spec {
+	s := map[string]hcldec.Spec{
+		"Source":      &hcldec.AttrSpec{Name: "source", Type: cty.String, Required: false},
+		"Destination": &hcldec.AttrSpec{Name: "destination", Type: cty.String, Required: false},
+		"Exclude":     &hcldec.AttrSpec{Name: "exclude", Type: cty.List(cty.String), Required: false},
 	}
 	return s
 }
