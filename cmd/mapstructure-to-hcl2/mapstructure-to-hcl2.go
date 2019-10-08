@@ -56,7 +56,7 @@ func main() {
 	if goFile := os.Getenv("GOFILE"); goFile != "" {
 		outputPath = goFile[:len(goFile)-2] + "hcl2spec.go"
 	}
-	log.SetPrefix(fmt.Sprintf("flatten-mapstructure (%s): ", outputPath))
+	log.SetPrefix(fmt.Sprintf("flatten-mapstructure (%s): ", os.Getenv("GOFILE")))
 
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,
