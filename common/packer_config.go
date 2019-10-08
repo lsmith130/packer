@@ -1,5 +1,3 @@
-//go:generate mapstructure-to-hcl2 -type PackerConfig
-
 package common
 
 // PackerConfig is a struct that contains the configuration keys that

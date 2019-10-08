@@ -1,5 +1,3 @@
-//go:generate mapstructure-to-hcl2 -type Provisioner
-
 // Package shell defines code that is common in shells
 package shell
 

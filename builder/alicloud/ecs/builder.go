@@ -1,4 +1,4 @@
-//go:generate mapstructure-to-hcl2 -type Config
+//go:generate mapstructure-to-hcl2 -type Config,AlicloudDiskDevice
 
 // The alicloud  contains a packer.Builder implementation that
 // builds ecs images for alicloud.
