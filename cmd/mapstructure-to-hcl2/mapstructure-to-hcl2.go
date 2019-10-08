@@ -57,7 +57,6 @@ func main() {
 		outputPath = goFile[:len(goFile)-2] + "hcl2spec.go"
 	}
 	log.SetPrefix(fmt.Sprintf("flatten-mapstructure (%s): ", outputPath))
-	outputFile, err := os.Create(outputPath)
 
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,
@@ -110,6 +109,11 @@ func main() {
 	}
 
 	out := bytes.NewBuffer(nil)
+
+	outputFile, err := os.Create(outputPath)
+	if err != nil {
+		log.Fatalf("os.Create: %v", err)
+	}
 
 	fmt.Fprintf(out, "package %s\n", topPkg.Name)
 
@@ -226,7 +230,7 @@ func basicKindToCtyType(kind types.BasicKind) cty.Type {
 		types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64:
 		return cty.Number
 	default:
-		log.Fatal("Un handled basic kind: %v", kind)
+		log.Fatalf("Un handled basic kind: %v", kind)
 		panic("")
 	}
 }
