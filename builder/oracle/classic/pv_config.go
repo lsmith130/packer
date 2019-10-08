@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type PVConfig
+//go:generate mapstructure-to-hcl2 -type PVConfig
 
 package classic
 

@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type TencentCloudRunConfig,tencentCloudDataDisk
+//go:generate mapstructure-to-hcl2 -type TencentCloudRunConfig,tencentCloudDataDisk
 
 package cvm
 

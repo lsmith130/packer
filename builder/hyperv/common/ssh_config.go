@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type SSHConfig
+//go:generate mapstructure-to-hcl2 -type SSHConfig
 
 package common
 

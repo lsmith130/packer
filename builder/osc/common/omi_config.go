@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type OMIConfig
+//go:generate mapstructure-to-hcl2 -type OMIConfig
 
 package common
 

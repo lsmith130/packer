@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type Config
+//go:generate mapstructure-to-hcl2 -type Config
 
 // Package chroot is able to create an Outscale OMI without requiring
 // the launch of a new instance for every build. It does this by attaching

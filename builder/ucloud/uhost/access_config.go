@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type AccessConfig
+//go:generate mapstructure-to-hcl2 -type AccessConfig
 package uhost
 
 import (

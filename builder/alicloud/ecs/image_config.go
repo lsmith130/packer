@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type AlicloudDiskDevice,AlicloudDiskDevices
+//go:generate mapstructure-to-hcl2 -type AlicloudDiskDevice,AlicloudDiskDevices
 
 package ecs
 

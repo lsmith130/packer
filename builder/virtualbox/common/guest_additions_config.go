@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type GuestAdditionsConfig
+//go:generate mapstructure-to-hcl2 -type GuestAdditionsConfig
 
 package common
 

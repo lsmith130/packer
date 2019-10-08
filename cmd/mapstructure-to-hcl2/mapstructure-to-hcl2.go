@@ -50,8 +50,9 @@ func main() {
 	args := flag.Args()
 	if len(args) == 0 {
 		// Default: process whole package in current directory.
-		args = []string{os.Getenv("GOPACKAGE")}
+		args = []string{"."}
 	}
+	log.Printf("running on %s on types %v. env :%v", args, typeNames, os.Environ())
 
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,

@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type RunConfig,SecurityGroupFilterOptions,OmiFilterOptions,SubnetFilterOptions,NetFilterOptions
+//go:generate mapstructure-to-hcl2 -type RunConfig,SecurityGroupFilterOptions,OmiFilterOptions,SubnetFilterOptions,NetFilterOptions
 
 package common
 

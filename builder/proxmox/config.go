@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type Config,nicConfig,diskConfig
+//go:generate mapstructure-to-hcl2 -type Config,nicConfig,diskConfig
 
 package proxmox
 

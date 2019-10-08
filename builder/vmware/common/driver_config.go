@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type DriverConfig
+//go:generate mapstructure-to-hcl2 -type DriverConfig
 
 package common
 

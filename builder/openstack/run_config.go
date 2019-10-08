@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type RunConfig,ImageFilter,ImageFilterOptions
+//go:generate mapstructure-to-hcl2 -type RunConfig,ImageFilter,ImageFilterOptions
 
 package openstack
 

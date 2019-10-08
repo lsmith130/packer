@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type BlockDevice,BlockDevices,OMIBlockDevices,LaunchBlockDevices
+//go:generate mapstructure-to-hcl2 -type BlockDevice,BlockDevices,OMIBlockDevices,LaunchBlockDevices
 
 package common
 

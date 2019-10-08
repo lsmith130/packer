@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type VMXConfig
+//go:generate mapstructure-to-hcl2 -type VMXConfig
 
 package common
 

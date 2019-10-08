@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate hcl2-schema -type Config,SharedImageGallery,SharedImageGalleryDestination,PlanInformation
+//go:generate mapstructure-to-hcl2 -type Config,SharedImageGallery,SharedImageGalleryDestination,PlanInformation
 
 package arm
 

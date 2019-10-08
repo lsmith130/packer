@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type JDCloudInstanceSpecConfig
+//go:generate mapstructure-to-hcl2 -type JDCloudInstanceSpecConfig
 
 package jdcloud
 

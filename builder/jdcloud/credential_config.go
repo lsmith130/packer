@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type JDCloudCredentialConfig
+//go:generate mapstructure-to-hcl2 -type JDCloudCredentialConfig
 
 package jdcloud
 

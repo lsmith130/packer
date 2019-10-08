@@ -1,4 +1,4 @@
-//go:generate hcl2-schema -type Config
+//go:generate mapstructure-to-hcl2 -type Config
 
 // vagrant implements the packer.PostProcessor interface and adds a
 // post-processor that turns artifacts of known builders into Vagrant
