@@ -18,7 +18,6 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ram"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	packerecs "github.com/hashicorp/packer/builder/alicloud/ecs"
-	"github.com/hashicorp/packer/common"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/hashicorp/packer/packer"
 	"github.com/hashicorp/packer/template/interpolate"
@@ -56,8 +55,7 @@ const (
 
 // Configuration of this post processor
 type Config struct {
-	common.PackerConfig `mapstructure:",squash"`
-	packerecs.Config    `mapstructure:",squash"`
+	packerecs.Config `mapstructure:",squash"`
 
 	// Variables specific to this post processor
 	OSSBucket                       string            `mapstructure:"oss_bucket_name"`
