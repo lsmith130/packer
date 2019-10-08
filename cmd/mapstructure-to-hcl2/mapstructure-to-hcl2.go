@@ -230,13 +230,15 @@ func basicKindToCtyType(kind types.BasicKind) cty.Type {
 	case types.String:
 		return cty.String
 	case types.Int, types.Int8, types.Int16, types.Int32, types.Int64,
-		types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64:
+		types.Uint, types.Uint8, types.Uint16, types.Uint32, types.Uint64,
+		types.Float32, types.Float64,
+		types.Complex64, types.Complex128:
 		return cty.Number
 	case types.Invalid:
 		return cty.String // TODO(azr): fix that beforehand ?
 	default:
-		log.Fatalf("Un handled basic kind: %s", kind)
-		panic("")
+		log.Printf("Un handled basic kind: %s", kind)
+		return cty.String
 	}
 }
 
