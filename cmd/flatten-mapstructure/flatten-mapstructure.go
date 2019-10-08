@@ -147,12 +147,17 @@ func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
 		_ = field
 		st, _ := structtag.Parse(tag)
 		ctyTag, _ := st.Get("cty")
-
-		fmt.Fprintf(w, "	\"%s\": nil,\n", ctyTag.Name)
+		fmt.Fprintf(w, "	\"%s\": ", ctyTag.Name)
+		outputHCL2SpecField(w, field)
+		fmt.Fprintln(w, `,`)
 	}
 
 	fmt.Fprintln(w, `}`)
 	fmt.Fprintln(w, `return s`)
+}
+
+func outputHCL2SpecField(w io.Writer, s *types.Var) {
+	fmt.Fprint(w, `nil`)
 }
 
 func outputStructFields(w io.Writer, s *types.Struct) {
