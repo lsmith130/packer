@@ -88,8 +88,9 @@ func main() {
 		flatenedStruct = addCtyTagToStruct(flatenedStruct)
 		newStructName := "Flat" + id.Name
 		structs = append(structs, StructDef{
-			StructName: newStructName,
-			Struct:     flatenedStruct,
+			OriginalStructName: id.Name,
+			StructName:         newStructName,
+			Struct:             flatenedStruct,
 		})
 
 		for k, v := range getUsedImports(flatenedStruct) {
@@ -108,7 +109,7 @@ func main() {
 
 	for _, flatenedStruct := range structs {
 		fmt.Fprintf(out, "\ntype %s struct {\n", flatenedStruct.StructName)
-		outputStruct(out, flatenedStruct.Struct)
+		outputStructFields(out, flatenedStruct.Struct)
 		fmt.Fprint(out, "}\n")
 	}
 
@@ -130,11 +131,12 @@ func main() {
 }
 
 type StructDef struct {
-	StructName string
-	Struct     *types.Struct
+	OriginalStructName string
+	StructName         string
+	Struct             *types.Struct
 }
 
-func outputStruct(w io.Writer, s *types.Struct) {
+func outputStructFields(w io.Writer, s *types.Struct) {
 	for i := 0; i < s.NumFields(); i++ {
 		field, tag := s.Field(i), s.Tag(i)
 		fmt.Fprintf(w, "	%s `%s`\n", strings.Replace(field.String(), "field ", "", 1), tag)
