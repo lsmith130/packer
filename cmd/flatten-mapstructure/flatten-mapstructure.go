@@ -78,8 +78,7 @@ func main() {
 		if !isANamedType {
 			continue
 		}
-		_ = nt
-		ut := t.Underlying()
+		ut := nt.Underlying()
 		utStruct, utOk := ut.(*types.Struct)
 		if !utOk {
 			continue
