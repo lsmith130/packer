@@ -172,14 +172,19 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			Required:    false,
 		})
 	case *types.Slice:
-		if basicElem, ok := f.Elem().(*types.Basic); ok {
+		switch elem := f.Elem().(type) {
+		case *types.Basic:
 			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
 				Name:     accessor,
-				Type:     cty.List(basicKindToCtyType(basicElem.Kind())),
+				Type:     cty.List(basicKindToCtyType(elem.Kind())),
 				Required: false,
 			})
-		} else {
-			fmt.Fprintf(w, `nil /* slice (%s) */`, f.String())
+		case *types.Named:
+			b := bytes.NewBuffer(nil)
+			outputHCL2SpecField(b, elem.String(), elem.Underlying())
+			fmt.Fprintf(w, `hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())
+		default:
+			fmt.Fprintf(w, `nil, // slice (%s)`, f.String())
 		}
 	case *types.Named:
 		if f.String() == "time.Duration" {
@@ -191,13 +196,10 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			return
 		}
 		underlyingType := f.Underlying()
-		switch underlyingType.(type) {
-		case *types.Struct:
-			fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
-				` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, f.String())
-		default:
-			outputHCL2SpecField(w, accessor, underlyingType)
-		}
+		outputHCL2SpecField(w, f.String(), underlyingType)
+	case *types.Struct:
+		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
+			` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, accessor)
 	default:
 		_ = f
 		fmt.Fprint(w, `nil /* not basic */`)
