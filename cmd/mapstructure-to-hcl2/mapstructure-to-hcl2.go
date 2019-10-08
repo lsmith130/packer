@@ -15,7 +15,7 @@ import (
 	"strings"
 
 	"github.com/fatih/structtag"
-	"github.com/hashicorp/hcl2/hcldec"
+	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
 
 	"golang.org/x/tools/go/packages"
