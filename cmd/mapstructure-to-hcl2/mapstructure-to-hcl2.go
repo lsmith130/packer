@@ -349,7 +349,16 @@ func addFieldToStruct(s *types.Struct, field *types.Var, tag string) *types.Stru
 func squashStructs(a, b *types.Struct) *types.Struct {
 	va, ta := structFields(a)
 	vb, tb := structFields(b)
-	return types.NewStruct(append(va, vb...), append(ta, tb...))
+	fields := append(va, vb...)
+	tags := append(ta, tb...)
+	un := map[string]bool{}
+	for _, field := range fields {
+		if un[field.Name()] {
+			log.Fatalf("duplicate %s field", field.Name())
+		}
+		un[field.Name()] = true
+	}
+	return types.NewStruct(fields, tags)
 }
 
 func structFields(s *types.Struct) (vars []*types.Var, tags []string) {
