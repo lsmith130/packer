@@ -1,3 +1,4 @@
+// mapstructure-to-hcl2 fills the gaps between hcl2 and mapstructure.
 package main
 
 import (
