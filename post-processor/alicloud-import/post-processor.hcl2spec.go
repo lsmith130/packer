@@ -100,6 +100,15 @@ type FlatConfig struct {
 	WinRMInsecure                     bool                     `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
 	WinRMUseNTLM                      bool                     `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
 	SSHPrivateIp                      bool                     `mapstructure:"ssh_private_ip" required:"false" cty:"ssh_private_ip"`
+	OSSBucket                         string                   `mapstructure:"oss_bucket_name" cty:"oss_bucket_name"`
+	OSSKey                            string                   `mapstructure:"oss_key_name" cty:"oss_key_name"`
+	SkipClean                         bool                     `mapstructure:"skip_clean" cty:"skip_clean"`
+	Tags                              map[string]string        `mapstructure:"tags" cty:"tags"`
+	OSType                            string                   `mapstructure:"image_os_type" cty:"image_os_type"`
+	Platform                          string                   `mapstructure:"image_platform" cty:"image_platform"`
+	Architecture                      string                   `mapstructure:"image_architecture" cty:"image_architecture"`
+	Size                              string                   `mapstructure:"image_system_size" cty:"image_system_size"`
+	Format                            string                   `mapstructure:"format" cty:"format"`
 }
 
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
@@ -131,7 +140,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AlicloudImageSkipRegionValidation": &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"AlicloudImageTags":                 &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
 		"ECSSystemDiskMapping":              &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())},
-		"ECSImagesDiskMappings":             hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},
+		"ECSImagesDiskMappings":             &hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},
 		"AssociatePublicIpAddress":          &hcldec.AttrSpec{Name: "associate_public_ip_address", Type: cty.Bool, Required: false},
 		"ZoneId":                            &hcldec.AttrSpec{Name: "zone_id", Type: cty.String, Required: false},
 		"IOOptimized":                       &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
@@ -194,6 +203,15 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMInsecure":                     &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
 		"WinRMUseNTLM":                      &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"SSHPrivateIp":                      &hcldec.AttrSpec{Name: "ssh_private_ip", Type: cty.Bool, Required: false},
+		"OSSBucket":                         &hcldec.AttrSpec{Name: "oss_bucket_name", Type: cty.String, Required: false},
+		"OSSKey":                            &hcldec.AttrSpec{Name: "oss_key_name", Type: cty.String, Required: false},
+		"SkipClean":                         &hcldec.AttrSpec{Name: "skip_clean", Type: cty.Bool, Required: false},
+		"Tags":                              &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
+		"OSType":                            &hcldec.AttrSpec{Name: "image_os_type", Type: cty.String, Required: false},
+		"Platform":                          &hcldec.AttrSpec{Name: "image_platform", Type: cty.String, Required: false},
+		"Architecture":                      &hcldec.AttrSpec{Name: "image_architecture", Type: cty.String, Required: false},
+		"Size":                              &hcldec.AttrSpec{Name: "image_system_size", Type: cty.String, Required: false},
+		"Format":                            &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
 	}
 	return s
 }
@@ -289,15 +307,6 @@ type FlatConfig struct {
 	WinRMInsecure                     bool                     `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
 	WinRMUseNTLM                      bool                     `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
 	SSHPrivateIp                      bool                     `mapstructure:"ssh_private_ip" required:"false" cty:"ssh_private_ip"`
-	OSSBucket                         string                   `mapstructure:"oss_bucket_name" cty:"oss_bucket_name"`
-	OSSKey                            string                   `mapstructure:"oss_key_name" cty:"oss_key_name"`
-	SkipClean                         bool                     `mapstructure:"skip_clean" cty:"skip_clean"`
-	Tags                              map[string]string        `mapstructure:"tags" cty:"tags"`
-	OSType                            string                   `mapstructure:"image_os_type" cty:"image_os_type"`
-	Platform                          string                   `mapstructure:"image_platform" cty:"image_platform"`
-	Architecture                      string                   `mapstructure:"image_architecture" cty:"image_architecture"`
-	Size                              string                   `mapstructure:"image_system_size" cty:"image_system_size"`
-	Format                            string                   `mapstructure:"format" cty:"format"`
 }
 
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
@@ -329,7 +338,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AlicloudImageSkipRegionValidation": &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"AlicloudImageTags":                 &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
 		"ECSSystemDiskMapping":              &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())},
-		"ECSImagesDiskMappings":             hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},
+		"ECSImagesDiskMappings":             &hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},
 		"AssociatePublicIpAddress":          &hcldec.AttrSpec{Name: "associate_public_ip_address", Type: cty.Bool, Required: false},
 		"ZoneId":                            &hcldec.AttrSpec{Name: "zone_id", Type: cty.String, Required: false},
 		"IOOptimized":                       &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
@@ -392,15 +401,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMInsecure":                     &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
 		"WinRMUseNTLM":                      &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"SSHPrivateIp":                      &hcldec.AttrSpec{Name: "ssh_private_ip", Type: cty.Bool, Required: false},
-		"OSSBucket":                         &hcldec.AttrSpec{Name: "oss_bucket_name", Type: cty.String, Required: false},
-		"OSSKey":                            &hcldec.AttrSpec{Name: "oss_key_name", Type: cty.String, Required: false},
-		"SkipClean":                         &hcldec.AttrSpec{Name: "skip_clean", Type: cty.Bool, Required: false},
-		"Tags":                              &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
-		"OSType":                            &hcldec.AttrSpec{Name: "image_os_type", Type: cty.String, Required: false},
-		"Platform":                          &hcldec.AttrSpec{Name: "image_platform", Type: cty.String, Required: false},
-		"Architecture":                      &hcldec.AttrSpec{Name: "image_architecture", Type: cty.String, Required: false},
-		"Size":                              &hcldec.AttrSpec{Name: "image_system_size", Type: cty.String, Required: false},
-		"Format":                            &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
 	}
 	return s
 }

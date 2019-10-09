@@ -90,7 +90,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"BaseUrl":                   &hcldec.AttrSpec{Name: "base_url", Type: cty.String, Required: false},
 		"ImageName":                 &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
 		"ImageDescription":          &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
-		"ImageDestinations":         hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
+		"ImageDestinations":         &hcldec.BlockListSpec{TypeName: "[]ImageDestination", Nested: &hcldec.BlockObjectSpec{TypeName: "ImageDestination", Nested: hcldec.ObjectSpec((*ImageDestination)(nil).HCL2Spec())}},
 		"Zone":                      &hcldec.AttrSpec{Name: "availability_zone", Type: cty.String, Required: false},
 		"SourceImageId":             &hcldec.AttrSpec{Name: "source_image_id", Type: cty.String, Required: false},
 		"InstanceType":              &hcldec.AttrSpec{Name: "instance_type", Type: cty.String, Required: false},

@@ -39,7 +39,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Version":              &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
 		"BootstrapCommand":     &hcldec.AttrSpec{Name: "bootstrap_command", Type: cty.String, Required: false},
 		"PreventBootstrapSudo": &hcldec.AttrSpec{Name: "prevent_bootstrap_sudo", Type: cty.Bool, Required: false},
-		"ModuleDirs":           hcldec.BlockListSpec{TypeName: "[]ModuleDir", Nested: &hcldec.BlockObjectSpec{TypeName: "ModuleDir", Nested: hcldec.ObjectSpec((*ModuleDir)(nil).HCL2Spec())}},
+		"ModuleDirs":           &hcldec.BlockListSpec{TypeName: "[]ModuleDir", Nested: &hcldec.BlockObjectSpec{TypeName: "ModuleDir", Nested: hcldec.ObjectSpec((*ModuleDir)(nil).HCL2Spec())}},
 		"Module":               &hcldec.AttrSpec{Name: "module", Type: cty.String, Required: false},
 		"WorkingDirectory":     &hcldec.AttrSpec{Name: "working_directory", Type: cty.String, Required: false},
 		"Params":               &hcldec.BlockAttrsSpec{TypeName: "params", ElementType: cty.String, Required: false},
