@@ -346,24 +346,30 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 
 func addFieldToStruct(s *types.Struct, field *types.Var, tag string) *types.Struct {
 	sf, st := structFields(s)
-	return types.NewStruct(uniqueFields(append(sf, field)), append(st, tag))
+	return types.NewStruct(uniqueFields(append(sf, field), append(st, tag)))
 }
 
 func squashStructs(a, b *types.Struct) *types.Struct {
 	va, ta := structFields(a)
 	vb, tb := structFields(b)
-	return types.NewStruct(uniqueFields(append(va, vb...)), append(ta, tb...))
+	return types.NewStruct(uniqueFields(append(va, vb...), append(ta, tb...)))
 }
 
-func uniqueFields(fields []*types.Var) []*types.Var {
+func uniqueFields(fields []*types.Var, tags []string) ([]*types.Var, []string) {
+	outVars := []*types.Var{}
+	outTags := []string{}
 	un := map[string]bool{}
-	for _, field := range fields {
+	for i := range fields {
+		field, tag := fields[i], tags[i]
 		if un[field.Name()] {
-			log.Fatalf("duplicate %s field", field.Name())
+			log.Printf("skipping duplicate %s field", field.Name())
+			continue
 		}
 		un[field.Name()] = true
+		outVars = append(outVars, field)
+		outTags = append(outTags, tag)
 	}
-	return fields
+	return outVars, outTags
 }
 
 func structFields(s *types.Struct) (vars []*types.Var, tags []string) {
