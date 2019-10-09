@@ -184,7 +184,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMInsecure":               &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
 		"WinRMUseNTLM":                &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"SSHInterface":                &hcldec.AttrSpec{Name: "ssh_interface", Type: cty.String, Required: false},
-		"VolumeMappings":              hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
+		"VolumeMappings":              &hcldec.BlockListSpec{TypeName: "[]BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "BlockDevice", Nested: hcldec.ObjectSpec((*BlockDevice)(nil).HCL2Spec())}},
 	}
 	return s
 }

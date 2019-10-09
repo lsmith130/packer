@@ -202,7 +202,7 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 		case *types.Named:
 			b := bytes.NewBuffer(nil)
 			outputHCL2SpecField(b, elem.String(), elem.Underlying())
-			fmt.Fprintf(w, `hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())
+			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())
 		default:
 			fmt.Fprintf(w, `nil, // slice (%s)`, f.String())
 		}

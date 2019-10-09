@@ -155,7 +155,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AlicloudImageSkipRegionValidation": &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"AlicloudImageTags":                 &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
 		"ECSSystemDiskMapping":              &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
-		"ECSImagesDiskMappings":             hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
+		"ECSImagesDiskMappings":             &hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
 		"AssociatePublicIpAddress":          &hcldec.AttrSpec{Name: "associate_public_ip_address", Type: cty.Bool, Required: false},
 		"ZoneId":                            &hcldec.AttrSpec{Name: "zone_id", Type: cty.String, Required: false},
 		"IOOptimized":                       &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},

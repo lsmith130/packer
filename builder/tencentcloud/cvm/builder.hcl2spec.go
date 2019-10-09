@@ -121,7 +121,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"InstanceName":              &hcldec.AttrSpec{Name: "instance_name", Type: cty.String, Required: false},
 		"DiskType":                  &hcldec.AttrSpec{Name: "disk_type", Type: cty.String, Required: false},
 		"DiskSize":                  &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
-		"DataDisks":                 hcldec.BlockListSpec{TypeName: "[]tencentCloudDataDisk", Nested: &hcldec.BlockObjectSpec{TypeName: "tencentCloudDataDisk", Nested: hcldec.ObjectSpec((*tencentCloudDataDisk)(nil).HCL2Spec())}},
+		"DataDisks":                 &hcldec.BlockListSpec{TypeName: "[]tencentCloudDataDisk", Nested: &hcldec.BlockObjectSpec{TypeName: "tencentCloudDataDisk", Nested: hcldec.ObjectSpec((*tencentCloudDataDisk)(nil).HCL2Spec())}},
 		"VpcId":                     &hcldec.AttrSpec{Name: "vpc_id", Type: cty.String, Required: false},
 		"VpcName":                   &hcldec.AttrSpec{Name: "vpc_name", Type: cty.String, Required: false},
 		"VpcIp":                     &hcldec.AttrSpec{Name: "vpc_ip", Type: cty.String, Required: false},
