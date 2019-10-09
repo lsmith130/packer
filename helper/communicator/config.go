@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate mapstructure-to-hcl2 -type SSH,WinRM
+//go:generate mapstructure-to-hcl2 -type Config,SSH,WinRM
 
 package communicator
 

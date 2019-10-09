@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate mapstructure-to-hcl2 -type Config,VaultAWSEngineOptions
+//go:generate mapstructure-to-hcl2 -type Config,VaultAWSEngineOptions,BlockDevices
 
 // The chroot package is able to create an Amazon AMI without requiring the
 // launch of a new instance for every build. It does this by attaching and

@@ -1,4 +1,4 @@
-//go:generate mapstructure-to-hcl2 -type ImageConfig,ImageDestination
+//go:generate mapstructure-to-hcl2 -type ImageDestination
 
 package uhost
 

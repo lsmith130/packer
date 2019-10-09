@@ -1,5 +1,4 @@
 //go:generate struct-markdown
-//go:generate mapstructure-to-hcl2 -type VBoxManageConfig
 
 package common
 

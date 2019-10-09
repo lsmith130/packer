@@ -1,5 +1,3 @@
-//go:generate mapstructure-to-hcl2 -type BlockDevice,BlockDevices,OMIBlockDevices,LaunchBlockDevices
-
 package common
 
 import (

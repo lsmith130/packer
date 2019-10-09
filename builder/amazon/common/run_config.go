@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate mapstructure-to-hcl2 -type RunConfig,AmiFilterOptions,SecurityGroupFilterOptions,SubnetFilterOptions,VpcFilterOptions
+//go:generate mapstructure-to-hcl2 -type AmiFilterOptions
 
 package common
 

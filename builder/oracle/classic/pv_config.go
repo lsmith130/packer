@@ -1,5 +1,3 @@
-//go:generate mapstructure-to-hcl2 -type PVConfig
-
 package classic
 
 import (

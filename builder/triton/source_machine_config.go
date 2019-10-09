@@ -1,5 +1,5 @@
 //go:generate struct-markdown
-//go:generate mapstructure-to-hcl2 -type SourceMachineConfig,MachineImageFilter
+//go:generate mapstructure-to-hcl2 -type MachineImageFilter
 
 package triton
 

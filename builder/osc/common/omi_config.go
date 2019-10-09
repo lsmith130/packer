@@ -1,5 +1,3 @@
-//go:generate mapstructure-to-hcl2 -type OMIConfig
-
 package common
 
 import (
