@@ -6,6 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -26,6 +28,13 @@ type FlatConfig struct {
 	PreventSudo          bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":      &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -49,12 +58,21 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatModuleDir is an auto-generated flat version of ModuleDir.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatModuleDir struct {
 	Source      string   `mapstructure:"source" cty:"source"`
 	Destination string   `mapstructure:"destination" cty:"destination"`
 	Exclude     []string `mapstructure:"exclude" cty:"exclude"`
 }
 
+// FlatMapstructure returns a new FlatModuleDir.
+// FlatModuleDir is an auto-generated flat version of ModuleDir.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*ModuleDir) FlatMapstructure() interface{} { return new(FlatModuleDir) }
+
+// HCL2Spec returns the hcldec.Spec of a ModuleDir.
+// This spec is used by HCL to read the fields of ModuleDir.
 func (*ModuleDir) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Source":      &hcldec.AttrSpec{Name: "source", Type: cty.String, Required: false},

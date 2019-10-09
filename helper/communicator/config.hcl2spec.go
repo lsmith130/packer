@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	Type                      string        `mapstructure:"communicator" cty:"communicator"`
 	PauseBeforeConnect        time.Duration `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
@@ -50,6 +52,13 @@ type FlatConfig struct {
 	WinRMUseNTLM              bool          `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},

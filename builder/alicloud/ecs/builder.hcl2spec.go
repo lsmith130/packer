@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+// FlatAlicloudDiskDevice is an auto-generated flat version of AlicloudDiskDevice.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatAlicloudDiskDevice struct {
 	DiskName           string         `mapstructure:"disk_name" required:"false" cty:"disk_name"`
 	DiskCategory       string         `mapstructure:"disk_category" required:"false" cty:"disk_category"`
@@ -19,6 +21,13 @@ type FlatAlicloudDiskDevice struct {
 	Encrypted          config.Trilean `mapstructure:"disk_encrypted" required:"false" cty:"disk_encrypted"`
 }
 
+// FlatMapstructure returns a new FlatAlicloudDiskDevice.
+// FlatAlicloudDiskDevice is an auto-generated flat version of AlicloudDiskDevice.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*AlicloudDiskDevice) FlatMapstructure() interface{} { return new(FlatAlicloudDiskDevice) }
+
+// HCL2Spec returns the hcldec.Spec of a AlicloudDiskDevice.
+// This spec is used by HCL to read the fields of AlicloudDiskDevice.
 func (*AlicloudDiskDevice) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"DiskName":           &hcldec.AttrSpec{Name: "disk_name", Type: cty.String, Required: false},
@@ -33,6 +42,8 @@ func (*AlicloudDiskDevice) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName                   string               `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType                 string               `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -126,6 +137,13 @@ type FlatConfig struct {
 	SSHPrivateIp                      bool                 `mapstructure:"ssh_private_ip" required:"false" cty:"ssh_private_ip"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":                   &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},

@@ -6,12 +6,21 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatAmiFilterOptions is an auto-generated flat version of AmiFilterOptions.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatAmiFilterOptions struct {
 	Filters    map[*string]*string `cty:"filters"`
 	Owners     []*string           `cty:"owners"`
 	MostRecent bool                `mapstructure:"most_recent" cty:"most_recent"`
 }
 
+// FlatMapstructure returns a new FlatAmiFilterOptions.
+// FlatAmiFilterOptions is an auto-generated flat version of AmiFilterOptions.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*AmiFilterOptions) FlatMapstructure() interface{} { return new(FlatAmiFilterOptions) }
+
+// HCL2Spec returns the hcldec.Spec of a AmiFilterOptions.
+// This spec is used by HCL to read the fields of AmiFilterOptions.
 func (*AmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Filters":    &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},

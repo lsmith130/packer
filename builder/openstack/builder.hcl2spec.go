@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName             string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType           string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -112,6 +114,13 @@ type FlatConfig struct {
 	UseFloatingIp               bool              `mapstructure:"use_floating_ip" required:"false" cty:"use_floating_ip"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":             &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -220,11 +229,20 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatImageFilter is an auto-generated flat version of ImageFilter.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatImageFilter struct {
 	Filters    ImageFilterOptions `mapstructure:"filters" required:"false" cty:"filters"`
 	MostRecent bool               `mapstructure:"most_recent" required:"false" cty:"most_recent"`
 }
 
+// FlatMapstructure returns a new FlatImageFilter.
+// FlatImageFilter is an auto-generated flat version of ImageFilter.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*ImageFilter) FlatMapstructure() interface{} { return new(FlatImageFilter) }
+
+// HCL2Spec returns the hcldec.Spec of a ImageFilter.
+// This spec is used by HCL to read the fields of ImageFilter.
 func (*ImageFilter) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Filters":    &hcldec.BlockObjectSpec{TypeName: "ImageFilterOptions", Nested: hcldec.ObjectSpec((*ImageFilterOptions)(nil).HCL2Spec())},
@@ -233,6 +251,8 @@ func (*ImageFilter) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatImageFilterOptions is an auto-generated flat version of ImageFilterOptions.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatImageFilterOptions struct {
 	Name       string            `mapstructure:"name" cty:"name"`
 	Owner      string            `mapstructure:"owner" cty:"owner"`
@@ -241,6 +261,13 @@ type FlatImageFilterOptions struct {
 	Properties map[string]string `mapstructure:"properties" cty:"properties"`
 }
 
+// FlatMapstructure returns a new FlatImageFilterOptions.
+// FlatImageFilterOptions is an auto-generated flat version of ImageFilterOptions.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*ImageFilterOptions) FlatMapstructure() interface{} { return new(FlatImageFilterOptions) }
+
+// HCL2Spec returns the hcldec.Spec of a ImageFilterOptions.
+// This spec is used by HCL to read the fields of ImageFilterOptions.
 func (*ImageFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Name":       &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},

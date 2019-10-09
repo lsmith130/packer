@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	AccessKey                 string            `mapstructure:"access_key" cty:"access_key"`
 	SecretKey                 string            `mapstructure:"secret_key" cty:"secret_key"`
@@ -70,6 +72,13 @@ type FlatConfig struct {
 	PackerSensitiveVars       []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"AccessKey":                 &hcldec.AttrSpec{Name: "access_key", Type: cty.String, Required: false},

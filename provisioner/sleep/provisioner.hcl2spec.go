@@ -7,10 +7,19 @@ import (
 	"time"
 )
 
+// FlatProvisioner is an auto-generated flat version of Provisioner.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatProvisioner struct {
 	Duration time.Duration `cty:"duration"`
 }
 
+// FlatMapstructure returns a new FlatProvisioner.
+// FlatProvisioner is an auto-generated flat version of Provisioner.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Provisioner) FlatMapstructure() interface{} { return new(FlatProvisioner) }
+
+// HCL2Spec returns the hcldec.Spec of a Provisioner.
+// This spec is used by HCL to read the fields of Provisioner.
 func (*Provisioner) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Duration": &hcldec.AttrSpec{Name: "duration", Type: cty.String, Required: false},

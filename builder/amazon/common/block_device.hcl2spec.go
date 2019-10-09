@@ -7,6 +7,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatBlockDevice is an auto-generated flat version of BlockDevice.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatBlockDevice struct {
 	DeleteOnTermination bool           `mapstructure:"delete_on_termination" required:"false" cty:"delete_on_termination"`
 	DeviceName          string         `mapstructure:"device_name" required:"false" cty:"device_name"`
@@ -20,6 +22,13 @@ type FlatBlockDevice struct {
 	KmsKeyId            string         `mapstructure:"kms_key_id" required:"false" cty:"kms_key_id"`
 }
 
+// FlatMapstructure returns a new FlatBlockDevice.
+// FlatBlockDevice is an auto-generated flat version of BlockDevice.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*BlockDevice) FlatMapstructure() interface{} { return new(FlatBlockDevice) }
+
+// HCL2Spec returns the hcldec.Spec of a BlockDevice.
+// This spec is used by HCL to read the fields of BlockDevice.
 func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"DeleteOnTermination": &hcldec.AttrSpec{Name: "delete_on_termination", Type: cty.Bool, Required: false},

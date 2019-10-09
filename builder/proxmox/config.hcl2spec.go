@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -86,6 +88,13 @@ type FlatConfig struct {
 	UnmountISO                bool              `mapstructure:"unmount_iso" cty:"unmount_iso"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":           &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -168,6 +177,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatdiskConfig is an auto-generated flat version of diskConfig.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatdiskConfig struct {
 	Type            string `mapstructure:"type" cty:"type"`
 	StoragePool     string `mapstructure:"storage_pool" cty:"storage_pool"`
@@ -177,6 +188,13 @@ type FlatdiskConfig struct {
 	DiskFormat      string `mapstructure:"format" cty:"format"`
 }
 
+// FlatMapstructure returns a new FlatdiskConfig.
+// FlatdiskConfig is an auto-generated flat version of diskConfig.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*diskConfig) FlatMapstructure() interface{} { return new(FlatdiskConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a diskConfig.
+// This spec is used by HCL to read the fields of diskConfig.
 func (*diskConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Type":            &hcldec.AttrSpec{Name: "type", Type: cty.String, Required: false},
@@ -189,6 +207,8 @@ func (*diskConfig) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatnicConfig is an auto-generated flat version of nicConfig.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatnicConfig struct {
 	Model      string `mapstructure:"model" cty:"model"`
 	MACAddress string `mapstructure:"mac_address" cty:"mac_address"`
@@ -196,6 +216,13 @@ type FlatnicConfig struct {
 	VLANTag    string `mapstructure:"vlan_tag" cty:"vlan_tag"`
 }
 
+// FlatMapstructure returns a new FlatnicConfig.
+// FlatnicConfig is an auto-generated flat version of nicConfig.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*nicConfig) FlatMapstructure() interface{} { return new(FlatnicConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a nicConfig.
+// This spec is used by HCL to read the fields of nicConfig.
 func (*nicConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Model":      &hcldec.AttrSpec{Name: "model", Type: cty.String, Required: false},

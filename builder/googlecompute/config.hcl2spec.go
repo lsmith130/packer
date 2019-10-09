@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName              string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType            string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -96,6 +98,13 @@ type FlatConfig struct {
 	Zone                         string                 `mapstructure:"zone" required:"true" cty:"zone"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":              &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -188,11 +197,20 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatCustomerEncryptionKey is an auto-generated flat version of CustomerEncryptionKey.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatCustomerEncryptionKey struct {
 	KmsKeyName string `json:"kmsKeyName,omitempty" cty:"kms_key_name"`
 	RawKey     string `json:"rawKey,omitempty" cty:"raw_key"`
 }
 
+// FlatMapstructure returns a new FlatCustomerEncryptionKey.
+// FlatCustomerEncryptionKey is an auto-generated flat version of CustomerEncryptionKey.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*CustomerEncryptionKey) FlatMapstructure() interface{} { return new(FlatCustomerEncryptionKey) }
+
+// HCL2Spec returns the hcldec.Spec of a CustomerEncryptionKey.
+// This spec is used by HCL to read the fields of CustomerEncryptionKey.
 func (*CustomerEncryptionKey) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"KmsKeyName": &hcldec.AttrSpec{Name: "kms_key_name", Type: cty.String, Required: false},

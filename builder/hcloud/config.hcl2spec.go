@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -71,6 +73,13 @@ type FlatConfig struct {
 	RescueMode                string            `mapstructure:"rescue" cty:"rescue"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":           &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -138,11 +147,20 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatimageFilter is an auto-generated flat version of imageFilter.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatimageFilter struct {
 	WithSelector []string `mapstructure:"with_selector" cty:"with_selector"`
 	MostRecent   bool     `mapstructure:"most_recent" cty:"most_recent"`
 }
 
+// FlatMapstructure returns a new FlatimageFilter.
+// FlatimageFilter is an auto-generated flat version of imageFilter.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*imageFilter) FlatMapstructure() interface{} { return new(FlatimageFilter) }
+
+// HCL2Spec returns the hcldec.Spec of a imageFilter.
+// This spec is used by HCL to read the fields of imageFilter.
 func (*imageFilter) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"WithSelector": &hcldec.AttrSpec{Name: "with_selector", Type: cty.List(cty.String), Required: false},

@@ -129,10 +129,21 @@ func main() {
 		return structs[i].OriginalStructName < structs[j].OriginalStructName
 	})
 	for _, flatenedStruct := range structs {
+		fmt.Fprintf(out, "\n// %s is an auto-generated flat version of %s.", flatenedStruct.StructName, flatenedStruct.OriginalStructName)
+		fmt.Fprintf(out, "\n// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.")
 		fmt.Fprintf(out, "\ntype %s struct {\n", flatenedStruct.StructName)
 		outputStructFields(out, flatenedStruct.Struct)
 		fmt.Fprint(out, "}\n")
 
+		fmt.Fprintf(out, "\n// FlatMapstructure returns a new %s.", flatenedStruct.StructName)
+		fmt.Fprintf(out, "\n// %s is an auto-generated flat version of %s.", flatenedStruct.StructName, flatenedStruct.OriginalStructName)
+		fmt.Fprintf(out, "\n// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.")
+		fmt.Fprintf(out, "\nfunc (*%s) FlatMapstructure() interface{} {", flatenedStruct.OriginalStructName)
+		fmt.Fprintf(out, "return new(%s)", flatenedStruct.StructName)
+		fmt.Fprint(out, "}\n")
+
+		fmt.Fprintf(out, "\n// HCL2Spec returns the hcldec.Spec of a %s.", flatenedStruct.OriginalStructName)
+		fmt.Fprintf(out, "\n// This spec is used by HCL to read the fields of %s.", flatenedStruct.OriginalStructName)
 		fmt.Fprintf(out, "\nfunc (*%s) HCL2Spec() map[string]hcldec.Spec {\n", flatenedStruct.OriginalStructName)
 		outputStructHCL2SpecBody(out, flatenedStruct.Struct)
 		fmt.Fprint(out, "}\n")

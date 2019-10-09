@@ -6,6 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatMachineImageFilter is an auto-generated flat version of MachineImageFilter.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatMachineImageFilter struct {
 	MostRecent bool   `mapstructure:"most_recent" cty:"most_recent"`
 	Name       string `cty:"name"`
@@ -17,6 +19,13 @@ type FlatMachineImageFilter struct {
 	Type       string `cty:"type"`
 }
 
+// FlatMapstructure returns a new FlatMachineImageFilter.
+// FlatMachineImageFilter is an auto-generated flat version of MachineImageFilter.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*MachineImageFilter) FlatMapstructure() interface{} { return new(FlatMachineImageFilter) }
+
+// HCL2Spec returns the hcldec.Spec of a MachineImageFilter.
+// This spec is used by HCL to read the fields of MachineImageFilter.
 func (*MachineImageFilter) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},

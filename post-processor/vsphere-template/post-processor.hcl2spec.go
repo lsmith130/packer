@@ -6,6 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -25,6 +27,13 @@ type FlatConfig struct {
 	SnapshotDescription string            `mapstructure:"snapshot_description" cty:"snapshot_description"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},

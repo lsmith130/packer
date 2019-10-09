@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
 	PackerBuildName                     string                        `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType                   string                        `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
@@ -104,6 +106,13 @@ type FlatConfig struct {
 	AsyncResourceGroupDelete            bool                          `mapstructure:"async_resourcegroup_delete" required:"false" cty:"async_resourcegroup_delete"`
 }
 
+// FlatMapstructure returns a new FlatConfig.
+// FlatConfig is an auto-generated flat version of Config.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a Config.
+// This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PackerBuildName":                     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
@@ -204,6 +213,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatPlanInformation is an auto-generated flat version of PlanInformation.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatPlanInformation struct {
 	PlanName          string `mapstructure:"plan_name" cty:"plan_name"`
 	PlanProduct       string `mapstructure:"plan_product" cty:"plan_product"`
@@ -211,6 +222,13 @@ type FlatPlanInformation struct {
 	PlanPromotionCode string `mapstructure:"plan_promotion_code" cty:"plan_promotion_code"`
 }
 
+// FlatMapstructure returns a new FlatPlanInformation.
+// FlatPlanInformation is an auto-generated flat version of PlanInformation.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*PlanInformation) FlatMapstructure() interface{} { return new(FlatPlanInformation) }
+
+// HCL2Spec returns the hcldec.Spec of a PlanInformation.
+// This spec is used by HCL to read the fields of PlanInformation.
 func (*PlanInformation) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"PlanName":          &hcldec.AttrSpec{Name: "plan_name", Type: cty.String, Required: false},
@@ -221,6 +239,8 @@ func (*PlanInformation) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatSharedImageGallery is an auto-generated flat version of SharedImageGallery.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSharedImageGallery struct {
 	Subscription  string `mapstructure:"subscription" cty:"subscription"`
 	ResourceGroup string `mapstructure:"resource_group" cty:"resource_group"`
@@ -229,6 +249,13 @@ type FlatSharedImageGallery struct {
 	ImageVersion  string `mapstructure:"image_version" required:"false" cty:"image_version"`
 }
 
+// FlatMapstructure returns a new FlatSharedImageGallery.
+// FlatSharedImageGallery is an auto-generated flat version of SharedImageGallery.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*SharedImageGallery) FlatMapstructure() interface{} { return new(FlatSharedImageGallery) }
+
+// HCL2Spec returns the hcldec.Spec of a SharedImageGallery.
+// This spec is used by HCL to read the fields of SharedImageGallery.
 func (*SharedImageGallery) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Subscription":  &hcldec.AttrSpec{Name: "subscription", Type: cty.String, Required: false},
@@ -240,6 +267,8 @@ func (*SharedImageGallery) HCL2Spec() map[string]hcldec.Spec {
 	return s
 }
 
+// FlatSharedImageGalleryDestination is an auto-generated flat version of SharedImageGalleryDestination.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSharedImageGalleryDestination struct {
 	SigDestinationResourceGroup      string   `mapstructure:"resource_group" cty:"resource_group"`
 	SigDestinationGalleryName        string   `mapstructure:"gallery_name" cty:"gallery_name"`
@@ -248,6 +277,15 @@ type FlatSharedImageGalleryDestination struct {
 	SigDestinationReplicationRegions []string `mapstructure:"replication_regions" cty:"replication_regions"`
 }
 
+// FlatMapstructure returns a new FlatSharedImageGalleryDestination.
+// FlatSharedImageGalleryDestination is an auto-generated flat version of SharedImageGalleryDestination.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*SharedImageGalleryDestination) FlatMapstructure() interface{} {
+	return new(FlatSharedImageGalleryDestination)
+}
+
+// HCL2Spec returns the hcldec.Spec of a SharedImageGalleryDestination.
+// This spec is used by HCL to read the fields of SharedImageGalleryDestination.
 func (*SharedImageGalleryDestination) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"SigDestinationResourceGroup":      &hcldec.AttrSpec{Name: "resource_group", Type: cty.String, Required: false},

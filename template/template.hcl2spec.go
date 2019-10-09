@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// FlatProvisioner is an auto-generated flat version of Provisioner.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatProvisioner struct {
 	Only        []string               `json:"only,omitempty" cty:"only"`
 	Except      []string               `json:"except,omitempty" cty:"except"`
@@ -17,6 +19,13 @@ type FlatProvisioner struct {
 	Timeout     time.Duration          `mapstructure:"timeout" json:"timeout,omitempty" cty:"timeout"`
 }
 
+// FlatMapstructure returns a new FlatProvisioner.
+// FlatProvisioner is an auto-generated flat version of Provisioner.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*Provisioner) FlatMapstructure() interface{} { return new(FlatProvisioner) }
+
+// HCL2Spec returns the hcldec.Spec of a Provisioner.
+// This spec is used by HCL to read the fields of Provisioner.
 func (*Provisioner) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Only":        &hcldec.AttrSpec{Name: "only", Type: cty.List(cty.String), Required: false},

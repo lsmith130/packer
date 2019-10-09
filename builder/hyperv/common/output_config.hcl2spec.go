@@ -6,10 +6,19 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatOutputConfig is an auto-generated flat version of OutputConfig.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatOutputConfig struct {
 	OutputDir string `mapstructure:"output_directory" required:"false" cty:"output_directory"`
 }
 
+// FlatMapstructure returns a new FlatOutputConfig.
+// FlatOutputConfig is an auto-generated flat version of OutputConfig.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*OutputConfig) FlatMapstructure() interface{} { return new(FlatOutputConfig) }
+
+// HCL2Spec returns the hcldec.Spec of a OutputConfig.
+// This spec is used by HCL to read the fields of OutputConfig.
 func (*OutputConfig) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"OutputDir": &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},

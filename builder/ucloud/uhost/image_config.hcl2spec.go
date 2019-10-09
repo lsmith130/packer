@@ -6,6 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatImageDestination is an auto-generated flat version of ImageDestination.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatImageDestination struct {
 	ProjectId   string `mapstructure:"project_id" cty:"project_id"`
 	Region      string `mapstructure:"region" cty:"region"`
@@ -13,6 +15,13 @@ type FlatImageDestination struct {
 	Description string `mapstructure:"description" cty:"description"`
 }
 
+// FlatMapstructure returns a new FlatImageDestination.
+// FlatImageDestination is an auto-generated flat version of ImageDestination.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*ImageDestination) FlatMapstructure() interface{} { return new(FlatImageDestination) }
+
+// HCL2Spec returns the hcldec.Spec of a ImageDestination.
+// This spec is used by HCL to read the fields of ImageDestination.
 func (*ImageDestination) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"ProjectId":   &hcldec.AttrSpec{Name: "project_id", Type: cty.String, Required: false},

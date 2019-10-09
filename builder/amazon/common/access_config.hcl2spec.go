@@ -6,6 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
+// FlatVaultAWSEngineOptions is an auto-generated flat version of VaultAWSEngineOptions.
+// Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatVaultAWSEngineOptions struct {
 	Name       string `mapstructure:"name" cty:"name"`
 	RoleARN    string `mapstructure:"role_arn" cty:"role_arn"`
@@ -13,6 +15,13 @@ type FlatVaultAWSEngineOptions struct {
 	EngineName string `mapstructure:"engine_name" cty:"engine_name"`
 }
 
+// FlatMapstructure returns a new FlatVaultAWSEngineOptions.
+// FlatVaultAWSEngineOptions is an auto-generated flat version of VaultAWSEngineOptions.
+// Where the contents a fields with a `mapstructure:,squash` tag are bubbled up.
+func (*VaultAWSEngineOptions) FlatMapstructure() interface{} { return new(FlatVaultAWSEngineOptions) }
+
+// HCL2Spec returns the hcldec.Spec of a VaultAWSEngineOptions.
+// This spec is used by HCL to read the fields of VaultAWSEngineOptions.
 func (*VaultAWSEngineOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"Name":       &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
