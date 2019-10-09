@@ -92,6 +92,8 @@ func main() {
 		if pos >= len(typeNames) || typeNames[pos] != id.Name {
 			continue // not a struct we care about
 		}
+		// make sure each type is found once where somehow sometimes they can be found twice
+		typeNames = append(typeNames[:pos], typeNames[pos+1:]...)
 		flatenedStruct := getMapstructureSquashedStruct(obj.Pkg(), utStruct)
 		flatenedStruct = addCtyTagToStruct(flatenedStruct)
 		newStructName := "Flat" + id.Name
