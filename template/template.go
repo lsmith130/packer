@@ -1,4 +1,4 @@
-//go:generate mapstructure-to-hcl2 -type Provisioner,OnlyExcept
+//go:generate mapstructure-to-hcl2 -type Provisioner
 
 package template
 
