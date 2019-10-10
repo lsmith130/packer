@@ -37,7 +37,7 @@ func (*AlicloudDiskDevice) HCL2Spec() map[string]hcldec.Spec {
 		"Description":        &hcldec.AttrSpec{Name: "disk_description", Type: cty.String, Required: false},
 		"DeleteWithInstance": &hcldec.AttrSpec{Name: "disk_delete_with_instance", Type: cty.Bool, Required: false},
 		"Device":             &hcldec.AttrSpec{Name: "disk_device", Type: cty.String, Required: false},
-		"Encrypted":          &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
+		"Encrypted":          &hcldec.AttrSpec{Name: "disk_encrypted", Type: cty.Bool, Required: false},
 	}
 	return s
 }
@@ -164,7 +164,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AlicloudImageUNShareAccounts":      &hcldec.AttrSpec{Name: "image_unshare_account", Type: cty.List(cty.String), Required: false},
 		"AlicloudImageDestinationRegions":   &hcldec.AttrSpec{Name: "image_copy_regions", Type: cty.List(cty.String), Required: false},
 		"AlicloudImageDestinationNames":     &hcldec.AttrSpec{Name: "image_copy_names", Type: cty.List(cty.String), Required: false},
-		"ImageEncrypted":                    &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
+		"ImageEncrypted":                    &hcldec.AttrSpec{Name: "image_encrypted", Type: cty.Bool, Required: false},
 		"AlicloudImageForceDelete":          &hcldec.AttrSpec{Name: "image_force_delete", Type: cty.Bool, Required: false},
 		"AlicloudImageForceDeleteSnapshots": &hcldec.AttrSpec{Name: "image_force_delete_snapshots", Type: cty.Bool, Required: false},
 		"AlicloudImageForceDeleteInstances": &hcldec.AttrSpec{Name: "image_force_delete_instances", Type: cty.Bool, Required: false},
@@ -174,7 +174,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ECSImagesDiskMappings":             &hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
 		"AssociatePublicIpAddress":          &hcldec.AttrSpec{Name: "associate_public_ip_address", Type: cty.Bool, Required: false},
 		"ZoneId":                            &hcldec.AttrSpec{Name: "zone_id", Type: cty.String, Required: false},
-		"IOOptimized":                       &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
+		"IOOptimized":                       &hcldec.AttrSpec{Name: "io_optimized", Type: cty.Bool, Required: false},
 		"InstanceType":                      &hcldec.AttrSpec{Name: "instance_type", Type: cty.String, Required: false},
 		"Description":                       &hcldec.AttrSpec{Name: "description", Type: cty.String, Required: false},
 		"AlicloudSourceImage":               &hcldec.AttrSpec{Name: "source_image", Type: cty.String, Required: false},

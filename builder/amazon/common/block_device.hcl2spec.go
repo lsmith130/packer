@@ -33,7 +33,7 @@ func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"DeleteOnTermination": &hcldec.AttrSpec{Name: "delete_on_termination", Type: cty.Bool, Required: false},
 		"DeviceName":          &hcldec.AttrSpec{Name: "device_name", Type: cty.String, Required: false},
-		"Encrypted":           &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
+		"Encrypted":           &hcldec.AttrSpec{Name: "encrypted", Type: cty.Bool, Required: false},
 		"IOPS":                &hcldec.AttrSpec{Name: "iops", Type: cty.Number, Required: false},
 		"NoDevice":            &hcldec.AttrSpec{Name: "no_device", Type: cty.Bool, Required: false},
 		"SnapshotId":          &hcldec.AttrSpec{Name: "snapshot_id", Type: cty.String, Required: false},

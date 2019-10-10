@@ -220,16 +220,23 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			fmt.Fprintf(w, `nil, // slice (%s)`, f.String())
 		}
 	case *types.Named:
-		if f.String() == "time.Duration" {
+		switch f.String() {
+		case "time.Duration":
 			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
 				Name:     accessor,
 				Type:     basicKindToCtyType(types.String),
 				Required: false,
 			})
-			return
+		case "github.com/hashicorp/packer/helper/config.Trilean": // TODO(azr): unhack this situation
+			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+				Name:     accessor,
+				Type:     basicKindToCtyType(types.Bool),
+				Required: false,
+			})
+		default:
+			underlyingType := f.Underlying()
+			outputHCL2SpecField(w, f.String(), underlyingType)
 		}
-		underlyingType := f.Underlying()
-		outputHCL2SpecField(w, f.String(), underlyingType)
 	case *types.Struct:
 		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
 			` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, accessor)
