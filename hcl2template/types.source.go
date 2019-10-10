@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hclsyntax"
 )
 
 // A source field in an HCL file will load into the Source type.
@@ -15,31 +14,34 @@ type Source struct {
 	// Given name; if any
 	Name string
 
-	// V map[string]interface{}
+	Cfg interface{}
 
 	HCL2Ref HCL2Ref
 }
 
-func (source *Source) decodeConfig(block *hcl.Block) hcl.Diagnostics {
-
-	source.Type = block.Labels[0]
-	source.Name = block.Labels[1]
+func (p *Parser) decodeSource(block *hcl.Block, sourceSpecs map[string]Decodable) (*Source, hcl.Diagnostics) {
+	source := &Source{
+		Type: block.Labels[0],
+		Name: block.Labels[1],
+	}
 	source.HCL2Ref.DeclRange = block.DefRange
 
-	// diags := gohcl.DecodeBody(block.Body, nil, &source.V)
 	var diags hcl.Diagnostics
 
-	if !hclsyntax.ValidIdentifier(source.Type) {
+	sourceSpec, found := sourceSpecs[source.Type]
+	if !found {
 		diags = append(diags, &hcl.Diagnostic{
-			Severity: hcl.DiagError,
-			Summary:  "Invalid " + sourceLabel + " type",
-			Detail: "A " + sourceLabel + " type must start with a letter and " +
-				"may contain only letters, digits, underscores, and dashes.",
+			Summary: "Unknown " + sourceLabel + " type",
 			Subject: &block.LabelRanges[0],
 		})
+		return source, diags
 	}
 
-	return diags
+	flatSource, moreDiags := decodeDecodable(block.Body, nil, sourceSpec)
+	diags = append(diags, moreDiags...)
+	source.Cfg = flatSource
+
+	return source, diags
 }
 
 func (source *Source) Ref() SourceRef {

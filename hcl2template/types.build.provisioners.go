@@ -48,23 +48,14 @@ func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[s
 	for _, block := range content.Blocks {
 		provisioner, found := provisionerSpecs[block.Type]
 		if !found {
+			diags = append(diags, &hcl.Diagnostic{
+				Summary: "Unknown " + buildProvisionnersLabel + " type",
+				Subject: &block.LabelRanges[0],
+			})
 			continue
 		}
-		flatProvisinerCfg := provisioner.FlatMapstructure()
-
-		// val, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
-		// diags = append(diags, moreDiags...)
-
-		moreDiags := gohcl.DecodeBody(block.Body, nil, flatProvisinerCfg)
+		flatProvisinerCfg, moreDiags := decodeDecodable(block.Body, nil, provisioner)
 		diags = append(diags, moreDiags...)
-
-		// err := gocty.FromCtyValue(val, flatProvisinerCfg)
-		// if err != nil {
-		// 	diags = append(diags, &hcl.Diagnostic{
-		// 		Summary: "gocty.FromCtyValue: " + err.Error(),
-		// 		Subject: &block.DefRange,
-		// 	})
-		// }
 		pg.Provisioners = append(pg.Provisioners, Provisioner{flatProvisinerCfg})
 	}
 

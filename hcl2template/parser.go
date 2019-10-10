@@ -34,6 +34,8 @@ type Parser struct {
 	PostProvisionersSchemas map[string]Decodable
 
 	CommunicatorSchemas map[string]Decodable
+
+	SourceSchemas map[string]Decodable
 }
 
 const hcl2FileExt = ".pkr.hcl"
@@ -116,8 +118,8 @@ func (p *Parser) ParseFile(f *hcl.File, cfg *PackerConfig) hcl.Diagnostics {
 			if cfg.Sources == nil {
 				cfg.Sources = map[SourceRef]*Source{}
 			}
-			source := &Source{}
-			moreDiags := source.decodeConfig(block)
+
+			source, moreDiags := p.decodeSource(block, p.SourceSchemas)
 			diags = append(diags, moreDiags...)
 
 			ref := source.Ref()
