@@ -9,9 +9,9 @@ import (
 // FlatAmiFilterOptions is an auto-generated flat version of AmiFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatAmiFilterOptions struct {
-	Filters    map[*string]*string `cty:"filters"`
-	Owners     []*string           `cty:"owners"`
-	MostRecent bool                `mapstructure:"most_recent" cty:"most_recent"`
+	Filters    map[*string]*string `cty:"filters" hcl:"filters,optional"`
+	Owners     []*string           `cty:"owners" hcl:"owners,optional"`
+	MostRecent bool                `mapstructure:"most_recent" cty:"most_recent" hcl:"most_recent,optional"`
 }
 
 // FlatMapstructure returns a new FlatAmiFilterOptions.

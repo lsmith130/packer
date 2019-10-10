@@ -9,31 +9,31 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName            string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType          string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                bool                   `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError              string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars             map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars        []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	ChefEnvironment            string                 `mapstructure:"chef_environment" cty:"chef_environment"`
-	ChefLicense                string                 `mapstructure:"chef_license" cty:"chef_license"`
-	ConfigTemplate             string                 `mapstructure:"config_template" cty:"config_template"`
-	CookbookPaths              []string               `mapstructure:"cookbook_paths" cty:"cookbook_paths"`
-	RolesPath                  string                 `mapstructure:"roles_path" cty:"roles_path"`
-	DataBagsPath               string                 `mapstructure:"data_bags_path" cty:"data_bags_path"`
-	EncryptedDataBagSecretPath string                 `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path"`
-	EnvironmentsPath           string                 `mapstructure:"environments_path" cty:"environments_path"`
-	ExecuteCommand             string                 `mapstructure:"execute_command" cty:"execute_command"`
-	InstallCommand             string                 `mapstructure:"install_command" cty:"install_command"`
-	RemoteCookbookPaths        []string               `mapstructure:"remote_cookbook_paths" cty:"remote_cookbook_paths"`
-	Json                       map[string]interface{} `cty:"json"`
-	PreventSudo                bool                   `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
-	RunList                    []string               `mapstructure:"run_list" cty:"run_list"`
-	SkipInstall                bool                   `mapstructure:"skip_install" cty:"skip_install"`
-	StagingDir                 string                 `mapstructure:"staging_directory" cty:"staging_directory"`
-	GuestOSType                string                 `mapstructure:"guest_os_type" cty:"guest_os_type"`
-	Version                    string                 `mapstructure:"version" cty:"version"`
+	PackerBuildName            string                 `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType          string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug                bool                   `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce                bool                   `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError              string                 `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars             map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars        []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	ChefEnvironment            string                 `mapstructure:"chef_environment" cty:"chef_environment" hcl:"chef_environment,optional"`
+	ChefLicense                string                 `mapstructure:"chef_license" cty:"chef_license" hcl:"chef_license,optional"`
+	ConfigTemplate             string                 `mapstructure:"config_template" cty:"config_template" hcl:"config_template,optional"`
+	CookbookPaths              []string               `mapstructure:"cookbook_paths" cty:"cookbook_paths" hcl:"cookbook_paths,optional"`
+	RolesPath                  string                 `mapstructure:"roles_path" cty:"roles_path" hcl:"roles_path,optional"`
+	DataBagsPath               string                 `mapstructure:"data_bags_path" cty:"data_bags_path" hcl:"data_bags_path,optional"`
+	EncryptedDataBagSecretPath string                 `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path" hcl:"encrypted_data_bag_secret_path,optional"`
+	EnvironmentsPath           string                 `mapstructure:"environments_path" cty:"environments_path" hcl:"environments_path,optional"`
+	ExecuteCommand             string                 `mapstructure:"execute_command" cty:"execute_command" hcl:"execute_command,optional"`
+	InstallCommand             string                 `mapstructure:"install_command" cty:"install_command" hcl:"install_command,optional"`
+	RemoteCookbookPaths        []string               `mapstructure:"remote_cookbook_paths" cty:"remote_cookbook_paths" hcl:"remote_cookbook_paths,optional"`
+	Json                       map[string]interface{} `cty:"json" hcl:"json,optional"`
+	PreventSudo                bool                   `mapstructure:"prevent_sudo" cty:"prevent_sudo" hcl:"prevent_sudo,optional"`
+	RunList                    []string               `mapstructure:"run_list" cty:"run_list" hcl:"run_list,optional"`
+	SkipInstall                bool                   `mapstructure:"skip_install" cty:"skip_install" hcl:"skip_install,optional"`
+	StagingDir                 string                 `mapstructure:"staging_directory" cty:"staging_directory" hcl:"staging_directory,optional"`
+	GuestOSType                string                 `mapstructure:"guest_os_type" cty:"guest_os_type" hcl:"guest_os_type,optional"`
+	Version                    string                 `mapstructure:"version" cty:"version" hcl:"version,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

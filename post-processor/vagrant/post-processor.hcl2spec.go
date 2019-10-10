@@ -9,19 +9,19 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName              string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType            string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                  bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                  bool                   `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError                string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars               map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars          []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	CompressionLevel             int                    `mapstructure:"compression_level" cty:"compression_level"`
-	Include                      []string               `mapstructure:"include" cty:"include"`
-	OutputPath                   string                 `mapstructure:"output" cty:"output"`
-	Override                     map[string]interface{} `cty:"override"`
-	VagrantfileTemplate          string                 `mapstructure:"vagrantfile_template" cty:"vagrantfile_template"`
-	VagrantfileTemplateGenerated bool                   `mapstructure:"vagrantfile_template_generated" cty:"vagrantfile_template_generated"`
+	PackerBuildName              string                 `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType            string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug                  bool                   `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce                  bool                   `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError                string                 `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars               map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars          []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	CompressionLevel             int                    `mapstructure:"compression_level" cty:"compression_level" hcl:"compression_level,optional"`
+	Include                      []string               `mapstructure:"include" cty:"include" hcl:"include,optional"`
+	OutputPath                   string                 `mapstructure:"output" cty:"output" hcl:"output,optional"`
+	Override                     map[string]interface{} `cty:"override" hcl:"override,optional"`
+	VagrantfileTemplate          string                 `mapstructure:"vagrantfile_template" cty:"vagrantfile_template" hcl:"vagrantfile_template,optional"`
+	VagrantfileTemplateGenerated bool                   `mapstructure:"vagrantfile_template_generated" cty:"vagrantfile_template_generated" hcl:"vagrantfile_template_generated,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

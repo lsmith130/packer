@@ -9,24 +9,24 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AccountFile          string            `mapstructure:"account_file" cty:"account_file"`
-	ProjectId            string            `mapstructure:"project_id" cty:"project_id"`
-	Bucket               string            `mapstructure:"bucket" cty:"bucket"`
-	GCSObjectName        string            `mapstructure:"gcs_object_name" cty:"gcs_object_name"`
-	ImageDescription     string            `mapstructure:"image_description" cty:"image_description"`
-	ImageFamily          string            `mapstructure:"image_family" cty:"image_family"`
-	ImageGuestOsFeatures []string          `mapstructure:"image_guest_os_features" cty:"image_guest_os_features"`
-	ImageLabels          map[string]string `mapstructure:"image_labels" cty:"image_labels"`
-	ImageName            string            `mapstructure:"image_name" cty:"image_name"`
-	SkipClean            bool              `mapstructure:"skip_clean" cty:"skip_clean"`
-	VaultGCPOauthEngine  string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
+	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	AccountFile          string            `mapstructure:"account_file" cty:"account_file" hcl:"account_file,optional"`
+	ProjectId            string            `mapstructure:"project_id" cty:"project_id" hcl:"project_id,optional"`
+	Bucket               string            `mapstructure:"bucket" cty:"bucket" hcl:"bucket,optional"`
+	GCSObjectName        string            `mapstructure:"gcs_object_name" cty:"gcs_object_name" hcl:"gcs_object_name,optional"`
+	ImageDescription     string            `mapstructure:"image_description" cty:"image_description" hcl:"image_description,optional"`
+	ImageFamily          string            `mapstructure:"image_family" cty:"image_family" hcl:"image_family,optional"`
+	ImageGuestOsFeatures []string          `mapstructure:"image_guest_os_features" cty:"image_guest_os_features" hcl:"image_guest_os_features,optional"`
+	ImageLabels          map[string]string `mapstructure:"image_labels" cty:"image_labels" hcl:"image_labels,optional"`
+	ImageName            string            `mapstructure:"image_name" cty:"image_name" hcl:"image_name,optional"`
+	SkipClean            bool              `mapstructure:"skip_clean" cty:"skip_clean" hcl:"skip_clean,optional"`
+	VaultGCPOauthEngine  string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine" hcl:"vault_gcp_oauth_engine,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

@@ -9,14 +9,14 @@ import (
 // FlatBlockDevice is an auto-generated flat version of BlockDevice.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatBlockDevice struct {
-	DeleteOnVmDeletion bool   `mapstructure:"delete_on_vm_deletion" cty:"delete_on_vm_deletion"`
-	DeviceName         string `mapstructure:"device_name" cty:"device_name"`
-	IOPS               int64  `mapstructure:"iops" cty:"iops"`
-	NoDevice           bool   `mapstructure:"no_device" cty:"no_device"`
-	SnapshotId         string `mapstructure:"snapshot_id" cty:"snapshot_id"`
-	VirtualName        string `mapstructure:"virtual_name" cty:"virtual_name"`
-	VolumeType         string `mapstructure:"volume_type" cty:"volume_type"`
-	VolumeSize         int64  `mapstructure:"volume_size" cty:"volume_size"`
+	DeleteOnVmDeletion bool   `mapstructure:"delete_on_vm_deletion" cty:"delete_on_vm_deletion" hcl:"delete_on_vm_deletion,optional"`
+	DeviceName         string `mapstructure:"device_name" cty:"device_name" hcl:"device_name,optional"`
+	IOPS               int64  `mapstructure:"iops" cty:"iops" hcl:"iops,optional"`
+	NoDevice           bool   `mapstructure:"no_device" cty:"no_device" hcl:"no_device,optional"`
+	SnapshotId         string `mapstructure:"snapshot_id" cty:"snapshot_id" hcl:"snapshot_id,optional"`
+	VirtualName        string `mapstructure:"virtual_name" cty:"virtual_name" hcl:"virtual_name,optional"`
+	VolumeType         string `mapstructure:"volume_type" cty:"volume_type" hcl:"volume_type,optional"`
+	VolumeSize         int64  `mapstructure:"volume_size" cty:"volume_size" hcl:"volume_size,optional"`
 }
 
 // FlatMapstructure returns a new FlatBlockDevice.
@@ -43,7 +43,7 @@ func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 // FlatNetFilterOptions is an auto-generated flat version of NetFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatNetFilterOptions struct {
-	Filters map[string]string `cty:"filters"`
+	Filters map[string]string `cty:"filters" hcl:"filters,optional"`
 }
 
 // FlatMapstructure returns a new FlatNetFilterOptions.
@@ -63,9 +63,9 @@ func (*NetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatOmiFilterOptions is an auto-generated flat version of OmiFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatOmiFilterOptions struct {
-	Filters    map[string]string `cty:"filters"`
-	Owners     []string          `cty:"owners"`
-	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent"`
+	Filters    map[string]string `cty:"filters" hcl:"filters,optional"`
+	Owners     []string          `cty:"owners" hcl:"owners,optional"`
+	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent" hcl:"most_recent,optional"`
 }
 
 // FlatMapstructure returns a new FlatOmiFilterOptions.
@@ -87,7 +87,7 @@ func (*OmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatSecurityGroupFilterOptions is an auto-generated flat version of SecurityGroupFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSecurityGroupFilterOptions struct {
-	Filters map[string]string `cty:"filters"`
+	Filters map[string]string `cty:"filters" hcl:"filters,optional"`
 }
 
 // FlatMapstructure returns a new FlatSecurityGroupFilterOptions.
@@ -109,9 +109,9 @@ func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatSubnetFilterOptions is an auto-generated flat version of SubnetFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSubnetFilterOptions struct {
-	Filters  map[string]string `cty:"filters"`
-	MostFree bool              `mapstructure:"most_free" cty:"most_free"`
-	Random   bool              `mapstructure:"random" cty:"random"`
+	Filters  map[string]string `cty:"filters" hcl:"filters,optional"`
+	MostFree bool              `mapstructure:"most_free" cty:"most_free" hcl:"most_free,optional"`
+	Random   bool              `mapstructure:"random" cty:"random" hcl:"random,optional"`
 }
 
 // FlatMapstructure returns a new FlatSubnetFilterOptions.

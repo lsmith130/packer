@@ -9,30 +9,30 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	SkipBootstrap       bool              `mapstructure:"skip_bootstrap" cty:"skip_bootstrap"`
-	BootstrapArgs       string            `mapstructure:"bootstrap_args" cty:"bootstrap_args"`
-	DisableSudo         bool              `mapstructure:"disable_sudo" cty:"disable_sudo"`
-	CustomState         string            `mapstructure:"custom_state" cty:"custom_state"`
-	MinionConfig        string            `mapstructure:"minion_config" cty:"minion_config"`
-	GrainsFile          string            `mapstructure:"grains_file" cty:"grains_file"`
-	LocalStateTree      string            `mapstructure:"local_state_tree" cty:"local_state_tree"`
-	LocalPillarRoots    string            `mapstructure:"local_pillar_roots" cty:"local_pillar_roots"`
-	RemoteStateTree     string            `mapstructure:"remote_state_tree" cty:"remote_state_tree"`
-	RemotePillarRoots   string            `mapstructure:"remote_pillar_roots" cty:"remote_pillar_roots"`
-	TempConfigDir       string            `mapstructure:"temp_config_dir" cty:"temp_config_dir"`
-	NoExitOnFailure     bool              `mapstructure:"no_exit_on_failure" cty:"no_exit_on_failure"`
-	LogLevel            string            `mapstructure:"log_level" cty:"log_level"`
-	SaltCallArgs        string            `mapstructure:"salt_call_args" cty:"salt_call_args"`
-	SaltBinDir          string            `mapstructure:"salt_bin_dir" cty:"salt_bin_dir"`
-	CmdArgs             string            `cty:"cmd_args"`
-	GuestOSType         string            `mapstructure:"guest_os_type" cty:"guest_os_type"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	SkipBootstrap       bool              `mapstructure:"skip_bootstrap" cty:"skip_bootstrap" hcl:"skip_bootstrap,optional"`
+	BootstrapArgs       string            `mapstructure:"bootstrap_args" cty:"bootstrap_args" hcl:"bootstrap_args,optional"`
+	DisableSudo         bool              `mapstructure:"disable_sudo" cty:"disable_sudo" hcl:"disable_sudo,optional"`
+	CustomState         string            `mapstructure:"custom_state" cty:"custom_state" hcl:"custom_state,optional"`
+	MinionConfig        string            `mapstructure:"minion_config" cty:"minion_config" hcl:"minion_config,optional"`
+	GrainsFile          string            `mapstructure:"grains_file" cty:"grains_file" hcl:"grains_file,optional"`
+	LocalStateTree      string            `mapstructure:"local_state_tree" cty:"local_state_tree" hcl:"local_state_tree,optional"`
+	LocalPillarRoots    string            `mapstructure:"local_pillar_roots" cty:"local_pillar_roots" hcl:"local_pillar_roots,optional"`
+	RemoteStateTree     string            `mapstructure:"remote_state_tree" cty:"remote_state_tree" hcl:"remote_state_tree,optional"`
+	RemotePillarRoots   string            `mapstructure:"remote_pillar_roots" cty:"remote_pillar_roots" hcl:"remote_pillar_roots,optional"`
+	TempConfigDir       string            `mapstructure:"temp_config_dir" cty:"temp_config_dir" hcl:"temp_config_dir,optional"`
+	NoExitOnFailure     bool              `mapstructure:"no_exit_on_failure" cty:"no_exit_on_failure" hcl:"no_exit_on_failure,optional"`
+	LogLevel            string            `mapstructure:"log_level" cty:"log_level" hcl:"log_level,optional"`
+	SaltCallArgs        string            `mapstructure:"salt_call_args" cty:"salt_call_args" hcl:"salt_call_args,optional"`
+	SaltBinDir          string            `mapstructure:"salt_bin_dir" cty:"salt_bin_dir" hcl:"salt_bin_dir,optional"`
+	CmdArgs             string            `cty:"cmd_args" hcl:"cmd_args,optional"`
+	GuestOSType         string            `mapstructure:"guest_os_type" cty:"guest_os_type" hcl:"guest_os_type,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

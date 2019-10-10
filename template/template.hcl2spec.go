@@ -10,13 +10,13 @@ import (
 // FlatProvisioner is an auto-generated flat version of Provisioner.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatProvisioner struct {
-	Only        []string               `json:"only,omitempty" cty:"only"`
-	Except      []string               `json:"except,omitempty" cty:"except"`
-	Type        string                 `json:"type" cty:"type"`
-	Config      map[string]interface{} `json:"config,omitempty" cty:"config"`
-	Override    map[string]interface{} `json:"override,omitempty" cty:"override"`
-	PauseBefore time.Duration          `mapstructure:"pause_before" json:"pause_before,omitempty" cty:"pause_before"`
-	Timeout     time.Duration          `mapstructure:"timeout" json:"timeout,omitempty" cty:"timeout"`
+	Only        []string               `json:"only,omitempty" cty:"only" hcl:"only,optional"`
+	Except      []string               `json:"except,omitempty" cty:"except" hcl:"except,optional"`
+	Type        string                 `json:"type" cty:"type" hcl:"type,optional"`
+	Config      map[string]interface{} `json:"config,omitempty" cty:"config" hcl:"config,optional"`
+	Override    map[string]interface{} `json:"override,omitempty" cty:"override" hcl:"override,optional"`
+	PauseBefore time.Duration          `mapstructure:"pause_before" json:"pause_before,omitempty" cty:"pause_before" hcl:"pause_before,optional"`
+	Timeout     time.Duration          `mapstructure:"timeout" json:"timeout,omitempty" cty:"timeout" hcl:"timeout,optional"`
 }
 
 // FlatMapstructure returns a new FlatProvisioner.

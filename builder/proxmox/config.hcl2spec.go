@@ -10,82 +10,82 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug               bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce               bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError             string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars            map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars       []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	HTTPDir                   string            `mapstructure:"http_directory" cty:"http_directory"`
-	HTTPPortMin               int               `mapstructure:"http_port_min" cty:"http_port_min"`
-	HTTPPortMax               int               `mapstructure:"http_port_max" cty:"http_port_max"`
-	RawBootGroupInterval      string            `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
-	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait"`
-	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command"`
-	BootGroupInterval         time.Duration     `cty:"boot_group_interval"`
-	BootWait                  time.Duration     `cty:"boot_wait"`
-	RawBootKeyInterval        string            `mapstructure:"boot_key_interval" cty:"boot_key_interval"`
-	BootKeyInterval           time.Duration     `cty:"boot_key_interval"`
-	Type                      string            `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                   int               `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername               string            `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword               string            `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName            string            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName   string            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	SSHClearAuthorizedKeys    bool              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile         string            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                    bool              `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                time.Duration     `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth              bool              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding bool              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts      int               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost            string            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort            int               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth       bool              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername        string            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword        string            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile  string            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod     string            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost              string            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort              int               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername          string            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword          string            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval      time.Duration     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout       time.Duration     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
-	SSHRemoteTunnels          []string          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
-	SSHLocalTunnels           []string          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
-	SSHPublicKey              []byte            `cty:"ssh_public_key"`
-	SSHPrivateKey             []byte            `cty:"ssh_private_key"`
-	WinRMUser                 string            `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword             string            `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                 string            `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                 int               `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout              time.Duration     `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL               bool              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure             bool              `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM              bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	ProxmoxURLRaw             string            `mapstructure:"proxmox_url" cty:"proxmox_url"`
-	SkipCertValidation        bool              `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
-	Username                  string            `mapstructure:"username" cty:"username"`
-	Password                  string            `mapstructure:"password" cty:"password"`
-	Node                      string            `mapstructure:"node" cty:"node"`
-	Pool                      string            `mapstructure:"pool" cty:"pool"`
-	VMName                    string            `mapstructure:"vm_name" cty:"vm_name"`
-	VMID                      int               `mapstructure:"vm_id" cty:"vm_id"`
-	Memory                    int               `mapstructure:"memory" cty:"memory"`
-	Cores                     int               `mapstructure:"cores" cty:"cores"`
-	Sockets                   int               `mapstructure:"sockets" cty:"sockets"`
-	OS                        string            `mapstructure:"os" cty:"os"`
-	NICs                      []nicConfig       `mapstructure:"network_adapters" cty:"network_adapters"`
-	Disks                     []diskConfig      `mapstructure:"disks" cty:"disks"`
-	ISOFile                   string            `mapstructure:"iso_file" cty:"iso_file"`
-	Agent                     bool              `mapstructure:"qemu_agent" cty:"qemu_agent"`
-	TemplateName              string            `mapstructure:"template_name" cty:"template_name"`
-	TemplateDescription       string            `mapstructure:"template_description" cty:"template_description"`
-	UnmountISO                bool              `mapstructure:"unmount_iso" cty:"unmount_iso"`
+	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug               bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce               bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError             string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars            map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars       []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	HTTPDir                   string            `mapstructure:"http_directory" cty:"http_directory" hcl:"http_directory,optional"`
+	HTTPPortMin               int               `mapstructure:"http_port_min" cty:"http_port_min" hcl:"http_port_min,optional"`
+	HTTPPortMax               int               `mapstructure:"http_port_max" cty:"http_port_max" hcl:"http_port_max,optional"`
+	RawBootGroupInterval      string            `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval" hcl:"boot_keygroup_interval,optional"`
+	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
+	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
+	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
+	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
+	RawBootKeyInterval        string            `mapstructure:"boot_key_interval" cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
+	BootKeyInterval           time.Duration     `cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
+	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
+	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
+	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
+	SSHPort                   int               `mapstructure:"ssh_port" cty:"ssh_port" hcl:"ssh_port,optional"`
+	SSHUsername               string            `mapstructure:"ssh_username" cty:"ssh_username" hcl:"ssh_username,optional"`
+	SSHPassword               string            `mapstructure:"ssh_password" cty:"ssh_password" hcl:"ssh_password,optional"`
+	SSHKeyPairName            string            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name" hcl:"ssh_keypair_name,optional"`
+	SSHTemporaryKeyPairName   string            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name" hcl:"temporary_key_pair_name,optional"`
+	SSHClearAuthorizedKeys    bool              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys" hcl:"ssh_clear_authorized_keys,optional"`
+	SSHPrivateKeyFile         string            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file" hcl:"ssh_private_key_file,optional"`
+	SSHPty                    bool              `mapstructure:"ssh_pty" cty:"ssh_pty" hcl:"ssh_pty,optional"`
+	SSHTimeout                time.Duration     `mapstructure:"ssh_timeout" cty:"ssh_timeout" hcl:"ssh_timeout,optional"`
+	SSHAgentAuth              bool              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth" hcl:"ssh_agent_auth,optional"`
+	SSHDisableAgentForwarding bool              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding" hcl:"ssh_disable_agent_forwarding,optional"`
+	SSHHandshakeAttempts      int               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts" hcl:"ssh_handshake_attempts,optional"`
+	SSHBastionHost            string            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host" hcl:"ssh_bastion_host,optional"`
+	SSHBastionPort            int               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port" hcl:"ssh_bastion_port,optional"`
+	SSHBastionAgentAuth       bool              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth" hcl:"ssh_bastion_agent_auth,optional"`
+	SSHBastionUsername        string            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username" hcl:"ssh_bastion_username,optional"`
+	SSHBastionPassword        string            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password" hcl:"ssh_bastion_password,optional"`
+	SSHBastionPrivateKeyFile  string            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file" hcl:"ssh_bastion_private_key_file,optional"`
+	SSHFileTransferMethod     string            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method" hcl:"ssh_file_transfer_method,optional"`
+	SSHProxyHost              string            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host" hcl:"ssh_proxy_host,optional"`
+	SSHProxyPort              int               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port" hcl:"ssh_proxy_port,optional"`
+	SSHProxyUsername          string            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username" hcl:"ssh_proxy_username,optional"`
+	SSHProxyPassword          string            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password" hcl:"ssh_proxy_password,optional"`
+	SSHKeepAliveInterval      time.Duration     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval" hcl:"ssh_keep_alive_interval,optional"`
+	SSHReadWriteTimeout       time.Duration     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout" hcl:"ssh_read_write_timeout,optional"`
+	SSHRemoteTunnels          []string          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels" hcl:"ssh_remote_tunnels,optional"`
+	SSHLocalTunnels           []string          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels" hcl:"ssh_local_tunnels,optional"`
+	SSHPublicKey              []byte            `cty:"ssh_public_key" hcl:"ssh_public_key,optional"`
+	SSHPrivateKey             []byte            `cty:"ssh_private_key" hcl:"ssh_private_key,optional"`
+	WinRMUser                 string            `mapstructure:"winrm_username" cty:"winrm_username" hcl:"winrm_username,optional"`
+	WinRMPassword             string            `mapstructure:"winrm_password" cty:"winrm_password" hcl:"winrm_password,optional"`
+	WinRMHost                 string            `mapstructure:"winrm_host" cty:"winrm_host" hcl:"winrm_host,optional"`
+	WinRMPort                 int               `mapstructure:"winrm_port" cty:"winrm_port" hcl:"winrm_port,optional"`
+	WinRMTimeout              time.Duration     `mapstructure:"winrm_timeout" cty:"winrm_timeout" hcl:"winrm_timeout,optional"`
+	WinRMUseSSL               bool              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl" hcl:"winrm_use_ssl,optional"`
+	WinRMInsecure             bool              `mapstructure:"winrm_insecure" cty:"winrm_insecure" hcl:"winrm_insecure,optional"`
+	WinRMUseNTLM              bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm" hcl:"winrm_use_ntlm,optional"`
+	ProxmoxURLRaw             string            `mapstructure:"proxmox_url" cty:"proxmox_url" hcl:"proxmox_url,optional"`
+	SkipCertValidation        bool              `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify" hcl:"insecure_skip_tls_verify,optional"`
+	Username                  string            `mapstructure:"username" cty:"username" hcl:"username,optional"`
+	Password                  string            `mapstructure:"password" cty:"password" hcl:"password,optional"`
+	Node                      string            `mapstructure:"node" cty:"node" hcl:"node,optional"`
+	Pool                      string            `mapstructure:"pool" cty:"pool" hcl:"pool,optional"`
+	VMName                    string            `mapstructure:"vm_name" cty:"vm_name" hcl:"vm_name,optional"`
+	VMID                      int               `mapstructure:"vm_id" cty:"vm_id" hcl:"vm_id,optional"`
+	Memory                    int               `mapstructure:"memory" cty:"memory" hcl:"memory,optional"`
+	Cores                     int               `mapstructure:"cores" cty:"cores" hcl:"cores,optional"`
+	Sockets                   int               `mapstructure:"sockets" cty:"sockets" hcl:"sockets,optional"`
+	OS                        string            `mapstructure:"os" cty:"os" hcl:"os,optional"`
+	NICs                      []nicConfig       `mapstructure:"network_adapters" cty:"network_adapters" hcl:"network_adapters,optional"`
+	Disks                     []diskConfig      `mapstructure:"disks" cty:"disks" hcl:"disks,optional"`
+	ISOFile                   string            `mapstructure:"iso_file" cty:"iso_file" hcl:"iso_file,optional"`
+	Agent                     bool              `mapstructure:"qemu_agent" cty:"qemu_agent" hcl:"qemu_agent,optional"`
+	TemplateName              string            `mapstructure:"template_name" cty:"template_name" hcl:"template_name,optional"`
+	TemplateDescription       string            `mapstructure:"template_description" cty:"template_description" hcl:"template_description,optional"`
+	UnmountISO                bool              `mapstructure:"unmount_iso" cty:"unmount_iso" hcl:"unmount_iso,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -180,12 +180,12 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 // FlatdiskConfig is an auto-generated flat version of diskConfig.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatdiskConfig struct {
-	Type            string `mapstructure:"type" cty:"type"`
-	StoragePool     string `mapstructure:"storage_pool" cty:"storage_pool"`
-	StoragePoolType string `mapstructure:"storage_pool_type" cty:"storage_pool_type"`
-	Size            string `mapstructure:"disk_size" cty:"disk_size"`
-	CacheMode       string `mapstructure:"cache_mode" cty:"cache_mode"`
-	DiskFormat      string `mapstructure:"format" cty:"format"`
+	Type            string `mapstructure:"type" cty:"type" hcl:"type,optional"`
+	StoragePool     string `mapstructure:"storage_pool" cty:"storage_pool" hcl:"storage_pool,optional"`
+	StoragePoolType string `mapstructure:"storage_pool_type" cty:"storage_pool_type" hcl:"storage_pool_type,optional"`
+	Size            string `mapstructure:"disk_size" cty:"disk_size" hcl:"disk_size,optional"`
+	CacheMode       string `mapstructure:"cache_mode" cty:"cache_mode" hcl:"cache_mode,optional"`
+	DiskFormat      string `mapstructure:"format" cty:"format" hcl:"format,optional"`
 }
 
 // FlatMapstructure returns a new FlatdiskConfig.
@@ -210,10 +210,10 @@ func (*diskConfig) HCL2Spec() map[string]hcldec.Spec {
 // FlatnicConfig is an auto-generated flat version of nicConfig.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatnicConfig struct {
-	Model      string `mapstructure:"model" cty:"model"`
-	MACAddress string `mapstructure:"mac_address" cty:"mac_address"`
-	Bridge     string `mapstructure:"bridge" cty:"bridge"`
-	VLANTag    string `mapstructure:"vlan_tag" cty:"vlan_tag"`
+	Model      string `mapstructure:"model" cty:"model" hcl:"model,optional"`
+	MACAddress string `mapstructure:"mac_address" cty:"mac_address" hcl:"mac_address,optional"`
+	Bridge     string `mapstructure:"bridge" cty:"bridge" hcl:"bridge,optional"`
+	VLANTag    string `mapstructure:"vlan_tag" cty:"vlan_tag" hcl:"vlan_tag,optional"`
 }
 
 // FlatMapstructure returns a new FlatnicConfig.

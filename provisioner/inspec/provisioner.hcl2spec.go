@@ -9,26 +9,26 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Command              string            `cty:"command"`
-	SubCommand           string            `cty:"sub_command"`
-	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
-	InspecEnvVars        []string          `mapstructure:"inspec_env_vars" cty:"inspec_env_vars"`
-	Profile              string            `mapstructure:"profile" cty:"profile"`
-	AttributesDirectory  string            `mapstructure:"attributes_directory" cty:"attributes_directory"`
-	AttributesFiles      []string          `mapstructure:"attributes" cty:"attributes"`
-	Backend              string            `mapstructure:"backend" cty:"backend"`
-	User                 string            `mapstructure:"user" cty:"user"`
-	Host                 string            `mapstructure:"host" cty:"host"`
-	LocalPort            int               `mapstructure:"local_port" cty:"local_port"`
-	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
-	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
+	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	Command              string            `cty:"command" hcl:"command,optional"`
+	SubCommand           string            `cty:"sub_command" hcl:"sub_command,optional"`
+	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments" hcl:"extra_arguments,optional"`
+	InspecEnvVars        []string          `mapstructure:"inspec_env_vars" cty:"inspec_env_vars" hcl:"inspec_env_vars,optional"`
+	Profile              string            `mapstructure:"profile" cty:"profile" hcl:"profile,optional"`
+	AttributesDirectory  string            `mapstructure:"attributes_directory" cty:"attributes_directory" hcl:"attributes_directory,optional"`
+	AttributesFiles      []string          `mapstructure:"attributes" cty:"attributes" hcl:"attributes,optional"`
+	Backend              string            `mapstructure:"backend" cty:"backend" hcl:"backend,optional"`
+	User                 string            `mapstructure:"user" cty:"user" hcl:"user,optional"`
+	Host                 string            `mapstructure:"host" cty:"host" hcl:"host,optional"`
+	LocalPort            int               `mapstructure:"local_port" cty:"local_port" hcl:"local_port,optional"`
+	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file" hcl:"ssh_host_key_file,optional"`
+	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file" hcl:"ssh_authorized_key_file,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

@@ -11,14 +11,14 @@ import (
 // FlatAlicloudDiskDevice is an auto-generated flat version of AlicloudDiskDevice.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatAlicloudDiskDevice struct {
-	DiskName           string         `mapstructure:"disk_name" required:"false" cty:"disk_name"`
-	DiskCategory       string         `mapstructure:"disk_category" required:"false" cty:"disk_category"`
-	DiskSize           int            `mapstructure:"disk_size" required:"false" cty:"disk_size"`
-	SnapshotId         string         `mapstructure:"disk_snapshot_id" required:"false" cty:"disk_snapshot_id"`
-	Description        string         `mapstructure:"disk_description" required:"false" cty:"disk_description"`
-	DeleteWithInstance bool           `mapstructure:"disk_delete_with_instance" required:"false" cty:"disk_delete_with_instance"`
-	Device             string         `mapstructure:"disk_device" required:"false" cty:"disk_device"`
-	Encrypted          config.Trilean `mapstructure:"disk_encrypted" required:"false" cty:"disk_encrypted"`
+	DiskName           string         `mapstructure:"disk_name" required:"false" cty:"disk_name" hcl:"disk_name,optional"`
+	DiskCategory       string         `mapstructure:"disk_category" required:"false" cty:"disk_category" hcl:"disk_category,optional"`
+	DiskSize           int            `mapstructure:"disk_size" required:"false" cty:"disk_size" hcl:"disk_size,optional"`
+	SnapshotId         string         `mapstructure:"disk_snapshot_id" required:"false" cty:"disk_snapshot_id" hcl:"disk_snapshot_id,optional"`
+	Description        string         `mapstructure:"disk_description" required:"false" cty:"disk_description" hcl:"disk_description,optional"`
+	DeleteWithInstance bool           `mapstructure:"disk_delete_with_instance" required:"false" cty:"disk_delete_with_instance" hcl:"disk_delete_with_instance,optional"`
+	Device             string         `mapstructure:"disk_device" required:"false" cty:"disk_device" hcl:"disk_device,optional"`
+	Encrypted          config.Trilean `mapstructure:"disk_encrypted" required:"false" cty:"disk_encrypted" hcl:"disk_encrypted,optional"`
 }
 
 // FlatMapstructure returns a new FlatAlicloudDiskDevice.
@@ -45,96 +45,96 @@ func (*AlicloudDiskDevice) HCL2Spec() map[string]hcldec.Spec {
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName                   string               `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType                 string               `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                       bool                 `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                       bool                 `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError                     string               `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars                    map[string]string    `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars               []string             `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AlicloudAccessKey                 string               `mapstructure:"access_key" required:"true" cty:"access_key"`
-	AlicloudSecretKey                 string               `mapstructure:"secret_key" required:"true" cty:"secret_key"`
-	AlicloudRegion                    string               `mapstructure:"region" required:"true" cty:"region"`
-	AlicloudSkipValidation            bool                 `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
-	SecurityToken                     string               `mapstructure:"security_token" required:"false" cty:"security_token"`
-	AlicloudImageName                 string               `mapstructure:"image_name" required:"true" cty:"image_name"`
-	AlicloudImageVersion              string               `mapstructure:"image_version" required:"false" cty:"image_version"`
-	AlicloudImageDescription          string               `mapstructure:"image_description" required:"false" cty:"image_description"`
-	AlicloudImageShareAccounts        []string             `mapstructure:"image_share_account" required:"false" cty:"image_share_account"`
-	AlicloudImageUNShareAccounts      []string             `mapstructure:"image_unshare_account" cty:"image_unshare_account"`
-	AlicloudImageDestinationRegions   []string             `mapstructure:"image_copy_regions" required:"false" cty:"image_copy_regions"`
-	AlicloudImageDestinationNames     []string             `mapstructure:"image_copy_names" required:"false" cty:"image_copy_names"`
-	ImageEncrypted                    config.Trilean       `mapstructure:"image_encrypted" required:"false" cty:"image_encrypted"`
-	AlicloudImageForceDelete          bool                 `mapstructure:"image_force_delete" required:"false" cty:"image_force_delete"`
-	AlicloudImageForceDeleteSnapshots bool                 `mapstructure:"image_force_delete_snapshots" required:"false" cty:"image_force_delete_snapshots"`
-	AlicloudImageForceDeleteInstances bool                 `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances"`
-	AlicloudImageIgnoreDataDisks      bool                 `mapstructure:"image_ignore_data_disks" required:"false" cty:"image_ignore_data_disks"`
-	AlicloudImageSkipRegionValidation bool                 `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
-	AlicloudImageTags                 map[string]string    `mapstructure:"tags" required:"false" cty:"tags"`
-	ECSSystemDiskMapping              AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
-	ECSImagesDiskMappings             []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
-	AssociatePublicIpAddress          bool                 `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address"`
-	ZoneId                            string               `mapstructure:"zone_id" required:"false" cty:"zone_id"`
-	IOOptimized                       config.Trilean       `mapstructure:"io_optimized" required:"false" cty:"io_optimized"`
-	InstanceType                      string               `mapstructure:"instance_type" required:"true" cty:"instance_type"`
-	Description                       string               `mapstructure:"description" cty:"description"`
-	AlicloudSourceImage               string               `mapstructure:"source_image" required:"true" cty:"source_image"`
-	ForceStopInstance                 bool                 `mapstructure:"force_stop_instance" required:"false" cty:"force_stop_instance"`
-	DisableStopInstance               bool                 `mapstructure:"disable_stop_instance" required:"false" cty:"disable_stop_instance"`
-	SecurityGroupId                   string               `mapstructure:"security_group_id" required:"false" cty:"security_group_id"`
-	SecurityGroupName                 string               `mapstructure:"security_group_name" required:"false" cty:"security_group_name"`
-	UserData                          string               `mapstructure:"user_data" required:"false" cty:"user_data"`
-	UserDataFile                      string               `mapstructure:"user_data_file" required:"false" cty:"user_data_file"`
-	VpcId                             string               `mapstructure:"vpc_id" required:"false" cty:"vpc_id"`
-	VpcName                           string               `mapstructure:"vpc_name" required:"false" cty:"vpc_name"`
-	CidrBlock                         string               `mapstructure:"vpc_cidr_block" required:"false" cty:"vpc_cidr_block"`
-	VSwitchId                         string               `mapstructure:"vswitch_id" required:"false" cty:"vswitch_id"`
-	VSwitchName                       string               `mapstructure:"vswitch_name" required:"false" cty:"vswitch_name"`
-	InstanceName                      string               `mapstructure:"instance_name" required:"false" cty:"instance_name"`
-	InternetChargeType                string               `mapstructure:"internet_charge_type" required:"false" cty:"internet_charge_type"`
-	InternetMaxBandwidthOut           int                  `mapstructure:"internet_max_bandwidth_out" required:"false" cty:"internet_max_bandwidth_out"`
-	WaitSnapshotReadyTimeout          int                  `mapstructure:"wait_snapshot_ready_timeout" required:"false" cty:"wait_snapshot_ready_timeout"`
-	Type                              string               `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect                time.Duration        `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                           string               `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                           int                  `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername                       string               `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword                       string               `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName                    string               `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName           string               `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	SSHClearAuthorizedKeys            bool                 `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile                 string               `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                            bool                 `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                        time.Duration        `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth                      bool                 `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding         bool                 `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts              int                  `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost                    string               `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort                    int                  `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth               bool                 `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername                string               `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword                string               `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile          string               `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod             string               `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost                      string               `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort                      int                  `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername                  string               `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword                  string               `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval              time.Duration        `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout               time.Duration        `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
-	SSHRemoteTunnels                  []string             `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
-	SSHLocalTunnels                   []string             `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
-	SSHPublicKey                      []byte               `cty:"ssh_public_key"`
-	SSHPrivateKey                     []byte               `cty:"ssh_private_key"`
-	WinRMUser                         string               `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword                     string               `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                         string               `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                         int                  `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout                      time.Duration        `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL                       bool                 `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure                     bool                 `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM                      bool                 `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	SSHPrivateIp                      bool                 `mapstructure:"ssh_private_ip" required:"false" cty:"ssh_private_ip"`
+	PackerBuildName                   string               `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
+	PackerBuilderType                 string               `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
+	PackerDebug                       bool                 `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
+	PackerForce                       bool                 `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
+	PackerOnError                     string               `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
+	PackerUserVars                    map[string]string    `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
+	PackerSensitiveVars               []string             `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
+	AlicloudAccessKey                 string               `mapstructure:"access_key" required:"true" cty:"access_key" hcl:"access_key,optional"`
+	AlicloudSecretKey                 string               `mapstructure:"secret_key" required:"true" cty:"secret_key" hcl:"secret_key,optional"`
+	AlicloudRegion                    string               `mapstructure:"region" required:"true" cty:"region" hcl:"region,optional"`
+	AlicloudSkipValidation            bool                 `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
+	SecurityToken                     string               `mapstructure:"security_token" required:"false" cty:"security_token" hcl:"security_token,optional"`
+	AlicloudImageName                 string               `mapstructure:"image_name" required:"true" cty:"image_name" hcl:"image_name,optional"`
+	AlicloudImageVersion              string               `mapstructure:"image_version" required:"false" cty:"image_version" hcl:"image_version,optional"`
+	AlicloudImageDescription          string               `mapstructure:"image_description" required:"false" cty:"image_description" hcl:"image_description,optional"`
+	AlicloudImageShareAccounts        []string             `mapstructure:"image_share_account" required:"false" cty:"image_share_account" hcl:"image_share_account,optional"`
+	AlicloudImageUNShareAccounts      []string             `mapstructure:"image_unshare_account" cty:"image_unshare_account" hcl:"image_unshare_account,optional"`
+	AlicloudImageDestinationRegions   []string             `mapstructure:"image_copy_regions" required:"false" cty:"image_copy_regions" hcl:"image_copy_regions,optional"`
+	AlicloudImageDestinationNames     []string             `mapstructure:"image_copy_names" required:"false" cty:"image_copy_names" hcl:"image_copy_names,optional"`
+	ImageEncrypted                    config.Trilean       `mapstructure:"image_encrypted" required:"false" cty:"image_encrypted" hcl:"image_encrypted,optional"`
+	AlicloudImageForceDelete          bool                 `mapstructure:"image_force_delete" required:"false" cty:"image_force_delete" hcl:"image_force_delete,optional"`
+	AlicloudImageForceDeleteSnapshots bool                 `mapstructure:"image_force_delete_snapshots" required:"false" cty:"image_force_delete_snapshots" hcl:"image_force_delete_snapshots,optional"`
+	AlicloudImageForceDeleteInstances bool                 `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances" hcl:"image_force_delete_instances,optional"`
+	AlicloudImageIgnoreDataDisks      bool                 `mapstructure:"image_ignore_data_disks" required:"false" cty:"image_ignore_data_disks" hcl:"image_ignore_data_disks,optional"`
+	AlicloudImageSkipRegionValidation bool                 `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
+	AlicloudImageTags                 map[string]string    `mapstructure:"tags" required:"false" cty:"tags" hcl:"tags,optional"`
+	ECSSystemDiskMapping              AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping" hcl:"system_disk_mapping,optional"`
+	ECSImagesDiskMappings             []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings" hcl:"image_disk_mappings,optional"`
+	AssociatePublicIpAddress          bool                 `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address" hcl:"associate_public_ip_address,optional"`
+	ZoneId                            string               `mapstructure:"zone_id" required:"false" cty:"zone_id" hcl:"zone_id,optional"`
+	IOOptimized                       config.Trilean       `mapstructure:"io_optimized" required:"false" cty:"io_optimized" hcl:"io_optimized,optional"`
+	InstanceType                      string               `mapstructure:"instance_type" required:"true" cty:"instance_type" hcl:"instance_type,optional"`
+	Description                       string               `mapstructure:"description" cty:"description" hcl:"description,optional"`
+	AlicloudSourceImage               string               `mapstructure:"source_image" required:"true" cty:"source_image" hcl:"source_image,optional"`
+	ForceStopInstance                 bool                 `mapstructure:"force_stop_instance" required:"false" cty:"force_stop_instance" hcl:"force_stop_instance,optional"`
+	DisableStopInstance               bool                 `mapstructure:"disable_stop_instance" required:"false" cty:"disable_stop_instance" hcl:"disable_stop_instance,optional"`
+	SecurityGroupId                   string               `mapstructure:"security_group_id" required:"false" cty:"security_group_id" hcl:"security_group_id,optional"`
+	SecurityGroupName                 string               `mapstructure:"security_group_name" required:"false" cty:"security_group_name" hcl:"security_group_name,optional"`
+	UserData                          string               `mapstructure:"user_data" required:"false" cty:"user_data" hcl:"user_data,optional"`
+	UserDataFile                      string               `mapstructure:"user_data_file" required:"false" cty:"user_data_file" hcl:"user_data_file,optional"`
+	VpcId                             string               `mapstructure:"vpc_id" required:"false" cty:"vpc_id" hcl:"vpc_id,optional"`
+	VpcName                           string               `mapstructure:"vpc_name" required:"false" cty:"vpc_name" hcl:"vpc_name,optional"`
+	CidrBlock                         string               `mapstructure:"vpc_cidr_block" required:"false" cty:"vpc_cidr_block" hcl:"vpc_cidr_block,optional"`
+	VSwitchId                         string               `mapstructure:"vswitch_id" required:"false" cty:"vswitch_id" hcl:"vswitch_id,optional"`
+	VSwitchName                       string               `mapstructure:"vswitch_name" required:"false" cty:"vswitch_name" hcl:"vswitch_name,optional"`
+	InstanceName                      string               `mapstructure:"instance_name" required:"false" cty:"instance_name" hcl:"instance_name,optional"`
+	InternetChargeType                string               `mapstructure:"internet_charge_type" required:"false" cty:"internet_charge_type" hcl:"internet_charge_type,optional"`
+	InternetMaxBandwidthOut           int                  `mapstructure:"internet_max_bandwidth_out" required:"false" cty:"internet_max_bandwidth_out" hcl:"internet_max_bandwidth_out,optional"`
+	WaitSnapshotReadyTimeout          int                  `mapstructure:"wait_snapshot_ready_timeout" required:"false" cty:"wait_snapshot_ready_timeout" hcl:"wait_snapshot_ready_timeout,optional"`
+	Type                              string               `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
+	PauseBeforeConnect                time.Duration        `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
+	SSHHost                           string               `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
+	SSHPort                           int                  `mapstructure:"ssh_port" cty:"ssh_port" hcl:"ssh_port,optional"`
+	SSHUsername                       string               `mapstructure:"ssh_username" cty:"ssh_username" hcl:"ssh_username,optional"`
+	SSHPassword                       string               `mapstructure:"ssh_password" cty:"ssh_password" hcl:"ssh_password,optional"`
+	SSHKeyPairName                    string               `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name" hcl:"ssh_keypair_name,optional"`
+	SSHTemporaryKeyPairName           string               `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name" hcl:"temporary_key_pair_name,optional"`
+	SSHClearAuthorizedKeys            bool                 `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys" hcl:"ssh_clear_authorized_keys,optional"`
+	SSHPrivateKeyFile                 string               `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file" hcl:"ssh_private_key_file,optional"`
+	SSHPty                            bool                 `mapstructure:"ssh_pty" cty:"ssh_pty" hcl:"ssh_pty,optional"`
+	SSHTimeout                        time.Duration        `mapstructure:"ssh_timeout" cty:"ssh_timeout" hcl:"ssh_timeout,optional"`
+	SSHAgentAuth                      bool                 `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth" hcl:"ssh_agent_auth,optional"`
+	SSHDisableAgentForwarding         bool                 `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding" hcl:"ssh_disable_agent_forwarding,optional"`
+	SSHHandshakeAttempts              int                  `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts" hcl:"ssh_handshake_attempts,optional"`
+	SSHBastionHost                    string               `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host" hcl:"ssh_bastion_host,optional"`
+	SSHBastionPort                    int                  `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port" hcl:"ssh_bastion_port,optional"`
+	SSHBastionAgentAuth               bool                 `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth" hcl:"ssh_bastion_agent_auth,optional"`
+	SSHBastionUsername                string               `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username" hcl:"ssh_bastion_username,optional"`
+	SSHBastionPassword                string               `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password" hcl:"ssh_bastion_password,optional"`
+	SSHBastionPrivateKeyFile          string               `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file" hcl:"ssh_bastion_private_key_file,optional"`
+	SSHFileTransferMethod             string               `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method" hcl:"ssh_file_transfer_method,optional"`
+	SSHProxyHost                      string               `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host" hcl:"ssh_proxy_host,optional"`
+	SSHProxyPort                      int                  `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port" hcl:"ssh_proxy_port,optional"`
+	SSHProxyUsername                  string               `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username" hcl:"ssh_proxy_username,optional"`
+	SSHProxyPassword                  string               `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password" hcl:"ssh_proxy_password,optional"`
+	SSHKeepAliveInterval              time.Duration        `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval" hcl:"ssh_keep_alive_interval,optional"`
+	SSHReadWriteTimeout               time.Duration        `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout" hcl:"ssh_read_write_timeout,optional"`
+	SSHRemoteTunnels                  []string             `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels" hcl:"ssh_remote_tunnels,optional"`
+	SSHLocalTunnels                   []string             `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels" hcl:"ssh_local_tunnels,optional"`
+	SSHPublicKey                      []byte               `cty:"ssh_public_key" hcl:"ssh_public_key,optional"`
+	SSHPrivateKey                     []byte               `cty:"ssh_private_key" hcl:"ssh_private_key,optional"`
+	WinRMUser                         string               `mapstructure:"winrm_username" cty:"winrm_username" hcl:"winrm_username,optional"`
+	WinRMPassword                     string               `mapstructure:"winrm_password" cty:"winrm_password" hcl:"winrm_password,optional"`
+	WinRMHost                         string               `mapstructure:"winrm_host" cty:"winrm_host" hcl:"winrm_host,optional"`
+	WinRMPort                         int                  `mapstructure:"winrm_port" cty:"winrm_port" hcl:"winrm_port,optional"`
+	WinRMTimeout                      time.Duration        `mapstructure:"winrm_timeout" cty:"winrm_timeout" hcl:"winrm_timeout,optional"`
+	WinRMUseSSL                       bool                 `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl" hcl:"winrm_use_ssl,optional"`
+	WinRMInsecure                     bool                 `mapstructure:"winrm_insecure" cty:"winrm_insecure" hcl:"winrm_insecure,optional"`
+	WinRMUseNTLM                      bool                 `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm" hcl:"winrm_use_ntlm,optional"`
+	SSHPrivateIp                      bool                 `mapstructure:"ssh_private_ip" required:"false" cty:"ssh_private_ip" hcl:"ssh_private_ip,optional"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

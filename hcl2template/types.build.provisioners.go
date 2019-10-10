@@ -3,16 +3,18 @@ package hcl2template
 import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
-	"github.com/hashicorp/hcl/v2/hcldec"
-	"github.com/zclconf/go-cty/cty"
-	"github.com/zclconf/go-cty/cty/gocty"
-	"github.com/zclconf/go-cty/cty/json"
 )
+
+// Provisioner represents a parsed provisioner
+type Provisioner struct {
+	// Cfg is a parsed config
+	Cfg interface{}
+}
 
 type ProvisionerGroup struct {
 	CommunicatorRef CommunicatorRef
 
-	Provisioners []cty.Value
+	Provisioners []Provisioner
 	HCL2Ref      HCL2Ref
 }
 
@@ -48,23 +50,22 @@ func (p *Parser) decodeProvisionerGroup(block *hcl.Block, provisionerSpecs map[s
 		if !found {
 			continue
 		}
-		spec := provisioner.HCL2Spec()
-		cv, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
-		bytes, err := json.SimpleJSONValue{cv}.MarshalJSON()
-		if err != nil {
-			panic("TODO(azr): error properly")
-		}
-		str := string(bytes)
-		_ = str
+		flatProvisinerCfg := provisioner.FlatMapstructure()
+
+		// val, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
+		// diags = append(diags, moreDiags...)
+
+		moreDiags := gohcl.DecodeBody(block.Body, nil, flatProvisinerCfg)
 		diags = append(diags, moreDiags...)
-		err = gocty.FromCtyValue(cv, provisioner)
-		if err != nil {
-			diags = append(diags, &hcl.Diagnostic{
-				Summary: err.Error(),
-				Subject: &block.DefRange,
-			})
-		}
-		pg.Provisioners = append(pg.Provisioners, cv)
+
+		// err := gocty.FromCtyValue(val, flatProvisinerCfg)
+		// if err != nil {
+		// 	diags = append(diags, &hcl.Diagnostic{
+		// 		Summary: "gocty.FromCtyValue: " + err.Error(),
+		// 		Subject: &block.DefRange,
+		// 	})
+		// }
+		pg.Provisioners = append(pg.Provisioners, Provisioner{flatProvisinerCfg})
 	}
 
 	return pg, diags
