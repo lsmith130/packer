@@ -78,6 +78,7 @@ func TestParser_ParseFile(t *testing.T) {
 							RawSingleISOUrl: "http://releases.ubuntu.com/12.04/ubuntu-12.04.5-server-amd64.iso",
 							BootCommand:     []string{"..."},
 							ShutdownCommand: "echo 'vagrant' | sudo -S shutdown -P now",
+							RawBootWait:     "10s",
 						},
 					},
 					SourceRef{
@@ -143,6 +144,7 @@ func TestParser_ParseFile(t *testing.T) {
 							RawSingleISOUrl: "http://releases.ubuntu.com/12.04/ubuntu-12.04.5-server-amd64.iso",
 							BootCommand:     []string{"..."},
 							ShutdownCommand: "echo 'vagrant' | sudo -S shutdown -P now",
+							RawBootWait:     "10s",
 						},
 					},
 					SourceRef{
