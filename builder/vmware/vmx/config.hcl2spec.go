@@ -27,10 +27,8 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	DisableVNC                bool              `mapstructure:"disable_vnc" cty:"disable_vnc" hcl:"disable_vnc,optional"`
 	RawBootKeyInterval        string            `mapstructure:"boot_key_interval" cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
-	BootKeyInterval           time.Duration     `cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
 	FusionAppPath             string            `mapstructure:"fusion_app_path" required:"false" cty:"fusion_app_path" hcl:"fusion_app_path,optional"`
 	RemoteType                string            `mapstructure:"remote_type" required:"false" cty:"remote_type" hcl:"remote_type,optional"`
 	RemoteDatastore           string            `mapstructure:"remote_datastore" required:"false" cty:"remote_datastore" hcl:"remote_datastore,optional"`
@@ -50,7 +48,6 @@ type FlatConfig struct {
 	VNCDisablePassword        bool              `mapstructure:"vnc_disable_password" required:"false" cty:"vnc_disable_password" hcl:"vnc_disable_password,optional"`
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
@@ -135,10 +132,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"DisableVNC":                &hcldec.AttrSpec{Name: "disable_vnc", Type: cty.Bool, Required: false},
 		"RawBootKeyInterval":        &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
-		"BootKeyInterval":           &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
 		"FusionAppPath":             &hcldec.AttrSpec{Name: "fusion_app_path", Type: cty.String, Required: false},
 		"RemoteType":                &hcldec.AttrSpec{Name: "remote_type", Type: cty.String, Required: false},
 		"RemoteDatastore":           &hcldec.AttrSpec{Name: "remote_datastore", Type: cty.String, Required: false},
@@ -158,7 +153,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"VNCDisablePassword":        &hcldec.AttrSpec{Name: "vnc_disable_password", Type: cty.Bool, Required: false},
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"ShutdownTimeout":           &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
 		"SSHHost":                   &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},

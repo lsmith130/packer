@@ -36,7 +36,6 @@ type FlatConfig struct {
 	AlicloudImageForceDeleteSnapshots bool                     `mapstructure:"image_force_delete_snapshots" required:"false" cty:"image_force_delete_snapshots" hcl:"image_force_delete_snapshots,optional"`
 	AlicloudImageForceDeleteInstances bool                     `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances" hcl:"image_force_delete_instances,optional"`
 	AlicloudImageIgnoreDataDisks      bool                     `mapstructure:"image_ignore_data_disks" required:"false" cty:"image_ignore_data_disks" hcl:"image_ignore_data_disks,optional"`
-	AlicloudImageSkipRegionValidation bool                     `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
 	AlicloudImageTags                 map[string]string        `mapstructure:"tags" required:"false" cty:"tags" hcl:"tags,optional"`
 	ECSSystemDiskMapping              ecs.AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping" hcl:"system_disk_mapping,optional"`
 	ECSImagesDiskMappings             []ecs.AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings" hcl:"image_disk_mappings,optional"`
@@ -146,7 +145,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AlicloudImageForceDeleteSnapshots": &hcldec.AttrSpec{Name: "image_force_delete_snapshots", Type: cty.Bool, Required: false},
 		"AlicloudImageForceDeleteInstances": &hcldec.AttrSpec{Name: "image_force_delete_instances", Type: cty.Bool, Required: false},
 		"AlicloudImageIgnoreDataDisks":      &hcldec.AttrSpec{Name: "image_ignore_data_disks", Type: cty.Bool, Required: false},
-		"AlicloudImageSkipRegionValidation": &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"AlicloudImageTags":                 &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
 		"ECSSystemDiskMapping":              &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())},
 		"ECSImagesDiskMappings":             &hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},

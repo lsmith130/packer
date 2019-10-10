@@ -39,7 +39,6 @@ type FlatConfig struct {
 	ProfileName             string                  `mapstructure:"profile" cty:"profile" hcl:"profile,optional"`
 	RawRegion               string                  `mapstructure:"region" cty:"region" hcl:"region,optional"`
 	SecretKey               string                  `mapstructure:"secret_key" cty:"secret_key" hcl:"secret_key,optional"`
-	SkipValidation          bool                    `mapstructure:"skip_region_validation" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
 	SkipMetadataApiCheck    bool                    `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check" hcl:"skip_metadata_api_check,optional"`
 	Token                   string                  `mapstructure:"token" cty:"token" hcl:"token,optional"`
 	ChrootMounts            [][]string              `mapstructure:"chroot_mounts" cty:"chroot_mounts" hcl:"chroot_mounts,optional"`
@@ -99,7 +98,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ProfileName":             &hcldec.AttrSpec{Name: "profile", Type: cty.String, Required: false},
 		"RawRegion":               &hcldec.AttrSpec{Name: "region", Type: cty.String, Required: false},
 		"SecretKey":               &hcldec.AttrSpec{Name: "secret_key", Type: cty.String, Required: false},
-		"SkipValidation":          &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"SkipMetadataApiCheck":    &hcldec.AttrSpec{Name: "skip_metadata_api_check", Type: cty.Bool, Required: false},
 		"Token":                   &hcldec.AttrSpec{Name: "token", Type: cty.String, Required: false},
 		"ChrootMounts":            nil, // slice ([][]string),

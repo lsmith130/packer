@@ -34,7 +34,6 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
@@ -82,7 +81,6 @@ type FlatConfig struct {
 	ChecksumType              string            `mapstructure:"checksum_type" required:"false" cty:"checksum_type" hcl:"checksum_type,optional"`
 	BoxName                   string            `mapstructure:"box_name" required:"false" cty:"box_name" hcl:"box_name,optional"`
 	Provider                  string            `mapstructure:"provider" required:"false" cty:"provider" hcl:"provider,optional"`
-	Communicator              string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	VagrantfileTpl            string            `mapstructure:"vagrantfile_template" cty:"vagrantfile_template" hcl:"vagrantfile_template,optional"`
 	TeardownMethod            string            `mapstructure:"teardown_method" required:"false" cty:"teardown_method" hcl:"teardown_method,optional"`
 	BoxVersion                string            `mapstructure:"box_version" required:"false" cty:"box_version" hcl:"box_version,optional"`
@@ -133,7 +131,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
 		"SSHHost":                   &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},
@@ -181,7 +178,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ChecksumType":              &hcldec.AttrSpec{Name: "checksum_type", Type: cty.String, Required: false},
 		"BoxName":                   &hcldec.AttrSpec{Name: "box_name", Type: cty.String, Required: false},
 		"Provider":                  &hcldec.AttrSpec{Name: "provider", Type: cty.String, Required: false},
-		"Communicator":              &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"VagrantfileTpl":            &hcldec.AttrSpec{Name: "vagrantfile_template", Type: cty.String, Required: false},
 		"TeardownMethod":            &hcldec.AttrSpec{Name: "teardown_method", Type: cty.String, Required: false},
 		"BoxVersion":                &hcldec.AttrSpec{Name: "box_version", Type: cty.String, Required: false},

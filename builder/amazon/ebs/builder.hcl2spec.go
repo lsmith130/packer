@@ -38,7 +38,6 @@ type FlatConfig struct {
 	AMIGroups                         []string                          `mapstructure:"ami_groups" required:"false" cty:"ami_groups" hcl:"ami_groups,optional"`
 	AMIProductCodes                   []string                          `mapstructure:"ami_product_codes" required:"false" cty:"ami_product_codes" hcl:"ami_product_codes,optional"`
 	AMIRegions                        []string                          `mapstructure:"ami_regions" required:"false" cty:"ami_regions" hcl:"ami_regions,optional"`
-	AMISkipRegionValidation           bool                              `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
 	AMITags                           common.TagMap                     `mapstructure:"tags" required:"false" cty:"tags" hcl:"tags,optional"`
 	AMIENASupport                     config.Trilean                    `mapstructure:"ena_support" required:"false" cty:"ena_support" hcl:"ena_support,optional"`
 	AMISriovNetSupport                bool                              `mapstructure:"sriov_support" required:"false" cty:"sriov_support" hcl:"sriov_support,optional"`
@@ -86,7 +85,6 @@ type FlatConfig struct {
 	SSHUsername                       string                            `mapstructure:"ssh_username" cty:"ssh_username" hcl:"ssh_username,optional"`
 	SSHPassword                       string                            `mapstructure:"ssh_password" cty:"ssh_password" hcl:"ssh_password,optional"`
 	SSHKeyPairName                    string                            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name" hcl:"ssh_keypair_name,optional"`
-	SSHTemporaryKeyPairName           string                            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name" hcl:"temporary_key_pair_name,optional"`
 	SSHClearAuthorizedKeys            bool                              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys" hcl:"ssh_clear_authorized_keys,optional"`
 	SSHPrivateKeyFile                 string                            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file" hcl:"ssh_private_key_file,optional"`
 	SSHPty                            bool                              `mapstructure:"ssh_pty" cty:"ssh_pty" hcl:"ssh_pty,optional"`
@@ -160,7 +158,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"AMIGroups":                         &hcldec.AttrSpec{Name: "ami_groups", Type: cty.List(cty.String), Required: false},
 		"AMIProductCodes":                   &hcldec.AttrSpec{Name: "ami_product_codes", Type: cty.List(cty.String), Required: false},
 		"AMIRegions":                        &hcldec.AttrSpec{Name: "ami_regions", Type: cty.List(cty.String), Required: false},
-		"AMISkipRegionValidation":           &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"AMITags":                           &hcldec.BlockAttrsSpec{TypeName: "common.TagMap", ElementType: cty.String, Required: false},
 		"AMIENASupport":                     &hcldec.AttrSpec{Name: "config.Trilean", Type: cty.Number, Required: false},
 		"AMISriovNetSupport":                &hcldec.AttrSpec{Name: "sriov_support", Type: cty.Bool, Required: false},
@@ -208,7 +205,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"SSHUsername":                       &hcldec.AttrSpec{Name: "ssh_username", Type: cty.String, Required: false},
 		"SSHPassword":                       &hcldec.AttrSpec{Name: "ssh_password", Type: cty.String, Required: false},
 		"SSHKeyPairName":                    &hcldec.AttrSpec{Name: "ssh_keypair_name", Type: cty.String, Required: false},
-		"SSHTemporaryKeyPairName":           &hcldec.AttrSpec{Name: "temporary_key_pair_name", Type: cty.String, Required: false},
 		"SSHClearAuthorizedKeys":            &hcldec.AttrSpec{Name: "ssh_clear_authorized_keys", Type: cty.Bool, Required: false},
 		"SSHPrivateKeyFile":                 &hcldec.AttrSpec{Name: "ssh_private_key_file", Type: cty.String, Required: false},
 		"SSHPty":                            &hcldec.AttrSpec{Name: "ssh_pty", Type: cty.Bool, Required: false},

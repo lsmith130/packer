@@ -4,7 +4,6 @@ package shell
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -27,7 +26,6 @@ type FlatConfig struct {
 	Vars                 []string          `mapstructure:"environment_vars" cty:"environment_vars" hcl:"environment_vars,optional"`
 	InlineShebang        string            `mapstructure:"inline_shebang" cty:"inline_shebang" hcl:"inline_shebang,optional"`
 	RawPauseAfter        string            `mapstructure:"pause_after" cty:"pause_after" hcl:"pause_after,optional"`
-	PauseAfter           time.Duration     `cty:"pause_after" hcl:"pause_after,optional"`
 	UseEnvVarFile        bool              `mapstructure:"use_env_var_file" cty:"use_env_var_file" hcl:"use_env_var_file,optional"`
 	RemoteFolder         string            `mapstructure:"remote_folder" cty:"remote_folder" hcl:"remote_folder,optional"`
 	RemoteFile           string            `mapstructure:"remote_file" cty:"remote_file" hcl:"remote_file,optional"`
@@ -62,7 +60,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Vars":                 &hcldec.AttrSpec{Name: "environment_vars", Type: cty.List(cty.String), Required: false},
 		"InlineShebang":        &hcldec.AttrSpec{Name: "inline_shebang", Type: cty.String, Required: false},
 		"RawPauseAfter":        &hcldec.AttrSpec{Name: "pause_after", Type: cty.String, Required: false},
-		"PauseAfter":           &hcldec.AttrSpec{Name: "pause_after", Type: cty.String, Required: false},
 		"UseEnvVarFile":        &hcldec.AttrSpec{Name: "use_env_var_file", Type: cty.Bool, Required: false},
 		"RemoteFolder":         &hcldec.AttrSpec{Name: "remote_folder", Type: cty.String, Required: false},
 		"RemoteFile":           &hcldec.AttrSpec{Name: "remote_file", Type: cty.String, Required: false},

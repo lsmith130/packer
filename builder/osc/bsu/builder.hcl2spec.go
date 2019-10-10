@@ -35,7 +35,6 @@ type FlatConfig struct {
 	OMIGroups                   []string                          `mapstructure:"omi_groups" cty:"omi_groups" hcl:"omi_groups,optional"`
 	OMIProductCodes             []string                          `mapstructure:"omi_product_codes" cty:"omi_product_codes" hcl:"omi_product_codes,optional"`
 	OMIRegions                  []string                          `mapstructure:"omi_regions" cty:"omi_regions" hcl:"omi_regions,optional"`
-	OMISkipRegionValidation     bool                              `mapstructure:"skip_region_validation" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
 	OMITags                     common.TagMap                     `mapstructure:"tags" cty:"tags" hcl:"tags,optional"`
 	OMIForceDeregister          bool                              `mapstructure:"force_deregister" cty:"force_deregister" hcl:"force_deregister,optional"`
 	OMIForceDeleteSnapshot      bool                              `mapstructure:"force_delete_snapshot" cty:"force_delete_snapshot" hcl:"force_delete_snapshot,optional"`
@@ -78,7 +77,6 @@ type FlatConfig struct {
 	SSHUsername                 string                            `mapstructure:"ssh_username" cty:"ssh_username" hcl:"ssh_username,optional"`
 	SSHPassword                 string                            `mapstructure:"ssh_password" cty:"ssh_password" hcl:"ssh_password,optional"`
 	SSHKeyPairName              string                            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name" hcl:"ssh_keypair_name,optional"`
-	SSHTemporaryKeyPairName     string                            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name" hcl:"temporary_key_pair_name,optional"`
 	SSHClearAuthorizedKeys      bool                              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys" hcl:"ssh_clear_authorized_keys,optional"`
 	SSHPrivateKeyFile           string                            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file" hcl:"ssh_private_key_file,optional"`
 	SSHPty                      bool                              `mapstructure:"ssh_pty" cty:"ssh_pty" hcl:"ssh_pty,optional"`
@@ -148,7 +146,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"OMIGroups":                   &hcldec.AttrSpec{Name: "omi_groups", Type: cty.List(cty.String), Required: false},
 		"OMIProductCodes":             &hcldec.AttrSpec{Name: "omi_product_codes", Type: cty.List(cty.String), Required: false},
 		"OMIRegions":                  &hcldec.AttrSpec{Name: "omi_regions", Type: cty.List(cty.String), Required: false},
-		"OMISkipRegionValidation":     &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"OMITags":                     &hcldec.BlockAttrsSpec{TypeName: "common.TagMap", ElementType: cty.String, Required: false},
 		"OMIForceDeregister":          &hcldec.AttrSpec{Name: "force_deregister", Type: cty.Bool, Required: false},
 		"OMIForceDeleteSnapshot":      &hcldec.AttrSpec{Name: "force_delete_snapshot", Type: cty.Bool, Required: false},
@@ -191,7 +188,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"SSHUsername":                 &hcldec.AttrSpec{Name: "ssh_username", Type: cty.String, Required: false},
 		"SSHPassword":                 &hcldec.AttrSpec{Name: "ssh_password", Type: cty.String, Required: false},
 		"SSHKeyPairName":              &hcldec.AttrSpec{Name: "ssh_keypair_name", Type: cty.String, Required: false},
-		"SSHTemporaryKeyPairName":     &hcldec.AttrSpec{Name: "temporary_key_pair_name", Type: cty.String, Required: false},
 		"SSHClearAuthorizedKeys":      &hcldec.AttrSpec{Name: "ssh_clear_authorized_keys", Type: cty.Bool, Required: false},
 		"SSHPrivateKeyFile":           &hcldec.AttrSpec{Name: "ssh_private_key_file", Type: cty.String, Required: false},
 		"SSHPty":                      &hcldec.AttrSpec{Name: "ssh_pty", Type: cty.Bool, Required: false},

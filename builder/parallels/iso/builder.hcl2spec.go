@@ -34,7 +34,6 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory" hcl:"output_directory,optional"`
 	CpuCount                  int               `mapstructure:"cpus" required:"false" cty:"cpus" hcl:"cpus,optional"`
 	MemorySize                int               `mapstructure:"memory" required:"false" cty:"memory" hcl:"memory,optional"`
@@ -45,7 +44,6 @@ type FlatConfig struct {
 	PrlctlVersionFile         string            `mapstructure:"prlctl_version_file" required:"false" cty:"prlctl_version_file" hcl:"prlctl_version_file,optional"`
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
@@ -132,7 +130,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"OutputDir":                 &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
 		"CpuCount":                  &hcldec.AttrSpec{Name: "cpus", Type: cty.Number, Required: false},
 		"MemorySize":                &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
@@ -143,7 +140,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"PrlctlVersionFile":         &hcldec.AttrSpec{Name: "prlctl_version_file", Type: cty.String, Required: false},
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"ShutdownTimeout":           &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
 		"SSHHost":                   &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},

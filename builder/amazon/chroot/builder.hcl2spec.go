@@ -46,7 +46,6 @@ type FlatConfig struct {
 	ProfileName             string                       `mapstructure:"profile" required:"false" cty:"profile" hcl:"profile,optional"`
 	RawRegion               string                       `mapstructure:"region" required:"true" cty:"region" hcl:"region,optional"`
 	SecretKey               string                       `mapstructure:"secret_key" required:"true" cty:"secret_key" hcl:"secret_key,optional"`
-	SkipValidation          bool                         `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation,optional"`
 	SkipMetadataApiCheck    bool                         `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check" hcl:"skip_metadata_api_check,optional"`
 	Token                   string                       `mapstructure:"token" required:"false" cty:"token" hcl:"token,optional"`
 	VaultAWSEngine          common.VaultAWSEngineOptions `mapstructure:"vault_aws_engine" required:"false" cty:"vault_aws_engine" hcl:"vault_aws_engine,optional"`
@@ -115,7 +114,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ProfileName":             &hcldec.AttrSpec{Name: "profile", Type: cty.String, Required: false},
 		"RawRegion":               &hcldec.AttrSpec{Name: "region", Type: cty.String, Required: false},
 		"SecretKey":               &hcldec.AttrSpec{Name: "secret_key", Type: cty.String, Required: false},
-		"SkipValidation":          &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"SkipMetadataApiCheck":    &hcldec.AttrSpec{Name: "skip_metadata_api_check", Type: cty.Bool, Required: false},
 		"Token":                   &hcldec.AttrSpec{Name: "token", Type: cty.String, Required: false},
 		"VaultAWSEngine":          &hcldec.BlockObjectSpec{TypeName: "common.VaultAWSEngineOptions", Nested: hcldec.ObjectSpec((*common.VaultAWSEngineOptions)(nil).HCL2Spec())},

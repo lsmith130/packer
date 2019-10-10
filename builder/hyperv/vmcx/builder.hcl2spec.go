@@ -34,7 +34,6 @@ type FlatConfig struct {
 	RawBootWait                    string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand                    []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval              time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                       time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	OutputDir                      string            `mapstructure:"output_directory" required:"false" cty:"output_directory" hcl:"output_directory,optional"`
 	Type                           string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	PauseBeforeConnect             time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
@@ -78,7 +77,6 @@ type FlatConfig struct {
 	WinRMUseNTLM                   bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm" hcl:"winrm_use_ntlm,optional"`
 	ShutdownCommand                string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
 	RawShutdownTimeout             string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	ShutdownTimeout                time.Duration     `cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
 	RamSize                        uint              `mapstructure:"memory" required:"false" cty:"memory" hcl:"memory,optional"`
 	SecondaryDvdImages             []string          `mapstructure:"secondary_iso_images" required:"false" cty:"secondary_iso_images" hcl:"secondary_iso_images,optional"`
 	GuestAdditionsMode             string            `mapstructure:"guest_additions_mode" required:"false" cty:"guest_additions_mode" hcl:"guest_additions_mode,optional"`
@@ -104,7 +102,6 @@ type FlatConfig struct {
 	TempPath                       string            `mapstructure:"temp_path" required:"false" cty:"temp_path" hcl:"temp_path,optional"`
 	Version                        string            `mapstructure:"configuration_version" required:"false" cty:"configuration_version" hcl:"configuration_version,optional"`
 	KeepRegistered                 bool              `mapstructure:"keep_registered" required:"false" cty:"keep_registered" hcl:"keep_registered,optional"`
-	Communicator                   string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	SkipCompaction                 bool              `mapstructure:"skip_compaction" required:"false" cty:"skip_compaction" hcl:"skip_compaction,optional"`
 	SkipExport                     bool              `mapstructure:"skip_export" required:"false" cty:"skip_export" hcl:"skip_export,optional"`
 	Headless                       bool              `mapstructure:"headless" required:"false" cty:"headless" hcl:"headless,optional"`
@@ -143,7 +140,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":                    &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":              &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                       &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"OutputDir":                      &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
 		"Type":                           &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":             &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
@@ -187,7 +183,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"WinRMUseNTLM":                   &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
 		"ShutdownCommand":                &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"ShutdownTimeout":                &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"RamSize":                        &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"SecondaryDvdImages":             &hcldec.AttrSpec{Name: "secondary_iso_images", Type: cty.List(cty.String), Required: false},
 		"GuestAdditionsMode":             &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
@@ -213,7 +208,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"TempPath":                       &hcldec.AttrSpec{Name: "temp_path", Type: cty.String, Required: false},
 		"Version":                        &hcldec.AttrSpec{Name: "configuration_version", Type: cty.String, Required: false},
 		"KeepRegistered":                 &hcldec.AttrSpec{Name: "keep_registered", Type: cty.Bool, Required: false},
-		"Communicator":                   &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"SkipCompaction":                 &hcldec.AttrSpec{Name: "skip_compaction", Type: cty.Bool, Required: false},
 		"SkipExport":                     &hcldec.AttrSpec{Name: "skip_export", Type: cty.Bool, Required: false},
 		"Headless":                       &hcldec.AttrSpec{Name: "headless", Type: cty.Bool, Required: false},

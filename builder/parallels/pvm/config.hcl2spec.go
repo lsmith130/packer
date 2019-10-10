@@ -67,12 +67,10 @@ type FlatConfig struct {
 	SSHWaitTimeout            time.Duration     `mapstructure:"ssh_wait_timeout" cty:"ssh_wait_timeout" hcl:"ssh_wait_timeout,optional"`
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
 	RawBootGroupInterval      string            `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval" hcl:"boot_keygroup_interval,optional"`
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	ParallelsToolsFlavor      string            `mapstructure:"parallels_tools_flavor" required:"true" cty:"parallels_tools_flavor" hcl:"parallels_tools_flavor,optional"`
 	ParallelsToolsGuestPath   string            `mapstructure:"parallels_tools_guest_path" required:"false" cty:"parallels_tools_guest_path" hcl:"parallels_tools_guest_path,optional"`
 	ParallelsToolsMode        string            `mapstructure:"parallels_tools_mode" required:"false" cty:"parallels_tools_mode" hcl:"parallels_tools_mode,optional"`
@@ -148,12 +146,10 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"SSHWaitTimeout":            &hcldec.AttrSpec{Name: "ssh_wait_timeout", Type: cty.String, Required: false},
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"ShutdownTimeout":           &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"RawBootGroupInterval":      &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"ParallelsToolsFlavor":      &hcldec.AttrSpec{Name: "parallels_tools_flavor", Type: cty.String, Required: false},
 		"ParallelsToolsGuestPath":   &hcldec.AttrSpec{Name: "parallels_tools_guest_path", Type: cty.String, Required: false},
 		"ParallelsToolsMode":        &hcldec.AttrSpec{Name: "parallels_tools_mode", Type: cty.String, Required: false},

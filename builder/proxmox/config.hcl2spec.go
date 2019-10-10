@@ -24,9 +24,7 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	RawBootKeyInterval        string            `mapstructure:"boot_key_interval" cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
-	BootKeyInterval           time.Duration     `cty:"boot_key_interval" hcl:"boot_key_interval,optional"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
@@ -111,9 +109,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"RawBootKeyInterval":        &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
-		"BootKeyInterval":           &hcldec.AttrSpec{Name: "boot_key_interval", Type: cty.String, Required: false},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
 		"SSHHost":                   &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},

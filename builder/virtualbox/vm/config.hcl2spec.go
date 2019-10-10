@@ -27,7 +27,6 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	BootWait                  time.Duration     `cty:"boot_wait" hcl:"boot_wait,optional"`
 	Format                    string            `mapstructure:"format" required:"false" cty:"format" hcl:"format,optional"`
 	ExportOpts                []string          `mapstructure:"export_opts" required:"false" cty:"export_opts" hcl:"export_opts,optional"`
 	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory" hcl:"output_directory,optional"`
@@ -82,11 +81,8 @@ type FlatConfig struct {
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
 	RawPostShutdownDelay      string            `mapstructure:"post_shutdown_delay" required:"false" cty:"post_shutdown_delay" hcl:"post_shutdown_delay,optional"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	PostShutdownDelay         time.Duration     `cty:"post_shutdown_delay" hcl:"post_shutdown_delay,optional"`
 	VBoxManage                [][]string        `mapstructure:"vboxmanage" required:"false" cty:"vboxmanage" hcl:"vboxmanage,optional"`
 	VBoxManagePost            [][]string        `mapstructure:"vboxmanage_post" required:"false" cty:"vboxmanage_post" hcl:"vboxmanage_post,optional"`
-	Communicator              string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
 	VBoxVersionFile           *string           `mapstructure:"virtualbox_version_file" required:"false" cty:"virtualbox_version_file" hcl:"virtualbox_version_file,optional"`
 	GuestAdditionsMode        string            `mapstructure:"guest_additions_mode" cty:"guest_additions_mode" hcl:"guest_additions_mode,optional"`
 	GuestAdditionsPath        string            `mapstructure:"guest_additions_path" cty:"guest_additions_path" hcl:"guest_additions_path,optional"`
@@ -126,7 +122,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"BootWait":                  &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"Format":                    &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
 		"ExportOpts":                &hcldec.AttrSpec{Name: "export_opts", Type: cty.List(cty.String), Required: false},
 		"OutputDir":                 &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
@@ -181,11 +176,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"RawPostShutdownDelay":      &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
-		"ShutdownTimeout":           &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"PostShutdownDelay":         &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
 		"VBoxManage":                nil, // slice ([][]string),
 		"VBoxManagePost":            nil, // slice ([][]string),
-		"Communicator":              &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"VBoxVersionFile":           nil, /* not basic */
 		"GuestAdditionsMode":        &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
 		"GuestAdditionsPath":        &hcldec.AttrSpec{Name: "guest_additions_path", Type: cty.String, Required: false},
