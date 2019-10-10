@@ -37,7 +37,7 @@ func (p *Parser) decodeSource(block *hcl.Block, sourceSpecs map[string]Decodable
 		return source, diags
 	}
 
-	flatSource, moreDiags := decodeDecodable(block.Body, nil, sourceSpec)
+	flatSource, moreDiags := decodeDecodable(block, nil, sourceSpec)
 	diags = append(diags, moreDiags...)
 	source.Cfg = flatSource
 

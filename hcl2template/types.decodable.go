@@ -4,6 +4,7 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hcldec"
+	"github.com/zclconf/go-cty/cty/gocty"
 )
 
 type Decodable interface {
@@ -11,20 +12,26 @@ type Decodable interface {
 	FlatMapstructure() (flatennedStruct interface{})
 }
 
-func decodeDecodable(body hcl.Body, ctx *hcl.EvalContext, dec Decodable) (interface{}, hcl.Diagnostics) {
-	flatCfg := dec.FlatMapstructure()
+func decodeDecodable(block *hcl.Block, ctx *hcl.EvalContext, dec Decodable) (interface{}, hcl.Diagnostics) {
+	var diags hcl.Diagnostics
 
-	// val, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), nil)
-	// diags = append(diags, moreDiags...)
+	decodeGoBody := false
+	if decodeGoBody {
+		flatCfg := dec.FlatMapstructure()
+		return flatCfg, gohcl.DecodeBody(block.Body, ctx, flatCfg)
+	}
+	spec := dec.HCL2Spec()
+	val, moreDiags := hcldec.Decode(block.Body, hcldec.ObjectSpec(spec), ctx)
+	diags = append(diags, moreDiags...)
 
-	diags := gohcl.DecodeBody(body, ctx, flatCfg)
-	return flatCfg, diags
+	flatProvisinerCfg := dec.FlatMapstructure()
 
-	// err := gocty.FromCtyValue(val, flatProvisinerCfg)
-	// if err != nil {
-	// 	diags = append(diags, &hcl.Diagnostic{
-	// 		Summary: "gocty.FromCtyValue: " + err.Error(),
-	// 		Subject: &block.DefRange,
-	// 	})
-	// }
+	err := gocty.FromCtyValue(val, flatProvisinerCfg)
+	if err != nil {
+		diags = append(diags, &hcl.Diagnostic{
+			Summary: "gocty.FromCtyValue: " + err.Error(),
+			Subject: &block.DefRange,
+		})
+	}
+	return flatProvisinerCfg, diags
 }
