@@ -6,6 +6,10 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/hashicorp/hcl/v2"
+
+	amazon_import "github.com/hashicorp/packer/post-processor/amazon-import"
+	"github.com/hashicorp/packer/provisioner/file"
+	"github.com/hashicorp/packer/provisioner/shell"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -70,17 +74,27 @@ func TestParser_Parse(t *testing.T) {
 						ProvisionerGroups: ProvisionerGroups{
 							&ProvisionerGroup{
 								CommunicatorRef: CommunicatorRef{"ssh", "vagrant"},
-								Provisioners: []cty.Value{
-									{}, // shell inline
-									{}, // shell complicated
-									{}, // file
+								Provisioners: []Provisioner{
+									{Cfg: &shell.FlatConfig{
+										Inline: []string{"echo '{{user `my_secret`}}' :D"},
+									}},
+									{Cfg: &shell.FlatConfig{
+										Scripts:        []string{"script-1.sh", "script-2.sh"},
+										ValidExitCodes: []int{0, 42},
+									}},
+									{Cfg: &file.FlatConfig{
+										Source:      "app.tar.gz",
+										Destination: "/tmp/app.tar.gz",
+									}},
 								},
 							},
 						},
 						PostProvisionerGroups: ProvisionerGroups{
 							&ProvisionerGroup{
-								Provisioners: []cty.Value{
-									{}, // amazon-import
+								Provisioners: []Provisioner{
+									{Cfg: &amazon_import.FlatConfig{
+										Name: "that-ubuntu-1.0",
+									}},
 								},
 							},
 						},
@@ -93,8 +107,10 @@ func TestParser_Parse(t *testing.T) {
 						},
 						ProvisionerGroups: ProvisionerGroups{
 							&ProvisionerGroup{
-								Provisioners: []cty.Value{
-									{}, // shell inline
+								Provisioners: []Provisioner{
+									{Cfg: &shell.FlatConfig{
+										Inline: []string{"echo HOLY GUACAMOLE !"},
+									}},
 								},
 							},
 						},
