@@ -56,7 +56,7 @@ func main() {
 	if goFile := os.Getenv("GOFILE"); goFile != "" {
 		outputPath = goFile[:len(goFile)-2] + "hcl2spec.go"
 	}
-	log.SetPrefix(fmt.Sprintf("flatten-mapstructure (%s): ", os.Getenv("GOFILE")))
+	log.SetPrefix(fmt.Sprintf("flatten-mapstructure: %s.%v: ", os.Getenv("GOPACKAGE"), typeNames))
 
 	cfg := &packages.Config{
 		Mode: packages.LoadSyntax,
@@ -321,7 +321,28 @@ func addCtyTagToStruct(s *types.Struct) *types.Struct {
 		st.Set(&structtag.Tag{Key: "hcl", Name: ctyAccessor, Options: []string{"optional"}})
 		tags[i] = st.String()
 	}
-	return types.NewStruct(vars, tags)
+	return types.NewStruct(uniqueTags("hcl", vars, tags))
+}
+
+func uniqueTags(tagName string, fields []*types.Var, tags []string) ([]*types.Var, []string) {
+	outVars := []*types.Var{}
+	outTags := []string{}
+	uniqueTags := map[string]bool{}
+	for i := range fields {
+		field, tag := fields[i], tags[i]
+		structtag, _ := structtag.Parse(tag)
+		h, err := structtag.Get("hcl")
+		if err == nil {
+			if uniqueTags[h.Name] {
+				log.Printf("skipping field %s ( duplicate `%s` %s tag  )", field.Name(), h.Name, tagName)
+				continue
+			}
+			uniqueTags[h.Name] = true
+		}
+		outVars = append(outVars, field)
+		outTags = append(outTags, tag)
+	}
+	return outVars, outTags
 }
 
 // getMapstructureSquashedStruct will return the same struct but embedded
@@ -372,14 +393,14 @@ func squashStructs(a, b *types.Struct) *types.Struct {
 func uniqueFields(fields []*types.Var, tags []string) ([]*types.Var, []string) {
 	outVars := []*types.Var{}
 	outTags := []string{}
-	un := map[string]bool{}
+	fieldNames := map[string]bool{}
 	for i := range fields {
 		field, tag := fields[i], tags[i]
-		if un[field.Name()] {
+		if fieldNames[field.Name()] {
 			log.Printf("skipping duplicate %s field", field.Name())
 			continue
 		}
-		un[field.Name()] = true
+		fieldNames[field.Name()] = true
 		outVars = append(outVars, field)
 		outTags = append(outTags, tag)
 	}
