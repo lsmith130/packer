@@ -3,6 +3,15 @@ package hcl2template
 import (
 	"testing"
 
+	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/hclparse"
+	"github.com/zclconf/go-cty/cty"
+
+	"github.com/hashicorp/packer/helper/communicator"
+
+	amazonebs "github.com/hashicorp/packer/builder/amazon/ebs"
+	"github.com/hashicorp/packer/builder/virtualbox/iso"
+
 	"github.com/hashicorp/packer/provisioner/file"
 	"github.com/hashicorp/packer/provisioner/shell"
 
@@ -10,10 +19,6 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/hashicorp/hcl/v2"
-	"github.com/hashicorp/hcl/v2/hclparse"
-	"github.com/hashicorp/packer/helper/communicator"
-	"github.com/zclconf/go-cty/cty"
 )
 
 func getBasicParser() *Parser {
@@ -29,6 +34,10 @@ func getBasicParser() *Parser {
 		CommunicatorSchemas: map[string]Decodable{
 			"ssh":   &communicator.SSH{},
 			"winrm": &communicator.WinRM{},
+		},
+		SourceSchemas: map[string]Decodable{
+			"amazon-ebs":     &amazonebs.Config{},
+			"virtualbox-iso": &iso.Config{},
 		},
 	}
 }
@@ -62,6 +71,14 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "virtualbox-iso",
 						Name: "ubuntu-1204",
+						Cfg: &iso.FlatConfig{
+							HTTPDir:         "xxx",
+							ISOChecksum:     "769474248a3897f4865817446f9a4a53",
+							ISOChecksumType: "md5",
+							RawSingleISOUrl: "http://releases.ubuntu.com/12.04/ubuntu-12.04.5-server-amd64.iso",
+							BootCommand:     []string{"..."},
+							ShutdownCommand: "echo 'vagrant' | sudo -S shutdown -P now",
+						},
 					},
 					SourceRef{
 						Type: "amazon-ebs",
@@ -69,6 +86,7 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "amazon-ebs",
 						Name: "ubuntu-1604",
+						Cfg:  &amazonebs.FlatConfig{RawRegion: "eu-west-3", InstanceType: "t2.micro"},
 					},
 					SourceRef{
 						Type: "amazon-ebs",
@@ -76,6 +94,7 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "amazon-ebs",
 						Name: "that-ubuntu-1.0",
+						Cfg:  &amazonebs.FlatConfig{RawRegion: "eu-west-3", InstanceType: "t2.micro"},
 					},
 				},
 			},
@@ -104,6 +123,7 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "amazon-ebs",
 						Name: "ubuntu-1604",
+						Cfg:  &amazonebs.FlatConfig{RawRegion: "eu-west-3", InstanceType: "t2.micro"},
 					},
 				},
 			},
@@ -116,6 +136,14 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "virtualbox-iso",
 						Name: "ubuntu-1204",
+						Cfg: &iso.FlatConfig{
+							HTTPDir:         "xxx",
+							ISOChecksum:     "769474248a3897f4865817446f9a4a53",
+							ISOChecksumType: "md5",
+							RawSingleISOUrl: "http://releases.ubuntu.com/12.04/ubuntu-12.04.5-server-amd64.iso",
+							BootCommand:     []string{"..."},
+							ShutdownCommand: "echo 'vagrant' | sudo -S shutdown -P now",
+						},
 					},
 					SourceRef{
 						Type: "amazon-ebs",
@@ -123,6 +151,7 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "amazon-ebs",
 						Name: "ubuntu-1604",
+						Cfg:  &amazonebs.FlatConfig{RawRegion: "eu-west-3", InstanceType: "t2.micro"},
 					},
 					SourceRef{
 						Type: "amazon-ebs",
@@ -130,6 +159,7 @@ func TestParser_ParseFile(t *testing.T) {
 					}: {
 						Type: "amazon-ebs",
 						Name: "that-ubuntu-1.0",
+						Cfg:  &amazonebs.FlatConfig{RawRegion: "eu-west-3", InstanceType: "t2.micro"},
 					},
 				},
 			},
