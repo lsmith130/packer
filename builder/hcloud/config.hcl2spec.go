@@ -136,7 +136,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"Location":                  &hcldec.AttrSpec{Name: "location", Type: cty.String, Required: false},
 		"ServerType":                &hcldec.AttrSpec{Name: "server_type", Type: cty.String, Required: false},
 		"Image":                     &hcldec.AttrSpec{Name: "image", Type: cty.String, Required: false},
-		"ImageFilter":               nil, /* not basic */
+		"ImageFilter":               &hcldec.AttrSpec{Name: "image_filter", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"SnapshotName":              &hcldec.AttrSpec{Name: "snapshot_name", Type: cty.String, Required: false},
 		"SnapshotLabels":            &hcldec.BlockAttrsSpec{TypeName: "snapshot_labels", ElementType: cty.String, Required: false},
 		"UserData":                  &hcldec.AttrSpec{Name: "user_data", Type: cty.String, Required: false},

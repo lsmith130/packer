@@ -176,9 +176,9 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"RawPostShutdownDelay":      &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
-		"VBoxManage":                nil, // slice ([][]string),
-		"VBoxManagePost":            nil, // slice ([][]string),
-		"VBoxVersionFile":           nil, /* not basic */
+		"VBoxManage":                &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},              /* TODO(azr): could not find slice type ([][]string) */
+		"VBoxManagePost":            &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false},         /* TODO(azr): could not find slice type ([][]string) */
+		"VBoxVersionFile":           &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"GuestAdditionsMode":        &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
 		"GuestAdditionsPath":        &hcldec.AttrSpec{Name: "guest_additions_path", Type: cty.String, Required: false},
 		"GuestAdditionsSHA256":      &hcldec.AttrSpec{Name: "guest_additions_sha256", Type: cty.String, Required: false},

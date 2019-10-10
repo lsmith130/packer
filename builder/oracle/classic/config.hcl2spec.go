@@ -100,7 +100,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"BuilderUploadImageCommand": &hcldec.AttrSpec{Name: "builder_upload_image_command", Type: cty.String, Required: false},
 		"BuilderShape":              &hcldec.AttrSpec{Name: "builder_shape", Type: cty.String, Required: false},
 		"BuilderImageList":          &hcldec.AttrSpec{Name: "builder_image_list", Type: cty.String, Required: false},
-		"BuilderImageListEntry":     nil, /* not basic */
+		"BuilderImageListEntry":     &hcldec.AttrSpec{Name: "builder_image_list_entry", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"BuilderComm":               &hcldec.BlockObjectSpec{TypeName: "communicator.Config", Nested: hcldec.ObjectSpec((*communicator.Config)(nil).HCL2Spec())},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},

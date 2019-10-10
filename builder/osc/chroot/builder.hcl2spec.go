@@ -100,7 +100,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"SecretKey":               &hcldec.AttrSpec{Name: "secret_key", Type: cty.String, Required: false},
 		"SkipMetadataApiCheck":    &hcldec.AttrSpec{Name: "skip_metadata_api_check", Type: cty.Bool, Required: false},
 		"Token":                   &hcldec.AttrSpec{Name: "token", Type: cty.String, Required: false},
-		"ChrootMounts":            nil, // slice ([][]string),
+		"ChrootMounts":            &hcldec.AttrSpec{Name: "chroot_mounts", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
 		"CommandWrapper":          &hcldec.AttrSpec{Name: "command_wrapper", Type: cty.String, Required: false},
 		"CopyFiles":               &hcldec.AttrSpec{Name: "copy_files", Type: cty.List(cty.String), Required: false},
 		"DevicePath":              &hcldec.AttrSpec{Name: "device_path", Type: cty.String, Required: false},

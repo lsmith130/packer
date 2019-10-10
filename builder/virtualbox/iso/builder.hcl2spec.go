@@ -204,9 +204,9 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"MemorySize":                &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"Sound":                     &hcldec.AttrSpec{Name: "sound", Type: cty.String, Required: false},
 		"USB":                       &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
-		"VBoxManage":                nil, // slice ([][]string),
-		"VBoxManagePost":            nil, // slice ([][]string),
-		"VBoxVersionFile":           nil, /* not basic */
+		"VBoxManage":                &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},              /* TODO(azr): could not find slice type ([][]string) */
+		"VBoxManagePost":            &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false},         /* TODO(azr): could not find slice type ([][]string) */
+		"VBoxVersionFile":           &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"BundleISO":                 &hcldec.AttrSpec{Name: "bundle_iso", Type: cty.Bool, Required: false},
 		"GuestAdditionsMode":        &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
 		"DiskSize":                  &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},

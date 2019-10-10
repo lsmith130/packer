@@ -165,7 +165,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"DiskType":                     &hcldec.AttrSpec{Name: "disk_type", Type: cty.String, Required: false},
 		"ImageName":                    &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
 		"ImageDescription":             &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
-		"ImageEncryptionKey":           nil, /* not basic */
+		"ImageEncryptionKey":           &hcldec.AttrSpec{Name: "image_encryption_key", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"ImageFamily":                  &hcldec.AttrSpec{Name: "image_family", Type: cty.String, Required: false},
 		"ImageLabels":                  &hcldec.BlockAttrsSpec{TypeName: "image_labels", ElementType: cty.String, Required: false},
 		"ImageLicenses":                &hcldec.AttrSpec{Name: "image_licenses", Type: cty.List(cty.String), Required: false},

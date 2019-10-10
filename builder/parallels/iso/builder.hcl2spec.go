@@ -135,8 +135,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"MemorySize":                &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"Sound":                     &hcldec.AttrSpec{Name: "sound", Type: cty.Bool, Required: false},
 		"USB":                       &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
-		"Prlctl":                    nil, // slice ([][]string),
-		"PrlctlPost":                nil, // slice ([][]string),
+		"Prlctl":                    &hcldec.AttrSpec{Name: "prlctl", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
+		"PrlctlPost":                &hcldec.AttrSpec{Name: "prlctl_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
 		"PrlctlVersionFile":         &hcldec.AttrSpec{Name: "prlctl_version_file", Type: cty.String, Required: false},
 		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},

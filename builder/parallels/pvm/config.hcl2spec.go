@@ -100,8 +100,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"FloppyDirectories":         &hcldec.AttrSpec{Name: "floppy_dirs", Type: cty.List(cty.String), Required: false},
 		"FloppyLabel":               &hcldec.AttrSpec{Name: "floppy_label", Type: cty.String, Required: false},
 		"OutputDir":                 &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
-		"Prlctl":                    nil, // slice ([][]string),
-		"PrlctlPost":                nil, // slice ([][]string),
+		"Prlctl":                    &hcldec.AttrSpec{Name: "prlctl", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
+		"PrlctlPost":                &hcldec.AttrSpec{Name: "prlctl_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
 		"PrlctlVersionFile":         &hcldec.AttrSpec{Name: "prlctl_version_file", Type: cty.String, Required: false},
 		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},

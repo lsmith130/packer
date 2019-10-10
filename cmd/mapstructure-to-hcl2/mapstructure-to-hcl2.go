@@ -217,7 +217,12 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			outputHCL2SpecField(b, elem.String(), elem.Underlying())
 			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())
 		default:
-			fmt.Fprintf(w, `nil, // slice (%s)`, f.String())
+			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+				Name:     accessor,
+				Type:     basicKindToCtyType(types.Bool),
+				Required: false,
+			})
+			fmt.Fprintf(w, `/* TODO(azr): could not find slice type (%s) */`, f.String())
 		}
 	case *types.Named:
 		switch f.String() {
@@ -241,8 +246,12 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
 			` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, accessor)
 	default:
-		_ = f
-		fmt.Fprint(w, `nil /* not basic */`)
+		fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
+			Name:     accessor,
+			Type:     basicKindToCtyType(types.Bool),
+			Required: false,
+		})
+		fmt.Fprintf(w, `/* TODO(azr): could not find type */`)
 	}
 }
 

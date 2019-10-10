@@ -172,7 +172,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ChrootDiskSize":            &hcldec.AttrSpec{Name: "chroot_disk_size", Type: cty.Number, Required: false},
 		"ChrootDiskType":            &hcldec.AttrSpec{Name: "chroot_disk_type", Type: cty.String, Required: false},
 		"ChrootMountPath":           &hcldec.AttrSpec{Name: "chroot_mount_path", Type: cty.String, Required: false},
-		"ChrootMounts":              nil, // slice ([][]string),
+		"ChrootMounts":              &hcldec.AttrSpec{Name: "chroot_mounts", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
 		"ChrootCopyFiles":           &hcldec.AttrSpec{Name: "chroot_copy_files", Type: cty.List(cty.String), Required: false},
 		"ChrootCommandWrapper":      &hcldec.AttrSpec{Name: "chroot_command_wrapper", Type: cty.String, Required: false},
 		"MountOptions":              &hcldec.AttrSpec{Name: "mount_options", Type: cty.List(cty.String), Required: false},
