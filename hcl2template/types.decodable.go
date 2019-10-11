@@ -1,9 +1,12 @@
 package hcl2template
 
 import (
+	"fmt"
+
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
 	"github.com/hashicorp/hcl/v2/hcldec"
+	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
 )
 
@@ -28,10 +31,20 @@ func decodeDecodable(block *hcl.Block, ctx *hcl.EvalContext, dec Decodable) (int
 
 	err := gocty.FromCtyValue(val, flatProvisinerCfg)
 	if err != nil {
-		diags = append(diags, &hcl.Diagnostic{
-			Summary: "gocty.FromCtyValue: " + err.Error(),
-			Subject: &block.DefRange,
-		})
+		switch err := err.(type) {
+		case cty.PathError:
+			diags = append(diags, &hcl.Diagnostic{
+				Summary: "gocty.FromCtyValue: " + err.Error(),
+				Subject: &block.DefRange,
+				Detail:  fmt.Sprintf("%v", err.Path),
+			})
+		default:
+			diags = append(diags, &hcl.Diagnostic{
+				Summary: "gocty.FromCtyValue: " + err.Error(),
+				Subject: &block.DefRange,
+				Detail:  fmt.Sprintf("%v", err),
+			})
+		}
 	}
 	return flatProvisinerCfg, diags
 }
