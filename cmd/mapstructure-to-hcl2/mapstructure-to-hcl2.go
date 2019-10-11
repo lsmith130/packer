@@ -392,6 +392,9 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 			case "github.com/hashicorp/packer/helper/config.Trilean": // TODO(azr): unhack this situation
 				field = types.NewField(field.Pos(), field.Pkg(), field.Name(), types.NewPointer(types.Typ[types.Bool]), field.Embedded())
 			}
+			if _, isStruct := f.Underlying().(*types.Struct); isStruct {
+				field = makePointer(field)
+			}
 		case *types.Basic:
 			// since everything is optional, everything must be a pointer
 			// non optional fields should be non pointers.

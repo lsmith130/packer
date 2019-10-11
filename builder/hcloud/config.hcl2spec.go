@@ -135,7 +135,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"location":                     &hcldec.AttrSpec{Name: "location", Type: cty.String, Required: false},
 		"server_type":                  &hcldec.AttrSpec{Name: "server_type", Type: cty.String, Required: false},
 		"image":                        &hcldec.AttrSpec{Name: "image", Type: cty.String, Required: false},
-		"image_filter":                 &hcldec.BlockObjectSpec{TypeName: "imageFilter", Nested: hcldec.ObjectSpec((*imageFilter)(nil).HCL2Spec())},
+		"image_filter":                 &hcldec.BlockSpec{TypeName: "image_filter", Nested: hcldec.ObjectSpec((*imageFilter)(nil).HCL2Spec())},
 		"snapshot_name":                &hcldec.AttrSpec{Name: "snapshot_name", Type: cty.String, Required: false},
 		"snapshot_labels":              &hcldec.BlockAttrsSpec{TypeName: "snapshot_labels", ElementType: cty.String, Required: false},
 		"user_data":                    &hcldec.AttrSpec{Name: "user_data", Type: cty.String, Required: false},
