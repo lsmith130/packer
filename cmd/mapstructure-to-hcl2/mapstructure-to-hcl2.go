@@ -299,11 +299,18 @@ func outputImports(w io.Writer, imports map[NamePath]*types.Package) {
 func getUsedImports(s *types.Struct) map[NamePath]*types.Package {
 	res := map[NamePath]*types.Package{}
 	for i := 0; i < s.NumFields(); i++ {
-		fieldType, ok := s.Field(i).Type().(*types.Named)
+		fieldType := s.Field(i).Type()
+		if p, ok := fieldType.(*types.Pointer); ok {
+			fieldType = p.Elem()
+		}
+		if p, ok := fieldType.(*types.Slice); ok {
+			fieldType = p.Underlying()
+		}
+		namedType, ok := fieldType.(*types.Named)
 		if !ok {
 			continue
 		}
-		pkg := fieldType.Obj().Pkg()
+		pkg := namedType.Obj().Pkg()
 		res[NamePath{pkg.Name(), pkg.Path()}] = pkg
 	}
 	return res
