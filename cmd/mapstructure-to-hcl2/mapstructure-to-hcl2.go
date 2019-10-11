@@ -192,6 +192,8 @@ func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
 
 func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 	switch f := fieldType.(type) {
+	case *types.Pointer:
+		outputHCL2SpecField(w, accessor, f.Elem())
 	case *types.Basic:
 		fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
 			Name:     accessor,
@@ -216,26 +218,30 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 				Type:     cty.List(basicKindToCtyType(elem.Kind())),
 				Required: false,
 			})
-		case *types.Named, *types.Slice:
+		case *types.Named:
 			b := bytes.NewBuffer(nil)
-			outputHCL2SpecField(b, elem.String(), elem.Underlying())
-			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())
+			outputHCL2SpecField(b, accessor, elem)
+			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "%s", Nested: %s}`, accessor, b.String())
+		case *types.Slice:
+			b := bytes.NewBuffer(nil)
+			outputHCL2SpecField(b, accessor, elem.Underlying())
+			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "%s", Nested: %s}`, accessor, b.String())
 		default:
-			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
-				Name:     accessor,
-				Type:     basicKindToCtyType(types.Bool),
-				Required: false,
-			})
-			fmt.Fprintf(w, `/* TODO(azr): could not find slice type (%s) */`, f.String())
+			outputHCL2SpecField(w, accessor, elem.Underlying())
 		}
 	case *types.Named:
+		namedFstr := f.String()
 		underlyingType := f.Underlying()
-		outputHCL2SpecField(w, f.String(), underlyingType)
-	case *types.Pointer:
-		outputHCL2SpecField(w, accessor, f.Elem())
+		switch underlyingType.(type) {
+		case *types.Struct:
+			fmt.Fprintf(w, `&hcldec.BlockSpec{TypeName: "%s",`+
+				` Nested: hcldec.ObjectSpec((*%s)(nil).HCL2Spec())}`, accessor, namedFstr)
+		default:
+			outputHCL2SpecField(w, f.String(), underlyingType)
+		}
 	case *types.Struct:
-		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
-			` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, accessor)
+		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%s",`+
+			` Nested: hcldec.ObjectSpec((*%s)(nil).HCL2Spec())}`, accessor, fieldType.String())
 	default:
 		fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
 			Name:     accessor,

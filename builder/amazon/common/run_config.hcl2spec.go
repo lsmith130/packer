@@ -24,7 +24,7 @@ func (*AmiFilterOptions) FlatMapstructure() interface{} { return new(FlatAmiFilt
 func (*AmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
 		"filters":     &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-		"owners":      &hcldec.AttrSpec{Name: "owners", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([]*string) */
+		"owners":      &hcldec.AttrSpec{Name: "owners", Type: cty.String, Required: false},
 		"most_recent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s

@@ -9,74 +9,74 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName           *string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType         *string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug               *bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce               *bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError             *string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars            map[string]string  `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars       []string           `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Endpoint                  *string            `mapstructure:"triton_url" required:"false" cty:"triton_url"`
-	Account                   *string            `mapstructure:"triton_account" required:"true" cty:"triton_account"`
-	Username                  *string            `mapstructure:"triton_user" required:"false" cty:"triton_user"`
-	KeyID                     *string            `mapstructure:"triton_key_id" required:"true" cty:"triton_key_id"`
-	KeyMaterial               *string            `mapstructure:"triton_key_material" required:"false" cty:"triton_key_material"`
-	InsecureSkipTLSVerify     *bool              `mapstructure:"insecure_skip_tls_verify" required:"false" cty:"insecure_skip_tls_verify"`
-	MachineName               *string            `mapstructure:"source_machine_name" required:"false" cty:"source_machine_name"`
-	MachinePackage            *string            `mapstructure:"source_machine_package" required:"true" cty:"source_machine_package"`
-	MachineImage              *string            `mapstructure:"source_machine_image" required:"true" cty:"source_machine_image"`
-	MachineNetworks           []string           `mapstructure:"source_machine_networks" required:"false" cty:"source_machine_networks"`
-	MachineMetadata           map[string]string  `mapstructure:"source_machine_metadata" required:"false" cty:"source_machine_metadata"`
-	MachineTags               map[string]string  `mapstructure:"source_machine_tags" required:"false" cty:"source_machine_tags"`
-	MachineFirewallEnabled    *bool              `mapstructure:"source_machine_firewall_enabled" required:"false" cty:"source_machine_firewall_enabled"`
-	MachineImageFilters       MachineImageFilter `mapstructure:"source_machine_image_filter" required:"false" cty:"source_machine_image_filter"`
-	ImageName                 *string            `mapstructure:"image_name" required:"true" cty:"image_name"`
-	ImageVersion              *string            `mapstructure:"image_version" required:"true" cty:"image_version"`
-	ImageDescription          *string            `mapstructure:"image_description" required:"false" cty:"image_description"`
-	ImageHomepage             *string            `mapstructure:"image_homepage" required:"false" cty:"image_homepage"`
-	ImageEULA                 *string            `mapstructure:"image_eula_url" required:"false" cty:"image_eula_url"`
-	ImageACL                  []string           `mapstructure:"image_acls" required:"false" cty:"image_acls"`
-	ImageTags                 map[string]string  `mapstructure:"image_tags" required:"false" cty:"image_tags"`
-	Type                      *string            `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect        *string            `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                   *string            `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                   *int               `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername               *string            `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword               *string            `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName            *string            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName   *string            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	SSHClearAuthorizedKeys    *bool              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile         *string            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                    *bool              `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                *string            `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth              *bool              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding *bool              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts      *int               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost            *string            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort            *int               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth       *bool              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername        *string            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword        *string            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile  *string            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod     *string            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost              *string            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort              *int               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername          *string            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword          *string            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval      *string            `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout       *string            `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
-	SSHRemoteTunnels          []string           `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
-	SSHLocalTunnels           []string           `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
-	SSHPublicKey              []byte             `cty:"ssh_public_key"`
-	SSHPrivateKey             []byte             `cty:"ssh_private_key"`
-	WinRMUser                 *string            `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword             *string            `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                 *string            `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                 *int               `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout              *string            `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL               *bool              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure             *bool              `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM              *bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	PackerBuildName           *string             `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType         *string             `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug               *bool               `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce               *bool               `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError             *string             `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars            map[string]string   `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars       []string            `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Endpoint                  *string             `mapstructure:"triton_url" required:"false" cty:"triton_url"`
+	Account                   *string             `mapstructure:"triton_account" required:"true" cty:"triton_account"`
+	Username                  *string             `mapstructure:"triton_user" required:"false" cty:"triton_user"`
+	KeyID                     *string             `mapstructure:"triton_key_id" required:"true" cty:"triton_key_id"`
+	KeyMaterial               *string             `mapstructure:"triton_key_material" required:"false" cty:"triton_key_material"`
+	InsecureSkipTLSVerify     *bool               `mapstructure:"insecure_skip_tls_verify" required:"false" cty:"insecure_skip_tls_verify"`
+	MachineName               *string             `mapstructure:"source_machine_name" required:"false" cty:"source_machine_name"`
+	MachinePackage            *string             `mapstructure:"source_machine_package" required:"true" cty:"source_machine_package"`
+	MachineImage              *string             `mapstructure:"source_machine_image" required:"true" cty:"source_machine_image"`
+	MachineNetworks           []string            `mapstructure:"source_machine_networks" required:"false" cty:"source_machine_networks"`
+	MachineMetadata           map[string]string   `mapstructure:"source_machine_metadata" required:"false" cty:"source_machine_metadata"`
+	MachineTags               map[string]string   `mapstructure:"source_machine_tags" required:"false" cty:"source_machine_tags"`
+	MachineFirewallEnabled    *bool               `mapstructure:"source_machine_firewall_enabled" required:"false" cty:"source_machine_firewall_enabled"`
+	MachineImageFilters       *MachineImageFilter `mapstructure:"source_machine_image_filter" required:"false" cty:"source_machine_image_filter"`
+	ImageName                 *string             `mapstructure:"image_name" required:"true" cty:"image_name"`
+	ImageVersion              *string             `mapstructure:"image_version" required:"true" cty:"image_version"`
+	ImageDescription          *string             `mapstructure:"image_description" required:"false" cty:"image_description"`
+	ImageHomepage             *string             `mapstructure:"image_homepage" required:"false" cty:"image_homepage"`
+	ImageEULA                 *string             `mapstructure:"image_eula_url" required:"false" cty:"image_eula_url"`
+	ImageACL                  []string            `mapstructure:"image_acls" required:"false" cty:"image_acls"`
+	ImageTags                 map[string]string   `mapstructure:"image_tags" required:"false" cty:"image_tags"`
+	Type                      *string             `mapstructure:"communicator" cty:"communicator"`
+	PauseBeforeConnect        *string             `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	SSHHost                   *string             `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                   *int                `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername               *string             `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword               *string             `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName            *string             `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHTemporaryKeyPairName   *string             `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
+	SSHClearAuthorizedKeys    *bool               `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile         *string             `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                    *bool               `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHTimeout                *string             `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHAgentAuth              *bool               `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding *bool               `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts      *int                `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost            *string             `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort            *int                `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth       *bool               `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername        *string             `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword        *string             `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile  *string             `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod     *string             `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost              *string             `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort              *int                `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername          *string             `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword          *string             `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHKeepAliveInterval      *string             `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout       *string             `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHRemoteTunnels          []string            `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
+	SSHLocalTunnels           []string            `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
+	SSHPublicKey              []byte              `cty:"ssh_public_key"`
+	SSHPrivateKey             []byte              `cty:"ssh_private_key"`
+	WinRMUser                 *string             `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword             *string             `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                 *string             `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                 *int                `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMTimeout              *string             `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMUseSSL               *bool               `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure             *bool               `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM              *bool               `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -108,7 +108,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"source_machine_metadata":         &hcldec.BlockAttrsSpec{TypeName: "source_machine_metadata", ElementType: cty.String, Required: false},
 		"source_machine_tags":             &hcldec.BlockAttrsSpec{TypeName: "source_machine_tags", ElementType: cty.String, Required: false},
 		"source_machine_firewall_enabled": &hcldec.AttrSpec{Name: "source_machine_firewall_enabled", Type: cty.Bool, Required: false},
-		"source_machine_image_filter":     &hcldec.BlockObjectSpec{TypeName: "MachineImageFilter", Nested: hcldec.ObjectSpec((*MachineImageFilter)(nil).HCL2Spec())},
+		"source_machine_image_filter":     &hcldec.BlockSpec{TypeName: "source_machine_image_filter", Nested: hcldec.ObjectSpec((*MachineImageFilter)(nil).HCL2Spec())},
 		"image_name":                      &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
 		"image_version":                   &hcldec.AttrSpec{Name: "image_version", Type: cty.String, Required: false},
 		"image_description":               &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},

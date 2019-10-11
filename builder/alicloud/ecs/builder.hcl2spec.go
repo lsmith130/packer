@@ -68,7 +68,7 @@ type FlatConfig struct {
 	AlicloudImageForceDeleteInstances *bool                `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances"`
 	AlicloudImageIgnoreDataDisks      *bool                `mapstructure:"image_ignore_data_disks" required:"false" cty:"image_ignore_data_disks"`
 	AlicloudImageTags                 map[string]string    `mapstructure:"tags" required:"false" cty:"tags"`
-	ECSSystemDiskMapping              AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
+	ECSSystemDiskMapping              *AlicloudDiskDevice  `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
 	ECSImagesDiskMappings             []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
 	AssociatePublicIpAddress          *bool                `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address"`
 	ZoneId                            *string              `mapstructure:"zone_id" required:"false" cty:"zone_id"`
@@ -168,8 +168,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"image_force_delete_instances": &hcldec.AttrSpec{Name: "image_force_delete_instances", Type: cty.Bool, Required: false},
 		"image_ignore_data_disks":      &hcldec.AttrSpec{Name: "image_ignore_data_disks", Type: cty.Bool, Required: false},
 		"tags":                         &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
-		"system_disk_mapping":          &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
-		"image_disk_mappings":          &hcldec.BlockListSpec{TypeName: "[]AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
+		"system_disk_mapping":          &hcldec.BlockSpec{TypeName: "system_disk_mapping", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())},
+		"image_disk_mappings":          &hcldec.BlockListSpec{TypeName: "image_disk_mappings", Nested: &hcldec.BlockSpec{TypeName: "image_disk_mappings", Nested: hcldec.ObjectSpec((*AlicloudDiskDevice)(nil).HCL2Spec())}},
 		"associate_public_ip_address":  &hcldec.AttrSpec{Name: "associate_public_ip_address", Type: cty.Bool, Required: false},
 		"zone_id":                      &hcldec.AttrSpec{Name: "zone_id", Type: cty.String, Required: false},
 		"io_optimized":                 &hcldec.AttrSpec{Name: "io_optimized", Type: cty.Bool, Required: false},

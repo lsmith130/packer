@@ -10,73 +10,73 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName           *string             `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType         *string             `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug               *bool               `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce               *bool               `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError             *string             `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars            map[string]string   `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars       []string            `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	PersistentVolumeSize      *int                `mapstructure:"persistent_volume_size" cty:"persistent_volume_size"`
-	BuilderUploadImageCommand *string             `mapstructure:"builder_upload_image_command" cty:"builder_upload_image_command"`
-	BuilderShape              *string             `mapstructure:"builder_shape" cty:"builder_shape"`
-	BuilderImageList          *string             `mapstructure:"builder_image_list" cty:"builder_image_list"`
-	BuilderImageListEntry     *int                `mapstructure:"builder_image_list_entry" cty:"builder_image_list_entry"`
-	BuilderComm               communicator.Config `mapstructure:"builder_communicator" cty:"builder_communicator"`
-	Type                      *string             `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect        *string             `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                   *string             `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                   *int                `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername               *string             `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword               *string             `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName            *string             `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName   *string             `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	SSHClearAuthorizedKeys    *bool               `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile         *string             `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                    *bool               `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                *string             `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth              *bool               `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding *bool               `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts      *int                `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost            *string             `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort            *int                `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth       *bool               `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername        *string             `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword        *string             `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile  *string             `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod     *string             `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost              *string             `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort              *int                `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername          *string             `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword          *string             `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval      *string             `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout       *string             `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
-	SSHRemoteTunnels          []string            `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
-	SSHLocalTunnels           []string            `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
-	SSHPublicKey              []byte              `cty:"ssh_public_key"`
-	SSHPrivateKey             []byte              `cty:"ssh_private_key"`
-	WinRMUser                 *string             `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword             *string             `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                 *string             `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                 *int                `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout              *string             `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL               *bool               `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure             *bool               `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM              *bool               `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	Username                  *string             `mapstructure:"username" cty:"username"`
-	Password                  *string             `mapstructure:"password" cty:"password"`
-	IdentityDomain            *string             `mapstructure:"identity_domain" cty:"identity_domain"`
-	APIEndpoint               *string             `mapstructure:"api_endpoint" cty:"api_endpoint"`
-	ImageName                 *string             `mapstructure:"image_name" cty:"image_name"`
-	Shape                     *string             `mapstructure:"shape" cty:"shape"`
-	SourceImageList           *string             `mapstructure:"source_image_list" cty:"source_image_list"`
-	SourceImageListEntry      *int                `mapstructure:"source_image_list_entry" cty:"source_image_list_entry"`
-	SnapshotTimeout           *string             `mapstructure:"snapshot_timeout" cty:"snapshot_timeout"`
-	DestImageList             *string             `mapstructure:"dest_image_list" cty:"dest_image_list"`
-	Attributes                *string             `mapstructure:"attributes" cty:"attributes"`
-	AttributesFile            *string             `mapstructure:"attributes_file" cty:"attributes_file"`
-	DestImageListDescription  *string             `mapstructure:"image_description" cty:"image_description"`
-	SSHSourceList             *string             `mapstructure:"ssh_source_list" cty:"ssh_source_list"`
+	PackerBuildName           *string              `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType         *string              `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug               *bool                `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce               *bool                `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError             *string              `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars            map[string]string    `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars       []string             `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	PersistentVolumeSize      *int                 `mapstructure:"persistent_volume_size" cty:"persistent_volume_size"`
+	BuilderUploadImageCommand *string              `mapstructure:"builder_upload_image_command" cty:"builder_upload_image_command"`
+	BuilderShape              *string              `mapstructure:"builder_shape" cty:"builder_shape"`
+	BuilderImageList          *string              `mapstructure:"builder_image_list" cty:"builder_image_list"`
+	BuilderImageListEntry     *int                 `mapstructure:"builder_image_list_entry" cty:"builder_image_list_entry"`
+	BuilderComm               *communicator.Config `mapstructure:"builder_communicator" cty:"builder_communicator"`
+	Type                      *string              `mapstructure:"communicator" cty:"communicator"`
+	PauseBeforeConnect        *string              `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	SSHHost                   *string              `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                   *int                 `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername               *string              `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword               *string              `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName            *string              `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHTemporaryKeyPairName   *string              `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
+	SSHClearAuthorizedKeys    *bool                `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile         *string              `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                    *bool                `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHTimeout                *string              `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHAgentAuth              *bool                `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding *bool                `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts      *int                 `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost            *string              `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort            *int                 `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth       *bool                `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername        *string              `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword        *string              `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile  *string              `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod     *string              `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost              *string              `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort              *int                 `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername          *string              `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword          *string              `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHKeepAliveInterval      *string              `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout       *string              `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHRemoteTunnels          []string             `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
+	SSHLocalTunnels           []string             `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
+	SSHPublicKey              []byte               `cty:"ssh_public_key"`
+	SSHPrivateKey             []byte               `cty:"ssh_private_key"`
+	WinRMUser                 *string              `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword             *string              `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                 *string              `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                 *int                 `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMTimeout              *string              `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMUseSSL               *bool                `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure             *bool                `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM              *bool                `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	Username                  *string              `mapstructure:"username" cty:"username"`
+	Password                  *string              `mapstructure:"password" cty:"password"`
+	IdentityDomain            *string              `mapstructure:"identity_domain" cty:"identity_domain"`
+	APIEndpoint               *string              `mapstructure:"api_endpoint" cty:"api_endpoint"`
+	ImageName                 *string              `mapstructure:"image_name" cty:"image_name"`
+	Shape                     *string              `mapstructure:"shape" cty:"shape"`
+	SourceImageList           *string              `mapstructure:"source_image_list" cty:"source_image_list"`
+	SourceImageListEntry      *int                 `mapstructure:"source_image_list_entry" cty:"source_image_list_entry"`
+	SnapshotTimeout           *string              `mapstructure:"snapshot_timeout" cty:"snapshot_timeout"`
+	DestImageList             *string              `mapstructure:"dest_image_list" cty:"dest_image_list"`
+	Attributes                *string              `mapstructure:"attributes" cty:"attributes"`
+	AttributesFile            *string              `mapstructure:"attributes_file" cty:"attributes_file"`
+	DestImageListDescription  *string              `mapstructure:"image_description" cty:"image_description"`
+	SSHSourceList             *string              `mapstructure:"ssh_source_list" cty:"ssh_source_list"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -100,7 +100,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"builder_shape":                &hcldec.AttrSpec{Name: "builder_shape", Type: cty.String, Required: false},
 		"builder_image_list":           &hcldec.AttrSpec{Name: "builder_image_list", Type: cty.String, Required: false},
 		"builder_image_list_entry":     &hcldec.AttrSpec{Name: "builder_image_list_entry", Type: cty.Number, Required: false},
-		"builder_communicator":         &hcldec.BlockObjectSpec{TypeName: "communicator.Config", Nested: hcldec.ObjectSpec((*communicator.Config)(nil).HCL2Spec())},
+		"builder_communicator":         &hcldec.BlockSpec{TypeName: "builder_communicator", Nested: hcldec.ObjectSpec((*communicator.Config)(nil).HCL2Spec())},
 		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"pause_before_connecting":      &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
 		"ssh_host":                     &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},

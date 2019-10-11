@@ -9,100 +9,100 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName                     *string                       `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType                   *string                       `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                         *bool                         `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                         *bool                         `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError                       *string                       `mapstructure:"packer_on_error" cty:"packer_on_error"`
-	PackerUserVars                      map[string]string             `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
-	PackerSensitiveVars                 []string                      `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	CloudEnvironmentName                *string                       `mapstructure:"cloud_environment_name" required:"false" cty:"cloud_environment_name"`
-	ClientID                            *string                       `mapstructure:"client_id" cty:"client_id"`
-	ClientSecret                        *string                       `mapstructure:"client_secret" cty:"client_secret"`
-	ClientCertPath                      *string                       `mapstructure:"client_cert_path" cty:"client_cert_path"`
-	ClientJWT                           *string                       `mapstructure:"client_jwt" cty:"client_jwt"`
-	ObjectID                            *string                       `mapstructure:"object_id" cty:"object_id"`
-	TenantID                            *string                       `mapstructure:"tenant_id" required:"false" cty:"tenant_id"`
-	SubscriptionID                      *string                       `mapstructure:"subscription_id" cty:"subscription_id"`
-	CaptureNamePrefix                   *string                       `mapstructure:"capture_name_prefix" cty:"capture_name_prefix"`
-	CaptureContainerName                *string                       `mapstructure:"capture_container_name" cty:"capture_container_name"`
-	SharedGallery                       SharedImageGallery            `mapstructure:"shared_image_gallery" required:"false" cty:"shared_image_gallery"`
-	SharedGalleryDestination            SharedImageGalleryDestination `mapstructure:"shared_image_gallery_destination" cty:"shared_image_gallery_destination"`
-	SharedGalleryTimeout                *string                       `mapstructure:"shared_image_gallery_timeout" cty:"shared_image_gallery_timeout"`
-	ImagePublisher                      *string                       `mapstructure:"image_publisher" required:"true" cty:"image_publisher"`
-	ImageOffer                          *string                       `mapstructure:"image_offer" required:"true" cty:"image_offer"`
-	ImageSku                            *string                       `mapstructure:"image_sku" required:"true" cty:"image_sku"`
-	ImageVersion                        *string                       `mapstructure:"image_version" required:"false" cty:"image_version"`
-	ImageUrl                            *string                       `mapstructure:"image_url" required:"false" cty:"image_url"`
-	CustomManagedImageResourceGroupName *string                       `mapstructure:"custom_managed_image_resource_group_name" required:"false" cty:"custom_managed_image_resource_group_name"`
-	CustomManagedImageName              *string                       `mapstructure:"custom_managed_image_name" required:"false" cty:"custom_managed_image_name"`
-	Location                            *string                       `mapstructure:"location" cty:"location"`
-	VMSize                              *string                       `mapstructure:"vm_size" required:"false" cty:"vm_size"`
-	ManagedImageResourceGroupName       *string                       `mapstructure:"managed_image_resource_group_name" cty:"managed_image_resource_group_name"`
-	ManagedImageName                    *string                       `mapstructure:"managed_image_name" cty:"managed_image_name"`
-	ManagedImageStorageAccountType      *string                       `mapstructure:"managed_image_storage_account_type" required:"false" cty:"managed_image_storage_account_type"`
-	ManagedImageOSDiskSnapshotName      *string                       `mapstructure:"managed_image_os_disk_snapshot_name" required:"false" cty:"managed_image_os_disk_snapshot_name"`
-	ManagedImageDataDiskSnapshotPrefix  *string                       `mapstructure:"managed_image_data_disk_snapshot_prefix" required:"false" cty:"managed_image_data_disk_snapshot_prefix"`
-	ManagedImageZoneResilient           *bool                         `mapstructure:"managed_image_zone_resilient" required:"false" cty:"managed_image_zone_resilient"`
-	AzureTags                           map[string]*string            `mapstructure:"azure_tags" required:"false" cty:"azure_tags"`
-	ResourceGroupName                   *string                       `mapstructure:"resource_group_name" cty:"resource_group_name"`
-	StorageAccount                      *string                       `mapstructure:"storage_account" cty:"storage_account"`
-	TempComputeName                     *string                       `mapstructure:"temp_compute_name" required:"false" cty:"temp_compute_name"`
-	TempResourceGroupName               *string                       `mapstructure:"temp_resource_group_name" cty:"temp_resource_group_name"`
-	BuildResourceGroupName              *string                       `mapstructure:"build_resource_group_name" cty:"build_resource_group_name"`
-	PrivateVirtualNetworkWithPublicIp   *bool                         `mapstructure:"private_virtual_network_with_public_ip" required:"false" cty:"private_virtual_network_with_public_ip"`
-	VirtualNetworkName                  *string                       `mapstructure:"virtual_network_name" required:"false" cty:"virtual_network_name"`
-	VirtualNetworkSubnetName            *string                       `mapstructure:"virtual_network_subnet_name" required:"false" cty:"virtual_network_subnet_name"`
-	VirtualNetworkResourceGroupName     *string                       `mapstructure:"virtual_network_resource_group_name" required:"false" cty:"virtual_network_resource_group_name"`
-	CustomDataFile                      *string                       `mapstructure:"custom_data_file" required:"false" cty:"custom_data_file"`
-	PlanInfo                            PlanInformation               `mapstructure:"plan_info" required:"false" cty:"plan_info"`
-	OSType                              *string                       `mapstructure:"os_type" required:"false" cty:"os_type"`
-	OSDiskSizeGB                        *int32                        `mapstructure:"os_disk_size_gb" required:"false" cty:"os_disk_size_gb"`
-	AdditionalDiskSize                  []int32                       `mapstructure:"disk_additional_size" required:"false" cty:"disk_additional_size"`
-	DiskCachingType                     *string                       `mapstructure:"disk_caching_type" required:"false" cty:"disk_caching_type"`
-	UserName                            *string                       `cty:"user_name"`
-	Password                            *string                       `cty:"password"`
-	Type                                *string                       `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect                  *string                       `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                             *string                       `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                             *int                          `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername                         *string                       `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword                         *string                       `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName                      *string                       `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName             *string                       `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	SSHClearAuthorizedKeys              *bool                         `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile                   *string                       `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                              *bool                         `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                          *string                       `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth                        *bool                         `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding           *bool                         `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts                *int                          `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost                      *string                       `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort                      *int                          `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth                 *bool                         `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername                  *string                       `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword                  *string                       `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile            *string                       `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod               *string                       `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost                        *string                       `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort                        *int                          `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername                    *string                       `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword                    *string                       `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval                *string                       `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout                 *string                       `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
-	SSHRemoteTunnels                    []string                      `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
-	SSHLocalTunnels                     []string                      `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
-	SSHPublicKey                        []byte                        `cty:"ssh_public_key"`
-	SSHPrivateKey                       []byte                        `cty:"ssh_private_key"`
-	WinRMUser                           *string                       `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword                       *string                       `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                           *string                       `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                           *int                          `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout                        *string                       `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL                         *bool                         `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure                       *bool                         `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM                        *bool                         `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	AsyncResourceGroupDelete            *bool                         `mapstructure:"async_resourcegroup_delete" required:"false" cty:"async_resourcegroup_delete"`
+	PackerBuildName                     *string                        `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType                   *string                        `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                         *bool                          `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                         *bool                          `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError                       *string                        `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars                      map[string]string              `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars                 []string                       `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	CloudEnvironmentName                *string                        `mapstructure:"cloud_environment_name" required:"false" cty:"cloud_environment_name"`
+	ClientID                            *string                        `mapstructure:"client_id" cty:"client_id"`
+	ClientSecret                        *string                        `mapstructure:"client_secret" cty:"client_secret"`
+	ClientCertPath                      *string                        `mapstructure:"client_cert_path" cty:"client_cert_path"`
+	ClientJWT                           *string                        `mapstructure:"client_jwt" cty:"client_jwt"`
+	ObjectID                            *string                        `mapstructure:"object_id" cty:"object_id"`
+	TenantID                            *string                        `mapstructure:"tenant_id" required:"false" cty:"tenant_id"`
+	SubscriptionID                      *string                        `mapstructure:"subscription_id" cty:"subscription_id"`
+	CaptureNamePrefix                   *string                        `mapstructure:"capture_name_prefix" cty:"capture_name_prefix"`
+	CaptureContainerName                *string                        `mapstructure:"capture_container_name" cty:"capture_container_name"`
+	SharedGallery                       *SharedImageGallery            `mapstructure:"shared_image_gallery" required:"false" cty:"shared_image_gallery"`
+	SharedGalleryDestination            *SharedImageGalleryDestination `mapstructure:"shared_image_gallery_destination" cty:"shared_image_gallery_destination"`
+	SharedGalleryTimeout                *string                        `mapstructure:"shared_image_gallery_timeout" cty:"shared_image_gallery_timeout"`
+	ImagePublisher                      *string                        `mapstructure:"image_publisher" required:"true" cty:"image_publisher"`
+	ImageOffer                          *string                        `mapstructure:"image_offer" required:"true" cty:"image_offer"`
+	ImageSku                            *string                        `mapstructure:"image_sku" required:"true" cty:"image_sku"`
+	ImageVersion                        *string                        `mapstructure:"image_version" required:"false" cty:"image_version"`
+	ImageUrl                            *string                        `mapstructure:"image_url" required:"false" cty:"image_url"`
+	CustomManagedImageResourceGroupName *string                        `mapstructure:"custom_managed_image_resource_group_name" required:"false" cty:"custom_managed_image_resource_group_name"`
+	CustomManagedImageName              *string                        `mapstructure:"custom_managed_image_name" required:"false" cty:"custom_managed_image_name"`
+	Location                            *string                        `mapstructure:"location" cty:"location"`
+	VMSize                              *string                        `mapstructure:"vm_size" required:"false" cty:"vm_size"`
+	ManagedImageResourceGroupName       *string                        `mapstructure:"managed_image_resource_group_name" cty:"managed_image_resource_group_name"`
+	ManagedImageName                    *string                        `mapstructure:"managed_image_name" cty:"managed_image_name"`
+	ManagedImageStorageAccountType      *string                        `mapstructure:"managed_image_storage_account_type" required:"false" cty:"managed_image_storage_account_type"`
+	ManagedImageOSDiskSnapshotName      *string                        `mapstructure:"managed_image_os_disk_snapshot_name" required:"false" cty:"managed_image_os_disk_snapshot_name"`
+	ManagedImageDataDiskSnapshotPrefix  *string                        `mapstructure:"managed_image_data_disk_snapshot_prefix" required:"false" cty:"managed_image_data_disk_snapshot_prefix"`
+	ManagedImageZoneResilient           *bool                          `mapstructure:"managed_image_zone_resilient" required:"false" cty:"managed_image_zone_resilient"`
+	AzureTags                           map[string]*string             `mapstructure:"azure_tags" required:"false" cty:"azure_tags"`
+	ResourceGroupName                   *string                        `mapstructure:"resource_group_name" cty:"resource_group_name"`
+	StorageAccount                      *string                        `mapstructure:"storage_account" cty:"storage_account"`
+	TempComputeName                     *string                        `mapstructure:"temp_compute_name" required:"false" cty:"temp_compute_name"`
+	TempResourceGroupName               *string                        `mapstructure:"temp_resource_group_name" cty:"temp_resource_group_name"`
+	BuildResourceGroupName              *string                        `mapstructure:"build_resource_group_name" cty:"build_resource_group_name"`
+	PrivateVirtualNetworkWithPublicIp   *bool                          `mapstructure:"private_virtual_network_with_public_ip" required:"false" cty:"private_virtual_network_with_public_ip"`
+	VirtualNetworkName                  *string                        `mapstructure:"virtual_network_name" required:"false" cty:"virtual_network_name"`
+	VirtualNetworkSubnetName            *string                        `mapstructure:"virtual_network_subnet_name" required:"false" cty:"virtual_network_subnet_name"`
+	VirtualNetworkResourceGroupName     *string                        `mapstructure:"virtual_network_resource_group_name" required:"false" cty:"virtual_network_resource_group_name"`
+	CustomDataFile                      *string                        `mapstructure:"custom_data_file" required:"false" cty:"custom_data_file"`
+	PlanInfo                            *PlanInformation               `mapstructure:"plan_info" required:"false" cty:"plan_info"`
+	OSType                              *string                        `mapstructure:"os_type" required:"false" cty:"os_type"`
+	OSDiskSizeGB                        *int32                         `mapstructure:"os_disk_size_gb" required:"false" cty:"os_disk_size_gb"`
+	AdditionalDiskSize                  []int32                        `mapstructure:"disk_additional_size" required:"false" cty:"disk_additional_size"`
+	DiskCachingType                     *string                        `mapstructure:"disk_caching_type" required:"false" cty:"disk_caching_type"`
+	UserName                            *string                        `cty:"user_name"`
+	Password                            *string                        `cty:"password"`
+	Type                                *string                        `mapstructure:"communicator" cty:"communicator"`
+	PauseBeforeConnect                  *string                        `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	SSHHost                             *string                        `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                             *int                           `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername                         *string                        `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword                         *string                        `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName                      *string                        `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHTemporaryKeyPairName             *string                        `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
+	SSHClearAuthorizedKeys              *bool                          `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile                   *string                        `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                              *bool                          `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHTimeout                          *string                        `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHAgentAuth                        *bool                          `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding           *bool                          `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts                *int                           `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost                      *string                        `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort                      *int                           `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth                 *bool                          `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername                  *string                        `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword                  *string                        `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile            *string                        `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod               *string                        `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost                        *string                        `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort                        *int                           `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername                    *string                        `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword                    *string                        `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHKeepAliveInterval                *string                        `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout                 *string                        `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHRemoteTunnels                    []string                       `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
+	SSHLocalTunnels                     []string                       `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
+	SSHPublicKey                        []byte                         `cty:"ssh_public_key"`
+	SSHPrivateKey                       []byte                         `cty:"ssh_private_key"`
+	WinRMUser                           *string                        `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword                       *string                        `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                           *string                        `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                           *int                           `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMTimeout                        *string                        `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMUseSSL                         *bool                          `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure                       *bool                          `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM                        *bool                          `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	AsyncResourceGroupDelete            *bool                          `mapstructure:"async_resourcegroup_delete" required:"false" cty:"async_resourcegroup_delete"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -131,8 +131,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"subscription_id":                          &hcldec.AttrSpec{Name: "subscription_id", Type: cty.String, Required: false},
 		"capture_name_prefix":                      &hcldec.AttrSpec{Name: "capture_name_prefix", Type: cty.String, Required: false},
 		"capture_container_name":                   &hcldec.AttrSpec{Name: "capture_container_name", Type: cty.String, Required: false},
-		"shared_image_gallery":                     &hcldec.BlockObjectSpec{TypeName: "SharedImageGallery", Nested: hcldec.ObjectSpec((*SharedImageGallery)(nil).HCL2Spec())},
-		"shared_image_gallery_destination":         &hcldec.BlockObjectSpec{TypeName: "SharedImageGalleryDestination", Nested: hcldec.ObjectSpec((*SharedImageGalleryDestination)(nil).HCL2Spec())},
+		"shared_image_gallery":                     &hcldec.BlockSpec{TypeName: "shared_image_gallery", Nested: hcldec.ObjectSpec((*SharedImageGallery)(nil).HCL2Spec())},
+		"shared_image_gallery_destination":         &hcldec.BlockSpec{TypeName: "shared_image_gallery_destination", Nested: hcldec.ObjectSpec((*SharedImageGalleryDestination)(nil).HCL2Spec())},
 		"shared_image_gallery_timeout":             &hcldec.AttrSpec{Name: "shared_image_gallery_timeout", Type: cty.String, Required: false},
 		"image_publisher":                          &hcldec.AttrSpec{Name: "image_publisher", Type: cty.String, Required: false},
 		"image_offer":                              &hcldec.AttrSpec{Name: "image_offer", Type: cty.String, Required: false},
@@ -160,7 +160,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"virtual_network_subnet_name":              &hcldec.AttrSpec{Name: "virtual_network_subnet_name", Type: cty.String, Required: false},
 		"virtual_network_resource_group_name":      &hcldec.AttrSpec{Name: "virtual_network_resource_group_name", Type: cty.String, Required: false},
 		"custom_data_file":                         &hcldec.AttrSpec{Name: "custom_data_file", Type: cty.String, Required: false},
-		"plan_info":                                &hcldec.BlockObjectSpec{TypeName: "PlanInformation", Nested: hcldec.ObjectSpec((*PlanInformation)(nil).HCL2Spec())},
+		"plan_info":                                &hcldec.BlockSpec{TypeName: "plan_info", Nested: hcldec.ObjectSpec((*PlanInformation)(nil).HCL2Spec())},
 		"os_type":                                  &hcldec.AttrSpec{Name: "os_type", Type: cty.String, Required: false},
 		"os_disk_size_gb":                          &hcldec.AttrSpec{Name: "os_disk_size_gb", Type: cty.Number, Required: false},
 		"disk_additional_size":                     &hcldec.AttrSpec{Name: "disk_additional_size", Type: cty.List(cty.Number), Required: false},
