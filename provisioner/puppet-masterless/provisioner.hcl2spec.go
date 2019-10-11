@@ -9,29 +9,29 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	CleanStagingDir     bool              `mapstructure:"clean_staging_directory" cty:"clean_staging_directory" hcl:"clean_staging_directory,optional"`
-	GuestOSType         string            `mapstructure:"guest_os_type" cty:"guest_os_type" hcl:"guest_os_type,optional"`
-	ExecuteCommand      string            `mapstructure:"execute_command" cty:"execute_command" hcl:"execute_command,optional"`
-	ExtraArguments      []string          `mapstructure:"extra_arguments" cty:"extra_arguments" hcl:"extra_arguments,optional"`
-	Facter              map[string]string `cty:"facter" hcl:"facter,optional"`
-	HieraConfigPath     string            `mapstructure:"hiera_config_path" cty:"hiera_config_path" hcl:"hiera_config_path,optional"`
-	IgnoreExitCodes     bool              `mapstructure:"ignore_exit_codes" cty:"ignore_exit_codes" hcl:"ignore_exit_codes,optional"`
-	ModulePaths         []string          `mapstructure:"module_paths" cty:"module_paths" hcl:"module_paths,optional"`
-	ManifestFile        string            `mapstructure:"manifest_file" cty:"manifest_file" hcl:"manifest_file,optional"`
-	ManifestDir         string            `mapstructure:"manifest_dir" cty:"manifest_dir" hcl:"manifest_dir,optional"`
-	PreventSudo         bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo" hcl:"prevent_sudo,optional"`
-	PuppetBinDir        string            `mapstructure:"puppet_bin_dir" cty:"puppet_bin_dir" hcl:"puppet_bin_dir,optional"`
-	StagingDir          string            `mapstructure:"staging_directory" cty:"staging_directory" hcl:"staging_directory,optional"`
-	WorkingDir          string            `mapstructure:"working_directory" cty:"working_directory" hcl:"working_directory,optional"`
-	ElevatedUser        string            `mapstructure:"elevated_user" cty:"elevated_user" hcl:"elevated_user,optional"`
-	ElevatedPassword    string            `mapstructure:"elevated_password" cty:"elevated_password" hcl:"elevated_password,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	CleanStagingDir     bool              `mapstructure:"clean_staging_directory" cty:"clean_staging_directory"`
+	GuestOSType         string            `mapstructure:"guest_os_type" cty:"guest_os_type"`
+	ExecuteCommand      string            `mapstructure:"execute_command" cty:"execute_command"`
+	ExtraArguments      []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
+	Facter              map[string]string `cty:"facter"`
+	HieraConfigPath     string            `mapstructure:"hiera_config_path" cty:"hiera_config_path"`
+	IgnoreExitCodes     bool              `mapstructure:"ignore_exit_codes" cty:"ignore_exit_codes"`
+	ModulePaths         []string          `mapstructure:"module_paths" cty:"module_paths"`
+	ManifestFile        string            `mapstructure:"manifest_file" cty:"manifest_file"`
+	ManifestDir         string            `mapstructure:"manifest_dir" cty:"manifest_dir"`
+	PreventSudo         bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
+	PuppetBinDir        string            `mapstructure:"puppet_bin_dir" cty:"puppet_bin_dir"`
+	StagingDir          string            `mapstructure:"staging_directory" cty:"staging_directory"`
+	WorkingDir          string            `mapstructure:"working_directory" cty:"working_directory"`
+	ElevatedUser        string            `mapstructure:"elevated_user" cty:"elevated_user"`
+	ElevatedPassword    string            `mapstructure:"elevated_password" cty:"elevated_password"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -43,29 +43,29 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"CleanStagingDir":     &hcldec.AttrSpec{Name: "clean_staging_directory", Type: cty.Bool, Required: false},
-		"GuestOSType":         &hcldec.AttrSpec{Name: "guest_os_type", Type: cty.String, Required: false},
-		"ExecuteCommand":      &hcldec.AttrSpec{Name: "execute_command", Type: cty.String, Required: false},
-		"ExtraArguments":      &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
-		"Facter":              &hcldec.BlockAttrsSpec{TypeName: "facter", ElementType: cty.String, Required: false},
-		"HieraConfigPath":     &hcldec.AttrSpec{Name: "hiera_config_path", Type: cty.String, Required: false},
-		"IgnoreExitCodes":     &hcldec.AttrSpec{Name: "ignore_exit_codes", Type: cty.Bool, Required: false},
-		"ModulePaths":         &hcldec.AttrSpec{Name: "module_paths", Type: cty.List(cty.String), Required: false},
-		"ManifestFile":        &hcldec.AttrSpec{Name: "manifest_file", Type: cty.String, Required: false},
-		"ManifestDir":         &hcldec.AttrSpec{Name: "manifest_dir", Type: cty.String, Required: false},
-		"PreventSudo":         &hcldec.AttrSpec{Name: "prevent_sudo", Type: cty.Bool, Required: false},
-		"PuppetBinDir":        &hcldec.AttrSpec{Name: "puppet_bin_dir", Type: cty.String, Required: false},
-		"StagingDir":          &hcldec.AttrSpec{Name: "staging_directory", Type: cty.String, Required: false},
-		"WorkingDir":          &hcldec.AttrSpec{Name: "working_directory", Type: cty.String, Required: false},
-		"ElevatedUser":        &hcldec.AttrSpec{Name: "elevated_user", Type: cty.String, Required: false},
-		"ElevatedPassword":    &hcldec.AttrSpec{Name: "elevated_password", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"clean_staging_directory":    &hcldec.AttrSpec{Name: "clean_staging_directory", Type: cty.Bool, Required: false},
+		"guest_os_type":              &hcldec.AttrSpec{Name: "guest_os_type", Type: cty.String, Required: false},
+		"execute_command":            &hcldec.AttrSpec{Name: "execute_command", Type: cty.String, Required: false},
+		"extra_arguments":            &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
+		"facter":                     &hcldec.BlockAttrsSpec{TypeName: "facter", ElementType: cty.String, Required: false},
+		"hiera_config_path":          &hcldec.AttrSpec{Name: "hiera_config_path", Type: cty.String, Required: false},
+		"ignore_exit_codes":          &hcldec.AttrSpec{Name: "ignore_exit_codes", Type: cty.Bool, Required: false},
+		"module_paths":               &hcldec.AttrSpec{Name: "module_paths", Type: cty.List(cty.String), Required: false},
+		"manifest_file":              &hcldec.AttrSpec{Name: "manifest_file", Type: cty.String, Required: false},
+		"manifest_dir":               &hcldec.AttrSpec{Name: "manifest_dir", Type: cty.String, Required: false},
+		"prevent_sudo":               &hcldec.AttrSpec{Name: "prevent_sudo", Type: cty.Bool, Required: false},
+		"puppet_bin_dir":             &hcldec.AttrSpec{Name: "puppet_bin_dir", Type: cty.String, Required: false},
+		"staging_directory":          &hcldec.AttrSpec{Name: "staging_directory", Type: cty.String, Required: false},
+		"working_directory":          &hcldec.AttrSpec{Name: "working_directory", Type: cty.String, Required: false},
+		"elevated_user":              &hcldec.AttrSpec{Name: "elevated_user", Type: cty.String, Required: false},
+		"elevated_password":          &hcldec.AttrSpec{Name: "elevated_password", Type: cty.String, Required: false},
 	}
 	return s
 }

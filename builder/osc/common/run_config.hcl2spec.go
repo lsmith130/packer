@@ -9,14 +9,14 @@ import (
 // FlatBlockDevice is an auto-generated flat version of BlockDevice.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatBlockDevice struct {
-	DeleteOnVmDeletion bool   `mapstructure:"delete_on_vm_deletion" cty:"delete_on_vm_deletion" hcl:"delete_on_vm_deletion,optional"`
-	DeviceName         string `mapstructure:"device_name" cty:"device_name" hcl:"device_name,optional"`
-	IOPS               int64  `mapstructure:"iops" cty:"iops" hcl:"iops,optional"`
-	NoDevice           bool   `mapstructure:"no_device" cty:"no_device" hcl:"no_device,optional"`
-	SnapshotId         string `mapstructure:"snapshot_id" cty:"snapshot_id" hcl:"snapshot_id,optional"`
-	VirtualName        string `mapstructure:"virtual_name" cty:"virtual_name" hcl:"virtual_name,optional"`
-	VolumeType         string `mapstructure:"volume_type" cty:"volume_type" hcl:"volume_type,optional"`
-	VolumeSize         int64  `mapstructure:"volume_size" cty:"volume_size" hcl:"volume_size,optional"`
+	DeleteOnVmDeletion bool   `mapstructure:"delete_on_vm_deletion" cty:"delete_on_vm_deletion"`
+	DeviceName         string `mapstructure:"device_name" cty:"device_name"`
+	IOPS               int64  `mapstructure:"iops" cty:"iops"`
+	NoDevice           bool   `mapstructure:"no_device" cty:"no_device"`
+	SnapshotId         string `mapstructure:"snapshot_id" cty:"snapshot_id"`
+	VirtualName        string `mapstructure:"virtual_name" cty:"virtual_name"`
+	VolumeType         string `mapstructure:"volume_type" cty:"volume_type"`
+	VolumeSize         int64  `mapstructure:"volume_size" cty:"volume_size"`
 }
 
 // FlatMapstructure returns a new FlatBlockDevice.
@@ -28,14 +28,14 @@ func (*BlockDevice) FlatMapstructure() interface{} { return new(FlatBlockDevice)
 // This spec is used by HCL to read the fields of BlockDevice.
 func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"DeleteOnVmDeletion": &hcldec.AttrSpec{Name: "delete_on_vm_deletion", Type: cty.Bool, Required: false},
-		"DeviceName":         &hcldec.AttrSpec{Name: "device_name", Type: cty.String, Required: false},
-		"IOPS":               &hcldec.AttrSpec{Name: "iops", Type: cty.Number, Required: false},
-		"NoDevice":           &hcldec.AttrSpec{Name: "no_device", Type: cty.Bool, Required: false},
-		"SnapshotId":         &hcldec.AttrSpec{Name: "snapshot_id", Type: cty.String, Required: false},
-		"VirtualName":        &hcldec.AttrSpec{Name: "virtual_name", Type: cty.String, Required: false},
-		"VolumeType":         &hcldec.AttrSpec{Name: "volume_type", Type: cty.String, Required: false},
-		"VolumeSize":         &hcldec.AttrSpec{Name: "volume_size", Type: cty.Number, Required: false},
+		"delete_on_vm_deletion": &hcldec.AttrSpec{Name: "delete_on_vm_deletion", Type: cty.Bool, Required: false},
+		"device_name":           &hcldec.AttrSpec{Name: "device_name", Type: cty.String, Required: false},
+		"iops":                  &hcldec.AttrSpec{Name: "iops", Type: cty.Number, Required: false},
+		"no_device":             &hcldec.AttrSpec{Name: "no_device", Type: cty.Bool, Required: false},
+		"snapshot_id":           &hcldec.AttrSpec{Name: "snapshot_id", Type: cty.String, Required: false},
+		"virtual_name":          &hcldec.AttrSpec{Name: "virtual_name", Type: cty.String, Required: false},
+		"volume_type":           &hcldec.AttrSpec{Name: "volume_type", Type: cty.String, Required: false},
+		"volume_size":           &hcldec.AttrSpec{Name: "volume_size", Type: cty.Number, Required: false},
 	}
 	return s
 }
@@ -43,7 +43,7 @@ func (*BlockDevice) HCL2Spec() map[string]hcldec.Spec {
 // FlatNetFilterOptions is an auto-generated flat version of NetFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatNetFilterOptions struct {
-	Filters map[string]string `cty:"filters" hcl:"filters,optional"`
+	Filters map[string]string `cty:"filters"`
 }
 
 // FlatMapstructure returns a new FlatNetFilterOptions.
@@ -55,7 +55,7 @@ func (*NetFilterOptions) FlatMapstructure() interface{} { return new(FlatNetFilt
 // This spec is used by HCL to read the fields of NetFilterOptions.
 func (*NetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+		"filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 	}
 	return s
 }
@@ -63,9 +63,9 @@ func (*NetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatOmiFilterOptions is an auto-generated flat version of OmiFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatOmiFilterOptions struct {
-	Filters    map[string]string `cty:"filters" hcl:"filters,optional"`
-	Owners     []string          `cty:"owners" hcl:"owners,optional"`
-	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent" hcl:"most_recent,optional"`
+	Filters    map[string]string `cty:"filters"`
+	Owners     []string          `cty:"owners"`
+	MostRecent bool              `mapstructure:"most_recent" cty:"most_recent"`
 }
 
 // FlatMapstructure returns a new FlatOmiFilterOptions.
@@ -77,9 +77,9 @@ func (*OmiFilterOptions) FlatMapstructure() interface{} { return new(FlatOmiFilt
 // This spec is used by HCL to read the fields of OmiFilterOptions.
 func (*OmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Filters":    &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-		"Owners":     &hcldec.AttrSpec{Name: "owners", Type: cty.List(cty.String), Required: false},
-		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
+		"filters":     &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+		"owners":      &hcldec.AttrSpec{Name: "owners", Type: cty.List(cty.String), Required: false},
+		"most_recent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
 	}
 	return s
 }
@@ -87,7 +87,7 @@ func (*OmiFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatSecurityGroupFilterOptions is an auto-generated flat version of SecurityGroupFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSecurityGroupFilterOptions struct {
-	Filters map[string]string `cty:"filters" hcl:"filters,optional"`
+	Filters map[string]string `cty:"filters"`
 }
 
 // FlatMapstructure returns a new FlatSecurityGroupFilterOptions.
@@ -101,7 +101,7 @@ func (*SecurityGroupFilterOptions) FlatMapstructure() interface{} {
 // This spec is used by HCL to read the fields of SecurityGroupFilterOptions.
 func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+		"filters": &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
 	}
 	return s
 }
@@ -109,9 +109,9 @@ func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // FlatSubnetFilterOptions is an auto-generated flat version of SubnetFilterOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSubnetFilterOptions struct {
-	Filters  map[string]string `cty:"filters" hcl:"filters,optional"`
-	MostFree bool              `mapstructure:"most_free" cty:"most_free" hcl:"most_free,optional"`
-	Random   bool              `mapstructure:"random" cty:"random" hcl:"random,optional"`
+	Filters  map[string]string `cty:"filters"`
+	MostFree bool              `mapstructure:"most_free" cty:"most_free"`
+	Random   bool              `mapstructure:"random" cty:"random"`
 }
 
 // FlatMapstructure returns a new FlatSubnetFilterOptions.
@@ -123,9 +123,9 @@ func (*SubnetFilterOptions) FlatMapstructure() interface{} { return new(FlatSubn
 // This spec is used by HCL to read the fields of SubnetFilterOptions.
 func (*SubnetFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Filters":  &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
-		"MostFree": &hcldec.AttrSpec{Name: "most_free", Type: cty.Bool, Required: false},
-		"Random":   &hcldec.AttrSpec{Name: "random", Type: cty.Bool, Required: false},
+		"filters":   &hcldec.BlockAttrsSpec{TypeName: "filters", ElementType: cty.String, Required: false},
+		"most_free": &hcldec.AttrSpec{Name: "most_free", Type: cty.Bool, Required: false},
+		"random":    &hcldec.AttrSpec{Name: "random", Type: cty.Bool, Required: false},
 	}
 	return s
 }

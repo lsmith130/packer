@@ -9,16 +9,16 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	OutputPath          string            `mapstructure:"output" cty:"output" hcl:"output,optional"`
-	StripPath           bool              `mapstructure:"strip_path" cty:"strip_path" hcl:"strip_path,optional"`
-	CustomData          map[string]string `mapstructure:"custom_data" cty:"custom_data" hcl:"custom_data,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	OutputPath          string            `mapstructure:"output" cty:"output"`
+	StripPath           bool              `mapstructure:"strip_path" cty:"strip_path"`
+	CustomData          map[string]string `mapstructure:"custom_data" cty:"custom_data"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -30,16 +30,16 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"OutputPath":          &hcldec.AttrSpec{Name: "output", Type: cty.String, Required: false},
-		"StripPath":           &hcldec.AttrSpec{Name: "strip_path", Type: cty.Bool, Required: false},
-		"CustomData":          &hcldec.BlockAttrsSpec{TypeName: "custom_data", ElementType: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"output":                     &hcldec.AttrSpec{Name: "output", Type: cty.String, Required: false},
+		"strip_path":                 &hcldec.AttrSpec{Name: "strip_path", Type: cty.Bool, Required: false},
+		"custom_data":                &hcldec.BlockAttrsSpec{TypeName: "custom_data", ElementType: cty.String, Required: false},
 	}
 	return s
 }

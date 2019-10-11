@@ -10,26 +10,26 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	APIToken            string            `mapstructure:"api_token" cty:"api_token" hcl:"api_token,optional"`
-	SpacesKey           string            `mapstructure:"spaces_key" cty:"spaces_key" hcl:"spaces_key,optional"`
-	SpacesSecret        string            `mapstructure:"spaces_secret" cty:"spaces_secret" hcl:"spaces_secret,optional"`
-	SpacesRegion        string            `mapstructure:"spaces_region" cty:"spaces_region" hcl:"spaces_region,optional"`
-	SpaceName           string            `mapstructure:"space_name" cty:"space_name" hcl:"space_name,optional"`
-	ObjectName          string            `mapstructure:"space_object_name" cty:"space_object_name" hcl:"space_object_name,optional"`
-	SkipClean           bool              `mapstructure:"skip_clean" cty:"skip_clean" hcl:"skip_clean,optional"`
-	Tags                []string          `mapstructure:"image_tags" cty:"image_tags" hcl:"image_tags,optional"`
-	Name                string            `mapstructure:"image_name" cty:"image_name" hcl:"image_name,optional"`
-	Description         string            `mapstructure:"image_description" cty:"image_description" hcl:"image_description,optional"`
-	Distribution        string            `mapstructure:"image_distribution" cty:"image_distribution" hcl:"image_distribution,optional"`
-	ImageRegions        []string          `mapstructure:"image_regions" cty:"image_regions" hcl:"image_regions,optional"`
-	Timeout             time.Duration     `mapstructure:"timeout" cty:"timeout" hcl:"timeout,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	APIToken            string            `mapstructure:"api_token" cty:"api_token"`
+	SpacesKey           string            `mapstructure:"spaces_key" cty:"spaces_key"`
+	SpacesSecret        string            `mapstructure:"spaces_secret" cty:"spaces_secret"`
+	SpacesRegion        string            `mapstructure:"spaces_region" cty:"spaces_region"`
+	SpaceName           string            `mapstructure:"space_name" cty:"space_name"`
+	ObjectName          string            `mapstructure:"space_object_name" cty:"space_object_name"`
+	SkipClean           bool              `mapstructure:"skip_clean" cty:"skip_clean"`
+	Tags                []string          `mapstructure:"image_tags" cty:"image_tags"`
+	Name                string            `mapstructure:"image_name" cty:"image_name"`
+	Description         string            `mapstructure:"image_description" cty:"image_description"`
+	Distribution        string            `mapstructure:"image_distribution" cty:"image_distribution"`
+	ImageRegions        []string          `mapstructure:"image_regions" cty:"image_regions"`
+	Timeout             time.Duration     `mapstructure:"timeout" cty:"timeout"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -41,26 +41,26 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"APIToken":            &hcldec.AttrSpec{Name: "api_token", Type: cty.String, Required: false},
-		"SpacesKey":           &hcldec.AttrSpec{Name: "spaces_key", Type: cty.String, Required: false},
-		"SpacesSecret":        &hcldec.AttrSpec{Name: "spaces_secret", Type: cty.String, Required: false},
-		"SpacesRegion":        &hcldec.AttrSpec{Name: "spaces_region", Type: cty.String, Required: false},
-		"SpaceName":           &hcldec.AttrSpec{Name: "space_name", Type: cty.String, Required: false},
-		"ObjectName":          &hcldec.AttrSpec{Name: "space_object_name", Type: cty.String, Required: false},
-		"SkipClean":           &hcldec.AttrSpec{Name: "skip_clean", Type: cty.Bool, Required: false},
-		"Tags":                &hcldec.AttrSpec{Name: "image_tags", Type: cty.List(cty.String), Required: false},
-		"Name":                &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
-		"Description":         &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
-		"Distribution":        &hcldec.AttrSpec{Name: "image_distribution", Type: cty.String, Required: false},
-		"ImageRegions":        &hcldec.AttrSpec{Name: "image_regions", Type: cty.List(cty.String), Required: false},
-		"Timeout":             &hcldec.AttrSpec{Name: "timeout", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"api_token":                  &hcldec.AttrSpec{Name: "api_token", Type: cty.String, Required: false},
+		"spaces_key":                 &hcldec.AttrSpec{Name: "spaces_key", Type: cty.String, Required: false},
+		"spaces_secret":              &hcldec.AttrSpec{Name: "spaces_secret", Type: cty.String, Required: false},
+		"spaces_region":              &hcldec.AttrSpec{Name: "spaces_region", Type: cty.String, Required: false},
+		"space_name":                 &hcldec.AttrSpec{Name: "space_name", Type: cty.String, Required: false},
+		"space_object_name":          &hcldec.AttrSpec{Name: "space_object_name", Type: cty.String, Required: false},
+		"skip_clean":                 &hcldec.AttrSpec{Name: "skip_clean", Type: cty.Bool, Required: false},
+		"image_tags":                 &hcldec.AttrSpec{Name: "image_tags", Type: cty.List(cty.String), Required: false},
+		"image_name":                 &hcldec.AttrSpec{Name: "image_name", Type: cty.String, Required: false},
+		"image_description":          &hcldec.AttrSpec{Name: "image_description", Type: cty.String, Required: false},
+		"image_distribution":         &hcldec.AttrSpec{Name: "image_distribution", Type: cty.String, Required: false},
+		"image_regions":              &hcldec.AttrSpec{Name: "image_regions", Type: cty.List(cty.String), Required: false},
+		"timeout":                    &hcldec.AttrSpec{Name: "timeout", Type: cty.String, Required: false},
 	}
 	return s
 }

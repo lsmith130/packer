@@ -9,21 +9,21 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName       string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType     string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug           bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce           bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError         string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars        map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars   []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	Tag                   string            `mapstructure:"box_tag" cty:"box_tag" hcl:"box_tag,optional"`
-	Version               string            `mapstructure:"version" cty:"version" hcl:"version,optional"`
-	VersionDescription    string            `mapstructure:"version_description" cty:"version_description" hcl:"version_description,optional"`
-	NoRelease             bool              `mapstructure:"no_release" cty:"no_release" hcl:"no_release,optional"`
-	AccessToken           string            `mapstructure:"access_token" cty:"access_token" hcl:"access_token,optional"`
-	VagrantCloudUrl       string            `mapstructure:"vagrant_cloud_url" cty:"vagrant_cloud_url" hcl:"vagrant_cloud_url,optional"`
-	InsecureSkipTLSVerify bool              `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify" hcl:"insecure_skip_tls_verify,optional"`
-	BoxDownloadUrl        string            `mapstructure:"box_download_url" cty:"box_download_url" hcl:"box_download_url,optional"`
+	PackerBuildName       string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType     string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug           bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce           bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError         string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars        map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars   []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Tag                   string            `mapstructure:"box_tag" cty:"box_tag"`
+	Version               string            `mapstructure:"version" cty:"version"`
+	VersionDescription    string            `mapstructure:"version_description" cty:"version_description"`
+	NoRelease             bool              `mapstructure:"no_release" cty:"no_release"`
+	AccessToken           string            `mapstructure:"access_token" cty:"access_token"`
+	VagrantCloudUrl       string            `mapstructure:"vagrant_cloud_url" cty:"vagrant_cloud_url"`
+	InsecureSkipTLSVerify bool              `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
+	BoxDownloadUrl        string            `mapstructure:"box_download_url" cty:"box_download_url"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -35,21 +35,21 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":       &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":     &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":           &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":           &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":         &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":        &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars":   &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"Tag":                   &hcldec.AttrSpec{Name: "box_tag", Type: cty.String, Required: false},
-		"Version":               &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
-		"VersionDescription":    &hcldec.AttrSpec{Name: "version_description", Type: cty.String, Required: false},
-		"NoRelease":             &hcldec.AttrSpec{Name: "no_release", Type: cty.Bool, Required: false},
-		"AccessToken":           &hcldec.AttrSpec{Name: "access_token", Type: cty.String, Required: false},
-		"VagrantCloudUrl":       &hcldec.AttrSpec{Name: "vagrant_cloud_url", Type: cty.String, Required: false},
-		"InsecureSkipTLSVerify": &hcldec.AttrSpec{Name: "insecure_skip_tls_verify", Type: cty.Bool, Required: false},
-		"BoxDownloadUrl":        &hcldec.AttrSpec{Name: "box_download_url", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"box_tag":                    &hcldec.AttrSpec{Name: "box_tag", Type: cty.String, Required: false},
+		"version":                    &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
+		"version_description":        &hcldec.AttrSpec{Name: "version_description", Type: cty.String, Required: false},
+		"no_release":                 &hcldec.AttrSpec{Name: "no_release", Type: cty.Bool, Required: false},
+		"access_token":               &hcldec.AttrSpec{Name: "access_token", Type: cty.String, Required: false},
+		"vagrant_cloud_url":          &hcldec.AttrSpec{Name: "vagrant_cloud_url", Type: cty.String, Required: false},
+		"insecure_skip_tls_verify":   &hcldec.AttrSpec{Name: "insecure_skip_tls_verify", Type: cty.Bool, Required: false},
+		"box_download_url":           &hcldec.AttrSpec{Name: "box_download_url", Type: cty.String, Required: false},
 	}
 	return s
 }

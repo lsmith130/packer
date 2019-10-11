@@ -10,107 +10,111 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug               bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce               bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError             string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars            map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars       []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	HTTPDir                   string            `mapstructure:"http_directory" cty:"http_directory" hcl:"http_directory,optional"`
-	HTTPPortMin               int               `mapstructure:"http_port_min" cty:"http_port_min" hcl:"http_port_min,optional"`
-	HTTPPortMax               int               `mapstructure:"http_port_max" cty:"http_port_max" hcl:"http_port_max,optional"`
-	ISOChecksum               string            `mapstructure:"iso_checksum" required:"true" cty:"iso_checksum" hcl:"iso_checksum,optional"`
-	ISOChecksumURL            string            `mapstructure:"iso_checksum_url" cty:"iso_checksum_url" hcl:"iso_checksum_url,optional"`
-	ISOChecksumType           string            `mapstructure:"iso_checksum_type" cty:"iso_checksum_type" hcl:"iso_checksum_type,optional"`
-	RawSingleISOUrl           string            `mapstructure:"iso_url" required:"true" cty:"iso_url" hcl:"iso_url,optional"`
-	ISOUrls                   []string          `mapstructure:"iso_urls" cty:"iso_urls" hcl:"iso_urls,optional"`
-	TargetPath                string            `mapstructure:"iso_target_path" cty:"iso_target_path" hcl:"iso_target_path,optional"`
-	TargetExtension           string            `mapstructure:"iso_target_extension" cty:"iso_target_extension" hcl:"iso_target_extension,optional"`
-	FloppyFiles               []string          `mapstructure:"floppy_files" cty:"floppy_files" hcl:"floppy_files,optional"`
-	FloppyDirectories         []string          `mapstructure:"floppy_dirs" cty:"floppy_dirs" hcl:"floppy_dirs,optional"`
-	FloppyLabel               string            `mapstructure:"floppy_label" cty:"floppy_label" hcl:"floppy_label,optional"`
-	RawBootGroupInterval      string            `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval" hcl:"boot_keygroup_interval,optional"`
-	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait" hcl:"boot_wait,optional"`
-	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command" hcl:"boot_command,optional"`
-	BootGroupInterval         time.Duration     `cty:"boot_group_interval" hcl:"boot_group_interval,optional"`
-	Format                    string            `mapstructure:"format" required:"false" cty:"format" hcl:"format,optional"`
-	ExportOpts                []string          `mapstructure:"export_opts" required:"false" cty:"export_opts" hcl:"export_opts,optional"`
-	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory" hcl:"output_directory,optional"`
-	Headless                  bool              `mapstructure:"headless" required:"false" cty:"headless" hcl:"headless,optional"`
-	VRDPBindAddress           string            `mapstructure:"vrdp_bind_address" required:"false" cty:"vrdp_bind_address" hcl:"vrdp_bind_address,optional"`
-	VRDPPortMin               int               `mapstructure:"vrdp_port_min" required:"false" cty:"vrdp_port_min" hcl:"vrdp_port_min,optional"`
-	VRDPPortMax               int               `mapstructure:"vrdp_port_max" cty:"vrdp_port_max" hcl:"vrdp_port_max,optional"`
-	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command" hcl:"shutdown_command,optional"`
-	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout" hcl:"shutdown_timeout,optional"`
-	RawPostShutdownDelay      string            `mapstructure:"post_shutdown_delay" required:"false" cty:"post_shutdown_delay" hcl:"post_shutdown_delay,optional"`
-	Type                      string            `mapstructure:"communicator" cty:"communicator" hcl:"communicator,optional"`
-	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting" hcl:"pause_before_connecting,optional"`
-	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host" hcl:"ssh_host,optional"`
-	SSHPort                   int               `mapstructure:"ssh_port" cty:"ssh_port" hcl:"ssh_port,optional"`
-	SSHUsername               string            `mapstructure:"ssh_username" cty:"ssh_username" hcl:"ssh_username,optional"`
-	SSHPassword               string            `mapstructure:"ssh_password" cty:"ssh_password" hcl:"ssh_password,optional"`
-	SSHKeyPairName            string            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name" hcl:"ssh_keypair_name,optional"`
-	SSHTemporaryKeyPairName   string            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name" hcl:"temporary_key_pair_name,optional"`
-	SSHClearAuthorizedKeys    bool              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys" hcl:"ssh_clear_authorized_keys,optional"`
-	SSHPrivateKeyFile         string            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file" hcl:"ssh_private_key_file,optional"`
-	SSHPty                    bool              `mapstructure:"ssh_pty" cty:"ssh_pty" hcl:"ssh_pty,optional"`
-	SSHTimeout                time.Duration     `mapstructure:"ssh_timeout" cty:"ssh_timeout" hcl:"ssh_timeout,optional"`
-	SSHAgentAuth              bool              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth" hcl:"ssh_agent_auth,optional"`
-	SSHDisableAgentForwarding bool              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding" hcl:"ssh_disable_agent_forwarding,optional"`
-	SSHHandshakeAttempts      int               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts" hcl:"ssh_handshake_attempts,optional"`
-	SSHBastionHost            string            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host" hcl:"ssh_bastion_host,optional"`
-	SSHBastionPort            int               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port" hcl:"ssh_bastion_port,optional"`
-	SSHBastionAgentAuth       bool              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth" hcl:"ssh_bastion_agent_auth,optional"`
-	SSHBastionUsername        string            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username" hcl:"ssh_bastion_username,optional"`
-	SSHBastionPassword        string            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password" hcl:"ssh_bastion_password,optional"`
-	SSHBastionPrivateKeyFile  string            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file" hcl:"ssh_bastion_private_key_file,optional"`
-	SSHFileTransferMethod     string            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method" hcl:"ssh_file_transfer_method,optional"`
-	SSHProxyHost              string            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host" hcl:"ssh_proxy_host,optional"`
-	SSHProxyPort              int               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port" hcl:"ssh_proxy_port,optional"`
-	SSHProxyUsername          string            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username" hcl:"ssh_proxy_username,optional"`
-	SSHProxyPassword          string            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password" hcl:"ssh_proxy_password,optional"`
-	SSHKeepAliveInterval      time.Duration     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval" hcl:"ssh_keep_alive_interval,optional"`
-	SSHReadWriteTimeout       time.Duration     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout" hcl:"ssh_read_write_timeout,optional"`
-	SSHRemoteTunnels          []string          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels" hcl:"ssh_remote_tunnels,optional"`
-	SSHLocalTunnels           []string          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels" hcl:"ssh_local_tunnels,optional"`
-	SSHPublicKey              []byte            `cty:"ssh_public_key" hcl:"ssh_public_key,optional"`
-	SSHPrivateKey             []byte            `cty:"ssh_private_key" hcl:"ssh_private_key,optional"`
-	WinRMUser                 string            `mapstructure:"winrm_username" cty:"winrm_username" hcl:"winrm_username,optional"`
-	WinRMPassword             string            `mapstructure:"winrm_password" cty:"winrm_password" hcl:"winrm_password,optional"`
-	WinRMHost                 string            `mapstructure:"winrm_host" cty:"winrm_host" hcl:"winrm_host,optional"`
-	WinRMPort                 int               `mapstructure:"winrm_port" cty:"winrm_port" hcl:"winrm_port,optional"`
-	WinRMTimeout              time.Duration     `mapstructure:"winrm_timeout" cty:"winrm_timeout" hcl:"winrm_timeout,optional"`
-	WinRMUseSSL               bool              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl" hcl:"winrm_use_ssl,optional"`
-	WinRMInsecure             bool              `mapstructure:"winrm_insecure" cty:"winrm_insecure" hcl:"winrm_insecure,optional"`
-	WinRMUseNTLM              bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm" hcl:"winrm_use_ntlm,optional"`
-	SSHHostPortMin            int               `mapstructure:"ssh_host_port_min" required:"false" cty:"ssh_host_port_min" hcl:"ssh_host_port_min,optional"`
-	SSHHostPortMax            int               `mapstructure:"ssh_host_port_max" cty:"ssh_host_port_max" hcl:"ssh_host_port_max,optional"`
-	SSHSkipNatMapping         bool              `mapstructure:"ssh_skip_nat_mapping" required:"false" cty:"ssh_skip_nat_mapping" hcl:"ssh_skip_nat_mapping,optional"`
-	SSHWaitTimeout            time.Duration     `mapstructure:"ssh_wait_timeout" cty:"ssh_wait_timeout" hcl:"ssh_wait_timeout,optional"`
-	CpuCount                  int               `mapstructure:"cpus" required:"false" cty:"cpus" hcl:"cpus,optional"`
-	MemorySize                int               `mapstructure:"memory" required:"false" cty:"memory" hcl:"memory,optional"`
-	Sound                     string            `mapstructure:"sound" required:"false" cty:"sound" hcl:"sound,optional"`
-	USB                       bool              `mapstructure:"usb" required:"false" cty:"usb" hcl:"usb,optional"`
-	VBoxManage                [][]string        `mapstructure:"vboxmanage" required:"false" cty:"vboxmanage" hcl:"vboxmanage,optional"`
-	VBoxManagePost            [][]string        `mapstructure:"vboxmanage_post" required:"false" cty:"vboxmanage_post" hcl:"vboxmanage_post,optional"`
-	VBoxVersionFile           *string           `mapstructure:"virtualbox_version_file" required:"false" cty:"virtualbox_version_file" hcl:"virtualbox_version_file,optional"`
-	BundleISO                 bool              `mapstructure:"bundle_iso" required:"false" cty:"bundle_iso" hcl:"bundle_iso,optional"`
-	GuestAdditionsMode        string            `mapstructure:"guest_additions_mode" required:"false" cty:"guest_additions_mode" hcl:"guest_additions_mode,optional"`
-	DiskSize                  uint              `mapstructure:"disk_size" required:"false" cty:"disk_size" hcl:"disk_size,optional"`
-	GuestAdditionsPath        string            `mapstructure:"guest_additions_path" required:"false" cty:"guest_additions_path" hcl:"guest_additions_path,optional"`
-	GuestAdditionsSHA256      string            `mapstructure:"guest_additions_sha256" required:"false" cty:"guest_additions_sha256" hcl:"guest_additions_sha256,optional"`
-	GuestAdditionsURL         string            `mapstructure:"guest_additions_url" required:"false" cty:"guest_additions_url" hcl:"guest_additions_url,optional"`
-	GuestAdditionsInterface   string            `mapstructure:"guest_additions_interface" required:"false" cty:"guest_additions_interface" hcl:"guest_additions_interface,optional"`
-	GuestOSType               string            `mapstructure:"guest_os_type" required:"false" cty:"guest_os_type" hcl:"guest_os_type,optional"`
-	HardDriveDiscard          bool              `mapstructure:"hard_drive_discard" required:"false" cty:"hard_drive_discard" hcl:"hard_drive_discard,optional"`
-	HardDriveInterface        string            `mapstructure:"hard_drive_interface" required:"false" cty:"hard_drive_interface" hcl:"hard_drive_interface,optional"`
-	SATAPortCount             int               `mapstructure:"sata_port_count" required:"false" cty:"sata_port_count" hcl:"sata_port_count,optional"`
-	HardDriveNonrotational    bool              `mapstructure:"hard_drive_nonrotational" required:"false" cty:"hard_drive_nonrotational" hcl:"hard_drive_nonrotational,optional"`
-	ISOInterface              string            `mapstructure:"iso_interface" required:"false" cty:"iso_interface" hcl:"iso_interface,optional"`
-	KeepRegistered            bool              `mapstructure:"keep_registered" required:"false" cty:"keep_registered" hcl:"keep_registered,optional"`
-	SkipExport                bool              `mapstructure:"skip_export" required:"false" cty:"skip_export" hcl:"skip_export,optional"`
-	VMName                    string            `mapstructure:"vm_name" required:"false" cty:"vm_name" hcl:"vm_name,optional"`
+	PackerBuildName           string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType         string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug               bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce               bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError             string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars            map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars       []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	HTTPDir                   string            `mapstructure:"http_directory" cty:"http_directory"`
+	HTTPPortMin               int               `mapstructure:"http_port_min" cty:"http_port_min"`
+	HTTPPortMax               int               `mapstructure:"http_port_max" cty:"http_port_max"`
+	ISOChecksum               string            `mapstructure:"iso_checksum" required:"true" cty:"iso_checksum"`
+	ISOChecksumURL            string            `mapstructure:"iso_checksum_url" cty:"iso_checksum_url"`
+	ISOChecksumType           string            `mapstructure:"iso_checksum_type" cty:"iso_checksum_type"`
+	RawSingleISOUrl           string            `mapstructure:"iso_url" required:"true" cty:"iso_url"`
+	ISOUrls                   []string          `mapstructure:"iso_urls" cty:"iso_urls"`
+	TargetPath                string            `mapstructure:"iso_target_path" cty:"iso_target_path"`
+	TargetExtension           string            `mapstructure:"iso_target_extension" cty:"iso_target_extension"`
+	FloppyFiles               []string          `mapstructure:"floppy_files" cty:"floppy_files"`
+	FloppyDirectories         []string          `mapstructure:"floppy_dirs" cty:"floppy_dirs"`
+	FloppyLabel               string            `mapstructure:"floppy_label" cty:"floppy_label"`
+	RawBootGroupInterval      string            `mapstructure:"boot_keygroup_interval" cty:"boot_keygroup_interval"`
+	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait"`
+	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command"`
+	BootGroupInterval         time.Duration     `cty:"boot_group_interval"`
+	BootWait                  time.Duration     `cty:"boot_wait"`
+	Format                    string            `mapstructure:"format" required:"false" cty:"format"`
+	ExportOpts                []string          `mapstructure:"export_opts" required:"false" cty:"export_opts"`
+	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory"`
+	Headless                  bool              `mapstructure:"headless" required:"false" cty:"headless"`
+	VRDPBindAddress           string            `mapstructure:"vrdp_bind_address" required:"false" cty:"vrdp_bind_address"`
+	VRDPPortMin               int               `mapstructure:"vrdp_port_min" required:"false" cty:"vrdp_port_min"`
+	VRDPPortMax               int               `mapstructure:"vrdp_port_max" cty:"vrdp_port_max"`
+	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command"`
+	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout"`
+	RawPostShutdownDelay      string            `mapstructure:"post_shutdown_delay" required:"false" cty:"post_shutdown_delay"`
+	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout"`
+	PostShutdownDelay         time.Duration     `cty:"post_shutdown_delay"`
+	Type                      string            `mapstructure:"communicator" cty:"communicator"`
+	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                   int               `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername               string            `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword               string            `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName            string            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHTemporaryKeyPairName   string            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
+	SSHClearAuthorizedKeys    bool              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile         string            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                    bool              `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHTimeout                time.Duration     `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHAgentAuth              bool              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding bool              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts      int               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost            string            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort            int               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth       bool              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername        string            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword        string            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile  string            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod     string            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost              string            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort              int               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername          string            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword          string            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHKeepAliveInterval      time.Duration     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout       time.Duration     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHRemoteTunnels          []string          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
+	SSHLocalTunnels           []string          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
+	SSHPublicKey              []byte            `cty:"ssh_public_key"`
+	SSHPrivateKey             []byte            `cty:"ssh_private_key"`
+	WinRMUser                 string            `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword             string            `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                 string            `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                 int               `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMTimeout              time.Duration     `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMUseSSL               bool              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure             bool              `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM              bool              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	SSHHostPortMin            int               `mapstructure:"ssh_host_port_min" required:"false" cty:"ssh_host_port_min"`
+	SSHHostPortMax            int               `mapstructure:"ssh_host_port_max" cty:"ssh_host_port_max"`
+	SSHSkipNatMapping         bool              `mapstructure:"ssh_skip_nat_mapping" required:"false" cty:"ssh_skip_nat_mapping"`
+	SSHWaitTimeout            time.Duration     `mapstructure:"ssh_wait_timeout" cty:"ssh_wait_timeout"`
+	CpuCount                  int               `mapstructure:"cpus" required:"false" cty:"cpus"`
+	MemorySize                int               `mapstructure:"memory" required:"false" cty:"memory"`
+	Sound                     string            `mapstructure:"sound" required:"false" cty:"sound"`
+	USB                       bool              `mapstructure:"usb" required:"false" cty:"usb"`
+	VBoxManage                [][]string        `mapstructure:"vboxmanage" required:"false" cty:"vboxmanage"`
+	VBoxManagePost            [][]string        `mapstructure:"vboxmanage_post" required:"false" cty:"vboxmanage_post"`
+	Communicator              string            `mapstructure:"communicator" cty:"communicator"`
+	VBoxVersionFile           *string           `mapstructure:"virtualbox_version_file" required:"false" cty:"virtualbox_version_file"`
+	BundleISO                 bool              `mapstructure:"bundle_iso" required:"false" cty:"bundle_iso"`
+	GuestAdditionsMode        string            `mapstructure:"guest_additions_mode" required:"false" cty:"guest_additions_mode"`
+	DiskSize                  uint              `mapstructure:"disk_size" required:"false" cty:"disk_size"`
+	GuestAdditionsPath        string            `mapstructure:"guest_additions_path" required:"false" cty:"guest_additions_path"`
+	GuestAdditionsSHA256      string            `mapstructure:"guest_additions_sha256" required:"false" cty:"guest_additions_sha256"`
+	GuestAdditionsURL         string            `mapstructure:"guest_additions_url" required:"false" cty:"guest_additions_url"`
+	GuestAdditionsInterface   string            `mapstructure:"guest_additions_interface" required:"false" cty:"guest_additions_interface"`
+	GuestOSType               string            `mapstructure:"guest_os_type" required:"false" cty:"guest_os_type"`
+	HardDriveDiscard          bool              `mapstructure:"hard_drive_discard" required:"false" cty:"hard_drive_discard"`
+	HardDriveInterface        string            `mapstructure:"hard_drive_interface" required:"false" cty:"hard_drive_interface"`
+	SATAPortCount             int               `mapstructure:"sata_port_count" required:"false" cty:"sata_port_count"`
+	HardDriveNonrotational    bool              `mapstructure:"hard_drive_nonrotational" required:"false" cty:"hard_drive_nonrotational"`
+	ISOInterface              string            `mapstructure:"iso_interface" required:"false" cty:"iso_interface"`
+	KeepRegistered            bool              `mapstructure:"keep_registered" required:"false" cty:"keep_registered"`
+	SkipExport                bool              `mapstructure:"skip_export" required:"false" cty:"skip_export"`
+	VMName                    string            `mapstructure:"vm_name" required:"false" cty:"vm_name"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -122,107 +126,111 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":           &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":         &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":             &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":            &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars":       &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"HTTPDir":                   &hcldec.AttrSpec{Name: "http_directory", Type: cty.String, Required: false},
-		"HTTPPortMin":               &hcldec.AttrSpec{Name: "http_port_min", Type: cty.Number, Required: false},
-		"HTTPPortMax":               &hcldec.AttrSpec{Name: "http_port_max", Type: cty.Number, Required: false},
-		"ISOChecksum":               &hcldec.AttrSpec{Name: "iso_checksum", Type: cty.String, Required: false},
-		"ISOChecksumURL":            &hcldec.AttrSpec{Name: "iso_checksum_url", Type: cty.String, Required: false},
-		"ISOChecksumType":           &hcldec.AttrSpec{Name: "iso_checksum_type", Type: cty.String, Required: false},
-		"RawSingleISOUrl":           &hcldec.AttrSpec{Name: "iso_url", Type: cty.String, Required: false},
-		"ISOUrls":                   &hcldec.AttrSpec{Name: "iso_urls", Type: cty.List(cty.String), Required: false},
-		"TargetPath":                &hcldec.AttrSpec{Name: "iso_target_path", Type: cty.String, Required: false},
-		"TargetExtension":           &hcldec.AttrSpec{Name: "iso_target_extension", Type: cty.String, Required: false},
-		"FloppyFiles":               &hcldec.AttrSpec{Name: "floppy_files", Type: cty.List(cty.String), Required: false},
-		"FloppyDirectories":         &hcldec.AttrSpec{Name: "floppy_dirs", Type: cty.List(cty.String), Required: false},
-		"FloppyLabel":               &hcldec.AttrSpec{Name: "floppy_label", Type: cty.String, Required: false},
-		"RawBootGroupInterval":      &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
-		"RawBootWait":               &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
-		"BootCommand":               &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
-		"BootGroupInterval":         &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"Format":                    &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
-		"ExportOpts":                &hcldec.AttrSpec{Name: "export_opts", Type: cty.List(cty.String), Required: false},
-		"OutputDir":                 &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
-		"Headless":                  &hcldec.AttrSpec{Name: "headless", Type: cty.Bool, Required: false},
-		"VRDPBindAddress":           &hcldec.AttrSpec{Name: "vrdp_bind_address", Type: cty.String, Required: false},
-		"VRDPPortMin":               &hcldec.AttrSpec{Name: "vrdp_port_min", Type: cty.Number, Required: false},
-		"VRDPPortMax":               &hcldec.AttrSpec{Name: "vrdp_port_max", Type: cty.Number, Required: false},
-		"ShutdownCommand":           &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
-		"RawShutdownTimeout":        &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"RawPostShutdownDelay":      &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
-		"Type":                      &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
-		"PauseBeforeConnect":        &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
-		"SSHHost":                   &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},
-		"SSHPort":                   &hcldec.AttrSpec{Name: "ssh_port", Type: cty.Number, Required: false},
-		"SSHUsername":               &hcldec.AttrSpec{Name: "ssh_username", Type: cty.String, Required: false},
-		"SSHPassword":               &hcldec.AttrSpec{Name: "ssh_password", Type: cty.String, Required: false},
-		"SSHKeyPairName":            &hcldec.AttrSpec{Name: "ssh_keypair_name", Type: cty.String, Required: false},
-		"SSHTemporaryKeyPairName":   &hcldec.AttrSpec{Name: "temporary_key_pair_name", Type: cty.String, Required: false},
-		"SSHClearAuthorizedKeys":    &hcldec.AttrSpec{Name: "ssh_clear_authorized_keys", Type: cty.Bool, Required: false},
-		"SSHPrivateKeyFile":         &hcldec.AttrSpec{Name: "ssh_private_key_file", Type: cty.String, Required: false},
-		"SSHPty":                    &hcldec.AttrSpec{Name: "ssh_pty", Type: cty.Bool, Required: false},
-		"SSHTimeout":                &hcldec.AttrSpec{Name: "ssh_timeout", Type: cty.String, Required: false},
-		"SSHAgentAuth":              &hcldec.AttrSpec{Name: "ssh_agent_auth", Type: cty.Bool, Required: false},
-		"SSHDisableAgentForwarding": &hcldec.AttrSpec{Name: "ssh_disable_agent_forwarding", Type: cty.Bool, Required: false},
-		"SSHHandshakeAttempts":      &hcldec.AttrSpec{Name: "ssh_handshake_attempts", Type: cty.Number, Required: false},
-		"SSHBastionHost":            &hcldec.AttrSpec{Name: "ssh_bastion_host", Type: cty.String, Required: false},
-		"SSHBastionPort":            &hcldec.AttrSpec{Name: "ssh_bastion_port", Type: cty.Number, Required: false},
-		"SSHBastionAgentAuth":       &hcldec.AttrSpec{Name: "ssh_bastion_agent_auth", Type: cty.Bool, Required: false},
-		"SSHBastionUsername":        &hcldec.AttrSpec{Name: "ssh_bastion_username", Type: cty.String, Required: false},
-		"SSHBastionPassword":        &hcldec.AttrSpec{Name: "ssh_bastion_password", Type: cty.String, Required: false},
-		"SSHBastionPrivateKeyFile":  &hcldec.AttrSpec{Name: "ssh_bastion_private_key_file", Type: cty.String, Required: false},
-		"SSHFileTransferMethod":     &hcldec.AttrSpec{Name: "ssh_file_transfer_method", Type: cty.String, Required: false},
-		"SSHProxyHost":              &hcldec.AttrSpec{Name: "ssh_proxy_host", Type: cty.String, Required: false},
-		"SSHProxyPort":              &hcldec.AttrSpec{Name: "ssh_proxy_port", Type: cty.Number, Required: false},
-		"SSHProxyUsername":          &hcldec.AttrSpec{Name: "ssh_proxy_username", Type: cty.String, Required: false},
-		"SSHProxyPassword":          &hcldec.AttrSpec{Name: "ssh_proxy_password", Type: cty.String, Required: false},
-		"SSHKeepAliveInterval":      &hcldec.AttrSpec{Name: "ssh_keep_alive_interval", Type: cty.String, Required: false},
-		"SSHReadWriteTimeout":       &hcldec.AttrSpec{Name: "ssh_read_write_timeout", Type: cty.String, Required: false},
-		"SSHRemoteTunnels":          &hcldec.AttrSpec{Name: "ssh_remote_tunnels", Type: cty.List(cty.String), Required: false},
-		"SSHLocalTunnels":           &hcldec.AttrSpec{Name: "ssh_local_tunnels", Type: cty.List(cty.String), Required: false},
-		"SSHPublicKey":              &hcldec.AttrSpec{Name: "ssh_public_key", Type: cty.List(cty.Number), Required: false},
-		"SSHPrivateKey":             &hcldec.AttrSpec{Name: "ssh_private_key", Type: cty.List(cty.Number), Required: false},
-		"WinRMUser":                 &hcldec.AttrSpec{Name: "winrm_username", Type: cty.String, Required: false},
-		"WinRMPassword":             &hcldec.AttrSpec{Name: "winrm_password", Type: cty.String, Required: false},
-		"WinRMHost":                 &hcldec.AttrSpec{Name: "winrm_host", Type: cty.String, Required: false},
-		"WinRMPort":                 &hcldec.AttrSpec{Name: "winrm_port", Type: cty.Number, Required: false},
-		"WinRMTimeout":              &hcldec.AttrSpec{Name: "winrm_timeout", Type: cty.String, Required: false},
-		"WinRMUseSSL":               &hcldec.AttrSpec{Name: "winrm_use_ssl", Type: cty.Bool, Required: false},
-		"WinRMInsecure":             &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
-		"WinRMUseNTLM":              &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
-		"SSHHostPortMin":            &hcldec.AttrSpec{Name: "ssh_host_port_min", Type: cty.Number, Required: false},
-		"SSHHostPortMax":            &hcldec.AttrSpec{Name: "ssh_host_port_max", Type: cty.Number, Required: false},
-		"SSHSkipNatMapping":         &hcldec.AttrSpec{Name: "ssh_skip_nat_mapping", Type: cty.Bool, Required: false},
-		"SSHWaitTimeout":            &hcldec.AttrSpec{Name: "ssh_wait_timeout", Type: cty.String, Required: false},
-		"CpuCount":                  &hcldec.AttrSpec{Name: "cpus", Type: cty.Number, Required: false},
-		"MemorySize":                &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
-		"Sound":                     &hcldec.AttrSpec{Name: "sound", Type: cty.String, Required: false},
-		"USB":                       &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
-		"VBoxManage":                &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},              /* TODO(azr): could not find slice type ([][]string) */
-		"VBoxManagePost":            &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false},         /* TODO(azr): could not find slice type ([][]string) */
-		"VBoxVersionFile":           &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
-		"BundleISO":                 &hcldec.AttrSpec{Name: "bundle_iso", Type: cty.Bool, Required: false},
-		"GuestAdditionsMode":        &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
-		"DiskSize":                  &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
-		"GuestAdditionsPath":        &hcldec.AttrSpec{Name: "guest_additions_path", Type: cty.String, Required: false},
-		"GuestAdditionsSHA256":      &hcldec.AttrSpec{Name: "guest_additions_sha256", Type: cty.String, Required: false},
-		"GuestAdditionsURL":         &hcldec.AttrSpec{Name: "guest_additions_url", Type: cty.String, Required: false},
-		"GuestAdditionsInterface":   &hcldec.AttrSpec{Name: "guest_additions_interface", Type: cty.String, Required: false},
-		"GuestOSType":               &hcldec.AttrSpec{Name: "guest_os_type", Type: cty.String, Required: false},
-		"HardDriveDiscard":          &hcldec.AttrSpec{Name: "hard_drive_discard", Type: cty.Bool, Required: false},
-		"HardDriveInterface":        &hcldec.AttrSpec{Name: "hard_drive_interface", Type: cty.String, Required: false},
-		"SATAPortCount":             &hcldec.AttrSpec{Name: "sata_port_count", Type: cty.Number, Required: false},
-		"HardDriveNonrotational":    &hcldec.AttrSpec{Name: "hard_drive_nonrotational", Type: cty.Bool, Required: false},
-		"ISOInterface":              &hcldec.AttrSpec{Name: "iso_interface", Type: cty.String, Required: false},
-		"KeepRegistered":            &hcldec.AttrSpec{Name: "keep_registered", Type: cty.Bool, Required: false},
-		"SkipExport":                &hcldec.AttrSpec{Name: "skip_export", Type: cty.Bool, Required: false},
-		"VMName":                    &hcldec.AttrSpec{Name: "vm_name", Type: cty.String, Required: false},
+		"packer_build_name":            &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":          &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":                 &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":                 &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":              &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":        &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables":   &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"http_directory":               &hcldec.AttrSpec{Name: "http_directory", Type: cty.String, Required: false},
+		"http_port_min":                &hcldec.AttrSpec{Name: "http_port_min", Type: cty.Number, Required: false},
+		"http_port_max":                &hcldec.AttrSpec{Name: "http_port_max", Type: cty.Number, Required: false},
+		"iso_checksum":                 &hcldec.AttrSpec{Name: "iso_checksum", Type: cty.String, Required: false},
+		"iso_checksum_url":             &hcldec.AttrSpec{Name: "iso_checksum_url", Type: cty.String, Required: false},
+		"iso_checksum_type":            &hcldec.AttrSpec{Name: "iso_checksum_type", Type: cty.String, Required: false},
+		"iso_url":                      &hcldec.AttrSpec{Name: "iso_url", Type: cty.String, Required: false},
+		"iso_urls":                     &hcldec.AttrSpec{Name: "iso_urls", Type: cty.List(cty.String), Required: false},
+		"iso_target_path":              &hcldec.AttrSpec{Name: "iso_target_path", Type: cty.String, Required: false},
+		"iso_target_extension":         &hcldec.AttrSpec{Name: "iso_target_extension", Type: cty.String, Required: false},
+		"floppy_files":                 &hcldec.AttrSpec{Name: "floppy_files", Type: cty.List(cty.String), Required: false},
+		"floppy_dirs":                  &hcldec.AttrSpec{Name: "floppy_dirs", Type: cty.List(cty.String), Required: false},
+		"floppy_label":                 &hcldec.AttrSpec{Name: "floppy_label", Type: cty.String, Required: false},
+		"boot_keygroup_interval":       &hcldec.AttrSpec{Name: "boot_keygroup_interval", Type: cty.String, Required: false},
+		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+		"boot_command":                 &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
+		"boot_group_interval":          &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
+		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
+		"format":                       &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
+		"export_opts":                  &hcldec.AttrSpec{Name: "export_opts", Type: cty.List(cty.String), Required: false},
+		"output_directory":             &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
+		"headless":                     &hcldec.AttrSpec{Name: "headless", Type: cty.Bool, Required: false},
+		"vrdp_bind_address":            &hcldec.AttrSpec{Name: "vrdp_bind_address", Type: cty.String, Required: false},
+		"vrdp_port_min":                &hcldec.AttrSpec{Name: "vrdp_port_min", Type: cty.Number, Required: false},
+		"vrdp_port_max":                &hcldec.AttrSpec{Name: "vrdp_port_max", Type: cty.Number, Required: false},
+		"shutdown_command":             &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
+		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
+		"post_shutdown_delay":          &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
+		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
+		"post_shutdown_delay":          &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
+		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
+		"pause_before_connecting":      &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},
+		"ssh_host":                     &hcldec.AttrSpec{Name: "ssh_host", Type: cty.String, Required: false},
+		"ssh_port":                     &hcldec.AttrSpec{Name: "ssh_port", Type: cty.Number, Required: false},
+		"ssh_username":                 &hcldec.AttrSpec{Name: "ssh_username", Type: cty.String, Required: false},
+		"ssh_password":                 &hcldec.AttrSpec{Name: "ssh_password", Type: cty.String, Required: false},
+		"ssh_keypair_name":             &hcldec.AttrSpec{Name: "ssh_keypair_name", Type: cty.String, Required: false},
+		"temporary_key_pair_name":      &hcldec.AttrSpec{Name: "temporary_key_pair_name", Type: cty.String, Required: false},
+		"ssh_clear_authorized_keys":    &hcldec.AttrSpec{Name: "ssh_clear_authorized_keys", Type: cty.Bool, Required: false},
+		"ssh_private_key_file":         &hcldec.AttrSpec{Name: "ssh_private_key_file", Type: cty.String, Required: false},
+		"ssh_pty":                      &hcldec.AttrSpec{Name: "ssh_pty", Type: cty.Bool, Required: false},
+		"ssh_timeout":                  &hcldec.AttrSpec{Name: "ssh_timeout", Type: cty.String, Required: false},
+		"ssh_agent_auth":               &hcldec.AttrSpec{Name: "ssh_agent_auth", Type: cty.Bool, Required: false},
+		"ssh_disable_agent_forwarding": &hcldec.AttrSpec{Name: "ssh_disable_agent_forwarding", Type: cty.Bool, Required: false},
+		"ssh_handshake_attempts":       &hcldec.AttrSpec{Name: "ssh_handshake_attempts", Type: cty.Number, Required: false},
+		"ssh_bastion_host":             &hcldec.AttrSpec{Name: "ssh_bastion_host", Type: cty.String, Required: false},
+		"ssh_bastion_port":             &hcldec.AttrSpec{Name: "ssh_bastion_port", Type: cty.Number, Required: false},
+		"ssh_bastion_agent_auth":       &hcldec.AttrSpec{Name: "ssh_bastion_agent_auth", Type: cty.Bool, Required: false},
+		"ssh_bastion_username":         &hcldec.AttrSpec{Name: "ssh_bastion_username", Type: cty.String, Required: false},
+		"ssh_bastion_password":         &hcldec.AttrSpec{Name: "ssh_bastion_password", Type: cty.String, Required: false},
+		"ssh_bastion_private_key_file": &hcldec.AttrSpec{Name: "ssh_bastion_private_key_file", Type: cty.String, Required: false},
+		"ssh_file_transfer_method":     &hcldec.AttrSpec{Name: "ssh_file_transfer_method", Type: cty.String, Required: false},
+		"ssh_proxy_host":               &hcldec.AttrSpec{Name: "ssh_proxy_host", Type: cty.String, Required: false},
+		"ssh_proxy_port":               &hcldec.AttrSpec{Name: "ssh_proxy_port", Type: cty.Number, Required: false},
+		"ssh_proxy_username":           &hcldec.AttrSpec{Name: "ssh_proxy_username", Type: cty.String, Required: false},
+		"ssh_proxy_password":           &hcldec.AttrSpec{Name: "ssh_proxy_password", Type: cty.String, Required: false},
+		"ssh_keep_alive_interval":      &hcldec.AttrSpec{Name: "ssh_keep_alive_interval", Type: cty.String, Required: false},
+		"ssh_read_write_timeout":       &hcldec.AttrSpec{Name: "ssh_read_write_timeout", Type: cty.String, Required: false},
+		"ssh_remote_tunnels":           &hcldec.AttrSpec{Name: "ssh_remote_tunnels", Type: cty.List(cty.String), Required: false},
+		"ssh_local_tunnels":            &hcldec.AttrSpec{Name: "ssh_local_tunnels", Type: cty.List(cty.String), Required: false},
+		"ssh_public_key":               &hcldec.AttrSpec{Name: "ssh_public_key", Type: cty.List(cty.Number), Required: false},
+		"ssh_private_key":              &hcldec.AttrSpec{Name: "ssh_private_key", Type: cty.List(cty.Number), Required: false},
+		"winrm_username":               &hcldec.AttrSpec{Name: "winrm_username", Type: cty.String, Required: false},
+		"winrm_password":               &hcldec.AttrSpec{Name: "winrm_password", Type: cty.String, Required: false},
+		"winrm_host":                   &hcldec.AttrSpec{Name: "winrm_host", Type: cty.String, Required: false},
+		"winrm_port":                   &hcldec.AttrSpec{Name: "winrm_port", Type: cty.Number, Required: false},
+		"winrm_timeout":                &hcldec.AttrSpec{Name: "winrm_timeout", Type: cty.String, Required: false},
+		"winrm_use_ssl":                &hcldec.AttrSpec{Name: "winrm_use_ssl", Type: cty.Bool, Required: false},
+		"winrm_insecure":               &hcldec.AttrSpec{Name: "winrm_insecure", Type: cty.Bool, Required: false},
+		"winrm_use_ntlm":               &hcldec.AttrSpec{Name: "winrm_use_ntlm", Type: cty.Bool, Required: false},
+		"ssh_host_port_min":            &hcldec.AttrSpec{Name: "ssh_host_port_min", Type: cty.Number, Required: false},
+		"ssh_host_port_max":            &hcldec.AttrSpec{Name: "ssh_host_port_max", Type: cty.Number, Required: false},
+		"ssh_skip_nat_mapping":         &hcldec.AttrSpec{Name: "ssh_skip_nat_mapping", Type: cty.Bool, Required: false},
+		"ssh_wait_timeout":             &hcldec.AttrSpec{Name: "ssh_wait_timeout", Type: cty.String, Required: false},
+		"cpus":                         &hcldec.AttrSpec{Name: "cpus", Type: cty.Number, Required: false},
+		"memory":                       &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
+		"sound":                        &hcldec.AttrSpec{Name: "sound", Type: cty.String, Required: false},
+		"usb":                          &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
+		"vboxmanage":                   &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
+		"vboxmanage_post":              &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
+		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
+		"virtualbox_version_file":      &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
+		"bundle_iso":                   &hcldec.AttrSpec{Name: "bundle_iso", Type: cty.Bool, Required: false},
+		"guest_additions_mode":         &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
+		"disk_size":                    &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
+		"guest_additions_path":         &hcldec.AttrSpec{Name: "guest_additions_path", Type: cty.String, Required: false},
+		"guest_additions_sha256":       &hcldec.AttrSpec{Name: "guest_additions_sha256", Type: cty.String, Required: false},
+		"guest_additions_url":          &hcldec.AttrSpec{Name: "guest_additions_url", Type: cty.String, Required: false},
+		"guest_additions_interface":    &hcldec.AttrSpec{Name: "guest_additions_interface", Type: cty.String, Required: false},
+		"guest_os_type":                &hcldec.AttrSpec{Name: "guest_os_type", Type: cty.String, Required: false},
+		"hard_drive_discard":           &hcldec.AttrSpec{Name: "hard_drive_discard", Type: cty.Bool, Required: false},
+		"hard_drive_interface":         &hcldec.AttrSpec{Name: "hard_drive_interface", Type: cty.String, Required: false},
+		"sata_port_count":              &hcldec.AttrSpec{Name: "sata_port_count", Type: cty.Number, Required: false},
+		"hard_drive_nonrotational":     &hcldec.AttrSpec{Name: "hard_drive_nonrotational", Type: cty.Bool, Required: false},
+		"iso_interface":                &hcldec.AttrSpec{Name: "iso_interface", Type: cty.String, Required: false},
+		"keep_registered":              &hcldec.AttrSpec{Name: "keep_registered", Type: cty.Bool, Required: false},
+		"skip_export":                  &hcldec.AttrSpec{Name: "skip_export", Type: cty.Bool, Required: false},
+		"vm_name":                      &hcldec.AttrSpec{Name: "vm_name", Type: cty.String, Required: false},
 	}
 	return s
 }

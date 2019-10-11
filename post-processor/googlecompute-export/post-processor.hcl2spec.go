@@ -9,22 +9,22 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	AccountFile         string            `mapstructure:"account_file" cty:"account_file" hcl:"account_file,optional"`
-	DiskSizeGb          int64             `mapstructure:"disk_size" cty:"disk_size" hcl:"disk_size,optional"`
-	DiskType            string            `mapstructure:"disk_type" cty:"disk_type" hcl:"disk_type,optional"`
-	MachineType         string            `mapstructure:"machine_type" cty:"machine_type" hcl:"machine_type,optional"`
-	Network             string            `mapstructure:"network" cty:"network" hcl:"network,optional"`
-	Paths               []string          `mapstructure:"paths" cty:"paths" hcl:"paths,optional"`
-	Subnetwork          string            `mapstructure:"subnetwork" cty:"subnetwork" hcl:"subnetwork,optional"`
-	VaultGCPOauthEngine string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine" hcl:"vault_gcp_oauth_engine,optional"`
-	Zone                string            `mapstructure:"zone" cty:"zone" hcl:"zone,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	AccountFile         string            `mapstructure:"account_file" cty:"account_file"`
+	DiskSizeGb          int64             `mapstructure:"disk_size" cty:"disk_size"`
+	DiskType            string            `mapstructure:"disk_type" cty:"disk_type"`
+	MachineType         string            `mapstructure:"machine_type" cty:"machine_type"`
+	Network             string            `mapstructure:"network" cty:"network"`
+	Paths               []string          `mapstructure:"paths" cty:"paths"`
+	Subnetwork          string            `mapstructure:"subnetwork" cty:"subnetwork"`
+	VaultGCPOauthEngine string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
+	Zone                string            `mapstructure:"zone" cty:"zone"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -36,22 +36,22 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"AccountFile":         &hcldec.AttrSpec{Name: "account_file", Type: cty.String, Required: false},
-		"DiskSizeGb":          &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
-		"DiskType":            &hcldec.AttrSpec{Name: "disk_type", Type: cty.String, Required: false},
-		"MachineType":         &hcldec.AttrSpec{Name: "machine_type", Type: cty.String, Required: false},
-		"Network":             &hcldec.AttrSpec{Name: "network", Type: cty.String, Required: false},
-		"Paths":               &hcldec.AttrSpec{Name: "paths", Type: cty.List(cty.String), Required: false},
-		"Subnetwork":          &hcldec.AttrSpec{Name: "subnetwork", Type: cty.String, Required: false},
-		"VaultGCPOauthEngine": &hcldec.AttrSpec{Name: "vault_gcp_oauth_engine", Type: cty.String, Required: false},
-		"Zone":                &hcldec.AttrSpec{Name: "zone", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"account_file":               &hcldec.AttrSpec{Name: "account_file", Type: cty.String, Required: false},
+		"disk_size":                  &hcldec.AttrSpec{Name: "disk_size", Type: cty.Number, Required: false},
+		"disk_type":                  &hcldec.AttrSpec{Name: "disk_type", Type: cty.String, Required: false},
+		"machine_type":               &hcldec.AttrSpec{Name: "machine_type", Type: cty.String, Required: false},
+		"network":                    &hcldec.AttrSpec{Name: "network", Type: cty.String, Required: false},
+		"paths":                      &hcldec.AttrSpec{Name: "paths", Type: cty.List(cty.String), Required: false},
+		"subnetwork":                 &hcldec.AttrSpec{Name: "subnetwork", Type: cty.String, Required: false},
+		"vault_gcp_oauth_engine":     &hcldec.AttrSpec{Name: "vault_gcp_oauth_engine", Type: cty.String, Required: false},
+		"zone":                       &hcldec.AttrSpec{Name: "zone", Type: cty.String, Required: false},
 	}
 	return s
 }

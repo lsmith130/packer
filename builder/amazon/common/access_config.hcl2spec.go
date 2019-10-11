@@ -9,10 +9,10 @@ import (
 // FlatVaultAWSEngineOptions is an auto-generated flat version of VaultAWSEngineOptions.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatVaultAWSEngineOptions struct {
-	Name       string `mapstructure:"name" cty:"name" hcl:"name,optional"`
-	RoleARN    string `mapstructure:"role_arn" cty:"role_arn" hcl:"role_arn,optional"`
-	TTL        string `mapstructure:"ttl" required:"false" cty:"ttl" hcl:"ttl,optional"`
-	EngineName string `mapstructure:"engine_name" cty:"engine_name" hcl:"engine_name,optional"`
+	Name       string `mapstructure:"name" cty:"name"`
+	RoleARN    string `mapstructure:"role_arn" cty:"role_arn"`
+	TTL        string `mapstructure:"ttl" required:"false" cty:"ttl"`
+	EngineName string `mapstructure:"engine_name" cty:"engine_name"`
 }
 
 // FlatMapstructure returns a new FlatVaultAWSEngineOptions.
@@ -24,10 +24,10 @@ func (*VaultAWSEngineOptions) FlatMapstructure() interface{} { return new(FlatVa
 // This spec is used by HCL to read the fields of VaultAWSEngineOptions.
 func (*VaultAWSEngineOptions) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Name":       &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
-		"RoleARN":    &hcldec.AttrSpec{Name: "role_arn", Type: cty.String, Required: false},
-		"TTL":        &hcldec.AttrSpec{Name: "ttl", Type: cty.String, Required: false},
-		"EngineName": &hcldec.AttrSpec{Name: "engine_name", Type: cty.String, Required: false},
+		"name":        &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
+		"role_arn":    &hcldec.AttrSpec{Name: "role_arn", Type: cty.String, Required: false},
+		"ttl":         &hcldec.AttrSpec{Name: "ttl", Type: cty.String, Required: false},
+		"engine_name": &hcldec.AttrSpec{Name: "engine_name", Type: cty.String, Required: false},
 	}
 	return s
 }

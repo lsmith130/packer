@@ -181,7 +181,7 @@ func outputStructHCL2SpecBody(w io.Writer, s *types.Struct) {
 		field, tag := s.Field(i), s.Tag(i)
 		st, _ := structtag.Parse(tag)
 		ctyTag, _ := st.Get("cty")
-		fmt.Fprintf(w, "	\"%s\": ", field.Name())
+		fmt.Fprintf(w, "	\"%s\": ", ctyTag.Name)
 		outputHCL2SpecField(w, ctyTag.Name, field.Type())
 		fmt.Fprintln(w, `,`)
 	}
@@ -334,10 +334,10 @@ func addCtyTagToStruct(s *types.Struct) *types.Struct {
 			}
 		}
 		st.Set(&structtag.Tag{Key: "cty", Name: ctyAccessor})
-		st.Set(&structtag.Tag{Key: "hcl", Name: ctyAccessor, Options: []string{"optional"}})
+		// st.Set(&structtag.Tag{Key: "hcl", Name: ctyAccessor, Options: []string{"optional"}})
 		tags[i] = st.String()
 	}
-	return types.NewStruct(uniqueTags("hcl", vars, tags))
+	return types.NewStruct(uniqueTags("cty", vars, tags))
 }
 
 func uniqueTags(tagName string, fields []*types.Var, tags []string) ([]*types.Var, []string) {

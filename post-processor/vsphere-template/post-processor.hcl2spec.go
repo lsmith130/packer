@@ -9,22 +9,22 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	Host                string            `mapstructure:"host" cty:"host" hcl:"host,optional"`
-	Insecure            bool              `mapstructure:"insecure" cty:"insecure" hcl:"insecure,optional"`
-	Username            string            `mapstructure:"username" cty:"username" hcl:"username,optional"`
-	Password            string            `mapstructure:"password" cty:"password" hcl:"password,optional"`
-	Datacenter          string            `mapstructure:"datacenter" cty:"datacenter" hcl:"datacenter,optional"`
-	Folder              string            `mapstructure:"folder" cty:"folder" hcl:"folder,optional"`
-	SnapshotEnable      bool              `mapstructure:"snapshot_enable" cty:"snapshot_enable" hcl:"snapshot_enable,optional"`
-	SnapshotName        string            `mapstructure:"snapshot_name" cty:"snapshot_name" hcl:"snapshot_name,optional"`
-	SnapshotDescription string            `mapstructure:"snapshot_description" cty:"snapshot_description" hcl:"snapshot_description,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Host                string            `mapstructure:"host" cty:"host"`
+	Insecure            bool              `mapstructure:"insecure" cty:"insecure"`
+	Username            string            `mapstructure:"username" cty:"username"`
+	Password            string            `mapstructure:"password" cty:"password"`
+	Datacenter          string            `mapstructure:"datacenter" cty:"datacenter"`
+	Folder              string            `mapstructure:"folder" cty:"folder"`
+	SnapshotEnable      bool              `mapstructure:"snapshot_enable" cty:"snapshot_enable"`
+	SnapshotName        string            `mapstructure:"snapshot_name" cty:"snapshot_name"`
+	SnapshotDescription string            `mapstructure:"snapshot_description" cty:"snapshot_description"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -36,22 +36,22 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"Host":                &hcldec.AttrSpec{Name: "host", Type: cty.String, Required: false},
-		"Insecure":            &hcldec.AttrSpec{Name: "insecure", Type: cty.Bool, Required: false},
-		"Username":            &hcldec.AttrSpec{Name: "username", Type: cty.String, Required: false},
-		"Password":            &hcldec.AttrSpec{Name: "password", Type: cty.String, Required: false},
-		"Datacenter":          &hcldec.AttrSpec{Name: "datacenter", Type: cty.String, Required: false},
-		"Folder":              &hcldec.AttrSpec{Name: "folder", Type: cty.String, Required: false},
-		"SnapshotEnable":      &hcldec.AttrSpec{Name: "snapshot_enable", Type: cty.Bool, Required: false},
-		"SnapshotName":        &hcldec.AttrSpec{Name: "snapshot_name", Type: cty.String, Required: false},
-		"SnapshotDescription": &hcldec.AttrSpec{Name: "snapshot_description", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"host":                       &hcldec.AttrSpec{Name: "host", Type: cty.String, Required: false},
+		"insecure":                   &hcldec.AttrSpec{Name: "insecure", Type: cty.Bool, Required: false},
+		"username":                   &hcldec.AttrSpec{Name: "username", Type: cty.String, Required: false},
+		"password":                   &hcldec.AttrSpec{Name: "password", Type: cty.String, Required: false},
+		"datacenter":                 &hcldec.AttrSpec{Name: "datacenter", Type: cty.String, Required: false},
+		"folder":                     &hcldec.AttrSpec{Name: "folder", Type: cty.String, Required: false},
+		"snapshot_enable":            &hcldec.AttrSpec{Name: "snapshot_enable", Type: cty.Bool, Required: false},
+		"snapshot_name":              &hcldec.AttrSpec{Name: "snapshot_name", Type: cty.String, Required: false},
+		"snapshot_description":       &hcldec.AttrSpec{Name: "snapshot_description", Type: cty.String, Required: false},
 	}
 	return s
 }

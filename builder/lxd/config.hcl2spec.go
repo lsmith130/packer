@@ -9,21 +9,21 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	OutputImage         string            `mapstructure:"output_image" required:"false" cty:"output_image" hcl:"output_image,optional"`
-	ContainerName       string            `mapstructure:"container_name" cty:"container_name" hcl:"container_name,optional"`
-	CommandWrapper      string            `mapstructure:"command_wrapper" required:"false" cty:"command_wrapper" hcl:"command_wrapper,optional"`
-	Image               string            `mapstructure:"image" required:"true" cty:"image" hcl:"image,optional"`
-	Profile             string            `mapstructure:"profile" cty:"profile" hcl:"profile,optional"`
-	InitSleep           string            `mapstructure:"init_sleep" required:"false" cty:"init_sleep" hcl:"init_sleep,optional"`
-	PublishProperties   map[string]string `mapstructure:"publish_properties" required:"false" cty:"publish_properties" hcl:"publish_properties,optional"`
-	LaunchConfig        map[string]string `mapstructure:"launch_config" required:"false" cty:"launch_config" hcl:"launch_config,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	OutputImage         string            `mapstructure:"output_image" required:"false" cty:"output_image"`
+	ContainerName       string            `mapstructure:"container_name" cty:"container_name"`
+	CommandWrapper      string            `mapstructure:"command_wrapper" required:"false" cty:"command_wrapper"`
+	Image               string            `mapstructure:"image" required:"true" cty:"image"`
+	Profile             string            `mapstructure:"profile" cty:"profile"`
+	InitSleep           string            `mapstructure:"init_sleep" required:"false" cty:"init_sleep"`
+	PublishProperties   map[string]string `mapstructure:"publish_properties" required:"false" cty:"publish_properties"`
+	LaunchConfig        map[string]string `mapstructure:"launch_config" required:"false" cty:"launch_config"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -35,21 +35,21 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"OutputImage":         &hcldec.AttrSpec{Name: "output_image", Type: cty.String, Required: false},
-		"ContainerName":       &hcldec.AttrSpec{Name: "container_name", Type: cty.String, Required: false},
-		"CommandWrapper":      &hcldec.AttrSpec{Name: "command_wrapper", Type: cty.String, Required: false},
-		"Image":               &hcldec.AttrSpec{Name: "image", Type: cty.String, Required: false},
-		"Profile":             &hcldec.AttrSpec{Name: "profile", Type: cty.String, Required: false},
-		"InitSleep":           &hcldec.AttrSpec{Name: "init_sleep", Type: cty.String, Required: false},
-		"PublishProperties":   &hcldec.BlockAttrsSpec{TypeName: "publish_properties", ElementType: cty.String, Required: false},
-		"LaunchConfig":        &hcldec.BlockAttrsSpec{TypeName: "launch_config", ElementType: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"output_image":               &hcldec.AttrSpec{Name: "output_image", Type: cty.String, Required: false},
+		"container_name":             &hcldec.AttrSpec{Name: "container_name", Type: cty.String, Required: false},
+		"command_wrapper":            &hcldec.AttrSpec{Name: "command_wrapper", Type: cty.String, Required: false},
+		"image":                      &hcldec.AttrSpec{Name: "image", Type: cty.String, Required: false},
+		"profile":                    &hcldec.AttrSpec{Name: "profile", Type: cty.String, Required: false},
+		"init_sleep":                 &hcldec.AttrSpec{Name: "init_sleep", Type: cty.String, Required: false},
+		"publish_properties":         &hcldec.BlockAttrsSpec{TypeName: "publish_properties", ElementType: cty.String, Required: false},
+		"launch_config":              &hcldec.BlockAttrsSpec{TypeName: "launch_config", ElementType: cty.String, Required: false},
 	}
 	return s
 }

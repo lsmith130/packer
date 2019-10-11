@@ -9,23 +9,23 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	Bootstrap            bool              `mapstructure:"bootstrap" cty:"bootstrap" hcl:"bootstrap,optional"`
-	Version              string            `mapstructure:"version" cty:"version" hcl:"version,optional"`
-	BootstrapCommand     string            `mapstructure:"bootstrap_command" cty:"bootstrap_command" hcl:"bootstrap_command,optional"`
-	PreventBootstrapSudo bool              `mapstructure:"prevent_bootstrap_sudo" cty:"prevent_bootstrap_sudo" hcl:"prevent_bootstrap_sudo,optional"`
-	ModuleDirs           []ModuleDir       `mapstructure:"module_dirs" cty:"module_dirs" hcl:"module_dirs,optional"`
-	Module               string            `mapstructure:"module" cty:"module" hcl:"module,optional"`
-	WorkingDirectory     string            `mapstructure:"working_directory" cty:"working_directory" hcl:"working_directory,optional"`
-	Params               map[string]string `mapstructure:"params" cty:"params" hcl:"params,optional"`
-	ExecuteCommand       string            `mapstructure:"execute_command" cty:"execute_command" hcl:"execute_command,optional"`
-	PreventSudo          bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo" hcl:"prevent_sudo,optional"`
+	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Bootstrap            bool              `mapstructure:"bootstrap" cty:"bootstrap"`
+	Version              string            `mapstructure:"version" cty:"version"`
+	BootstrapCommand     string            `mapstructure:"bootstrap_command" cty:"bootstrap_command"`
+	PreventBootstrapSudo bool              `mapstructure:"prevent_bootstrap_sudo" cty:"prevent_bootstrap_sudo"`
+	ModuleDirs           []ModuleDir       `mapstructure:"module_dirs" cty:"module_dirs"`
+	Module               string            `mapstructure:"module" cty:"module"`
+	WorkingDirectory     string            `mapstructure:"working_directory" cty:"working_directory"`
+	Params               map[string]string `mapstructure:"params" cty:"params"`
+	ExecuteCommand       string            `mapstructure:"execute_command" cty:"execute_command"`
+	PreventSudo          bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -37,23 +37,23 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":      &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":    &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":          &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":          &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":        &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":       &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars":  &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"Bootstrap":            &hcldec.AttrSpec{Name: "bootstrap", Type: cty.Bool, Required: false},
-		"Version":              &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
-		"BootstrapCommand":     &hcldec.AttrSpec{Name: "bootstrap_command", Type: cty.String, Required: false},
-		"PreventBootstrapSudo": &hcldec.AttrSpec{Name: "prevent_bootstrap_sudo", Type: cty.Bool, Required: false},
-		"ModuleDirs":           &hcldec.BlockListSpec{TypeName: "[]ModuleDir", Nested: &hcldec.BlockObjectSpec{TypeName: "ModuleDir", Nested: hcldec.ObjectSpec((*ModuleDir)(nil).HCL2Spec())}},
-		"Module":               &hcldec.AttrSpec{Name: "module", Type: cty.String, Required: false},
-		"WorkingDirectory":     &hcldec.AttrSpec{Name: "working_directory", Type: cty.String, Required: false},
-		"Params":               &hcldec.BlockAttrsSpec{TypeName: "params", ElementType: cty.String, Required: false},
-		"ExecuteCommand":       &hcldec.AttrSpec{Name: "execute_command", Type: cty.String, Required: false},
-		"PreventSudo":          &hcldec.AttrSpec{Name: "prevent_sudo", Type: cty.Bool, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"bootstrap":                  &hcldec.AttrSpec{Name: "bootstrap", Type: cty.Bool, Required: false},
+		"version":                    &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
+		"bootstrap_command":          &hcldec.AttrSpec{Name: "bootstrap_command", Type: cty.String, Required: false},
+		"prevent_bootstrap_sudo":     &hcldec.AttrSpec{Name: "prevent_bootstrap_sudo", Type: cty.Bool, Required: false},
+		"module_dirs":                &hcldec.BlockListSpec{TypeName: "[]ModuleDir", Nested: &hcldec.BlockObjectSpec{TypeName: "ModuleDir", Nested: hcldec.ObjectSpec((*ModuleDir)(nil).HCL2Spec())}},
+		"module":                     &hcldec.AttrSpec{Name: "module", Type: cty.String, Required: false},
+		"working_directory":          &hcldec.AttrSpec{Name: "working_directory", Type: cty.String, Required: false},
+		"params":                     &hcldec.BlockAttrsSpec{TypeName: "params", ElementType: cty.String, Required: false},
+		"execute_command":            &hcldec.AttrSpec{Name: "execute_command", Type: cty.String, Required: false},
+		"prevent_sudo":               &hcldec.AttrSpec{Name: "prevent_sudo", Type: cty.Bool, Required: false},
 	}
 	return s
 }
@@ -61,9 +61,9 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 // FlatModuleDir is an auto-generated flat version of ModuleDir.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatModuleDir struct {
-	Source      string   `mapstructure:"source" cty:"source" hcl:"source,optional"`
-	Destination string   `mapstructure:"destination" cty:"destination" hcl:"destination,optional"`
-	Exclude     []string `mapstructure:"exclude" cty:"exclude" hcl:"exclude,optional"`
+	Source      string   `mapstructure:"source" cty:"source"`
+	Destination string   `mapstructure:"destination" cty:"destination"`
+	Exclude     []string `mapstructure:"exclude" cty:"exclude"`
 }
 
 // FlatMapstructure returns a new FlatModuleDir.
@@ -75,9 +75,9 @@ func (*ModuleDir) FlatMapstructure() interface{} { return new(FlatModuleDir) }
 // This spec is used by HCL to read the fields of ModuleDir.
 func (*ModuleDir) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"Source":      &hcldec.AttrSpec{Name: "source", Type: cty.String, Required: false},
-		"Destination": &hcldec.AttrSpec{Name: "destination", Type: cty.String, Required: false},
-		"Exclude":     &hcldec.AttrSpec{Name: "exclude", Type: cty.List(cty.String), Required: false},
+		"source":      &hcldec.AttrSpec{Name: "source", Type: cty.String, Required: false},
+		"destination": &hcldec.AttrSpec{Name: "destination", Type: cty.String, Required: false},
+		"exclude":     &hcldec.AttrSpec{Name: "exclude", Type: cty.List(cty.String), Required: false},
 	}
 	return s
 }

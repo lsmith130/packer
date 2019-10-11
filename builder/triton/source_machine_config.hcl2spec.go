@@ -9,14 +9,14 @@ import (
 // FlatMachineImageFilter is an auto-generated flat version of MachineImageFilter.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatMachineImageFilter struct {
-	MostRecent bool   `mapstructure:"most_recent" cty:"most_recent" hcl:"most_recent,optional"`
-	Name       string `cty:"name" hcl:"name,optional"`
-	OS         string `cty:"os" hcl:"os,optional"`
-	Version    string `cty:"version" hcl:"version,optional"`
-	Public     bool   `cty:"public" hcl:"public,optional"`
-	State      string `cty:"state" hcl:"state,optional"`
-	Owner      string `cty:"owner" hcl:"owner,optional"`
-	Type       string `cty:"type" hcl:"type,optional"`
+	MostRecent bool   `mapstructure:"most_recent" cty:"most_recent"`
+	Name       string `cty:"name"`
+	OS         string `cty:"os"`
+	Version    string `cty:"version"`
+	Public     bool   `cty:"public"`
+	State      string `cty:"state"`
+	Owner      string `cty:"owner"`
+	Type       string `cty:"type"`
 }
 
 // FlatMapstructure returns a new FlatMachineImageFilter.
@@ -28,14 +28,14 @@ func (*MachineImageFilter) FlatMapstructure() interface{} { return new(FlatMachi
 // This spec is used by HCL to read the fields of MachineImageFilter.
 func (*MachineImageFilter) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"MostRecent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
-		"Name":       &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
-		"OS":         &hcldec.AttrSpec{Name: "os", Type: cty.String, Required: false},
-		"Version":    &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
-		"Public":     &hcldec.AttrSpec{Name: "public", Type: cty.Bool, Required: false},
-		"State":      &hcldec.AttrSpec{Name: "state", Type: cty.String, Required: false},
-		"Owner":      &hcldec.AttrSpec{Name: "owner", Type: cty.String, Required: false},
-		"Type":       &hcldec.AttrSpec{Name: "type", Type: cty.String, Required: false},
+		"most_recent": &hcldec.AttrSpec{Name: "most_recent", Type: cty.Bool, Required: false},
+		"name":        &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
+		"os":          &hcldec.AttrSpec{Name: "os", Type: cty.String, Required: false},
+		"version":     &hcldec.AttrSpec{Name: "version", Type: cty.String, Required: false},
+		"public":      &hcldec.AttrSpec{Name: "public", Type: cty.Bool, Required: false},
+		"state":       &hcldec.AttrSpec{Name: "state", Type: cty.String, Required: false},
+		"owner":       &hcldec.AttrSpec{Name: "owner", Type: cty.String, Required: false},
+		"type":        &hcldec.AttrSpec{Name: "type", Type: cty.String, Required: false},
 	}
 	return s
 }

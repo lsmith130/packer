@@ -9,28 +9,28 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	Command             string            `cty:"command" hcl:"command,optional"`
-	ExtraArguments      []string          `mapstructure:"extra_arguments" cty:"extra_arguments" hcl:"extra_arguments,optional"`
-	GroupVars           string            `mapstructure:"group_vars" cty:"group_vars" hcl:"group_vars,optional"`
-	HostVars            string            `mapstructure:"host_vars" cty:"host_vars" hcl:"host_vars,optional"`
-	PlaybookDir         string            `mapstructure:"playbook_dir" cty:"playbook_dir" hcl:"playbook_dir,optional"`
-	PlaybookFile        string            `mapstructure:"playbook_file" cty:"playbook_file" hcl:"playbook_file,optional"`
-	PlaybookFiles       []string          `mapstructure:"playbook_files" cty:"playbook_files" hcl:"playbook_files,optional"`
-	PlaybookPaths       []string          `mapstructure:"playbook_paths" cty:"playbook_paths" hcl:"playbook_paths,optional"`
-	RolePaths           []string          `mapstructure:"role_paths" cty:"role_paths" hcl:"role_paths,optional"`
-	StagingDir          string            `mapstructure:"staging_directory" cty:"staging_directory" hcl:"staging_directory,optional"`
-	CleanStagingDir     bool              `mapstructure:"clean_staging_directory" cty:"clean_staging_directory" hcl:"clean_staging_directory,optional"`
-	InventoryFile       string            `mapstructure:"inventory_file" cty:"inventory_file" hcl:"inventory_file,optional"`
-	InventoryGroups     []string          `mapstructure:"inventory_groups" cty:"inventory_groups" hcl:"inventory_groups,optional"`
-	GalaxyFile          string            `mapstructure:"galaxy_file" cty:"galaxy_file" hcl:"galaxy_file,optional"`
-	GalaxyCommand       string            `cty:"galaxy_command" hcl:"galaxy_command,optional"`
+	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Command             string            `cty:"command"`
+	ExtraArguments      []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
+	GroupVars           string            `mapstructure:"group_vars" cty:"group_vars"`
+	HostVars            string            `mapstructure:"host_vars" cty:"host_vars"`
+	PlaybookDir         string            `mapstructure:"playbook_dir" cty:"playbook_dir"`
+	PlaybookFile        string            `mapstructure:"playbook_file" cty:"playbook_file"`
+	PlaybookFiles       []string          `mapstructure:"playbook_files" cty:"playbook_files"`
+	PlaybookPaths       []string          `mapstructure:"playbook_paths" cty:"playbook_paths"`
+	RolePaths           []string          `mapstructure:"role_paths" cty:"role_paths"`
+	StagingDir          string            `mapstructure:"staging_directory" cty:"staging_directory"`
+	CleanStagingDir     bool              `mapstructure:"clean_staging_directory" cty:"clean_staging_directory"`
+	InventoryFile       string            `mapstructure:"inventory_file" cty:"inventory_file"`
+	InventoryGroups     []string          `mapstructure:"inventory_groups" cty:"inventory_groups"`
+	GalaxyFile          string            `mapstructure:"galaxy_file" cty:"galaxy_file"`
+	GalaxyCommand       string            `cty:"galaxy_command"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -42,28 +42,28 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":     &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":   &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":         &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":         &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":       &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"Command":             &hcldec.AttrSpec{Name: "command", Type: cty.String, Required: false},
-		"ExtraArguments":      &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
-		"GroupVars":           &hcldec.AttrSpec{Name: "group_vars", Type: cty.String, Required: false},
-		"HostVars":            &hcldec.AttrSpec{Name: "host_vars", Type: cty.String, Required: false},
-		"PlaybookDir":         &hcldec.AttrSpec{Name: "playbook_dir", Type: cty.String, Required: false},
-		"PlaybookFile":        &hcldec.AttrSpec{Name: "playbook_file", Type: cty.String, Required: false},
-		"PlaybookFiles":       &hcldec.AttrSpec{Name: "playbook_files", Type: cty.List(cty.String), Required: false},
-		"PlaybookPaths":       &hcldec.AttrSpec{Name: "playbook_paths", Type: cty.List(cty.String), Required: false},
-		"RolePaths":           &hcldec.AttrSpec{Name: "role_paths", Type: cty.List(cty.String), Required: false},
-		"StagingDir":          &hcldec.AttrSpec{Name: "staging_directory", Type: cty.String, Required: false},
-		"CleanStagingDir":     &hcldec.AttrSpec{Name: "clean_staging_directory", Type: cty.Bool, Required: false},
-		"InventoryFile":       &hcldec.AttrSpec{Name: "inventory_file", Type: cty.String, Required: false},
-		"InventoryGroups":     &hcldec.AttrSpec{Name: "inventory_groups", Type: cty.List(cty.String), Required: false},
-		"GalaxyFile":          &hcldec.AttrSpec{Name: "galaxy_file", Type: cty.String, Required: false},
-		"GalaxyCommand":       &hcldec.AttrSpec{Name: "galaxy_command", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"command":                    &hcldec.AttrSpec{Name: "command", Type: cty.String, Required: false},
+		"extra_arguments":            &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
+		"group_vars":                 &hcldec.AttrSpec{Name: "group_vars", Type: cty.String, Required: false},
+		"host_vars":                  &hcldec.AttrSpec{Name: "host_vars", Type: cty.String, Required: false},
+		"playbook_dir":               &hcldec.AttrSpec{Name: "playbook_dir", Type: cty.String, Required: false},
+		"playbook_file":              &hcldec.AttrSpec{Name: "playbook_file", Type: cty.String, Required: false},
+		"playbook_files":             &hcldec.AttrSpec{Name: "playbook_files", Type: cty.List(cty.String), Required: false},
+		"playbook_paths":             &hcldec.AttrSpec{Name: "playbook_paths", Type: cty.List(cty.String), Required: false},
+		"role_paths":                 &hcldec.AttrSpec{Name: "role_paths", Type: cty.List(cty.String), Required: false},
+		"staging_directory":          &hcldec.AttrSpec{Name: "staging_directory", Type: cty.String, Required: false},
+		"clean_staging_directory":    &hcldec.AttrSpec{Name: "clean_staging_directory", Type: cty.Bool, Required: false},
+		"inventory_file":             &hcldec.AttrSpec{Name: "inventory_file", Type: cty.String, Required: false},
+		"inventory_groups":           &hcldec.AttrSpec{Name: "inventory_groups", Type: cty.List(cty.String), Required: false},
+		"galaxy_file":                &hcldec.AttrSpec{Name: "galaxy_file", Type: cty.String, Required: false},
+		"galaxy_command":             &hcldec.AttrSpec{Name: "galaxy_command", Type: cty.String, Required: false},
 	}
 	return s
 }

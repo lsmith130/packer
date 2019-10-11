@@ -9,10 +9,10 @@ import (
 // FlatImageDestination is an auto-generated flat version of ImageDestination.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatImageDestination struct {
-	ProjectId   string `mapstructure:"project_id" cty:"project_id" hcl:"project_id,optional"`
-	Region      string `mapstructure:"region" cty:"region" hcl:"region,optional"`
-	Name        string `mapstructure:"name" cty:"name" hcl:"name,optional"`
-	Description string `mapstructure:"description" cty:"description" hcl:"description,optional"`
+	ProjectId   string `mapstructure:"project_id" cty:"project_id"`
+	Region      string `mapstructure:"region" cty:"region"`
+	Name        string `mapstructure:"name" cty:"name"`
+	Description string `mapstructure:"description" cty:"description"`
 }
 
 // FlatMapstructure returns a new FlatImageDestination.
@@ -24,10 +24,10 @@ func (*ImageDestination) FlatMapstructure() interface{} { return new(FlatImageDe
 // This spec is used by HCL to read the fields of ImageDestination.
 func (*ImageDestination) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"ProjectId":   &hcldec.AttrSpec{Name: "project_id", Type: cty.String, Required: false},
-		"Region":      &hcldec.AttrSpec{Name: "region", Type: cty.String, Required: false},
-		"Name":        &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
-		"Description": &hcldec.AttrSpec{Name: "description", Type: cty.String, Required: false},
+		"project_id":  &hcldec.AttrSpec{Name: "project_id", Type: cty.String, Required: false},
+		"region":      &hcldec.AttrSpec{Name: "region", Type: cty.String, Required: false},
+		"name":        &hcldec.AttrSpec{Name: "name", Type: cty.String, Required: false},
+		"description": &hcldec.AttrSpec{Name: "description", Type: cty.String, Required: false},
 	}
 	return s
 }

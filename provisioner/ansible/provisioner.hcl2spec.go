@@ -9,33 +9,33 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name" hcl:"packer_build_name,optional"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type" hcl:"packer_builder_type,optional"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug" hcl:"packer_debug,optional"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force" hcl:"packer_force,optional"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error" hcl:"packer_on_error,optional"`
-	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables" hcl:"packer_user_variables,optional"`
-	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables" hcl:"packer_sensitive_variables,optional"`
-	Command              string            `cty:"command" hcl:"command,optional"`
-	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments" hcl:"extra_arguments,optional"`
-	AnsibleEnvVars       []string          `mapstructure:"ansible_env_vars" cty:"ansible_env_vars" hcl:"ansible_env_vars,optional"`
-	PlaybookFile         string            `mapstructure:"playbook_file" cty:"playbook_file" hcl:"playbook_file,optional"`
-	Groups               []string          `mapstructure:"groups" cty:"groups" hcl:"groups,optional"`
-	EmptyGroups          []string          `mapstructure:"empty_groups" cty:"empty_groups" hcl:"empty_groups,optional"`
-	HostAlias            string            `mapstructure:"host_alias" cty:"host_alias" hcl:"host_alias,optional"`
-	User                 string            `mapstructure:"user" cty:"user" hcl:"user,optional"`
-	LocalPort            int               `mapstructure:"local_port" cty:"local_port" hcl:"local_port,optional"`
-	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file" hcl:"ssh_host_key_file,optional"`
-	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file" hcl:"ssh_authorized_key_file,optional"`
-	SFTPCmd              string            `mapstructure:"sftp_command" cty:"sftp_command" hcl:"sftp_command,optional"`
-	SkipVersionCheck     bool              `mapstructure:"skip_version_check" cty:"skip_version_check" hcl:"skip_version_check,optional"`
-	UseSFTP              bool              `mapstructure:"use_sftp" cty:"use_sftp" hcl:"use_sftp,optional"`
-	InventoryDirectory   string            `mapstructure:"inventory_directory" cty:"inventory_directory" hcl:"inventory_directory,optional"`
-	InventoryFile        string            `mapstructure:"inventory_file" cty:"inventory_file" hcl:"inventory_file,optional"`
-	GalaxyFile           string            `mapstructure:"galaxy_file" cty:"galaxy_file" hcl:"galaxy_file,optional"`
-	GalaxyCommand        string            `mapstructure:"galaxy_command" cty:"galaxy_command" hcl:"galaxy_command,optional"`
-	GalaxyForceInstall   bool              `mapstructure:"galaxy_force_install" cty:"galaxy_force_install" hcl:"galaxy_force_install,optional"`
-	RolesPath            string            `mapstructure:"roles_path" cty:"roles_path" hcl:"roles_path,optional"`
+	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
+	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
+	Command              string            `cty:"command"`
+	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
+	AnsibleEnvVars       []string          `mapstructure:"ansible_env_vars" cty:"ansible_env_vars"`
+	PlaybookFile         string            `mapstructure:"playbook_file" cty:"playbook_file"`
+	Groups               []string          `mapstructure:"groups" cty:"groups"`
+	EmptyGroups          []string          `mapstructure:"empty_groups" cty:"empty_groups"`
+	HostAlias            string            `mapstructure:"host_alias" cty:"host_alias"`
+	User                 string            `mapstructure:"user" cty:"user"`
+	LocalPort            int               `mapstructure:"local_port" cty:"local_port"`
+	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
+	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
+	SFTPCmd              string            `mapstructure:"sftp_command" cty:"sftp_command"`
+	SkipVersionCheck     bool              `mapstructure:"skip_version_check" cty:"skip_version_check"`
+	UseSFTP              bool              `mapstructure:"use_sftp" cty:"use_sftp"`
+	InventoryDirectory   string            `mapstructure:"inventory_directory" cty:"inventory_directory"`
+	InventoryFile        string            `mapstructure:"inventory_file" cty:"inventory_file"`
+	GalaxyFile           string            `mapstructure:"galaxy_file" cty:"galaxy_file"`
+	GalaxyCommand        string            `mapstructure:"galaxy_command" cty:"galaxy_command"`
+	GalaxyForceInstall   bool              `mapstructure:"galaxy_force_install" cty:"galaxy_force_install"`
+	RolesPath            string            `mapstructure:"roles_path" cty:"roles_path"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -47,33 +47,33 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"PackerBuildName":      &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
-		"PackerBuilderType":    &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
-		"PackerDebug":          &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
-		"PackerForce":          &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
-		"PackerOnError":        &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
-		"PackerUserVars":       &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
-		"PackerSensitiveVars":  &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
-		"Command":              &hcldec.AttrSpec{Name: "command", Type: cty.String, Required: false},
-		"ExtraArguments":       &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
-		"AnsibleEnvVars":       &hcldec.AttrSpec{Name: "ansible_env_vars", Type: cty.List(cty.String), Required: false},
-		"PlaybookFile":         &hcldec.AttrSpec{Name: "playbook_file", Type: cty.String, Required: false},
-		"Groups":               &hcldec.AttrSpec{Name: "groups", Type: cty.List(cty.String), Required: false},
-		"EmptyGroups":          &hcldec.AttrSpec{Name: "empty_groups", Type: cty.List(cty.String), Required: false},
-		"HostAlias":            &hcldec.AttrSpec{Name: "host_alias", Type: cty.String, Required: false},
-		"User":                 &hcldec.AttrSpec{Name: "user", Type: cty.String, Required: false},
-		"LocalPort":            &hcldec.AttrSpec{Name: "local_port", Type: cty.Number, Required: false},
-		"SSHHostKeyFile":       &hcldec.AttrSpec{Name: "ssh_host_key_file", Type: cty.String, Required: false},
-		"SSHAuthorizedKeyFile": &hcldec.AttrSpec{Name: "ssh_authorized_key_file", Type: cty.String, Required: false},
-		"SFTPCmd":              &hcldec.AttrSpec{Name: "sftp_command", Type: cty.String, Required: false},
-		"SkipVersionCheck":     &hcldec.AttrSpec{Name: "skip_version_check", Type: cty.Bool, Required: false},
-		"UseSFTP":              &hcldec.AttrSpec{Name: "use_sftp", Type: cty.Bool, Required: false},
-		"InventoryDirectory":   &hcldec.AttrSpec{Name: "inventory_directory", Type: cty.String, Required: false},
-		"InventoryFile":        &hcldec.AttrSpec{Name: "inventory_file", Type: cty.String, Required: false},
-		"GalaxyFile":           &hcldec.AttrSpec{Name: "galaxy_file", Type: cty.String, Required: false},
-		"GalaxyCommand":        &hcldec.AttrSpec{Name: "galaxy_command", Type: cty.String, Required: false},
-		"GalaxyForceInstall":   &hcldec.AttrSpec{Name: "galaxy_force_install", Type: cty.Bool, Required: false},
-		"RolesPath":            &hcldec.AttrSpec{Name: "roles_path", Type: cty.String, Required: false},
+		"packer_build_name":          &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
+		"packer_builder_type":        &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
+		"packer_debug":               &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},
+		"packer_force":               &hcldec.AttrSpec{Name: "packer_force", Type: cty.Bool, Required: false},
+		"packer_on_error":            &hcldec.AttrSpec{Name: "packer_on_error", Type: cty.String, Required: false},
+		"packer_user_variables":      &hcldec.BlockAttrsSpec{TypeName: "packer_user_variables", ElementType: cty.String, Required: false},
+		"packer_sensitive_variables": &hcldec.AttrSpec{Name: "packer_sensitive_variables", Type: cty.List(cty.String), Required: false},
+		"command":                    &hcldec.AttrSpec{Name: "command", Type: cty.String, Required: false},
+		"extra_arguments":            &hcldec.AttrSpec{Name: "extra_arguments", Type: cty.List(cty.String), Required: false},
+		"ansible_env_vars":           &hcldec.AttrSpec{Name: "ansible_env_vars", Type: cty.List(cty.String), Required: false},
+		"playbook_file":              &hcldec.AttrSpec{Name: "playbook_file", Type: cty.String, Required: false},
+		"groups":                     &hcldec.AttrSpec{Name: "groups", Type: cty.List(cty.String), Required: false},
+		"empty_groups":               &hcldec.AttrSpec{Name: "empty_groups", Type: cty.List(cty.String), Required: false},
+		"host_alias":                 &hcldec.AttrSpec{Name: "host_alias", Type: cty.String, Required: false},
+		"user":                       &hcldec.AttrSpec{Name: "user", Type: cty.String, Required: false},
+		"local_port":                 &hcldec.AttrSpec{Name: "local_port", Type: cty.Number, Required: false},
+		"ssh_host_key_file":          &hcldec.AttrSpec{Name: "ssh_host_key_file", Type: cty.String, Required: false},
+		"ssh_authorized_key_file":    &hcldec.AttrSpec{Name: "ssh_authorized_key_file", Type: cty.String, Required: false},
+		"sftp_command":               &hcldec.AttrSpec{Name: "sftp_command", Type: cty.String, Required: false},
+		"skip_version_check":         &hcldec.AttrSpec{Name: "skip_version_check", Type: cty.Bool, Required: false},
+		"use_sftp":                   &hcldec.AttrSpec{Name: "use_sftp", Type: cty.Bool, Required: false},
+		"inventory_directory":        &hcldec.AttrSpec{Name: "inventory_directory", Type: cty.String, Required: false},
+		"inventory_file":             &hcldec.AttrSpec{Name: "inventory_file", Type: cty.String, Required: false},
+		"galaxy_file":                &hcldec.AttrSpec{Name: "galaxy_file", Type: cty.String, Required: false},
+		"galaxy_command":             &hcldec.AttrSpec{Name: "galaxy_command", Type: cty.String, Required: false},
+		"galaxy_force_install":       &hcldec.AttrSpec{Name: "galaxy_force_install", Type: cty.Bool, Required: false},
+		"roles_path":                 &hcldec.AttrSpec{Name: "roles_path", Type: cty.String, Required: false},
 	}
 	return s
 }
