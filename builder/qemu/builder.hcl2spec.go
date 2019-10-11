@@ -208,7 +208,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"memory":                       &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"net_device":                   &hcldec.AttrSpec{Name: "net_device", Type: cty.String, Required: false},
 		"output_directory":             &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
-		"qemuargs":                     &hcldec.AttrSpec{Name: "qemuargs", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
+		"qemuargs":                     &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
 		"qemu_binary":                  &hcldec.AttrSpec{Name: "qemu_binary", Type: cty.String, Required: false},
 		"qmp_enable":                   &hcldec.AttrSpec{Name: "qmp_enable", Type: cty.Bool, Required: false},
 		"qmp_socket_path":              &hcldec.AttrSpec{Name: "qmp_socket_path", Type: cty.String, Required: false},

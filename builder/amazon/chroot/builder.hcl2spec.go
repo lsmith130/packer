@@ -117,7 +117,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"token":                         &hcldec.AttrSpec{Name: "token", Type: cty.String, Required: false},
 		"vault_aws_engine":              &hcldec.BlockObjectSpec{TypeName: "common.VaultAWSEngineOptions", Nested: hcldec.ObjectSpec((*common.VaultAWSEngineOptions)(nil).HCL2Spec())},
 		"ami_block_device_mappings":     &hcldec.BlockListSpec{TypeName: "[]common.BlockDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "common.BlockDevice", Nested: hcldec.ObjectSpec((*common.BlockDevice)(nil).HCL2Spec())}},
-		"chroot_mounts":                 &hcldec.AttrSpec{Name: "chroot_mounts", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
+		"chroot_mounts":                 &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
 		"command_wrapper":               &hcldec.AttrSpec{Name: "command_wrapper", Type: cty.String, Required: false},
 		"copy_files":                    &hcldec.AttrSpec{Name: "copy_files", Type: cty.List(cty.String), Required: false},
 		"device_path":                   &hcldec.AttrSpec{Name: "device_path", Type: cty.String, Required: false},

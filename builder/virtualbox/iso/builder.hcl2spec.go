@@ -203,8 +203,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"memory":                       &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"sound":                        &hcldec.AttrSpec{Name: "sound", Type: cty.String, Required: false},
 		"usb":                          &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
-		"vboxmanage":                   &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
-		"vboxmanage_post":              &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
+		"vboxmanage":                   &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
+		"vboxmanage_post":              &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
 		"virtualbox_version_file":      &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.String, Required: false},
 		"bundle_iso":                   &hcldec.AttrSpec{Name: "bundle_iso", Type: cty.Bool, Required: false},
 		"guest_additions_mode":         &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},

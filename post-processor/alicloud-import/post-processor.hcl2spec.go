@@ -10,7 +10,6 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	SomethingDuration                 *string                  `mapstructure:"something_duration" cty:"something_duration"`
 	PackerBuildName                   *string                  `mapstructure:"packer_build_name" cty:"packer_build_name"`
 	PackerBuilderType                 *string                  `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
 	PackerDebug                       *bool                    `mapstructure:"packer_debug" cty:"packer_debug"`
@@ -119,7 +118,6 @@ func (*Config) FlatMapstructure() interface{} { return new(FlatConfig) }
 // This spec is used by HCL to read the fields of Config.
 func (*Config) HCL2Spec() map[string]hcldec.Spec {
 	s := map[string]hcldec.Spec{
-		"something_duration":           &hcldec.AttrSpec{Name: "something_duration", Type: cty.String, Required: false},
 		"packer_build_name":            &hcldec.AttrSpec{Name: "packer_build_name", Type: cty.String, Required: false},
 		"packer_builder_type":          &hcldec.AttrSpec{Name: "packer_builder_type", Type: cty.String, Required: false},
 		"packer_debug":                 &hcldec.AttrSpec{Name: "packer_debug", Type: cty.Bool, Required: false},

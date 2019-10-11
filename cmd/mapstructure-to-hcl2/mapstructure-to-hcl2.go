@@ -212,7 +212,7 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 				Type:     cty.List(basicKindToCtyType(elem.Kind())),
 				Required: false,
 			})
-		case *types.Named:
+		case *types.Named, *types.Slice:
 			b := bytes.NewBuffer(nil)
 			outputHCL2SpecField(b, elem.String(), elem.Underlying())
 			fmt.Fprintf(w, `&hcldec.BlockListSpec{TypeName: "[]%s", Nested: %s}`, elem.String(), b.String())

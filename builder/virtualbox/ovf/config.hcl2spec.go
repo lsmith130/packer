@@ -179,8 +179,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"shutdown_command":             &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
 		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"post_shutdown_delay":          &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
-		"vboxmanage":                   &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
-		"vboxmanage_post":              &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
+		"vboxmanage":                   &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
+		"vboxmanage_post":              &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
 		"virtualbox_version_file":      &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.String, Required: false},
 		"guest_additions_mode":         &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
 		"checksum":                     &hcldec.AttrSpec{Name: "checksum", Type: cty.String, Required: false},
