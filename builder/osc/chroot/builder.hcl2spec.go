@@ -100,7 +100,7 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"secret_key":                 &hcldec.AttrSpec{Name: "secret_key", Type: cty.String, Required: false},
 		"skip_metadata_api_check":    &hcldec.AttrSpec{Name: "skip_metadata_api_check", Type: cty.Bool, Required: false},
 		"token":                      &hcldec.AttrSpec{Name: "token", Type: cty.String, Required: false},
-		"chroot_mounts":              &hcldec.AttrSpec{Name: "chroot_mounts", Type: cty.List(&hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false})},
+		"chroot_mounts":              &hcldec.BlockListSpec{TypeName: "[][]string", Nested: &hcldec.AttrSpec{Name: "[]string", Type: cty.List(cty.String), Required: false}},
 		"command_wrapper":            &hcldec.AttrSpec{Name: "command_wrapper", Type: cty.String, Required: false},
 		"copy_files":                 &hcldec.AttrSpec{Name: "copy_files", Type: cty.List(cty.String), Required: false},
 		"device_path":                &hcldec.AttrSpec{Name: "device_path", Type: cty.String, Required: false},
