@@ -55,8 +55,6 @@ const (
 
 // Configuration of this post processor
 type Config struct {
-	SomethingDuration time.Duration `mapstructure:"something_duration"`
-
 	packerecs.Config `mapstructure:",squash"`
 
 	// Variables specific to this post processor
