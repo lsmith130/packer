@@ -205,7 +205,11 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			Required:    false,
 		})
 	case *types.Slice:
-		switch elem := f.Elem().(type) {
+		elem := f.Elem()
+		if ptr, isPtr := elem.(*types.Pointer); isPtr {
+			elem = ptr.Underlying()
+		}
+		switch elem := elem.(type) {
 		case *types.Basic:
 			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
 				Name:     accessor,
