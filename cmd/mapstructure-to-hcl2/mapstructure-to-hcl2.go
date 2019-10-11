@@ -347,7 +347,7 @@ func uniqueTags(tagName string, fields []*types.Var, tags []string) ([]*types.Va
 	for i := range fields {
 		field, tag := fields[i], tags[i]
 		structtag, _ := structtag.Parse(tag)
-		h, err := structtag.Get("hcl")
+		h, err := structtag.Get(tagName)
 		if err == nil {
 			if uniqueTags[h.Name] {
 				log.Printf("skipping field %s ( duplicate `%s` %s tag  )", field.Name(), h.Name, tagName)

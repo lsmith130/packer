@@ -36,7 +36,6 @@ type FlatConfig struct {
 	AlicloudImageForceDeleteSnapshots bool                     `mapstructure:"image_force_delete_snapshots" required:"false" cty:"image_force_delete_snapshots"`
 	AlicloudImageForceDeleteInstances bool                     `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances"`
 	AlicloudImageIgnoreDataDisks      bool                     `mapstructure:"image_ignore_data_disks" required:"false" cty:"image_ignore_data_disks"`
-	AlicloudImageSkipRegionValidation bool                     `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
 	AlicloudImageTags                 map[string]string        `mapstructure:"tags" required:"false" cty:"tags"`
 	ECSSystemDiskMapping              ecs.AlicloudDiskDevice   `mapstructure:"system_disk_mapping" required:"false" cty:"system_disk_mapping"`
 	ECSImagesDiskMappings             []ecs.AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
@@ -137,7 +136,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"image_force_delete_snapshots": &hcldec.AttrSpec{Name: "image_force_delete_snapshots", Type: cty.Bool, Required: false},
 		"image_force_delete_instances": &hcldec.AttrSpec{Name: "image_force_delete_instances", Type: cty.Bool, Required: false},
 		"image_ignore_data_disks":      &hcldec.AttrSpec{Name: "image_ignore_data_disks", Type: cty.Bool, Required: false},
-		"skip_region_validation":       &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"tags":                         &hcldec.BlockAttrsSpec{TypeName: "tags", ElementType: cty.String, Required: false},
 		"system_disk_mapping":          &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())},
 		"image_disk_mappings":          &hcldec.BlockListSpec{TypeName: "[]ecs.AlicloudDiskDevice", Nested: &hcldec.BlockObjectSpec{TypeName: "ecs.AlicloudDiskDevice", Nested: hcldec.ObjectSpec((*ecs.AlicloudDiskDevice)(nil).HCL2Spec())}},

@@ -34,7 +34,6 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval"`
-	BootWait                  time.Duration     `cty:"boot_wait"`
 	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory"`
 	CpuCount                  int               `mapstructure:"cpus" required:"false" cty:"cpus"`
 	MemorySize                int               `mapstructure:"memory" required:"false" cty:"memory"`
@@ -45,7 +44,6 @@ type FlatConfig struct {
 	PrlctlVersionFile         string            `mapstructure:"prlctl_version_file" required:"false" cty:"prlctl_version_file"`
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host"`
@@ -132,7 +130,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"boot_command":                 &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"boot_group_interval":          &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"output_directory":             &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
 		"cpus":                         &hcldec.AttrSpec{Name: "cpus", Type: cty.Number, Required: false},
 		"memory":                       &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
@@ -142,7 +139,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"prlctl_post":                  &hcldec.AttrSpec{Name: "prlctl_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
 		"prlctl_version_file":          &hcldec.AttrSpec{Name: "prlctl_version_file", Type: cty.String, Required: false},
 		"shutdown_command":             &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
-		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
 		"pause_before_connecting":      &hcldec.AttrSpec{Name: "pause_before_connecting", Type: cty.String, Required: false},

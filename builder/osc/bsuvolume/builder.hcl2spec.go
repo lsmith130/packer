@@ -62,7 +62,6 @@ type FlatConfig struct {
 	SSHUsername                 string                            `mapstructure:"ssh_username" cty:"ssh_username"`
 	SSHPassword                 string                            `mapstructure:"ssh_password" cty:"ssh_password"`
 	SSHKeyPairName              string                            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHTemporaryKeyPairName     string                            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
 	SSHClearAuthorizedKeys      bool                              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
 	SSHPrivateKeyFile           string                            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
 	SSHPty                      bool                              `mapstructure:"ssh_pty" cty:"ssh_pty"`
@@ -159,7 +158,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"ssh_username":                         &hcldec.AttrSpec{Name: "ssh_username", Type: cty.String, Required: false},
 		"ssh_password":                         &hcldec.AttrSpec{Name: "ssh_password", Type: cty.String, Required: false},
 		"ssh_keypair_name":                     &hcldec.AttrSpec{Name: "ssh_keypair_name", Type: cty.String, Required: false},
-		"temporary_key_pair_name":              &hcldec.AttrSpec{Name: "temporary_key_pair_name", Type: cty.String, Required: false},
 		"ssh_clear_authorized_keys":            &hcldec.AttrSpec{Name: "ssh_clear_authorized_keys", Type: cty.Bool, Required: false},
 		"ssh_private_key_file":                 &hcldec.AttrSpec{Name: "ssh_private_key_file", Type: cty.String, Required: false},
 		"ssh_pty":                              &hcldec.AttrSpec{Name: "ssh_pty", Type: cty.Bool, Required: false},

@@ -34,7 +34,6 @@ type FlatConfig struct {
 	RawBootWait               string            `mapstructure:"boot_wait" cty:"boot_wait"`
 	BootCommand               []string          `mapstructure:"boot_command" cty:"boot_command"`
 	BootGroupInterval         time.Duration     `cty:"boot_group_interval"`
-	BootWait                  time.Duration     `cty:"boot_wait"`
 	Format                    string            `mapstructure:"format" required:"false" cty:"format"`
 	ExportOpts                []string          `mapstructure:"export_opts" required:"false" cty:"export_opts"`
 	OutputDir                 string            `mapstructure:"output_directory" required:"false" cty:"output_directory"`
@@ -45,8 +44,6 @@ type FlatConfig struct {
 	ShutdownCommand           string            `mapstructure:"shutdown_command" required:"false" cty:"shutdown_command"`
 	RawShutdownTimeout        string            `mapstructure:"shutdown_timeout" required:"false" cty:"shutdown_timeout"`
 	RawPostShutdownDelay      string            `mapstructure:"post_shutdown_delay" required:"false" cty:"post_shutdown_delay"`
-	ShutdownTimeout           time.Duration     `cty:"shutdown_timeout"`
-	PostShutdownDelay         time.Duration     `cty:"post_shutdown_delay"`
 	Type                      string            `mapstructure:"communicator" cty:"communicator"`
 	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
 	SSHHost                   string            `mapstructure:"ssh_host" cty:"ssh_host"`
@@ -97,7 +94,6 @@ type FlatConfig struct {
 	USB                       bool              `mapstructure:"usb" required:"false" cty:"usb"`
 	VBoxManage                [][]string        `mapstructure:"vboxmanage" required:"false" cty:"vboxmanage"`
 	VBoxManagePost            [][]string        `mapstructure:"vboxmanage_post" required:"false" cty:"vboxmanage_post"`
-	Communicator              string            `mapstructure:"communicator" cty:"communicator"`
 	VBoxVersionFile           *string           `mapstructure:"virtualbox_version_file" required:"false" cty:"virtualbox_version_file"`
 	BundleISO                 bool              `mapstructure:"bundle_iso" required:"false" cty:"bundle_iso"`
 	GuestAdditionsMode        string            `mapstructure:"guest_additions_mode" required:"false" cty:"guest_additions_mode"`
@@ -150,7 +146,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"boot_command":                 &hcldec.AttrSpec{Name: "boot_command", Type: cty.List(cty.String), Required: false},
 		"boot_group_interval":          &hcldec.AttrSpec{Name: "boot_group_interval", Type: cty.String, Required: false},
-		"boot_wait":                    &hcldec.AttrSpec{Name: "boot_wait", Type: cty.String, Required: false},
 		"format":                       &hcldec.AttrSpec{Name: "format", Type: cty.String, Required: false},
 		"export_opts":                  &hcldec.AttrSpec{Name: "export_opts", Type: cty.List(cty.String), Required: false},
 		"output_directory":             &hcldec.AttrSpec{Name: "output_directory", Type: cty.String, Required: false},
@@ -159,8 +154,6 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"vrdp_port_min":                &hcldec.AttrSpec{Name: "vrdp_port_min", Type: cty.Number, Required: false},
 		"vrdp_port_max":                &hcldec.AttrSpec{Name: "vrdp_port_max", Type: cty.Number, Required: false},
 		"shutdown_command":             &hcldec.AttrSpec{Name: "shutdown_command", Type: cty.String, Required: false},
-		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
-		"post_shutdown_delay":          &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
 		"shutdown_timeout":             &hcldec.AttrSpec{Name: "shutdown_timeout", Type: cty.String, Required: false},
 		"post_shutdown_delay":          &hcldec.AttrSpec{Name: "post_shutdown_delay", Type: cty.String, Required: false},
 		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
@@ -211,9 +204,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 		"memory":                       &hcldec.AttrSpec{Name: "memory", Type: cty.Number, Required: false},
 		"sound":                        &hcldec.AttrSpec{Name: "sound", Type: cty.String, Required: false},
 		"usb":                          &hcldec.AttrSpec{Name: "usb", Type: cty.Bool, Required: false},
-		"vboxmanage":                   &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},      /* TODO(azr): could not find slice type ([][]string) */
-		"vboxmanage_post":              &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false}, /* TODO(azr): could not find slice type ([][]string) */
-		"communicator":                 &hcldec.AttrSpec{Name: "communicator", Type: cty.String, Required: false},
+		"vboxmanage":                   &hcldec.AttrSpec{Name: "vboxmanage", Type: cty.Bool, Required: false},              /* TODO(azr): could not find slice type ([][]string) */
+		"vboxmanage_post":              &hcldec.AttrSpec{Name: "vboxmanage_post", Type: cty.Bool, Required: false},         /* TODO(azr): could not find slice type ([][]string) */
 		"virtualbox_version_file":      &hcldec.AttrSpec{Name: "virtualbox_version_file", Type: cty.Bool, Required: false}, /* TODO(azr): could not find type */
 		"bundle_iso":                   &hcldec.AttrSpec{Name: "bundle_iso", Type: cty.Bool, Required: false},
 		"guest_additions_mode":         &hcldec.AttrSpec{Name: "guest_additions_mode", Type: cty.String, Required: false},
