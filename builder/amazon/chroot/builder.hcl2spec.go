@@ -4,7 +4,6 @@ package chroot
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/packer/builder/amazon/common"
-	"github.com/hashicorp/packer/helper/config"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -27,11 +26,11 @@ type FlatConfig struct {
 	AMIRegions              []string                     `mapstructure:"ami_regions" required:"false" cty:"ami_regions"`
 	AMISkipRegionValidation *bool                        `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
 	AMITags                 common.TagMap                `mapstructure:"tags" required:"false" cty:"tags"`
-	AMIENASupport           config.Trilean               `mapstructure:"ena_support" required:"false" cty:"ena_support"`
+	AMIENASupport           *bool                        `mapstructure:"ena_support" required:"false" cty:"ena_support"`
 	AMISriovNetSupport      *bool                        `mapstructure:"sriov_support" required:"false" cty:"sriov_support"`
 	AMIForceDeregister      *bool                        `mapstructure:"force_deregister" required:"false" cty:"force_deregister"`
 	AMIForceDeleteSnapshot  *bool                        `mapstructure:"force_delete_snapshot" required:"false" cty:"force_delete_snapshot"`
-	AMIEncryptBootVolume    config.Trilean               `mapstructure:"encrypt_boot" required:"false" cty:"encrypt_boot"`
+	AMIEncryptBootVolume    *bool                        `mapstructure:"encrypt_boot" required:"false" cty:"encrypt_boot"`
 	AMIKmsKeyId             *string                      `mapstructure:"kms_key_id" required:"false" cty:"kms_key_id"`
 	AMIRegionKMSKeyIDs      map[string]string            `mapstructure:"region_kms_key_ids" required:"false" cty:"region_kms_key_ids"`
 	AMISkipBuildRegion      *bool                        `mapstructure:"skip_save_build_region" cty:"skip_save_build_region"`

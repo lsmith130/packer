@@ -225,23 +225,8 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			fmt.Fprintf(w, `/* TODO(azr): could not find slice type (%s) */`, f.String())
 		}
 	case *types.Named:
-		switch f.String() {
-		case "time.Duration":
-			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
-				Name:     accessor,
-				Type:     basicKindToCtyType(types.String),
-				Required: false,
-			})
-		case "github.com/hashicorp/packer/helper/config.Trilean": // TODO(azr): unhack this situation
-			fmt.Fprintf(w, `%#v`, &hcldec.AttrSpec{
-				Name:     accessor,
-				Type:     basicKindToCtyType(types.Bool),
-				Required: false,
-			})
-		default:
-			underlyingType := f.Underlying()
-			outputHCL2SpecField(w, f.String(), underlyingType)
-		}
+		underlyingType := f.Underlying()
+		outputHCL2SpecField(w, f.String(), underlyingType)
 	case *types.Pointer:
 		outputHCL2SpecField(w, accessor, f.Elem())
 	case *types.Struct:
@@ -271,7 +256,7 @@ func basicKindToCtyType(kind types.BasicKind) cty.Type {
 	case types.Invalid:
 		return cty.String // TODO(azr): fix that beforehand ?
 	default:
-		log.Printf("Un handled basic kind: %s", kind)
+		log.Printf("Un handled basic kind: %d", kind)
 		return cty.String
 	}
 }
@@ -392,7 +377,15 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 		if field.Pkg() != topPkg {
 			field = types.NewField(field.Pos(), topPkg, field.Name(), field.Type(), field.Embedded())
 		}
-		if _, isBasic := field.Type().(*types.Basic); isBasic {
+		switch f := field.Type().(type) {
+		case *types.Named:
+			switch f.String() {
+			case "time.Duration":
+				field = types.NewField(field.Pos(), field.Pkg(), field.Name(), types.NewPointer(types.Typ[types.String]), field.Embedded())
+			case "github.com/hashicorp/packer/helper/config.Trilean": // TODO(azr): unhack this situation
+				field = types.NewField(field.Pos(), field.Pkg(), field.Name(), types.NewPointer(types.Typ[types.Bool]), field.Embedded())
+			}
+		case *types.Basic:
 			// since everything is optional, everything must be a pointer
 			// non optional fields should be non pointers.
 			field = makePointer(field)

@@ -4,7 +4,6 @@ package cloudstack
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -21,7 +20,7 @@ type FlatConfig struct {
 	HTTPPortMin               *int              `mapstructure:"http_port_min" cty:"http_port_min"`
 	HTTPPortMax               *int              `mapstructure:"http_port_max" cty:"http_port_max"`
 	Type                      *string           `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect        time.Duration     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	PauseBeforeConnect        *string           `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
 	SSHHost                   *string           `mapstructure:"ssh_host" cty:"ssh_host"`
 	SSHPort                   *int              `mapstructure:"ssh_port" cty:"ssh_port"`
 	SSHUsername               *string           `mapstructure:"ssh_username" cty:"ssh_username"`
@@ -31,7 +30,7 @@ type FlatConfig struct {
 	SSHClearAuthorizedKeys    *bool             `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
 	SSHPrivateKeyFile         *string           `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
 	SSHPty                    *bool             `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                time.Duration     `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHTimeout                *string           `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
 	SSHAgentAuth              *bool             `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
 	SSHDisableAgentForwarding *bool             `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
 	SSHHandshakeAttempts      *int              `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
@@ -46,8 +45,8 @@ type FlatConfig struct {
 	SSHProxyPort              *int              `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
 	SSHProxyUsername          *string           `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
 	SSHProxyPassword          *string           `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval      time.Duration     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout       time.Duration     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHKeepAliveInterval      *string           `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout       *string           `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
 	SSHRemoteTunnels          []string          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
 	SSHLocalTunnels           []string          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
 	SSHPublicKey              []byte            `cty:"ssh_public_key"`
@@ -56,14 +55,14 @@ type FlatConfig struct {
 	WinRMPassword             *string           `mapstructure:"winrm_password" cty:"winrm_password"`
 	WinRMHost                 *string           `mapstructure:"winrm_host" cty:"winrm_host"`
 	WinRMPort                 *int              `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout              time.Duration     `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMTimeout              *string           `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
 	WinRMUseSSL               *bool             `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
 	WinRMInsecure             *bool             `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
 	WinRMUseNTLM              *bool             `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
 	APIURL                    *string           `mapstructure:"api_url" required:"true" cty:"api_url"`
 	APIKey                    *string           `mapstructure:"api_key" required:"true" cty:"api_key"`
 	SecretKey                 *string           `mapstructure:"secret_key" required:"true" cty:"secret_key"`
-	AsyncTimeout              time.Duration     `mapstructure:"async_timeout" required:"false" cty:"async_timeout"`
+	AsyncTimeout              *string           `mapstructure:"async_timeout" required:"false" cty:"async_timeout"`
 	HTTPGetOnly               *bool             `mapstructure:"http_get_only" required:"false" cty:"http_get_only"`
 	SSLNoVerify               *bool             `mapstructure:"ssl_no_verify" required:"false" cty:"ssl_no_verify"`
 	CIDRList                  []string          `mapstructure:"cidr_list" required:"false" cty:"cidr_list"`
@@ -71,7 +70,7 @@ type FlatConfig struct {
 	DiskOffering              *string           `mapstructure:"disk_offering" required:"false" cty:"disk_offering"`
 	DiskSize                  *int64            `mapstructure:"disk_size" required:"false" cty:"disk_size"`
 	EjectISO                  *bool             `mapstructure:"eject_iso" cty:"eject_iso"`
-	EjectISODelay             time.Duration     `mapstructure:"eject_iso_delay" cty:"eject_iso_delay"`
+	EjectISODelay             *string           `mapstructure:"eject_iso_delay" cty:"eject_iso_delay"`
 	Expunge                   *bool             `mapstructure:"expunge" required:"false" cty:"expunge"`
 	Hypervisor                *string           `mapstructure:"hypervisor" required:"false" cty:"hypervisor"`
 	InstanceName              *string           `mapstructure:"instance_name" required:"false" cty:"instance_name"`

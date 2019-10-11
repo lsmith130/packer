@@ -4,13 +4,12 @@ package sleep
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatProvisioner is an auto-generated flat version of Provisioner.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatProvisioner struct {
-	Duration time.Duration `cty:"duration"`
+	Duration *string `cty:"duration"`
 }
 
 // FlatMapstructure returns a new FlatProvisioner.

@@ -4,7 +4,6 @@ package template
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatProvisioner is an auto-generated flat version of Provisioner.
@@ -15,8 +14,8 @@ type FlatProvisioner struct {
 	Type        *string                `json:"type" cty:"type"`
 	Config      map[string]interface{} `json:"config,omitempty" cty:"config"`
 	Override    map[string]interface{} `json:"override,omitempty" cty:"override"`
-	PauseBefore time.Duration          `mapstructure:"pause_before" json:"pause_before,omitempty" cty:"pause_before"`
-	Timeout     time.Duration          `mapstructure:"timeout" json:"timeout,omitempty" cty:"timeout"`
+	PauseBefore *string                `mapstructure:"pause_before" json:"pause_before,omitempty" cty:"pause_before"`
+	Timeout     *string                `mapstructure:"timeout" json:"timeout,omitempty" cty:"timeout"`
 }
 
 // FlatMapstructure returns a new FlatProvisioner.

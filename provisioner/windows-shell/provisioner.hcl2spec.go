@@ -4,7 +4,6 @@ package shell
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -25,7 +24,7 @@ type FlatConfig struct {
 	Scripts             []string          `cty:"scripts"`
 	ValidExitCodes      []int             `mapstructure:"valid_exit_codes" cty:"valid_exit_codes"`
 	Vars                []string          `mapstructure:"environment_vars" cty:"environment_vars"`
-	StartRetryTimeout   time.Duration     `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
+	StartRetryTimeout   *string           `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
 	EnvVarFormat        *string           `mapstructure:"env_var_format" cty:"env_var_format"`
 }
 

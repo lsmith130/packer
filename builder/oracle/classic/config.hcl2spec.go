@@ -5,7 +5,6 @@ import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/packer/helper/communicator"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -25,7 +24,7 @@ type FlatConfig struct {
 	BuilderImageListEntry     *int                `mapstructure:"builder_image_list_entry" cty:"builder_image_list_entry"`
 	BuilderComm               communicator.Config `mapstructure:"builder_communicator" cty:"builder_communicator"`
 	Type                      *string             `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect        time.Duration       `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	PauseBeforeConnect        *string             `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
 	SSHHost                   *string             `mapstructure:"ssh_host" cty:"ssh_host"`
 	SSHPort                   *int                `mapstructure:"ssh_port" cty:"ssh_port"`
 	SSHUsername               *string             `mapstructure:"ssh_username" cty:"ssh_username"`
@@ -35,7 +34,7 @@ type FlatConfig struct {
 	SSHClearAuthorizedKeys    *bool               `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
 	SSHPrivateKeyFile         *string             `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
 	SSHPty                    *bool               `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                time.Duration       `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHTimeout                *string             `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
 	SSHAgentAuth              *bool               `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
 	SSHDisableAgentForwarding *bool               `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
 	SSHHandshakeAttempts      *int                `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
@@ -50,8 +49,8 @@ type FlatConfig struct {
 	SSHProxyPort              *int                `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
 	SSHProxyUsername          *string             `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
 	SSHProxyPassword          *string             `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval      time.Duration       `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout       time.Duration       `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHKeepAliveInterval      *string             `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout       *string             `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
 	SSHRemoteTunnels          []string            `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
 	SSHLocalTunnels           []string            `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
 	SSHPublicKey              []byte              `cty:"ssh_public_key"`
@@ -60,7 +59,7 @@ type FlatConfig struct {
 	WinRMPassword             *string             `mapstructure:"winrm_password" cty:"winrm_password"`
 	WinRMHost                 *string             `mapstructure:"winrm_host" cty:"winrm_host"`
 	WinRMPort                 *int                `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout              time.Duration       `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMTimeout              *string             `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
 	WinRMUseSSL               *bool               `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
 	WinRMInsecure             *bool               `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
 	WinRMUseNTLM              *bool               `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
@@ -72,7 +71,7 @@ type FlatConfig struct {
 	Shape                     *string             `mapstructure:"shape" cty:"shape"`
 	SourceImageList           *string             `mapstructure:"source_image_list" cty:"source_image_list"`
 	SourceImageListEntry      *int                `mapstructure:"source_image_list_entry" cty:"source_image_list_entry"`
-	SnapshotTimeout           time.Duration       `mapstructure:"snapshot_timeout" cty:"snapshot_timeout"`
+	SnapshotTimeout           *string             `mapstructure:"snapshot_timeout" cty:"snapshot_timeout"`
 	DestImageList             *string             `mapstructure:"dest_image_list" cty:"dest_image_list"`
 	Attributes                *string             `mapstructure:"attributes" cty:"attributes"`
 	AttributesFile            *string             `mapstructure:"attributes_file" cty:"attributes_file"`

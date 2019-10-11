@@ -4,7 +4,6 @@ package digitaloceanimport
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -29,7 +28,7 @@ type FlatConfig struct {
 	Description         *string           `mapstructure:"image_description" cty:"image_description"`
 	Distribution        *string           `mapstructure:"image_distribution" cty:"image_distribution"`
 	ImageRegions        []string          `mapstructure:"image_regions" cty:"image_regions"`
-	Timeout             time.Duration     `mapstructure:"timeout" cty:"timeout"`
+	Timeout             *string           `mapstructure:"timeout" cty:"timeout"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

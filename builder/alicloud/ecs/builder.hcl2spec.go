@@ -3,22 +3,20 @@ package ecs
 
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
-	"github.com/hashicorp/packer/helper/config"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatAlicloudDiskDevice is an auto-generated flat version of AlicloudDiskDevice.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatAlicloudDiskDevice struct {
-	DiskName           *string        `mapstructure:"disk_name" required:"false" cty:"disk_name"`
-	DiskCategory       *string        `mapstructure:"disk_category" required:"false" cty:"disk_category"`
-	DiskSize           *int           `mapstructure:"disk_size" required:"false" cty:"disk_size"`
-	SnapshotId         *string        `mapstructure:"disk_snapshot_id" required:"false" cty:"disk_snapshot_id"`
-	Description        *string        `mapstructure:"disk_description" required:"false" cty:"disk_description"`
-	DeleteWithInstance *bool          `mapstructure:"disk_delete_with_instance" required:"false" cty:"disk_delete_with_instance"`
-	Device             *string        `mapstructure:"disk_device" required:"false" cty:"disk_device"`
-	Encrypted          config.Trilean `mapstructure:"disk_encrypted" required:"false" cty:"disk_encrypted"`
+	DiskName           *string `mapstructure:"disk_name" required:"false" cty:"disk_name"`
+	DiskCategory       *string `mapstructure:"disk_category" required:"false" cty:"disk_category"`
+	DiskSize           *int    `mapstructure:"disk_size" required:"false" cty:"disk_size"`
+	SnapshotId         *string `mapstructure:"disk_snapshot_id" required:"false" cty:"disk_snapshot_id"`
+	Description        *string `mapstructure:"disk_description" required:"false" cty:"disk_description"`
+	DeleteWithInstance *bool   `mapstructure:"disk_delete_with_instance" required:"false" cty:"disk_delete_with_instance"`
+	Device             *string `mapstructure:"disk_device" required:"false" cty:"disk_device"`
+	Encrypted          *bool   `mapstructure:"disk_encrypted" required:"false" cty:"disk_encrypted"`
 }
 
 // FlatMapstructure returns a new FlatAlicloudDiskDevice.
@@ -64,7 +62,7 @@ type FlatConfig struct {
 	AlicloudImageUNShareAccounts      []string             `mapstructure:"image_unshare_account" cty:"image_unshare_account"`
 	AlicloudImageDestinationRegions   []string             `mapstructure:"image_copy_regions" required:"false" cty:"image_copy_regions"`
 	AlicloudImageDestinationNames     []string             `mapstructure:"image_copy_names" required:"false" cty:"image_copy_names"`
-	ImageEncrypted                    config.Trilean       `mapstructure:"image_encrypted" required:"false" cty:"image_encrypted"`
+	ImageEncrypted                    *bool                `mapstructure:"image_encrypted" required:"false" cty:"image_encrypted"`
 	AlicloudImageForceDelete          *bool                `mapstructure:"image_force_delete" required:"false" cty:"image_force_delete"`
 	AlicloudImageForceDeleteSnapshots *bool                `mapstructure:"image_force_delete_snapshots" required:"false" cty:"image_force_delete_snapshots"`
 	AlicloudImageForceDeleteInstances *bool                `mapstructure:"image_force_delete_instances" cty:"image_force_delete_instances"`
@@ -74,7 +72,7 @@ type FlatConfig struct {
 	ECSImagesDiskMappings             []AlicloudDiskDevice `mapstructure:"image_disk_mappings" required:"false" cty:"image_disk_mappings"`
 	AssociatePublicIpAddress          *bool                `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address"`
 	ZoneId                            *string              `mapstructure:"zone_id" required:"false" cty:"zone_id"`
-	IOOptimized                       config.Trilean       `mapstructure:"io_optimized" required:"false" cty:"io_optimized"`
+	IOOptimized                       *bool                `mapstructure:"io_optimized" required:"false" cty:"io_optimized"`
 	InstanceType                      *string              `mapstructure:"instance_type" required:"true" cty:"instance_type"`
 	Description                       *string              `mapstructure:"description" cty:"description"`
 	AlicloudSourceImage               *string              `mapstructure:"source_image" required:"true" cty:"source_image"`
@@ -94,7 +92,7 @@ type FlatConfig struct {
 	InternetMaxBandwidthOut           *int                 `mapstructure:"internet_max_bandwidth_out" required:"false" cty:"internet_max_bandwidth_out"`
 	WaitSnapshotReadyTimeout          *int                 `mapstructure:"wait_snapshot_ready_timeout" required:"false" cty:"wait_snapshot_ready_timeout"`
 	Type                              *string              `mapstructure:"communicator" cty:"communicator"`
-	PauseBeforeConnect                time.Duration        `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
+	PauseBeforeConnect                *string              `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
 	SSHHost                           *string              `mapstructure:"ssh_host" cty:"ssh_host"`
 	SSHPort                           *int                 `mapstructure:"ssh_port" cty:"ssh_port"`
 	SSHUsername                       *string              `mapstructure:"ssh_username" cty:"ssh_username"`
@@ -104,7 +102,7 @@ type FlatConfig struct {
 	SSHClearAuthorizedKeys            *bool                `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
 	SSHPrivateKeyFile                 *string              `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
 	SSHPty                            *bool                `mapstructure:"ssh_pty" cty:"ssh_pty"`
-	SSHTimeout                        time.Duration        `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
+	SSHTimeout                        *string              `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
 	SSHAgentAuth                      *bool                `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
 	SSHDisableAgentForwarding         *bool                `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
 	SSHHandshakeAttempts              *int                 `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
@@ -119,8 +117,8 @@ type FlatConfig struct {
 	SSHProxyPort                      *int                 `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
 	SSHProxyUsername                  *string              `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
 	SSHProxyPassword                  *string              `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
-	SSHKeepAliveInterval              time.Duration        `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
-	SSHReadWriteTimeout               time.Duration        `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
+	SSHKeepAliveInterval              *string              `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
+	SSHReadWriteTimeout               *string              `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
 	SSHRemoteTunnels                  []string             `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
 	SSHLocalTunnels                   []string             `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
 	SSHPublicKey                      []byte               `cty:"ssh_public_key"`
@@ -129,7 +127,7 @@ type FlatConfig struct {
 	WinRMPassword                     *string              `mapstructure:"winrm_password" cty:"winrm_password"`
 	WinRMHost                         *string              `mapstructure:"winrm_host" cty:"winrm_host"`
 	WinRMPort                         *int                 `mapstructure:"winrm_port" cty:"winrm_port"`
-	WinRMTimeout                      time.Duration        `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
+	WinRMTimeout                      *string              `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
 	WinRMUseSSL                       *bool                `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
 	WinRMInsecure                     *bool                `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
 	WinRMUseNTLM                      *bool                `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`

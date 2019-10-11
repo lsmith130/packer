@@ -4,7 +4,6 @@ package powershell
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -27,7 +26,7 @@ type FlatConfig struct {
 	Vars                   []string          `mapstructure:"environment_vars" cty:"environment_vars"`
 	RemoteEnvVarPath       *string           `mapstructure:"remote_env_var_path" cty:"remote_env_var_path"`
 	ElevatedExecuteCommand *string           `mapstructure:"elevated_execute_command" cty:"elevated_execute_command"`
-	StartRetryTimeout      time.Duration     `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
+	StartRetryTimeout      *string           `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
 	EnvVarFormat           *string           `cty:"env_var_format"`
 	ElevatedEnvVarFormat   *string           `mapstructure:"elevated_env_var_format" cty:"elevated_env_var_format"`
 	ElevatedUser           *string           `mapstructure:"elevated_user" cty:"elevated_user"`

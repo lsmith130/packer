@@ -4,7 +4,6 @@ package restart
 import (
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/zclconf/go-cty/cty"
-	"time"
 )
 
 // FlatConfig is an auto-generated flat version of Config.
@@ -19,7 +18,7 @@ type FlatConfig struct {
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
 	RestartCommand      *string           `mapstructure:"restart_command" cty:"restart_command"`
 	RestartCheckCommand *string           `mapstructure:"restart_check_command" cty:"restart_check_command"`
-	RestartTimeout      time.Duration     `mapstructure:"restart_timeout" cty:"restart_timeout"`
+	RestartTimeout      *string           `mapstructure:"restart_timeout" cty:"restart_timeout"`
 	CheckKey            *bool             `mapstructure:"check_registry" cty:"check_registry"`
 	RegistryKeys        []string          `mapstructure:"registry_keys" cty:"registry_keys"`
 }
