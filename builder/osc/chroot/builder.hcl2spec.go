@@ -10,52 +10,52 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName         string                  `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType       string                  `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug             bool                    `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce             bool                    `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError           string                  `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName         *string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType       *string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug             *bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce             *bool                   `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError           *string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars          map[string]string       `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars     []string                `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
 	OMIMappings             []common.BlockDevice    `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
-	OMIName                 string                  `mapstructure:"omi_name" cty:"omi_name"`
-	OMIDescription          string                  `mapstructure:"omi_description" cty:"omi_description"`
-	OMIVirtType             string                  `mapstructure:"omi_virtualization_type" cty:"omi_virtualization_type"`
+	OMIName                 *string                 `mapstructure:"omi_name" cty:"omi_name"`
+	OMIDescription          *string                 `mapstructure:"omi_description" cty:"omi_description"`
+	OMIVirtType             *string                 `mapstructure:"omi_virtualization_type" cty:"omi_virtualization_type"`
 	OMIAccountIDs           []string                `mapstructure:"omi_account_ids" cty:"omi_account_ids"`
 	OMIGroups               []string                `mapstructure:"omi_groups" cty:"omi_groups"`
 	OMIProductCodes         []string                `mapstructure:"omi_product_codes" cty:"omi_product_codes"`
 	OMIRegions              []string                `mapstructure:"omi_regions" cty:"omi_regions"`
-	OMISkipRegionValidation bool                    `mapstructure:"skip_region_validation" cty:"skip_region_validation"`
+	OMISkipRegionValidation *bool                   `mapstructure:"skip_region_validation" cty:"skip_region_validation"`
 	OMITags                 common.TagMap           `mapstructure:"tags" cty:"tags"`
-	OMIForceDeregister      bool                    `mapstructure:"force_deregister" cty:"force_deregister"`
-	OMIForceDeleteSnapshot  bool                    `mapstructure:"force_delete_snapshot" cty:"force_delete_snapshot"`
+	OMIForceDeregister      *bool                   `mapstructure:"force_deregister" cty:"force_deregister"`
+	OMIForceDeleteSnapshot  *bool                   `mapstructure:"force_delete_snapshot" cty:"force_delete_snapshot"`
 	SnapshotTags            common.TagMap           `mapstructure:"snapshot_tags" cty:"snapshot_tags"`
 	SnapshotAccountIDs      []string                `mapstructure:"snapshot_account_ids" cty:"snapshot_account_ids"`
 	SnapshotGroups          []string                `mapstructure:"snapshot_groups" cty:"snapshot_groups"`
-	AccessKey               string                  `mapstructure:"access_key" cty:"access_key"`
-	CustomEndpointOAPI      string                  `mapstructure:"custom_endpoint_oapi" cty:"custom_endpoint_oapi"`
-	InsecureSkipTLSVerify   bool                    `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
-	MFACode                 string                  `mapstructure:"mfa_code" cty:"mfa_code"`
-	ProfileName             string                  `mapstructure:"profile" cty:"profile"`
-	RawRegion               string                  `mapstructure:"region" cty:"region"`
-	SecretKey               string                  `mapstructure:"secret_key" cty:"secret_key"`
-	SkipMetadataApiCheck    bool                    `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
-	Token                   string                  `mapstructure:"token" cty:"token"`
+	AccessKey               *string                 `mapstructure:"access_key" cty:"access_key"`
+	CustomEndpointOAPI      *string                 `mapstructure:"custom_endpoint_oapi" cty:"custom_endpoint_oapi"`
+	InsecureSkipTLSVerify   *bool                   `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
+	MFACode                 *string                 `mapstructure:"mfa_code" cty:"mfa_code"`
+	ProfileName             *string                 `mapstructure:"profile" cty:"profile"`
+	RawRegion               *string                 `mapstructure:"region" cty:"region"`
+	SecretKey               *string                 `mapstructure:"secret_key" cty:"secret_key"`
+	SkipMetadataApiCheck    *bool                   `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
+	Token                   *string                 `mapstructure:"token" cty:"token"`
 	ChrootMounts            [][]string              `mapstructure:"chroot_mounts" cty:"chroot_mounts"`
-	CommandWrapper          string                  `mapstructure:"command_wrapper" cty:"command_wrapper"`
+	CommandWrapper          *string                 `mapstructure:"command_wrapper" cty:"command_wrapper"`
 	CopyFiles               []string                `mapstructure:"copy_files" cty:"copy_files"`
-	DevicePath              string                  `mapstructure:"device_path" cty:"device_path"`
-	NVMEDevicePath          string                  `mapstructure:"nvme_device_path" cty:"nvme_device_path"`
-	FromScratch             bool                    `mapstructure:"from_scratch" cty:"from_scratch"`
+	DevicePath              *string                 `mapstructure:"device_path" cty:"device_path"`
+	NVMEDevicePath          *string                 `mapstructure:"nvme_device_path" cty:"nvme_device_path"`
+	FromScratch             *bool                   `mapstructure:"from_scratch" cty:"from_scratch"`
 	MountOptions            []string                `mapstructure:"mount_options" cty:"mount_options"`
-	MountPartition          string                  `mapstructure:"mount_partition" cty:"mount_partition"`
-	MountPath               string                  `mapstructure:"mount_path" cty:"mount_path"`
+	MountPartition          *string                 `mapstructure:"mount_partition" cty:"mount_partition"`
+	MountPath               *string                 `mapstructure:"mount_path" cty:"mount_path"`
 	PostMountCommands       []string                `mapstructure:"post_mount_commands" cty:"post_mount_commands"`
 	PreMountCommands        []string                `mapstructure:"pre_mount_commands" cty:"pre_mount_commands"`
-	RootDeviceName          string                  `mapstructure:"root_device_name" cty:"root_device_name"`
-	RootVolumeSize          int64                   `mapstructure:"root_volume_size" cty:"root_volume_size"`
-	RootVolumeType          string                  `mapstructure:"root_volume_type" cty:"root_volume_type"`
-	SourceOMI               string                  `mapstructure:"source_omi" cty:"source_omi"`
+	RootDeviceName          *string                 `mapstructure:"root_device_name" cty:"root_device_name"`
+	RootVolumeSize          *int64                  `mapstructure:"root_volume_size" cty:"root_volume_size"`
+	RootVolumeType          *string                 `mapstructure:"root_volume_type" cty:"root_volume_type"`
+	SourceOMI               *string                 `mapstructure:"source_omi" cty:"source_omi"`
 	SourceOMIFilter         common.OmiFilterOptions `mapstructure:"source_omi_filter" cty:"source_omi_filter"`
 	RootVolumeTags          common.TagMap           `mapstructure:"root_volume_tags" cty:"root_volume_tags"`
 }

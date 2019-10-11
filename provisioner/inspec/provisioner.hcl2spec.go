@@ -9,26 +9,26 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName      *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Command              string            `cty:"command"`
-	SubCommand           string            `cty:"sub_command"`
+	Command              *string           `cty:"command"`
+	SubCommand           *string           `cty:"sub_command"`
 	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
 	InspecEnvVars        []string          `mapstructure:"inspec_env_vars" cty:"inspec_env_vars"`
-	Profile              string            `mapstructure:"profile" cty:"profile"`
-	AttributesDirectory  string            `mapstructure:"attributes_directory" cty:"attributes_directory"`
+	Profile              *string           `mapstructure:"profile" cty:"profile"`
+	AttributesDirectory  *string           `mapstructure:"attributes_directory" cty:"attributes_directory"`
 	AttributesFiles      []string          `mapstructure:"attributes" cty:"attributes"`
-	Backend              string            `mapstructure:"backend" cty:"backend"`
-	User                 string            `mapstructure:"user" cty:"user"`
-	Host                 string            `mapstructure:"host" cty:"host"`
-	LocalPort            int               `mapstructure:"local_port" cty:"local_port"`
-	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
-	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
+	Backend              *string           `mapstructure:"backend" cty:"backend"`
+	User                 *string           `mapstructure:"user" cty:"user"`
+	Host                 *string           `mapstructure:"host" cty:"host"`
+	LocalPort            *int              `mapstructure:"local_port" cty:"local_port"`
+	SSHHostKeyFile       *string           `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
+	SSHAuthorizedKeyFile *string           `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

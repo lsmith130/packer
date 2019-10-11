@@ -9,22 +9,22 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Host                string            `mapstructure:"host" cty:"host"`
-	Insecure            bool              `mapstructure:"insecure" cty:"insecure"`
-	Username            string            `mapstructure:"username" cty:"username"`
-	Password            string            `mapstructure:"password" cty:"password"`
-	Datacenter          string            `mapstructure:"datacenter" cty:"datacenter"`
-	Folder              string            `mapstructure:"folder" cty:"folder"`
-	SnapshotEnable      bool              `mapstructure:"snapshot_enable" cty:"snapshot_enable"`
-	SnapshotName        string            `mapstructure:"snapshot_name" cty:"snapshot_name"`
-	SnapshotDescription string            `mapstructure:"snapshot_description" cty:"snapshot_description"`
+	Host                *string           `mapstructure:"host" cty:"host"`
+	Insecure            *bool             `mapstructure:"insecure" cty:"insecure"`
+	Username            *string           `mapstructure:"username" cty:"username"`
+	Password            *string           `mapstructure:"password" cty:"password"`
+	Datacenter          *string           `mapstructure:"datacenter" cty:"datacenter"`
+	Folder              *string           `mapstructure:"folder" cty:"folder"`
+	SnapshotEnable      *bool             `mapstructure:"snapshot_enable" cty:"snapshot_enable"`
+	SnapshotName        *string           `mapstructure:"snapshot_name" cty:"snapshot_name"`
+	SnapshotDescription *string           `mapstructure:"snapshot_description" cty:"snapshot_description"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

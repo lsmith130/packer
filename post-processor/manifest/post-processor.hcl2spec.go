@@ -9,15 +9,15 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	OutputPath          string            `mapstructure:"output" cty:"output"`
-	StripPath           bool              `mapstructure:"strip_path" cty:"strip_path"`
+	OutputPath          *string           `mapstructure:"output" cty:"output"`
+	StripPath           *bool             `mapstructure:"strip_path" cty:"strip_path"`
 	CustomData          map[string]string `mapstructure:"custom_data" cty:"custom_data"`
 }
 

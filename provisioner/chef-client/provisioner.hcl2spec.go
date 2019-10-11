@@ -9,40 +9,40 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName            string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType          string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                bool                   `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError              string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName            *string                `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType          *string                `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                *bool                  `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                *bool                  `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError              *string                `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars             map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars        []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
 	Json                       map[string]interface{} `cty:"json"`
-	ChefEnvironment            string                 `mapstructure:"chef_environment" cty:"chef_environment"`
-	ChefLicense                string                 `mapstructure:"chef_license" cty:"chef_license"`
-	ClientKey                  string                 `mapstructure:"client_key" cty:"client_key"`
-	ConfigTemplate             string                 `mapstructure:"config_template" cty:"config_template"`
-	ElevatedUser               string                 `mapstructure:"elevated_user" cty:"elevated_user"`
-	ElevatedPassword           string                 `mapstructure:"elevated_password" cty:"elevated_password"`
-	EncryptedDataBagSecretPath string                 `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path"`
-	ExecuteCommand             string                 `mapstructure:"execute_command" cty:"execute_command"`
-	GuestOSType                string                 `mapstructure:"guest_os_type" cty:"guest_os_type"`
-	InstallCommand             string                 `mapstructure:"install_command" cty:"install_command"`
-	KnifeCommand               string                 `mapstructure:"knife_command" cty:"knife_command"`
-	NodeName                   string                 `mapstructure:"node_name" cty:"node_name"`
-	PolicyGroup                string                 `mapstructure:"policy_group" cty:"policy_group"`
-	PolicyName                 string                 `mapstructure:"policy_name" cty:"policy_name"`
-	PreventSudo                bool                   `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
+	ChefEnvironment            *string                `mapstructure:"chef_environment" cty:"chef_environment"`
+	ChefLicense                *string                `mapstructure:"chef_license" cty:"chef_license"`
+	ClientKey                  *string                `mapstructure:"client_key" cty:"client_key"`
+	ConfigTemplate             *string                `mapstructure:"config_template" cty:"config_template"`
+	ElevatedUser               *string                `mapstructure:"elevated_user" cty:"elevated_user"`
+	ElevatedPassword           *string                `mapstructure:"elevated_password" cty:"elevated_password"`
+	EncryptedDataBagSecretPath *string                `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path"`
+	ExecuteCommand             *string                `mapstructure:"execute_command" cty:"execute_command"`
+	GuestOSType                *string                `mapstructure:"guest_os_type" cty:"guest_os_type"`
+	InstallCommand             *string                `mapstructure:"install_command" cty:"install_command"`
+	KnifeCommand               *string                `mapstructure:"knife_command" cty:"knife_command"`
+	NodeName                   *string                `mapstructure:"node_name" cty:"node_name"`
+	PolicyGroup                *string                `mapstructure:"policy_group" cty:"policy_group"`
+	PolicyName                 *string                `mapstructure:"policy_name" cty:"policy_name"`
+	PreventSudo                *bool                  `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
 	RunList                    []string               `mapstructure:"run_list" cty:"run_list"`
-	ServerUrl                  string                 `mapstructure:"server_url" cty:"server_url"`
-	SkipCleanClient            bool                   `mapstructure:"skip_clean_client" cty:"skip_clean_client"`
-	SkipCleanNode              bool                   `mapstructure:"skip_clean_node" cty:"skip_clean_node"`
-	SkipCleanStagingDirectory  bool                   `mapstructure:"skip_clean_staging_directory" cty:"skip_clean_staging_directory"`
-	SkipInstall                bool                   `mapstructure:"skip_install" cty:"skip_install"`
-	SslVerifyMode              string                 `mapstructure:"ssl_verify_mode" cty:"ssl_verify_mode"`
-	TrustedCertsDir            string                 `mapstructure:"trusted_certs_dir" cty:"trusted_certs_dir"`
-	StagingDir                 string                 `mapstructure:"staging_directory" cty:"staging_directory"`
-	ValidationClientName       string                 `mapstructure:"validation_client_name" cty:"validation_client_name"`
-	ValidationKeyPath          string                 `mapstructure:"validation_key_path" cty:"validation_key_path"`
+	ServerUrl                  *string                `mapstructure:"server_url" cty:"server_url"`
+	SkipCleanClient            *bool                  `mapstructure:"skip_clean_client" cty:"skip_clean_client"`
+	SkipCleanNode              *bool                  `mapstructure:"skip_clean_node" cty:"skip_clean_node"`
+	SkipCleanStagingDirectory  *bool                  `mapstructure:"skip_clean_staging_directory" cty:"skip_clean_staging_directory"`
+	SkipInstall                *bool                  `mapstructure:"skip_install" cty:"skip_install"`
+	SslVerifyMode              *string                `mapstructure:"ssl_verify_mode" cty:"ssl_verify_mode"`
+	TrustedCertsDir            *string                `mapstructure:"trusted_certs_dir" cty:"trusted_certs_dir"`
+	StagingDir                 *string                `mapstructure:"staging_directory" cty:"staging_directory"`
+	ValidationClientName       *string                `mapstructure:"validation_client_name" cty:"validation_client_name"`
+	ValidationKeyPath          *string                `mapstructure:"validation_key_path" cty:"validation_key_path"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

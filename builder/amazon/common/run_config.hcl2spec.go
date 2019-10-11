@@ -11,7 +11,7 @@ import (
 type FlatAmiFilterOptions struct {
 	Filters    map[*string]*string `cty:"filters"`
 	Owners     []*string           `cty:"owners"`
-	MostRecent bool                `mapstructure:"most_recent" cty:"most_recent"`
+	MostRecent *bool               `mapstructure:"most_recent" cty:"most_recent"`
 }
 
 // FlatMapstructure returns a new FlatAmiFilterOptions.
@@ -56,8 +56,8 @@ func (*SecurityGroupFilterOptions) HCL2Spec() map[string]hcldec.Spec {
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatSubnetFilterOptions struct {
 	Filters  map[*string]*string `cty:"filters"`
-	MostFree bool                `mapstructure:"most_free" cty:"most_free"`
-	Random   bool                `mapstructure:"random" cty:"random"`
+	MostFree *bool               `mapstructure:"most_free" cty:"most_free"`
+	Random   *bool               `mapstructure:"random" cty:"random"`
 }
 
 // FlatMapstructure returns a new FlatSubnetFilterOptions.

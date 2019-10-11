@@ -9,22 +9,22 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AccountFile         string            `mapstructure:"account_file" cty:"account_file"`
-	DiskSizeGb          int64             `mapstructure:"disk_size" cty:"disk_size"`
-	DiskType            string            `mapstructure:"disk_type" cty:"disk_type"`
-	MachineType         string            `mapstructure:"machine_type" cty:"machine_type"`
-	Network             string            `mapstructure:"network" cty:"network"`
+	AccountFile         *string           `mapstructure:"account_file" cty:"account_file"`
+	DiskSizeGb          *int64            `mapstructure:"disk_size" cty:"disk_size"`
+	DiskType            *string           `mapstructure:"disk_type" cty:"disk_type"`
+	MachineType         *string           `mapstructure:"machine_type" cty:"machine_type"`
+	Network             *string           `mapstructure:"network" cty:"network"`
 	Paths               []string          `mapstructure:"paths" cty:"paths"`
-	Subnetwork          string            `mapstructure:"subnetwork" cty:"subnetwork"`
-	VaultGCPOauthEngine string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
-	Zone                string            `mapstructure:"zone" cty:"zone"`
+	Subnetwork          *string           `mapstructure:"subnetwork" cty:"subnetwork"`
+	VaultGCPOauthEngine *string           `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
+	Zone                *string           `mapstructure:"zone" cty:"zone"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

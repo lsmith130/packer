@@ -9,31 +9,31 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName            string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType          string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                bool                   `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError              string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName            *string                `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType          *string                `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                *bool                  `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                *bool                  `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError              *string                `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars             map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars        []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	ChefEnvironment            string                 `mapstructure:"chef_environment" cty:"chef_environment"`
-	ChefLicense                string                 `mapstructure:"chef_license" cty:"chef_license"`
-	ConfigTemplate             string                 `mapstructure:"config_template" cty:"config_template"`
+	ChefEnvironment            *string                `mapstructure:"chef_environment" cty:"chef_environment"`
+	ChefLicense                *string                `mapstructure:"chef_license" cty:"chef_license"`
+	ConfigTemplate             *string                `mapstructure:"config_template" cty:"config_template"`
 	CookbookPaths              []string               `mapstructure:"cookbook_paths" cty:"cookbook_paths"`
-	RolesPath                  string                 `mapstructure:"roles_path" cty:"roles_path"`
-	DataBagsPath               string                 `mapstructure:"data_bags_path" cty:"data_bags_path"`
-	EncryptedDataBagSecretPath string                 `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path"`
-	EnvironmentsPath           string                 `mapstructure:"environments_path" cty:"environments_path"`
-	ExecuteCommand             string                 `mapstructure:"execute_command" cty:"execute_command"`
-	InstallCommand             string                 `mapstructure:"install_command" cty:"install_command"`
+	RolesPath                  *string                `mapstructure:"roles_path" cty:"roles_path"`
+	DataBagsPath               *string                `mapstructure:"data_bags_path" cty:"data_bags_path"`
+	EncryptedDataBagSecretPath *string                `mapstructure:"encrypted_data_bag_secret_path" cty:"encrypted_data_bag_secret_path"`
+	EnvironmentsPath           *string                `mapstructure:"environments_path" cty:"environments_path"`
+	ExecuteCommand             *string                `mapstructure:"execute_command" cty:"execute_command"`
+	InstallCommand             *string                `mapstructure:"install_command" cty:"install_command"`
 	RemoteCookbookPaths        []string               `mapstructure:"remote_cookbook_paths" cty:"remote_cookbook_paths"`
 	Json                       map[string]interface{} `cty:"json"`
-	PreventSudo                bool                   `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
+	PreventSudo                *bool                  `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
 	RunList                    []string               `mapstructure:"run_list" cty:"run_list"`
-	SkipInstall                bool                   `mapstructure:"skip_install" cty:"skip_install"`
-	StagingDir                 string                 `mapstructure:"staging_directory" cty:"staging_directory"`
-	GuestOSType                string                 `mapstructure:"guest_os_type" cty:"guest_os_type"`
-	Version                    string                 `mapstructure:"version" cty:"version"`
+	SkipInstall                *bool                  `mapstructure:"skip_install" cty:"skip_install"`
+	StagingDir                 *string                `mapstructure:"staging_directory" cty:"staging_directory"`
+	GuestOSType                *string                `mapstructure:"guest_os_type" cty:"guest_os_type"`
+	Version                    *string                `mapstructure:"version" cty:"version"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

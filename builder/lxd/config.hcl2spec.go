@@ -9,19 +9,19 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	OutputImage         string            `mapstructure:"output_image" required:"false" cty:"output_image"`
-	ContainerName       string            `mapstructure:"container_name" cty:"container_name"`
-	CommandWrapper      string            `mapstructure:"command_wrapper" required:"false" cty:"command_wrapper"`
-	Image               string            `mapstructure:"image" required:"true" cty:"image"`
-	Profile             string            `mapstructure:"profile" cty:"profile"`
-	InitSleep           string            `mapstructure:"init_sleep" required:"false" cty:"init_sleep"`
+	OutputImage         *string           `mapstructure:"output_image" required:"false" cty:"output_image"`
+	ContainerName       *string           `mapstructure:"container_name" cty:"container_name"`
+	CommandWrapper      *string           `mapstructure:"command_wrapper" required:"false" cty:"command_wrapper"`
+	Image               *string           `mapstructure:"image" required:"true" cty:"image"`
+	Profile             *string           `mapstructure:"profile" cty:"profile"`
+	InitSleep           *string           `mapstructure:"init_sleep" required:"false" cty:"init_sleep"`
 	PublishProperties   map[string]string `mapstructure:"publish_properties" required:"false" cty:"publish_properties"`
 	LaunchConfig        map[string]string `mapstructure:"launch_config" required:"false" cty:"launch_config"`
 }

@@ -9,10 +9,10 @@ import (
 // FlatImageDestination is an auto-generated flat version of ImageDestination.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatImageDestination struct {
-	ProjectId   string `mapstructure:"project_id" cty:"project_id"`
-	Region      string `mapstructure:"region" cty:"region"`
-	Name        string `mapstructure:"name" cty:"name"`
-	Description string `mapstructure:"description" cty:"description"`
+	ProjectId   *string `mapstructure:"project_id" cty:"project_id"`
+	Region      *string `mapstructure:"region" cty:"region"`
+	Name        *string `mapstructure:"name" cty:"name"`
+	Description *string `mapstructure:"description" cty:"description"`
 }
 
 // FlatMapstructure returns a new FlatImageDestination.

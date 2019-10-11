@@ -9,24 +9,24 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Command             string            `cty:"command"`
+	Command             *string           `cty:"command"`
 	Inline              []string          `cty:"inline"`
-	InlineShebang       string            `mapstructure:"inline_shebang" cty:"inline_shebang"`
+	InlineShebang       *string           `mapstructure:"inline_shebang" cty:"inline_shebang"`
 	OnlyOn              []string          `mapstructure:"only_on" cty:"only_on"`
-	TempfileExtension   string            `mapstructure:"tempfile_extension" cty:"tempfile_extension"`
-	Script              string            `cty:"script"`
+	TempfileExtension   *string           `mapstructure:"tempfile_extension" cty:"tempfile_extension"`
+	Script              *string           `cty:"script"`
 	Scripts             []string          `cty:"scripts"`
 	Vars                []string          `mapstructure:"environment_vars" cty:"environment_vars"`
-	EnvVarFormat        string            `mapstructure:"env_var_format" cty:"env_var_format"`
+	EnvVarFormat        *string           `mapstructure:"env_var_format" cty:"env_var_format"`
 	ExecuteCommand      []string          `mapstructure:"execute_command" cty:"execute_command"`
-	UseLinuxPathing     bool              `mapstructure:"use_linux_pathing" cty:"use_linux_pathing"`
+	UseLinuxPathing     *bool             `mapstructure:"use_linux_pathing" cty:"use_linux_pathing"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

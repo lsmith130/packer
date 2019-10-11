@@ -10,28 +10,28 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName        string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType      string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug            bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce            bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError          string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName        *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType      *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug            *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce            *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError          *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars         map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars    []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Binary                 bool              `cty:"binary"`
-	ExecuteCommand         string            `mapstructure:"execute_command" cty:"execute_command"`
+	Binary                 *bool             `cty:"binary"`
+	ExecuteCommand         *string           `mapstructure:"execute_command" cty:"execute_command"`
 	Inline                 []string          `cty:"inline"`
-	RemotePath             string            `mapstructure:"remote_path" cty:"remote_path"`
-	Script                 string            `cty:"script"`
+	RemotePath             *string           `mapstructure:"remote_path" cty:"remote_path"`
+	Script                 *string           `cty:"script"`
 	Scripts                []string          `cty:"scripts"`
 	ValidExitCodes         []int             `mapstructure:"valid_exit_codes" cty:"valid_exit_codes"`
 	Vars                   []string          `mapstructure:"environment_vars" cty:"environment_vars"`
-	RemoteEnvVarPath       string            `mapstructure:"remote_env_var_path" cty:"remote_env_var_path"`
-	ElevatedExecuteCommand string            `mapstructure:"elevated_execute_command" cty:"elevated_execute_command"`
+	RemoteEnvVarPath       *string           `mapstructure:"remote_env_var_path" cty:"remote_env_var_path"`
+	ElevatedExecuteCommand *string           `mapstructure:"elevated_execute_command" cty:"elevated_execute_command"`
 	StartRetryTimeout      time.Duration     `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
-	EnvVarFormat           string            `cty:"env_var_format"`
-	ElevatedEnvVarFormat   string            `mapstructure:"elevated_env_var_format" cty:"elevated_env_var_format"`
-	ElevatedUser           string            `mapstructure:"elevated_user" cty:"elevated_user"`
-	ElevatedPassword       string            `mapstructure:"elevated_password" cty:"elevated_password"`
+	EnvVarFormat           *string           `cty:"env_var_format"`
+	ElevatedEnvVarFormat   *string           `mapstructure:"elevated_env_var_format" cty:"elevated_env_var_format"`
+	ElevatedUser           *string           `mapstructure:"elevated_user" cty:"elevated_user"`
+	ElevatedPassword       *string           `mapstructure:"elevated_password" cty:"elevated_password"`
 	ExecutionPolicy        ExecutionPolicy   `mapstructure:"execution_policy" hcl2-schema-generator:"execution_policy,direct" cty:"execution_policy"`
 }
 

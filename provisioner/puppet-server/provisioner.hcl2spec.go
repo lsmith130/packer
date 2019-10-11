@@ -9,29 +9,29 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName      *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	CleanStagingDir      bool              `mapstructure:"clean_staging_directory" cty:"clean_staging_directory"`
-	ClientCertPath       string            `mapstructure:"client_cert_path" cty:"client_cert_path"`
-	ClientPrivateKeyPath string            `mapstructure:"client_private_key_path" cty:"client_private_key_path"`
-	ExecuteCommand       string            `mapstructure:"execute_command" cty:"execute_command"`
+	CleanStagingDir      *bool             `mapstructure:"clean_staging_directory" cty:"clean_staging_directory"`
+	ClientCertPath       *string           `mapstructure:"client_cert_path" cty:"client_cert_path"`
+	ClientPrivateKeyPath *string           `mapstructure:"client_private_key_path" cty:"client_private_key_path"`
+	ExecuteCommand       *string           `mapstructure:"execute_command" cty:"execute_command"`
 	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
 	Facter               map[string]string `cty:"facter"`
-	GuestOSType          string            `mapstructure:"guest_os_type" cty:"guest_os_type"`
-	IgnoreExitCodes      bool              `mapstructure:"ignore_exit_codes" cty:"ignore_exit_codes"`
-	PreventSudo          bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
-	PuppetBinDir         string            `mapstructure:"puppet_bin_dir" cty:"puppet_bin_dir"`
-	PuppetNode           string            `mapstructure:"puppet_node" cty:"puppet_node"`
-	PuppetServer         string            `mapstructure:"puppet_server" cty:"puppet_server"`
-	StagingDir           string            `mapstructure:"staging_dir" cty:"staging_dir"`
-	WorkingDir           string            `mapstructure:"working_directory" cty:"working_directory"`
-	ElevatedUser         string            `mapstructure:"elevated_user" cty:"elevated_user"`
-	ElevatedPassword     string            `mapstructure:"elevated_password" cty:"elevated_password"`
+	GuestOSType          *string           `mapstructure:"guest_os_type" cty:"guest_os_type"`
+	IgnoreExitCodes      *bool             `mapstructure:"ignore_exit_codes" cty:"ignore_exit_codes"`
+	PreventSudo          *bool             `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
+	PuppetBinDir         *string           `mapstructure:"puppet_bin_dir" cty:"puppet_bin_dir"`
+	PuppetNode           *string           `mapstructure:"puppet_node" cty:"puppet_node"`
+	PuppetServer         *string           `mapstructure:"puppet_server" cty:"puppet_server"`
+	StagingDir           *string           `mapstructure:"staging_dir" cty:"staging_dir"`
+	WorkingDir           *string           `mapstructure:"working_directory" cty:"working_directory"`
+	ElevatedUser         *string           `mapstructure:"elevated_user" cty:"elevated_user"`
+	ElevatedPassword     *string           `mapstructure:"elevated_password" cty:"elevated_password"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

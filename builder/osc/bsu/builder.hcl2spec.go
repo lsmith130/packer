@@ -11,105 +11,105 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName             string                            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType           string                            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                 bool                              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                 bool                              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError               string                            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName             *string                           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType           *string                           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                 *bool                             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                 *bool                             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError               *string                           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars              map[string]string                 `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars         []string                          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AccessKey                   string                            `mapstructure:"access_key" cty:"access_key"`
-	CustomEndpointOAPI          string                            `mapstructure:"custom_endpoint_oapi" cty:"custom_endpoint_oapi"`
-	InsecureSkipTLSVerify       bool                              `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
-	MFACode                     string                            `mapstructure:"mfa_code" cty:"mfa_code"`
-	ProfileName                 string                            `mapstructure:"profile" cty:"profile"`
-	RawRegion                   string                            `mapstructure:"region" cty:"region"`
-	SecretKey                   string                            `mapstructure:"secret_key" cty:"secret_key"`
-	SkipValidation              bool                              `mapstructure:"skip_region_validation" cty:"skip_region_validation"`
-	SkipMetadataApiCheck        bool                              `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
-	Token                       string                            `mapstructure:"token" cty:"token"`
-	OMIName                     string                            `mapstructure:"omi_name" cty:"omi_name"`
-	OMIDescription              string                            `mapstructure:"omi_description" cty:"omi_description"`
-	OMIVirtType                 string                            `mapstructure:"omi_virtualization_type" cty:"omi_virtualization_type"`
+	AccessKey                   *string                           `mapstructure:"access_key" cty:"access_key"`
+	CustomEndpointOAPI          *string                           `mapstructure:"custom_endpoint_oapi" cty:"custom_endpoint_oapi"`
+	InsecureSkipTLSVerify       *bool                             `mapstructure:"insecure_skip_tls_verify" cty:"insecure_skip_tls_verify"`
+	MFACode                     *string                           `mapstructure:"mfa_code" cty:"mfa_code"`
+	ProfileName                 *string                           `mapstructure:"profile" cty:"profile"`
+	RawRegion                   *string                           `mapstructure:"region" cty:"region"`
+	SecretKey                   *string                           `mapstructure:"secret_key" cty:"secret_key"`
+	SkipValidation              *bool                             `mapstructure:"skip_region_validation" cty:"skip_region_validation"`
+	SkipMetadataApiCheck        *bool                             `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
+	Token                       *string                           `mapstructure:"token" cty:"token"`
+	OMIName                     *string                           `mapstructure:"omi_name" cty:"omi_name"`
+	OMIDescription              *string                           `mapstructure:"omi_description" cty:"omi_description"`
+	OMIVirtType                 *string                           `mapstructure:"omi_virtualization_type" cty:"omi_virtualization_type"`
 	OMIAccountIDs               []string                          `mapstructure:"omi_account_ids" cty:"omi_account_ids"`
 	OMIGroups                   []string                          `mapstructure:"omi_groups" cty:"omi_groups"`
 	OMIProductCodes             []string                          `mapstructure:"omi_product_codes" cty:"omi_product_codes"`
 	OMIRegions                  []string                          `mapstructure:"omi_regions" cty:"omi_regions"`
 	OMITags                     common.TagMap                     `mapstructure:"tags" cty:"tags"`
-	OMIForceDeregister          bool                              `mapstructure:"force_deregister" cty:"force_deregister"`
-	OMIForceDeleteSnapshot      bool                              `mapstructure:"force_delete_snapshot" cty:"force_delete_snapshot"`
+	OMIForceDeregister          *bool                             `mapstructure:"force_deregister" cty:"force_deregister"`
+	OMIForceDeleteSnapshot      *bool                             `mapstructure:"force_delete_snapshot" cty:"force_delete_snapshot"`
 	SnapshotTags                common.TagMap                     `mapstructure:"snapshot_tags" cty:"snapshot_tags"`
 	SnapshotAccountIDs          []string                          `mapstructure:"snapshot_account_ids" cty:"snapshot_account_ids"`
 	SnapshotGroups              []string                          `mapstructure:"snapshot_groups" cty:"snapshot_groups"`
 	OMIMappings                 []common.BlockDevice              `mapstructure:"omi_block_device_mappings" cty:"omi_block_device_mappings"`
 	LaunchMappings              []common.BlockDevice              `mapstructure:"launch_block_device_mappings" cty:"launch_block_device_mappings"`
-	AssociatePublicIpAddress    bool                              `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address"`
-	Subregion                   string                            `mapstructure:"subregion_name" cty:"subregion_name"`
-	BlockDurationMinutes        int64                             `mapstructure:"block_duration_minutes" cty:"block_duration_minutes"`
-	DisableStopVm               bool                              `mapstructure:"disable_stop_vm" cty:"disable_stop_vm"`
-	BsuOptimized                bool                              `mapstructure:"bsu_optimized" cty:"bsu_optimized"`
-	EnableT2Unlimited           bool                              `mapstructure:"enable_t2_unlimited" cty:"enable_t2_unlimited"`
-	IamVmProfile                string                            `mapstructure:"iam_vm_profile" cty:"iam_vm_profile"`
-	VmInitiatedShutdownBehavior string                            `mapstructure:"shutdown_behavior" cty:"shutdown_behavior"`
-	VmType                      string                            `mapstructure:"vm_type" cty:"vm_type"`
+	AssociatePublicIpAddress    *bool                             `mapstructure:"associate_public_ip_address" cty:"associate_public_ip_address"`
+	Subregion                   *string                           `mapstructure:"subregion_name" cty:"subregion_name"`
+	BlockDurationMinutes        *int64                            `mapstructure:"block_duration_minutes" cty:"block_duration_minutes"`
+	DisableStopVm               *bool                             `mapstructure:"disable_stop_vm" cty:"disable_stop_vm"`
+	BsuOptimized                *bool                             `mapstructure:"bsu_optimized" cty:"bsu_optimized"`
+	EnableT2Unlimited           *bool                             `mapstructure:"enable_t2_unlimited" cty:"enable_t2_unlimited"`
+	IamVmProfile                *string                           `mapstructure:"iam_vm_profile" cty:"iam_vm_profile"`
+	VmInitiatedShutdownBehavior *string                           `mapstructure:"shutdown_behavior" cty:"shutdown_behavior"`
+	VmType                      *string                           `mapstructure:"vm_type" cty:"vm_type"`
 	SecurityGroupFilter         common.SecurityGroupFilterOptions `mapstructure:"security_group_filter" cty:"security_group_filter"`
 	RunTags                     map[string]string                 `mapstructure:"run_tags" cty:"run_tags"`
-	SecurityGroupId             string                            `mapstructure:"security_group_id" cty:"security_group_id"`
+	SecurityGroupId             *string                           `mapstructure:"security_group_id" cty:"security_group_id"`
 	SecurityGroupIds            []string                          `mapstructure:"security_group_ids" cty:"security_group_ids"`
-	SourceOmi                   string                            `mapstructure:"source_omi" cty:"source_omi"`
+	SourceOmi                   *string                           `mapstructure:"source_omi" cty:"source_omi"`
 	SourceOmiFilter             common.OmiFilterOptions           `mapstructure:"source_omi_filter" cty:"source_omi_filter"`
-	SpotPrice                   string                            `mapstructure:"spot_price" cty:"spot_price"`
-	SpotPriceAutoProduct        string                            `mapstructure:"spot_price_auto_product" cty:"spot_price_auto_product"`
+	SpotPrice                   *string                           `mapstructure:"spot_price" cty:"spot_price"`
+	SpotPriceAutoProduct        *string                           `mapstructure:"spot_price_auto_product" cty:"spot_price_auto_product"`
 	SpotTags                    map[string]string                 `mapstructure:"spot_tags" cty:"spot_tags"`
 	SubnetFilter                common.SubnetFilterOptions        `mapstructure:"subnet_filter" cty:"subnet_filter"`
-	SubnetId                    string                            `mapstructure:"subnet_id" cty:"subnet_id"`
-	TemporaryKeyPairName        string                            `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
-	TemporarySGSourceCidr       string                            `mapstructure:"temporary_security_group_source_cidr" cty:"temporary_security_group_source_cidr"`
-	UserData                    string                            `mapstructure:"user_data" cty:"user_data"`
-	UserDataFile                string                            `mapstructure:"user_data_file" cty:"user_data_file"`
+	SubnetId                    *string                           `mapstructure:"subnet_id" cty:"subnet_id"`
+	TemporaryKeyPairName        *string                           `mapstructure:"temporary_key_pair_name" cty:"temporary_key_pair_name"`
+	TemporarySGSourceCidr       *string                           `mapstructure:"temporary_security_group_source_cidr" cty:"temporary_security_group_source_cidr"`
+	UserData                    *string                           `mapstructure:"user_data" cty:"user_data"`
+	UserDataFile                *string                           `mapstructure:"user_data_file" cty:"user_data_file"`
 	NetFilter                   common.NetFilterOptions           `mapstructure:"net_filter" cty:"net_filter"`
-	NetId                       string                            `mapstructure:"net_id" cty:"net_id"`
+	NetId                       *string                           `mapstructure:"net_id" cty:"net_id"`
 	WindowsPasswordTimeout      time.Duration                     `mapstructure:"windows_password_timeout" cty:"windows_password_timeout"`
-	Type                        string                            `mapstructure:"communicator" cty:"communicator"`
+	Type                        *string                           `mapstructure:"communicator" cty:"communicator"`
 	PauseBeforeConnect          time.Duration                     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                     string                            `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                     int                               `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername                 string                            `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword                 string                            `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName              string                            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHClearAuthorizedKeys      bool                              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile           string                            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                      bool                              `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHHost                     *string                           `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                     *int                              `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername                 *string                           `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword                 *string                           `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName              *string                           `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHClearAuthorizedKeys      *bool                             `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile           *string                           `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                      *bool                             `mapstructure:"ssh_pty" cty:"ssh_pty"`
 	SSHTimeout                  time.Duration                     `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth                bool                              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding   bool                              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts        int                               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost              string                            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort              int                               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth         bool                              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername          string                            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword          string                            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile    string                            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod       string                            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost                string                            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort                int                               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername            string                            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword            string                            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHAgentAuth                *bool                             `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding   *bool                             `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts        *int                              `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost              *string                           `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort              *int                              `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth         *bool                             `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername          *string                           `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword          *string                           `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile    *string                           `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod       *string                           `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost                *string                           `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort                *int                              `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername            *string                           `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword            *string                           `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
 	SSHKeepAliveInterval        time.Duration                     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
 	SSHReadWriteTimeout         time.Duration                     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
 	SSHRemoteTunnels            []string                          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
 	SSHLocalTunnels             []string                          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
 	SSHPublicKey                []byte                            `cty:"ssh_public_key"`
 	SSHPrivateKey               []byte                            `cty:"ssh_private_key"`
-	WinRMUser                   string                            `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword               string                            `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                   string                            `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                   int                               `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMUser                   *string                           `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword               *string                           `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                   *string                           `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                   *int                              `mapstructure:"winrm_port" cty:"winrm_port"`
 	WinRMTimeout                time.Duration                     `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL                 bool                              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure               bool                              `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM                bool                              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	SSHInterface                string                            `mapstructure:"ssh_interface" cty:"ssh_interface"`
+	WinRMUseSSL                 *bool                             `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure               *bool                             `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM                *bool                             `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	SSHInterface                *string                           `mapstructure:"ssh_interface" cty:"ssh_interface"`
 	VolumeRunTags               common.TagMap                     `mapstructure:"run_volume_tags" cty:"run_volume_tags"`
 }
 

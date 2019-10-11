@@ -12,112 +12,112 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName                   string                            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType                 string                            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                       bool                              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                       bool                              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError                     string                            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName                   *string                           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType                 *string                           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                       *bool                             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                       *bool                             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError                     *string                           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars                    map[string]string                 `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars               []string                          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AccessKey                         string                            `mapstructure:"access_key" required:"true" cty:"access_key"`
-	CustomEndpointEc2                 string                            `mapstructure:"custom_endpoint_ec2" required:"false" cty:"custom_endpoint_ec2"`
-	DecodeAuthZMessages               bool                              `mapstructure:"decode_authorization_messages" required:"false" cty:"decode_authorization_messages"`
-	InsecureSkipTLSVerify             bool                              `mapstructure:"insecure_skip_tls_verify" required:"false" cty:"insecure_skip_tls_verify"`
-	MFACode                           string                            `mapstructure:"mfa_code" required:"false" cty:"mfa_code"`
-	ProfileName                       string                            `mapstructure:"profile" required:"false" cty:"profile"`
-	RawRegion                         string                            `mapstructure:"region" required:"true" cty:"region"`
-	SecretKey                         string                            `mapstructure:"secret_key" required:"true" cty:"secret_key"`
-	SkipValidation                    bool                              `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
-	SkipMetadataApiCheck              bool                              `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
-	Token                             string                            `mapstructure:"token" required:"false" cty:"token"`
+	AccessKey                         *string                           `mapstructure:"access_key" required:"true" cty:"access_key"`
+	CustomEndpointEc2                 *string                           `mapstructure:"custom_endpoint_ec2" required:"false" cty:"custom_endpoint_ec2"`
+	DecodeAuthZMessages               *bool                             `mapstructure:"decode_authorization_messages" required:"false" cty:"decode_authorization_messages"`
+	InsecureSkipTLSVerify             *bool                             `mapstructure:"insecure_skip_tls_verify" required:"false" cty:"insecure_skip_tls_verify"`
+	MFACode                           *string                           `mapstructure:"mfa_code" required:"false" cty:"mfa_code"`
+	ProfileName                       *string                           `mapstructure:"profile" required:"false" cty:"profile"`
+	RawRegion                         *string                           `mapstructure:"region" required:"true" cty:"region"`
+	SecretKey                         *string                           `mapstructure:"secret_key" required:"true" cty:"secret_key"`
+	SkipValidation                    *bool                             `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation"`
+	SkipMetadataApiCheck              *bool                             `mapstructure:"skip_metadata_api_check" cty:"skip_metadata_api_check"`
+	Token                             *string                           `mapstructure:"token" required:"false" cty:"token"`
 	VaultAWSEngine                    common.VaultAWSEngineOptions      `mapstructure:"vault_aws_engine" required:"false" cty:"vault_aws_engine"`
-	AMIName                           string                            `mapstructure:"ami_name" required:"true" cty:"ami_name"`
-	AMIDescription                    string                            `mapstructure:"ami_description" required:"false" cty:"ami_description"`
-	AMIVirtType                       string                            `mapstructure:"ami_virtualization_type" required:"false" cty:"ami_virtualization_type"`
+	AMIName                           *string                           `mapstructure:"ami_name" required:"true" cty:"ami_name"`
+	AMIDescription                    *string                           `mapstructure:"ami_description" required:"false" cty:"ami_description"`
+	AMIVirtType                       *string                           `mapstructure:"ami_virtualization_type" required:"false" cty:"ami_virtualization_type"`
 	AMIUsers                          []string                          `mapstructure:"ami_users" required:"false" cty:"ami_users"`
 	AMIGroups                         []string                          `mapstructure:"ami_groups" required:"false" cty:"ami_groups"`
 	AMIProductCodes                   []string                          `mapstructure:"ami_product_codes" required:"false" cty:"ami_product_codes"`
 	AMIRegions                        []string                          `mapstructure:"ami_regions" required:"false" cty:"ami_regions"`
 	AMITags                           common.TagMap                     `mapstructure:"tags" required:"false" cty:"tags"`
 	AMIENASupport                     config.Trilean                    `mapstructure:"ena_support" required:"false" cty:"ena_support"`
-	AMISriovNetSupport                bool                              `mapstructure:"sriov_support" required:"false" cty:"sriov_support"`
-	AMIForceDeregister                bool                              `mapstructure:"force_deregister" required:"false" cty:"force_deregister"`
-	AMIForceDeleteSnapshot            bool                              `mapstructure:"force_delete_snapshot" required:"false" cty:"force_delete_snapshot"`
+	AMISriovNetSupport                *bool                             `mapstructure:"sriov_support" required:"false" cty:"sriov_support"`
+	AMIForceDeregister                *bool                             `mapstructure:"force_deregister" required:"false" cty:"force_deregister"`
+	AMIForceDeleteSnapshot            *bool                             `mapstructure:"force_delete_snapshot" required:"false" cty:"force_delete_snapshot"`
 	AMIEncryptBootVolume              config.Trilean                    `mapstructure:"encrypt_boot" required:"false" cty:"encrypt_boot"`
-	AMIKmsKeyId                       string                            `mapstructure:"kms_key_id" required:"false" cty:"kms_key_id"`
+	AMIKmsKeyId                       *string                           `mapstructure:"kms_key_id" required:"false" cty:"kms_key_id"`
 	AMIRegionKMSKeyIDs                map[string]string                 `mapstructure:"region_kms_key_ids" required:"false" cty:"region_kms_key_ids"`
-	AMISkipBuildRegion                bool                              `mapstructure:"skip_save_build_region" cty:"skip_save_build_region"`
+	AMISkipBuildRegion                *bool                             `mapstructure:"skip_save_build_region" cty:"skip_save_build_region"`
 	SnapshotTags                      common.TagMap                     `mapstructure:"snapshot_tags" required:"false" cty:"snapshot_tags"`
 	SnapshotUsers                     []string                          `mapstructure:"snapshot_users" required:"false" cty:"snapshot_users"`
 	SnapshotGroups                    []string                          `mapstructure:"snapshot_groups" required:"false" cty:"snapshot_groups"`
-	AssociatePublicIpAddress          bool                              `mapstructure:"associate_public_ip_address" required:"false" cty:"associate_public_ip_address"`
-	AvailabilityZone                  string                            `mapstructure:"availability_zone" required:"false" cty:"availability_zone"`
-	BlockDurationMinutes              int64                             `mapstructure:"block_duration_minutes" required:"false" cty:"block_duration_minutes"`
-	DisableStopInstance               bool                              `mapstructure:"disable_stop_instance" required:"false" cty:"disable_stop_instance"`
-	EbsOptimized                      bool                              `mapstructure:"ebs_optimized" required:"false" cty:"ebs_optimized"`
-	EnableT2Unlimited                 bool                              `mapstructure:"enable_t2_unlimited" required:"false" cty:"enable_t2_unlimited"`
-	IamInstanceProfile                string                            `mapstructure:"iam_instance_profile" required:"false" cty:"iam_instance_profile"`
-	InstanceInitiatedShutdownBehavior string                            `mapstructure:"shutdown_behavior" required:"false" cty:"shutdown_behavior"`
-	InstanceType                      string                            `mapstructure:"instance_type" required:"true" cty:"instance_type"`
+	AssociatePublicIpAddress          *bool                             `mapstructure:"associate_public_ip_address" required:"false" cty:"associate_public_ip_address"`
+	AvailabilityZone                  *string                           `mapstructure:"availability_zone" required:"false" cty:"availability_zone"`
+	BlockDurationMinutes              *int64                            `mapstructure:"block_duration_minutes" required:"false" cty:"block_duration_minutes"`
+	DisableStopInstance               *bool                             `mapstructure:"disable_stop_instance" required:"false" cty:"disable_stop_instance"`
+	EbsOptimized                      *bool                             `mapstructure:"ebs_optimized" required:"false" cty:"ebs_optimized"`
+	EnableT2Unlimited                 *bool                             `mapstructure:"enable_t2_unlimited" required:"false" cty:"enable_t2_unlimited"`
+	IamInstanceProfile                *string                           `mapstructure:"iam_instance_profile" required:"false" cty:"iam_instance_profile"`
+	InstanceInitiatedShutdownBehavior *string                           `mapstructure:"shutdown_behavior" required:"false" cty:"shutdown_behavior"`
+	InstanceType                      *string                           `mapstructure:"instance_type" required:"true" cty:"instance_type"`
 	SecurityGroupFilter               common.SecurityGroupFilterOptions `mapstructure:"security_group_filter" required:"false" cty:"security_group_filter"`
 	RunTags                           map[string]string                 `mapstructure:"run_tags" required:"false" cty:"run_tags"`
-	SecurityGroupId                   string                            `mapstructure:"security_group_id" required:"false" cty:"security_group_id"`
+	SecurityGroupId                   *string                           `mapstructure:"security_group_id" required:"false" cty:"security_group_id"`
 	SecurityGroupIds                  []string                          `mapstructure:"security_group_ids" required:"false" cty:"security_group_ids"`
-	SourceAmi                         string                            `mapstructure:"source_ami" required:"true" cty:"source_ami"`
+	SourceAmi                         *string                           `mapstructure:"source_ami" required:"true" cty:"source_ami"`
 	SourceAmiFilter                   common.AmiFilterOptions           `mapstructure:"source_ami_filter" required:"false" cty:"source_ami_filter"`
 	SpotInstanceTypes                 []string                          `mapstructure:"spot_instance_types" required:"false" cty:"spot_instance_types"`
-	SpotPrice                         string                            `mapstructure:"spot_price" required:"false" cty:"spot_price"`
-	SpotPriceAutoProduct              string                            `mapstructure:"spot_price_auto_product" required:"false" cty:"spot_price_auto_product"`
+	SpotPrice                         *string                           `mapstructure:"spot_price" required:"false" cty:"spot_price"`
+	SpotPriceAutoProduct              *string                           `mapstructure:"spot_price_auto_product" required:"false" cty:"spot_price_auto_product"`
 	SpotTags                          map[string]string                 `mapstructure:"spot_tags" required:"false" cty:"spot_tags"`
 	SubnetFilter                      common.SubnetFilterOptions        `mapstructure:"subnet_filter" required:"false" cty:"subnet_filter"`
-	SubnetId                          string                            `mapstructure:"subnet_id" required:"false" cty:"subnet_id"`
-	TemporaryKeyPairName              string                            `mapstructure:"temporary_key_pair_name" required:"false" cty:"temporary_key_pair_name"`
+	SubnetId                          *string                           `mapstructure:"subnet_id" required:"false" cty:"subnet_id"`
+	TemporaryKeyPairName              *string                           `mapstructure:"temporary_key_pair_name" required:"false" cty:"temporary_key_pair_name"`
 	TemporarySGSourceCidrs            []string                          `mapstructure:"temporary_security_group_source_cidrs" required:"false" cty:"temporary_security_group_source_cidrs"`
-	UserData                          string                            `mapstructure:"user_data" required:"false" cty:"user_data"`
-	UserDataFile                      string                            `mapstructure:"user_data_file" required:"false" cty:"user_data_file"`
+	UserData                          *string                           `mapstructure:"user_data" required:"false" cty:"user_data"`
+	UserDataFile                      *string                           `mapstructure:"user_data_file" required:"false" cty:"user_data_file"`
 	VpcFilter                         common.VpcFilterOptions           `mapstructure:"vpc_filter" required:"false" cty:"vpc_filter"`
-	VpcId                             string                            `mapstructure:"vpc_id" required:"false" cty:"vpc_id"`
+	VpcId                             *string                           `mapstructure:"vpc_id" required:"false" cty:"vpc_id"`
 	WindowsPasswordTimeout            time.Duration                     `mapstructure:"windows_password_timeout" required:"false" cty:"windows_password_timeout"`
-	Type                              string                            `mapstructure:"communicator" cty:"communicator"`
+	Type                              *string                           `mapstructure:"communicator" cty:"communicator"`
 	PauseBeforeConnect                time.Duration                     `mapstructure:"pause_before_connecting" cty:"pause_before_connecting"`
-	SSHHost                           string                            `mapstructure:"ssh_host" cty:"ssh_host"`
-	SSHPort                           int                               `mapstructure:"ssh_port" cty:"ssh_port"`
-	SSHUsername                       string                            `mapstructure:"ssh_username" cty:"ssh_username"`
-	SSHPassword                       string                            `mapstructure:"ssh_password" cty:"ssh_password"`
-	SSHKeyPairName                    string                            `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
-	SSHClearAuthorizedKeys            bool                              `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
-	SSHPrivateKeyFile                 string                            `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
-	SSHPty                            bool                              `mapstructure:"ssh_pty" cty:"ssh_pty"`
+	SSHHost                           *string                           `mapstructure:"ssh_host" cty:"ssh_host"`
+	SSHPort                           *int                              `mapstructure:"ssh_port" cty:"ssh_port"`
+	SSHUsername                       *string                           `mapstructure:"ssh_username" cty:"ssh_username"`
+	SSHPassword                       *string                           `mapstructure:"ssh_password" cty:"ssh_password"`
+	SSHKeyPairName                    *string                           `mapstructure:"ssh_keypair_name" cty:"ssh_keypair_name"`
+	SSHClearAuthorizedKeys            *bool                             `mapstructure:"ssh_clear_authorized_keys" cty:"ssh_clear_authorized_keys"`
+	SSHPrivateKeyFile                 *string                           `mapstructure:"ssh_private_key_file" cty:"ssh_private_key_file"`
+	SSHPty                            *bool                             `mapstructure:"ssh_pty" cty:"ssh_pty"`
 	SSHTimeout                        time.Duration                     `mapstructure:"ssh_timeout" cty:"ssh_timeout"`
-	SSHAgentAuth                      bool                              `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
-	SSHDisableAgentForwarding         bool                              `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
-	SSHHandshakeAttempts              int                               `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
-	SSHBastionHost                    string                            `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
-	SSHBastionPort                    int                               `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
-	SSHBastionAgentAuth               bool                              `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
-	SSHBastionUsername                string                            `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
-	SSHBastionPassword                string                            `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
-	SSHBastionPrivateKeyFile          string                            `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
-	SSHFileTransferMethod             string                            `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
-	SSHProxyHost                      string                            `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
-	SSHProxyPort                      int                               `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
-	SSHProxyUsername                  string                            `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
-	SSHProxyPassword                  string                            `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
+	SSHAgentAuth                      *bool                             `mapstructure:"ssh_agent_auth" cty:"ssh_agent_auth"`
+	SSHDisableAgentForwarding         *bool                             `mapstructure:"ssh_disable_agent_forwarding" cty:"ssh_disable_agent_forwarding"`
+	SSHHandshakeAttempts              *int                              `mapstructure:"ssh_handshake_attempts" cty:"ssh_handshake_attempts"`
+	SSHBastionHost                    *string                           `mapstructure:"ssh_bastion_host" cty:"ssh_bastion_host"`
+	SSHBastionPort                    *int                              `mapstructure:"ssh_bastion_port" cty:"ssh_bastion_port"`
+	SSHBastionAgentAuth               *bool                             `mapstructure:"ssh_bastion_agent_auth" cty:"ssh_bastion_agent_auth"`
+	SSHBastionUsername                *string                           `mapstructure:"ssh_bastion_username" cty:"ssh_bastion_username"`
+	SSHBastionPassword                *string                           `mapstructure:"ssh_bastion_password" cty:"ssh_bastion_password"`
+	SSHBastionPrivateKeyFile          *string                           `mapstructure:"ssh_bastion_private_key_file" cty:"ssh_bastion_private_key_file"`
+	SSHFileTransferMethod             *string                           `mapstructure:"ssh_file_transfer_method" cty:"ssh_file_transfer_method"`
+	SSHProxyHost                      *string                           `mapstructure:"ssh_proxy_host" cty:"ssh_proxy_host"`
+	SSHProxyPort                      *int                              `mapstructure:"ssh_proxy_port" cty:"ssh_proxy_port"`
+	SSHProxyUsername                  *string                           `mapstructure:"ssh_proxy_username" cty:"ssh_proxy_username"`
+	SSHProxyPassword                  *string                           `mapstructure:"ssh_proxy_password" cty:"ssh_proxy_password"`
 	SSHKeepAliveInterval              time.Duration                     `mapstructure:"ssh_keep_alive_interval" cty:"ssh_keep_alive_interval"`
 	SSHReadWriteTimeout               time.Duration                     `mapstructure:"ssh_read_write_timeout" cty:"ssh_read_write_timeout"`
 	SSHRemoteTunnels                  []string                          `mapstructure:"ssh_remote_tunnels" cty:"ssh_remote_tunnels"`
 	SSHLocalTunnels                   []string                          `mapstructure:"ssh_local_tunnels" cty:"ssh_local_tunnels"`
 	SSHPublicKey                      []byte                            `cty:"ssh_public_key"`
 	SSHPrivateKey                     []byte                            `cty:"ssh_private_key"`
-	WinRMUser                         string                            `mapstructure:"winrm_username" cty:"winrm_username"`
-	WinRMPassword                     string                            `mapstructure:"winrm_password" cty:"winrm_password"`
-	WinRMHost                         string                            `mapstructure:"winrm_host" cty:"winrm_host"`
-	WinRMPort                         int                               `mapstructure:"winrm_port" cty:"winrm_port"`
+	WinRMUser                         *string                           `mapstructure:"winrm_username" cty:"winrm_username"`
+	WinRMPassword                     *string                           `mapstructure:"winrm_password" cty:"winrm_password"`
+	WinRMHost                         *string                           `mapstructure:"winrm_host" cty:"winrm_host"`
+	WinRMPort                         *int                              `mapstructure:"winrm_port" cty:"winrm_port"`
 	WinRMTimeout                      time.Duration                     `mapstructure:"winrm_timeout" cty:"winrm_timeout"`
-	WinRMUseSSL                       bool                              `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
-	WinRMInsecure                     bool                              `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
-	WinRMUseNTLM                      bool                              `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
-	SSHInterface                      string                            `mapstructure:"ssh_interface" cty:"ssh_interface"`
+	WinRMUseSSL                       *bool                             `mapstructure:"winrm_use_ssl" cty:"winrm_use_ssl"`
+	WinRMInsecure                     *bool                             `mapstructure:"winrm_insecure" cty:"winrm_insecure"`
+	WinRMUseNTLM                      *bool                             `mapstructure:"winrm_use_ntlm" cty:"winrm_use_ntlm"`
+	SSHInterface                      *string                           `mapstructure:"ssh_interface" cty:"ssh_interface"`
 	AMIMappings                       common.BlockDevices               `mapstructure:"ami_block_device_mappings" required:"false" cty:"ami_block_device_mappings"`
 	LaunchMappings                    common.BlockDevices               `mapstructure:"launch_block_device_mappings" required:"false" cty:"launch_block_device_mappings"`
 	VolumeRunTags                     common.TagMap                     `mapstructure:"run_volume_tags" cty:"run_volume_tags"`

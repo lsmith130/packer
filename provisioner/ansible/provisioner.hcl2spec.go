@@ -9,33 +9,33 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName      *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Command              string            `cty:"command"`
+	Command              *string           `cty:"command"`
 	ExtraArguments       []string          `mapstructure:"extra_arguments" cty:"extra_arguments"`
 	AnsibleEnvVars       []string          `mapstructure:"ansible_env_vars" cty:"ansible_env_vars"`
-	PlaybookFile         string            `mapstructure:"playbook_file" cty:"playbook_file"`
+	PlaybookFile         *string           `mapstructure:"playbook_file" cty:"playbook_file"`
 	Groups               []string          `mapstructure:"groups" cty:"groups"`
 	EmptyGroups          []string          `mapstructure:"empty_groups" cty:"empty_groups"`
-	HostAlias            string            `mapstructure:"host_alias" cty:"host_alias"`
-	User                 string            `mapstructure:"user" cty:"user"`
-	LocalPort            int               `mapstructure:"local_port" cty:"local_port"`
-	SSHHostKeyFile       string            `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
-	SSHAuthorizedKeyFile string            `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
-	SFTPCmd              string            `mapstructure:"sftp_command" cty:"sftp_command"`
-	SkipVersionCheck     bool              `mapstructure:"skip_version_check" cty:"skip_version_check"`
-	UseSFTP              bool              `mapstructure:"use_sftp" cty:"use_sftp"`
-	InventoryDirectory   string            `mapstructure:"inventory_directory" cty:"inventory_directory"`
-	InventoryFile        string            `mapstructure:"inventory_file" cty:"inventory_file"`
-	GalaxyFile           string            `mapstructure:"galaxy_file" cty:"galaxy_file"`
-	GalaxyCommand        string            `mapstructure:"galaxy_command" cty:"galaxy_command"`
-	GalaxyForceInstall   bool              `mapstructure:"galaxy_force_install" cty:"galaxy_force_install"`
-	RolesPath            string            `mapstructure:"roles_path" cty:"roles_path"`
+	HostAlias            *string           `mapstructure:"host_alias" cty:"host_alias"`
+	User                 *string           `mapstructure:"user" cty:"user"`
+	LocalPort            *int              `mapstructure:"local_port" cty:"local_port"`
+	SSHHostKeyFile       *string           `mapstructure:"ssh_host_key_file" cty:"ssh_host_key_file"`
+	SSHAuthorizedKeyFile *string           `mapstructure:"ssh_authorized_key_file" cty:"ssh_authorized_key_file"`
+	SFTPCmd              *string           `mapstructure:"sftp_command" cty:"sftp_command"`
+	SkipVersionCheck     *bool             `mapstructure:"skip_version_check" cty:"skip_version_check"`
+	UseSFTP              *bool             `mapstructure:"use_sftp" cty:"use_sftp"`
+	InventoryDirectory   *string           `mapstructure:"inventory_directory" cty:"inventory_directory"`
+	InventoryFile        *string           `mapstructure:"inventory_file" cty:"inventory_file"`
+	GalaxyFile           *string           `mapstructure:"galaxy_file" cty:"galaxy_file"`
+	GalaxyCommand        *string           `mapstructure:"galaxy_command" cty:"galaxy_command"`
+	GalaxyForceInstall   *bool             `mapstructure:"galaxy_force_install" cty:"galaxy_force_install"`
+	RolesPath            *string           `mapstructure:"roles_path" cty:"roles_path"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

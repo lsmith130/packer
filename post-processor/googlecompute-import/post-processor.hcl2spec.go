@@ -9,24 +9,24 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName      *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	AccountFile          string            `mapstructure:"account_file" cty:"account_file"`
-	ProjectId            string            `mapstructure:"project_id" cty:"project_id"`
-	Bucket               string            `mapstructure:"bucket" cty:"bucket"`
-	GCSObjectName        string            `mapstructure:"gcs_object_name" cty:"gcs_object_name"`
-	ImageDescription     string            `mapstructure:"image_description" cty:"image_description"`
-	ImageFamily          string            `mapstructure:"image_family" cty:"image_family"`
+	AccountFile          *string           `mapstructure:"account_file" cty:"account_file"`
+	ProjectId            *string           `mapstructure:"project_id" cty:"project_id"`
+	Bucket               *string           `mapstructure:"bucket" cty:"bucket"`
+	GCSObjectName        *string           `mapstructure:"gcs_object_name" cty:"gcs_object_name"`
+	ImageDescription     *string           `mapstructure:"image_description" cty:"image_description"`
+	ImageFamily          *string           `mapstructure:"image_family" cty:"image_family"`
 	ImageGuestOsFeatures []string          `mapstructure:"image_guest_os_features" cty:"image_guest_os_features"`
 	ImageLabels          map[string]string `mapstructure:"image_labels" cty:"image_labels"`
-	ImageName            string            `mapstructure:"image_name" cty:"image_name"`
-	SkipClean            bool              `mapstructure:"skip_clean" cty:"skip_clean"`
-	VaultGCPOauthEngine  string            `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
+	ImageName            *string           `mapstructure:"image_name" cty:"image_name"`
+	SkipClean            *bool             `mapstructure:"skip_clean" cty:"skip_clean"`
+	VaultGCPOauthEngine  *string           `mapstructure:"vault_gcp_oauth_engine" cty:"vault_gcp_oauth_engine"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

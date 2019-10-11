@@ -9,19 +9,19 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName              string                 `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType            string                 `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug                  bool                   `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce                  bool                   `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError                string                 `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName              *string                `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType            *string                `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug                  *bool                  `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce                  *bool                  `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError                *string                `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars               map[string]string      `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars          []string               `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	CompressionLevel             int                    `mapstructure:"compression_level" cty:"compression_level"`
+	CompressionLevel             *int                   `mapstructure:"compression_level" cty:"compression_level"`
 	Include                      []string               `mapstructure:"include" cty:"include"`
-	OutputPath                   string                 `mapstructure:"output" cty:"output"`
+	OutputPath                   *string                `mapstructure:"output" cty:"output"`
 	Override                     map[string]interface{} `cty:"override"`
-	VagrantfileTemplate          string                 `mapstructure:"vagrantfile_template" cty:"vagrantfile_template"`
-	VagrantfileTemplateGenerated bool                   `mapstructure:"vagrantfile_template_generated" cty:"vagrantfile_template_generated"`
+	VagrantfileTemplate          *string                `mapstructure:"vagrantfile_template" cty:"vagrantfile_template"`
+	VagrantfileTemplateGenerated *bool                  `mapstructure:"vagrantfile_template_generated" cty:"vagrantfile_template_generated"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

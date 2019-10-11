@@ -9,28 +9,28 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName     string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType   string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug         bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce         bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError       string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName     *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType   *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug         *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce         *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError       *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars      map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Cluster             string            `mapstructure:"cluster" cty:"cluster"`
-	Datacenter          string            `mapstructure:"datacenter" cty:"datacenter"`
-	Datastore           string            `mapstructure:"datastore" cty:"datastore"`
-	DiskMode            string            `mapstructure:"disk_mode" cty:"disk_mode"`
-	Host                string            `mapstructure:"host" cty:"host"`
-	ESXiHost            string            `mapstructure:"esxi_host" cty:"esxi_host"`
-	Insecure            bool              `mapstructure:"insecure" cty:"insecure"`
+	Cluster             *string           `mapstructure:"cluster" cty:"cluster"`
+	Datacenter          *string           `mapstructure:"datacenter" cty:"datacenter"`
+	Datastore           *string           `mapstructure:"datastore" cty:"datastore"`
+	DiskMode            *string           `mapstructure:"disk_mode" cty:"disk_mode"`
+	Host                *string           `mapstructure:"host" cty:"host"`
+	ESXiHost            *string           `mapstructure:"esxi_host" cty:"esxi_host"`
+	Insecure            *bool             `mapstructure:"insecure" cty:"insecure"`
 	Options             []string          `mapstructure:"options" cty:"options"`
-	Overwrite           bool              `mapstructure:"overwrite" cty:"overwrite"`
-	Password            string            `mapstructure:"password" cty:"password"`
-	ResourcePool        string            `mapstructure:"resource_pool" cty:"resource_pool"`
-	Username            string            `mapstructure:"username" cty:"username"`
-	VMFolder            string            `mapstructure:"vm_folder" cty:"vm_folder"`
-	VMName              string            `mapstructure:"vm_name" cty:"vm_name"`
-	VMNetwork           string            `mapstructure:"vm_network" cty:"vm_network"`
+	Overwrite           *bool             `mapstructure:"overwrite" cty:"overwrite"`
+	Password            *string           `mapstructure:"password" cty:"password"`
+	ResourcePool        *string           `mapstructure:"resource_pool" cty:"resource_pool"`
+	Username            *string           `mapstructure:"username" cty:"username"`
+	VMFolder            *string           `mapstructure:"vm_folder" cty:"vm_folder"`
+	VMName              *string           `mapstructure:"vm_name" cty:"vm_name"`
+	VMNetwork           *string           `mapstructure:"vm_network" cty:"vm_network"`
 }
 
 // FlatMapstructure returns a new FlatConfig.

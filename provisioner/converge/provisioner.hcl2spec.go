@@ -9,23 +9,23 @@ import (
 // FlatConfig is an auto-generated flat version of Config.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatConfig struct {
-	PackerBuildName      string            `mapstructure:"packer_build_name" cty:"packer_build_name"`
-	PackerBuilderType    string            `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
-	PackerDebug          bool              `mapstructure:"packer_debug" cty:"packer_debug"`
-	PackerForce          bool              `mapstructure:"packer_force" cty:"packer_force"`
-	PackerOnError        string            `mapstructure:"packer_on_error" cty:"packer_on_error"`
+	PackerBuildName      *string           `mapstructure:"packer_build_name" cty:"packer_build_name"`
+	PackerBuilderType    *string           `mapstructure:"packer_builder_type" cty:"packer_builder_type"`
+	PackerDebug          *bool             `mapstructure:"packer_debug" cty:"packer_debug"`
+	PackerForce          *bool             `mapstructure:"packer_force" cty:"packer_force"`
+	PackerOnError        *string           `mapstructure:"packer_on_error" cty:"packer_on_error"`
 	PackerUserVars       map[string]string `mapstructure:"packer_user_variables" cty:"packer_user_variables"`
 	PackerSensitiveVars  []string          `mapstructure:"packer_sensitive_variables" cty:"packer_sensitive_variables"`
-	Bootstrap            bool              `mapstructure:"bootstrap" cty:"bootstrap"`
-	Version              string            `mapstructure:"version" cty:"version"`
-	BootstrapCommand     string            `mapstructure:"bootstrap_command" cty:"bootstrap_command"`
-	PreventBootstrapSudo bool              `mapstructure:"prevent_bootstrap_sudo" cty:"prevent_bootstrap_sudo"`
+	Bootstrap            *bool             `mapstructure:"bootstrap" cty:"bootstrap"`
+	Version              *string           `mapstructure:"version" cty:"version"`
+	BootstrapCommand     *string           `mapstructure:"bootstrap_command" cty:"bootstrap_command"`
+	PreventBootstrapSudo *bool             `mapstructure:"prevent_bootstrap_sudo" cty:"prevent_bootstrap_sudo"`
 	ModuleDirs           []ModuleDir       `mapstructure:"module_dirs" cty:"module_dirs"`
-	Module               string            `mapstructure:"module" cty:"module"`
-	WorkingDirectory     string            `mapstructure:"working_directory" cty:"working_directory"`
+	Module               *string           `mapstructure:"module" cty:"module"`
+	WorkingDirectory     *string           `mapstructure:"working_directory" cty:"working_directory"`
 	Params               map[string]string `mapstructure:"params" cty:"params"`
-	ExecuteCommand       string            `mapstructure:"execute_command" cty:"execute_command"`
-	PreventSudo          bool              `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
+	ExecuteCommand       *string           `mapstructure:"execute_command" cty:"execute_command"`
+	PreventSudo          *bool             `mapstructure:"prevent_sudo" cty:"prevent_sudo"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -61,8 +61,8 @@ func (*Config) HCL2Spec() map[string]hcldec.Spec {
 // FlatModuleDir is an auto-generated flat version of ModuleDir.
 // Where the contents of a field with a `mapstructure:,squash` tag are bubbled up.
 type FlatModuleDir struct {
-	Source      string   `mapstructure:"source" cty:"source"`
-	Destination string   `mapstructure:"destination" cty:"destination"`
+	Source      *string  `mapstructure:"source" cty:"source"`
+	Destination *string  `mapstructure:"destination" cty:"destination"`
 	Exclude     []string `mapstructure:"exclude" cty:"exclude"`
 }
 

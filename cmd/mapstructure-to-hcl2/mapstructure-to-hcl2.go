@@ -242,6 +242,8 @@ func outputHCL2SpecField(w io.Writer, accessor string, fieldType types.Type) {
 			underlyingType := f.Underlying()
 			outputHCL2SpecField(w, f.String(), underlyingType)
 		}
+	case *types.Pointer:
+		outputHCL2SpecField(w, accessor, f.Elem())
 	case *types.Struct:
 		fmt.Fprintf(w, `&hcldec.BlockObjectSpec{TypeName: "%[1]s",`+
 			` Nested: hcldec.ObjectSpec((*%[1]s)(nil).HCL2Spec())}`, accessor)
@@ -390,9 +392,18 @@ func getMapstructureSquashedStruct(topPkg *types.Package, utStruct *types.Struct
 		if field.Pkg() != topPkg {
 			field = types.NewField(field.Pos(), topPkg, field.Name(), field.Type(), field.Embedded())
 		}
+		if _, isBasic := field.Type().(*types.Basic); isBasic {
+			// since everything is optional, everything must be a pointer
+			// non optional fields should be non pointers.
+			field = makePointer(field)
+		}
 		res = addFieldToStruct(res, field, tag)
 	}
 	return res
+}
+
+func makePointer(field *types.Var) *types.Var {
+	return types.NewField(field.Pos(), field.Pkg(), field.Name(), types.NewPointer(field.Type()), field.Embedded())
 }
 
 func addFieldToStruct(s *types.Struct, field *types.Var, tag string) *types.Struct {
