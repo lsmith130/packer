@@ -83,8 +83,8 @@ func TestParser_Parse(t *testing.T) {
 										ValidExitCodes: []int{0, 42},
 									}},
 									{Cfg: &file.FlatConfig{
-										Source:      "app.tar.gz",
-										Destination: "/tmp/app.tar.gz",
+										Source:      strPtr("app.tar.gz"),
+										Destination: strPtr("/tmp/app.tar.gz"),
 									}},
 								},
 							},
@@ -93,7 +93,7 @@ func TestParser_Parse(t *testing.T) {
 							&ProvisionerGroup{
 								Provisioners: []Provisioner{
 									{Cfg: &amazon_import.FlatConfig{
-										Name: "that-ubuntu-1.0",
+										Name: strPtr("that-ubuntu-1.0"),
 									}},
 								},
 							},
